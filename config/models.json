@@ -1,0 +1,8 @@
+{
+  "default": {
+    "provider": "anthropic",
+    "model_name": "claude-sonnet-4-20250514",
+    "temperature": 0.0,
+    "max_tokens": 2048
+  }
+}
