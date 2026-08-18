@@ -14,7 +14,7 @@ from .settings import settings
 
 ANTHROPIC_URL = "https://api.anthropic.com/v1/messages"
 ANTHROPIC_VERSION = "2023-06-01"
-DEFAULT_MODEL = "claude-sonnet-4-20250514"
+DEFAULT_MODEL = "claude-sonnet-5"
 
 MAX_RETRIES = 3
 RETRY_BACKOFF_BASE = 2.0  # seconds: 2, 4, 8

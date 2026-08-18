@@ -42,7 +42,7 @@ def run(
     prompt_id: str = "PM-D01",
     prompt_version: str = "v1.0",
     model_provider: str = "anthropic",
-    model_name: str = "claude-sonnet-4-20250514",
+    model_name: str = "claude-sonnet-5",
     temperature: float = 0.0,
     max_tokens: int = 2048,
     run_index: int = 1,
