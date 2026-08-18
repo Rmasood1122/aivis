@@ -1,5 +1,13 @@
 from __future__ import annotations
 
+from typing import NamedTuple
+
+
+class Scores(NamedTuple):
+    mention: float
+    rank: float
+    citation: float
+
 
 def rank_score_from_rank(rank: int | None, rank_map: dict) -> float:
     if rank is None:
@@ -12,8 +20,8 @@ def compute_scores(
     brand_rank: int | None,
     brand_cited: bool,
     rank_map: dict,
-) -> tuple[float, float, float]:
+) -> Scores:
     mention_score = 1.0 if brand_mentioned else 0.0
     rank_score = rank_score_from_rank(brand_rank, rank_map) if brand_mentioned else 0.0
     citation_score = 1.0 if (brand_mentioned and brand_cited) else 0.0
-    return mention_score, rank_score, citation_score
+    return Scores(mention=mention_score, rank=rank_score, citation=citation_score)

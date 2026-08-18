@@ -10,7 +10,7 @@ import typer
 from rich import print as rprint
 
 from .models import VisibilityObj
-from .parser import parse_tool_list
+from .parser import norm_name, parse_tool_list
 from .reporter import write_simple_pdf
 from .runner import run_once, run_once_stub
 from .scorer import compute_scores
@@ -70,7 +70,7 @@ def run(
     tool_list, meta = parse_tool_list(raw)
 
     # Brand match
-    brand_norm = client_brand.strip().lower()
+    brand_norm = norm_name(client_brand)
     brand_rank = None
     brand_cited = False
     brand_domains: list[str] = []
@@ -84,9 +84,15 @@ def run(
 
     # Score
     scoring_cfg = _load_json(Path("config/scoring_v1.json"))
-    mention_score, rank_score, citation_score = compute_scores(
-        brand_mentioned, brand_rank, brand_cited, scoring_cfg["rank_map"]
+    scores = compute_scores(
+        brand_mentioned=brand_mentioned,
+        brand_rank=brand_rank,
+        brand_cited=brand_cited,
+        rank_map=scoring_cfg["rank_map"],
     )
+    mention_score = scores.mention
+    rank_score = scores.rank
+    citation_score = scores.citation
 
     # Build object
     vo = VisibilityObj(
