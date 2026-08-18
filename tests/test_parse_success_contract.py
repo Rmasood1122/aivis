@@ -43,4 +43,4 @@ def test_no_citation_phrase_is_unscoped():
     """The hedge is about a figure; the rule deletes an unrelated real domain."""
     raw = "1. Asana - see asana.com, but I have no citation for the 2024 figure\n"
     tools, _ = parse_tool_list(raw)
-    assert tools[0].citation_domains == []
+    assert tools[0].citation_domains == ["asana.com"]

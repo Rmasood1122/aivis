@@ -145,10 +145,10 @@ def parse_tool_list(raw: str) -> tuple[list[ToolEntry], dict]:
         seen_norm.add(name_n)
 
         # Citation extraction
-        if re.search(r"(?i)\bno citation\b", rest):
-            domains: list[str] = []
-        else:
-            domains = extract_domains(rest)
+        # Fix (test_no_citation_phrase_should_not_discard_a_real_domain):
+        # the phrase "no citation" in prose must not veto real domains found
+        # in the same entry. Extraction decides; prose does not.
+        domains = extract_domains(rest)
 
         tool_list.append(
             ToolEntry(

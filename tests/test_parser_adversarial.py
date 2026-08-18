@@ -208,7 +208,6 @@ def test_bold_name_plain_hyphen_separator():
 # TARGET: lines 148-151. PREDICTION: FAIL. REASON: the guard scans the whole
 # line for "no citation" and, on a match, discards every domain including the
 # real one, so asana.com is thrown away — this assertion documents the defect.
-@pytest.mark.xfail(strict=True, reason="BUG: parse_tool_list drops a real citation_domain when the sentence contains a citation-absence phrase")
 def test_no_citation_phrase_should_not_discard_a_real_domain():
     raw = (
         "1. Asana - Widely used across marketing teams, see asana.com, though I "
