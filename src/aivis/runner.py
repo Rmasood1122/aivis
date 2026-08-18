@@ -35,7 +35,7 @@ def run_once(
     prompt: str,
     *,
     model: str = DEFAULT_MODEL,
-    temperature: float = 0.0,
+    temperature: float | None = None,
     max_tokens: int = 2048,
 ) -> RunResult:
     """
@@ -53,7 +53,6 @@ def run_once(
     request_body = {
         "model": model,
         "max_tokens": max_tokens,
-        "temperature": temperature,
         "messages": [{"role": "user", "content": prompt}],
     }
 
@@ -62,6 +61,9 @@ def run_once(
         "anthropic-version": ANTHROPIC_VERSION,
         "content-type": "application/json",
     }
+
+    if temperature is not None:
+        request_body["temperature"] = temperature
 
     request_payload = {
         "url": ANTHROPIC_URL,

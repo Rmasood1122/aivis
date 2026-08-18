@@ -26,7 +26,7 @@ class VisibilityObj(BaseModel):
     model_provider: str
     model_name: str
     model_version_hint: str | None = None
-    temperature: float
+    temperature: float | None
     max_tokens: int
     run_index: int
     executed_at_utc: datetime

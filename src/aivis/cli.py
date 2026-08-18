@@ -29,9 +29,10 @@ def _sha256(text: str) -> str:
 
 
 def _anchor_key(
-    client_id: str, prompt_id: str, provider: str, model: str, temp: float, pv: str
+    client_id: str, prompt_id: str, provider: str, model: str, temp: float | None, pv: str
 ) -> str:
-    return f"{client_id}:{prompt_id}:{provider}:{model}:{temp}:{pv}"
+    temp_s = "na" if temp is None else str(temp)
+    return f"{client_id}:{prompt_id}:{provider}:{model}:{temp_s}:{pv}"
 
 
 @app.command()
@@ -43,7 +44,7 @@ def run(
     prompt_version: str = "v1.0",
     model_provider: str = "anthropic",
     model_name: str = "claude-sonnet-5",
-    temperature: float = 0.0,
+    temperature: float | None = None,
     max_tokens: int = 2048,
     run_index: int = 1,
     live: bool = False,
