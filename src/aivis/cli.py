@@ -61,7 +61,7 @@ def run(
     prompt_version: str = "v1.0",
     model_provider: str = "anthropic",
     model_name: str = "claude-sonnet-5",
-    temperature: float | None = None,
+    temperature: float | None = 0.0,
     max_tokens: int = 2048,
     run_index: int = 1,
     live: bool = False,

@@ -31,3 +31,7 @@ target-version = "py311"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+norecursedirs = ["_*_backup*", "_patch_*", "caai_v1", "index_gate*"]

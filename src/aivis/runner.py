@@ -35,7 +35,7 @@ def run_once(
     prompt: str,
     *,
     model: str = DEFAULT_MODEL,
-    temperature: float | None = None,
+    temperature: float | None = 0.0,
     max_tokens: int = 2048,
 ) -> RunResult:
     """
