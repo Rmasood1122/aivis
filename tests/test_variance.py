@@ -92,7 +92,7 @@ def test_stable_runs():
     assert s["rank_spread"] == 0
     assert s["high_variance"] is False
     assert s["confidence_cap"] == 1.0
-    assert s["cap_reasons"] == []
+    assert s["cap_reasons"] == ["RANK_WITHDRAWN(order_rotation_absent;weights_renormalized)"]
 
 
 def test_mention_instability():

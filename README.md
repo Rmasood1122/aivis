@@ -1,8 +1,8 @@
 # ai-visibility-audit
 
-PCOS Visibility Engine MVP — CLI tool that runs a frozen prompt set against AI models,
+aivis — a CLI that runs a frozen prompt set against AI models,
 captures raw responses + hashes, parses ranked tool lists, computes variance across
-5 runs, applies confidence caps, and exports auditable reports.
+7 runs, applies confidence caps, and exports auditable reports.
 
 ## Quickstart
 

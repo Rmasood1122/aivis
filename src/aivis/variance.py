@@ -151,6 +151,20 @@ def summarize_anchor(objs: list[VisibilityObj], scoring_cfg: dict) -> dict:
 
     # --- Composite score ---
     weights = scoring_cfg.get("weights", {"mention": 0.50, "rank": 0.40, "citation": 0.10})
+    # P3 (register): rank_score is WITHDRAWN from the composite until order rotation
+    # exists — position bias is unmeasured, so the rank term ships above its rung.
+    # Raw rank data (rank_values, rank_spread, rank_stable) still reports: the data
+    # is measured, the SCORE was the claim. Withdrawal is renormalized and labelled,
+    # never silent. Revert when B3 (rotation) lands.
+    if float(weights.get("rank", 0.0)) > 0.0:
+        _keep = float(weights.get("mention", 0.0)) + float(weights.get("citation", 0.0))
+        if _keep > 0.0:
+            weights = {"mention": float(weights.get("mention", 0.0)) / _keep,
+                       "rank": 0.0,
+                       "citation": float(weights.get("citation", 0.0)) / _keep}
+        else:
+            weights = {"mention": 0.0, "rank": 0.0, "citation": 0.0}
+        reasons.append("RANK_WITHDRAWN(order_rotation_absent;weights_renormalized)")
     raw_score = (
         mean([float(o.mention_score) for o in scored]) * weights["mention"]
         + mean([float(o.rank_score) for o in scored]) * weights["rank"]

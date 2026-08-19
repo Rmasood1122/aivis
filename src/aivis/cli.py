@@ -180,7 +180,7 @@ def run(
 @app.command()
 def smoke(
     prompt_id: str = "PM-D01",
-    runs: int = 5,
+    runs: int = 7,
     client_id: str = "demo",
     client_brand: str = "Asana",
     live: bool = False,
