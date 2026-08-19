@@ -256,6 +256,7 @@ def test_monday_and_monday_dot_com_collide_after_normalization():
 # TARGET: line 151 via lines 54-63. PREDICTION: PASS. REASON: extract_domains
 # runs over the whole line, so a named integration partner is recorded as a
 # citation domain with no evidential link to the claim.
+@pytest.mark.xfail(strict=True, reason="CONTRACT CHANGE D4-C1: a product mentioned in prose is not a citation. Assertion preserved byte-for-byte; strict=True means the old permissive behaviour returning turns this red again.")
 def test_integration_mention_becomes_a_citation_domain():
     raw = "1. Trello - Kanban boards that integrate with slack.com for notifications\n"
     tools, meta = parse_tool_list(raw)

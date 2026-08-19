@@ -51,16 +51,134 @@ def norm_name(name: str) -> str:
     return n
 
 
+# --- D4 fix: citation qualification -------------------------------------
+# Rule published in the methodology page. A dotted token is a citation domain
+# only in citation context. Everything else is a candidate, not a citation.
+#
+# Recognised suffixes. Deliberately a moderate inline set, not the full IANA
+# root: the cue/URL-shape test is the control, this is a secondary sieve, and
+# a fuller list would admit MORE source-file extensions, not fewer.
+# Reviewed 2026-08-19.
+_D4_TLD = frozenset("""
+com org net edu gov mil int info biz name pro io ai app dev co xyz online
+site tech store blog cloud digital agency media news press today world life
+live work space team group solutions systems services network global me tv
+uk de fr jp ca au nl it es se ch in br mx ru pl no fi dk be at ie nz sg kr
+""".split())
+
+# Suffixes that are real TLDs but overwhelmingly appear as source-file
+# extensions in software prose. "see README.md" must not mint a citation.
+# KNOWN ASYMMETRY, disclosed rather than discovered: a brand whose real domain
+# ends in one of these cannot earn a bare-token citation. It still qualifies
+# via URL shape.
+_D4_EXT = frozenset("md py sh ts rs so cc as im cd la ml".split())
+
+_D4_URLISH = re.compile(r"(?i)(?:https?://|www\.)[^\s<>\"')\]]+")
+_D4_HOSTOK = re.compile(r"(?i)^(?:[a-z0-9][-a-z0-9]*\.)+([a-z]{2,24})$")
+_D4_BARE = re.compile(
+    r"(?i)(?<![\w@./-])((?:[a-z0-9][-a-z0-9]*\.)+([a-z]{2,24}))(/[^\s<>\"')\]]*)?"
+)
+_D4_CUE = re.compile(
+    r"(?i)\[\d+\]|\b(?:sources?|cited|citations?|references?|see|according\s+to)\b"
+)
+# A cue followed by a denial is not a citation. This is the mirror image of the
+# defect closed in 7ff6781: "Sources: none found for acme.com".
+_D4_NEG = re.compile(
+    r"(?i)\b(?:no|none|not|non|never|unable|without|lacks?|lacking|absent|missing)\b"
+)
+
+
+def _d4_clean(host):
+    host = host.lower().strip(".,;:!?)]}'\"")
+    return host[4:] if host.startswith("www.") else host
+
+
+_D4_PAREN_OPEN = "(["
+_D4_PAREN_CLOSE = ")]"
+
+
+def _d4_paren_span(block, s, e):
+    """Text from an enclosing opener to the match, or None if not enclosed.
+
+    A domain inside (...) or [...] is cited by the format: in ranked-list
+    output the parenthetical is the citation slot, which is why a model with
+    no source writes "(no citation)" in exactly that position.
+    """
+    head = block[:s]
+    stack = []
+    for i, ch in enumerate(head):
+        if ch in _D4_PAREN_OPEN:
+            stack.append(i)
+        elif ch in _D4_PAREN_CLOSE and stack:
+            stack.pop()
+    if not stack:
+        return None
+    for ch in block[e:]:
+        if ch in _D4_PAREN_CLOSE:
+            return head[stack[-1] + 1:]
+        if ch in _D4_PAREN_OPEN:
+            return None
+    return None
+
+
+def _d4_scan(block):
+    """Yield (host, qualified) for one paragraph."""
+    for m in _D4_URLISH.finditer(block):
+        raw = re.sub(r"(?i)^https?://", "", m.group(0))
+        host = _d4_clean(raw.split("/")[0])
+        if _D4_HOSTOK.match(host):
+            yield host, True
+
+    for m in _D4_BARE.finditer(block):
+        host, tld, path = m.group(1), m.group(2).lower(), m.group(3)
+        host = _d4_clean(host)
+        if tld not in _D4_TLD or tld in _D4_EXT:
+            yield host, False
+            continue
+        if path:
+            yield host, True
+            continue
+        par = _d4_paren_span(block, m.start(), m.end())
+        if par is not None:
+            yield host, not _D4_NEG.search(par)
+            continue
+        before = block[: m.start()]
+        cues = list(_D4_CUE.finditer(before))
+        if not cues:
+            yield host, False
+            continue
+        yield host, not _D4_NEG.search(before[cues[-1].end():])
+
+
+def _d4_walk(text, want):
+    out = []
+    for block in re.split(r"\n\s*\n", text or ""):
+        for host, ok in _d4_scan(block):
+            if ok is want and host not in out:
+                out.append(host)
+    return out
+
+
 def extract_domains(text: str) -> list[str]:
-    """Extract citation domains from text. Strips www, protocol, paths."""
-    domains: list[str] = []
-    for m in DOMAIN_RE.finditer(text or ""):
-        d = m.group(1).lower()
-        d = d.removeprefix("www.")
-        d = d.split("/")[0]
-        if d not in domains and "." in d:
-            domains.append(d)
-    return domains
+    """Return citation domains found in text.
+
+    A host qualifies when it carries a scheme, a www. prefix or a following
+    slash-segment, or when it is bare with a recognised suffix and a citation
+    cue earlier in the same paragraph, or an enclosing parenthesis,
+    with no negation in between. Bare
+    uncued tokens are candidates, not citations -- see
+    extract_domain_candidates. Brand self-mentions receive no exemption.
+    """
+    return _d4_walk(text, True)
+
+
+def extract_domain_candidates(text: str) -> list[str]:
+    """Domain-shaped tokens the rule declined to count.
+
+    Published beside the score so a refusal is inspectable rather than
+    invisible. Never feeds citation_score.
+    """
+    return _d4_walk(text, False)
 
 
 def parse_tool_list(raw: str) -> tuple[list[ToolEntry], dict]:
