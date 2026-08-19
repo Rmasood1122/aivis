@@ -1,0 +1,1 @@
+SUPERSEDED-BY: ../index_gate2/index_gate.py (v0.2, destination-verified 2026-08-19)
