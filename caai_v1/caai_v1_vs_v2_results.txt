@@ -1,0 +1,46 @@
+================================================================================================
+CAAI v1.0 vs v2.0 — recomputed on the shipped report's own numbers
+================================================================================================
+
+Purple
+  PS+SRS(v1) =  100.0   <-- collinearity check, must be 100.0
+                       v1       v2   delta
+  PS                 79.2     79.2     +0.0
+  DS                 59.4     71.1    +11.7
+  SS                 94.2     94.2     +0.0
+  SRS                20.8     53.3    +32.5
+  FI                 24.9     44.3    +19.4
+  CAAI               76.8     71.3     -5.5    (published 76.8)
+  tier             STRONG   STRONG    v2 capped by coverage 0.80 -> STRONG
+  CAAI v2 with 95% presence band: 71.3 [68.2 – 74.5]
+
+Casper
+  PS+SRS(v1) =  100.0   <-- collinearity check, must be 100.0
+                       v1       v2   delta
+  PS                 71.7     71.7     +0.0
+  DS                 35.4     51.3    +15.9
+  SS                 90.9     90.9     +0.0
+  SRS                28.3     33.3     +5.0
+  FI                 14.5     29.6    +15.1
+  CAAI               67.8     69.3     +1.5    (published 67.8)
+  tier             STRONG   STRONG    v2 capped by coverage 0.80 -> STRONG
+  CAAI v2 with 95% presence band: 69.3 [65.5 – 73.1]
+
+Tempur-Pedic
+  PS+SRS(v1) =  100.0   <-- collinearity check, must be 100.0
+                       v1       v2   delta
+  PS                 61.2     61.2     +0.0
+  DS                 47.5     75.5    +27.9
+  SS                 83.0     83.0     +0.0
+  SRS                38.7     60.0    +21.3
+  FI                 22.5     42.9    +20.4
+  CAAI               63.8     64.5     +0.7    (published 63.8)
+  tier           MODERATE MODERATE    v2 capped by coverage 0.80 -> MODERATE
+  CAAI v2 with 95% presence band: 64.5 [60.6 – 68.4]
+
+================================================================================================
+brand                 v1      v2    delta   v1 tier   v2 tier     rank change
+Purple              76.8    71.3     -5.5   STRONG    STRONG      #1 -> #1
+Casper              67.8    69.3     +1.5   STRONG    STRONG      #2 -> #2
+Tempur-Pedic        63.8    64.5     +0.7   MODERATE  MODERATE    #3 -> #3
+================================================================================================
