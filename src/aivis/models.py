@@ -1,7 +1,10 @@
 from __future__ import annotations
 
 from datetime import datetime
+
 from pydantic import BaseModel, Field
+
+from .scorer import ScoreValue
 
 
 class ToolEntry(BaseModel):
@@ -53,9 +56,13 @@ class VisibilityObj(BaseModel):
     parse_mode: str = "unknown"
 
     # --- Scoring primitives (4) ---
-    mention_score: float
-    rank_score: float
-    citation_score: float
+    # D6: these are ScoreValue, not float. A row whose response could not be
+    # parsed carries the exact token INSUFFICIENT_EVIDENCE here, so the
+    # abstention survives the round trip through JSONL instead of being
+    # rehydrated as a number.
+    mention_score: ScoreValue
+    rank_score: ScoreValue
+    citation_score: ScoreValue
     stability_anchor_key: str
 
     # --- Audit flags (4) ---
