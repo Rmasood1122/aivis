@@ -55,7 +55,15 @@ WRITE NAMES AS THEY APPEAR, one per line. Do not normalise spelling, do not expa
 abbreviations, do not merge variants. Normalisation is the extractor's job and
 merging here would hide the errors this exercise exists to find.
 
-Enter an empty line to finish a case. Type SKIP alone to abstain on a case.
+HOW TO ENTER
+  Type the names. You may put several on one line separated by commas, or one per
+  line, or both. Press Enter on an empty line when the case is done.
+
+  If the response names NO organisations at all, type NONE. An empty first line is
+  NOT accepted -- a blank and a genuine "no organisations here" are different
+  answers and this tool will not let them look the same.
+
+  Type SKIP alone to abstain on a case you cannot judge.
 """
 
 
@@ -96,7 +104,10 @@ def main():
         print("\nAll cases labelled. Run kappa_compute.py next.")
         return 0
     print(RULES)
-    input("Press Enter to begin. Ctrl-C is safe at any point. ")
+    try:
+        input("Press Enter to begin. Ctrl-C exits cleanly; finished cases are kept. ")
+    except (EOFError, KeyboardInterrupt):
+        print("\nNot started."); return 0
 
     for n, c in enumerate(todo, 1):
         row = corpora.get((c["corpus"], c["line"]))
@@ -112,7 +123,7 @@ def main():
         print(row["response_text"])
         print("-" * 70)
         print("List the organisations presented as providers. Empty line ends. SKIP to abstain.")
-        names, skipped = [], False
+        names, skipped, none_declared = [], False, False
         while True:
             try:
                 v = input("  > ").strip()
@@ -122,22 +133,56 @@ def main():
             if v.upper() == "SKIP":
                 skipped = True
                 break
-            if not v:
+            if v.upper() == "NONE":
+                none_declared = True
                 break
-            names.append(v)
+            if not v:
+                if names:
+                    break
+                print("     Nothing entered. Type the names, or NONE if this response")
+                print("     names no organisations, or SKIP to abstain.")
+                continue
+            for part in v.split(","):
+                part = part.strip()
+                if part and part not in names:
+                    names.append(part)
+            print("     [%d so far] %s" % (len(names), ", ".join(names)))
         rec = {
             "case_id": c["case_id"], "corpus": c["corpus"], "line": c["line"],
             "prompt_id": c["prompt_id"], "family": c["family"],
             "labeller": a.labeller,
             "skipped": skipped,
+            "none_declared": none_declared,
             "names": names,
             "ts": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         }
         with outp.open("a", encoding="utf-8") as f:
             f.write(json.dumps(rec, sort_keys=True) + "\n")
-        print("  recorded: %s" % ("SKIP" if skipped else (", ".join(names) or "none")))
+        print("  recorded: %s" % ("SKIP" if skipped else
+              ("NONE (explicit)" if none_declared else ", ".join(names))))
+        total_done = len(done) + n
+        print("  progress: %d of %d" % (total_done, sample["n_drawn"]))
+        if n < len(todo) and total_done % 20 == 0:
+            print("\n--- %d done. Good point to stop; it resumes here. ---" % total_done)
+            try:
+                if input("    Enter to continue, or type STOP: ").strip().upper() == "STOP":
+                    print("Stopped at %d. Re-run the same command to resume." % total_done)
+                    return 0
+            except (EOFError, KeyboardInterrupt):
+                return 0
 
+    allrec = [json.loads(l) for l in outp.read_text(encoding="utf-8").splitlines() if l.strip()]
+    named = sum(1 for r in allrec if r.get("names"))
+    nones = sum(1 for r in allrec if r.get("none_declared"))
+    skips = sum(1 for r in allrec if r.get("skipped"))
     print("\nComplete. %s" % outp)
+    print("  cases %d | with names %d | explicit NONE %d | SKIP %d"
+          % (len(allrec), named, nones, skips))
+    if named == 0:
+        print("\n  WARNING: not one case recorded a name. Do NOT compute kappa from")
+        print("  this file -- it would measure an empty gold standard and return a")
+        print("  number that looks real. Rename it VOID_ and relabel.")
+        return 1
     return 0
 
 
