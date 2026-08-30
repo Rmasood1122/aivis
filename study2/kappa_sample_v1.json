@@ -1,0 +1,952 @@
+{
+  "cases": [
+    {
+      "case_id": "K000",
+      "corpus": "mattress_run2.jsonl",
+      "family": "buyer_intent",
+      "line": 164,
+      "prompt_id": "MT-B06",
+      "run": 4,
+      "sha256": "7bbf1d12e980a6d89964d50262c8942e7f822aeac45cee1f1c69102059e13803"
+    },
+    {
+      "case_id": "K001",
+      "corpus": "mattress_run2.jsonl",
+      "family": "comparison",
+      "line": 50,
+      "prompt_id": "MT-C02",
+      "run": 2,
+      "sha256": "e3d5c43598850eed315cd37fc215b6fe7a16f75700e1d2e03d398bfd5dfc3748"
+    },
+    {
+      "case_id": "K002",
+      "corpus": "pr_agency_run4.jsonl",
+      "family": "problem",
+      "line": 91,
+      "prompt_id": "PR-PRB02",
+      "run": 1,
+      "sha256": "0128615c914dd68493164c4ccaf24b651e2f847bb534cdb22d56d551b1dfeb80"
+    },
+    {
+      "case_id": "K003",
+      "corpus": "mattress_run2.jsonl",
+      "family": "category",
+      "line": 13,
+      "prompt_id": "MT-C02",
+      "run": 7,
+      "sha256": "354489c284d79127b85bdb8edbe14ed25279dbba0f18611ee0c6217ebdf6cf2a"
+    },
+    {
+      "case_id": "K004",
+      "corpus": "pr_agency_run4.jsonl",
+      "family": "buyer_intent",
+      "line": 150,
+      "prompt_id": "PR-INT04",
+      "run": 4,
+      "sha256": "d0ec39ed2b9e523a61bb2ac83c0a9721a8592e37453f76e9e59e9a52696d7c05"
+    },
+    {
+      "case_id": "K005",
+      "corpus": "pr_agency_run4.jsonl",
+      "family": "long_tail",
+      "line": 171,
+      "prompt_id": "PR-LNG01",
+      "run": 4,
+      "sha256": "a208f174464a5ec43e327557934779944ad9d846d469e056d0ca654bc0726550"
+    },
+    {
+      "case_id": "K006",
+      "corpus": "mattress_run2.jsonl",
+      "family": "problem",
+      "line": 105,
+      "prompt_id": "MT-P04",
+      "run": 1,
+      "sha256": "95074275796f89bc52aa963e75c506f969d5977801bb8ca17ef75ecfdb0a245c"
+    },
+    {
+      "case_id": "K007",
+      "corpus": "pr_agency_run4.jsonl",
+      "family": "problem",
+      "line": 106,
+      "prompt_id": "PR-PRB04",
+      "run": 2,
+      "sha256": "194dd816123e43f9fb555aefb3a05b17151180f6f47b3599cca73653fc85cde6"
+    },
+    {
+      "case_id": "K008",
+      "corpus": "pr_agency_run4.jsonl",
+      "family": "comparison",
+      "line": 63,
+      "prompt_id": "PR-CMP04",
+      "run": 1,
+      "sha256": "0b1e158ab4c41f7e23e9581855bbed060bef70180a795964bb192fc754c00223"
+    },
+    {
+      "case_id": "K009",
+      "corpus": "mattress_run2.jsonl",
+      "family": "buyer_intent",
+      "line": 149,
+      "prompt_id": "MT-B04",
+      "run": 3,
+      "sha256": "81e994f01b991c108273c4bbb4dfb9636b198df01bd0912f0fc9bfd3d10ec5f2"
+    },
+    {
+      "case_id": "K010",
+      "corpus": "pr_agency_run4.jsonl",
+      "family": "comparison",
+      "line": 76,
+      "prompt_id": "PR-CMP05",
+      "run": 7,
+      "sha256": "ae8952d9c33b2f99fa0075acdc2d7eb2a039d16663125a04ffccb4e4f33b43f2"
+    },
+    {
+      "case_id": "K011",
+      "corpus": "pr_agency_run4.jsonl",
+      "family": "comparison",
+      "line": 72,
+      "prompt_id": "PR-CMP05",
+      "run": 3,
+      "sha256": "6eff0284c42c572637666e56fd97d83213fadf537240fbc251d1080f34427c13"
+    },
+    {
+      "case_id": "K012",
+      "corpus": "mattress_run2.jsonl",
+      "family": "buyer_intent",
+      "line": 157,
+      "prompt_id": "MT-B05",
+      "run": 4,
+      "sha256": "450b721957e23b53a812a6689f718984c27750c1d3aac89fa6be066d714ae56a"
+    },
+    {
+      "case_id": "K013",
+      "corpus": "pr_agency_run4.jsonl",
+      "family": "long_tail",
+      "line": 175,
+      "prompt_id": "PR-LNG02",
+      "run": 1,
+      "sha256": "0772200682d2de6e170bdd0df996de1b3ce52c5c52a3582a5539da13943890fb"
+    },
+    {
+      "case_id": "K014",
+      "corpus": "pr_agency_run4.jsonl",
+      "family": "category",
+      "line": 27,
+      "prompt_id": "PR-CAT04",
+      "run": 7,
+      "sha256": "b4f83c048f5ed4a6c60597d1f3ff8852f1125713c7173805e8c63b9e169c1b85"
+    },
+    {
+      "case_id": "K015",
+      "corpus": "mattress_run2.jsonl",
+      "family": "long_tail",
+      "line": 178,
+      "prompt_id": "MT-L02",
+      "run": 4,
+      "sha256": "5dacb2246f441556abcd8b9a9a099a948a2ab9eae81ae6274334be920963ad91"
+    },
+    {
+      "case_id": "K016",
+      "corpus": "mattress_run2.jsonl",
+      "family": "problem",
+      "line": 121,
+      "prompt_id": "MT-P06",
+      "run": 3,
+      "sha256": "afc79e815a51d784fb2c052ea5fd0f878b83a60fd6f94023e3ea740de55399e2"
+    },
+    {
+      "case_id": "K017",
+      "corpus": "mattress_run2.jsonl",
+      "family": "comparison",
+      "line": 77,
+      "prompt_id": "MT-C06",
+      "run": 1,
+      "sha256": "45b51b74e980dbef8e34ab30a99aac254f1f4565bbde0546edb0458053e670ad"
+    },
+    {
+      "case_id": "K018",
+      "corpus": "pr_agency_run4.jsonl",
+      "family": "buyer_intent",
+      "line": 166,
+      "prompt_id": "PR-INT06",
+      "run": 6,
+      "sha256": "c9a59524af8e95f905e9782538148c19f458107820b9b505b0512bf8276a0b87"
+    },
+    {
+      "case_id": "K019",
+      "corpus": "pr_agency_run4.jsonl",
+      "family": "problem",
+      "line": 84,
+      "prompt_id": "PR-PRB01",
+      "run": 1,
+      "sha256": "f689bd87d501ea102e545e775017a57a01c9b595c147d9ba53a4cd68dd69519d"
+    },
+    {
+      "case_id": "K020",
+      "corpus": "pr_agency_run4.jsonl",
+      "family": "long_tail",
+      "line": 195,
+      "prompt_id": "PR-LNG04",
+      "run": 7,
+      "sha256": "c8d7f38b871c30546dc3783d4cfd1693cecae98215be522f5fffc419b3a6c44d"
+    },
+    {
+      "case_id": "K021",
+      "corpus": "mattress_run2.jsonl",
+      "family": "comparison",
+      "line": 56,
+      "prompt_id": "MT-C03",
+      "run": 1,
+      "sha256": "317d3b18d0cae30ae3f2069e4ff2b5371490396416b986961c24701ea81f4c2c"
+    },
+    {
+      "case_id": "K022",
+      "corpus": "pr_agency_run4.jsonl",
+      "family": "problem",
+      "line": 95,
+      "prompt_id": "PR-PRB02",
+      "run": 5,
+      "sha256": "0deda05cd08d416b63a13aaa31c776442c6d22473aab4bd4e5006b798fa84948"
+    },
+    {
+      "case_id": "K023",
+      "corpus": "mattress_run2.jsonl",
+      "family": "category",
+      "line": 19,
+      "prompt_id": "MT-C03",
+      "run": 6,
+      "sha256": "9cf14748bc6aa6deed591d0f96c120125a8e18a69fa8ac8ca43e044c3210c89e"
+    },
+    {
+      "case_id": "K024",
+      "corpus": "pr_agency_run4.jsonl",
+      "family": "long_tail",
+      "line": 185,
+      "prompt_id": "PR-LNG03",
+      "run": 4,
+      "sha256": "ec38c600f53d555050d864b8cd3bf713d04ed7e2007021168370b124f789afcd"
+    },
+    {
+      "case_id": "K025",
+      "corpus": "mattress_run2.jsonl",
+      "family": "long_tail",
+      "line": 175,
+      "prompt_id": "MT-L02",
+      "run": 1,
+      "sha256": "6de4eaff15bf7115001d845c0fa79716a2186106bbd8dd777c84d9c8b22e583a"
+    },
+    {
+      "case_id": "K026",
+      "corpus": "pr_agency_run4.jsonl",
+      "family": "buyer_intent",
+      "line": 130,
+      "prompt_id": "PR-INT01",
+      "run": 5,
+      "sha256": "41e83641d2526b8ed414e98be48528081b27e5a8f2c7ed2c35fa291af0da31a4"
+    },
+    {
+      "case_id": "K027",
+      "corpus": "pr_agency_run4.jsonl",
+      "family": "long_tail",
+      "line": 178,
+      "prompt_id": "PR-LNG02",
+      "run": 4,
+      "sha256": "db7da94509c107fe7eedc00dc554f628e7b92ec1186559d70458eda341a5e9c4"
+    },
+    {
+      "case_id": "K028",
+      "corpus": "mattress_run2.jsonl",
+      "family": "comparison",
+      "line": 45,
+      "prompt_id": "MT-C01",
+      "run": 4,
+      "sha256": "b5e82ee3de3997dcb12e30926489c43aa9402f769f492c9eb6f2d8cefb0fd88d"
+    },
+    {
+      "case_id": "K029",
+      "corpus": "pr_agency_run4.jsonl",
+      "family": "long_tail",
+      "line": 198,
+      "prompt_id": "PR-LNG05",
+      "run": 3,
+      "sha256": "e7f0615526a2534199a53d6a9e75232e1a9007eca6bbda48f1d3890a5c9c22c0"
+    },
+    {
+      "case_id": "K030",
+      "corpus": "mattress_run2.jsonl",
+      "family": "problem",
+      "line": 85,
+      "prompt_id": "MT-P01",
+      "run": 2,
+      "sha256": "0e4e268b6126e1a3ca853df5b1df24b4b8464f7e9501cab806202dd1126dc039"
+    },
+    {
+      "case_id": "K031",
+      "corpus": "mattress_run2.jsonl",
+      "family": "problem",
+      "line": 87,
+      "prompt_id": "MT-P01",
+      "run": 4,
+      "sha256": "e48ef1945b759cb8fb49f061a9a84a6c9176a07582ddec9ddfdba8b553d8e60c"
+    },
+    {
+      "case_id": "K032",
+      "corpus": "mattress_run2.jsonl",
+      "family": "long_tail",
+      "line": 197,
+      "prompt_id": "MT-L05",
+      "run": 2,
+      "sha256": "4e3257379a295fc4537c1c5eaaa860257956fc9edcadd9ba1cd4977403324cb3"
+    },
+    {
+      "case_id": "K033",
+      "corpus": "mattress_run2.jsonl",
+      "family": "buyer_intent",
+      "line": 158,
+      "prompt_id": "MT-B05",
+      "run": 5,
+      "sha256": "6e9c4e02b22ea72b38f5986eb0337e20ecfed7511948caa6e385d43556a679c0"
+    },
+    {
+      "case_id": "K034",
+      "corpus": "pr_agency_run4.jsonl",
+      "family": "long_tail",
+      "line": 196,
+      "prompt_id": "PR-LNG05",
+      "run": 1,
+      "sha256": "6d0b9af1bc116ae09d1091d010e4e6ffe49d4fa06596693f80bea660fd413e75"
+    },
+    {
+      "case_id": "K035",
+      "corpus": "mattress_run2.jsonl",
+      "family": "long_tail",
+      "line": 188,
+      "prompt_id": "MT-L03",
+      "run": 7,
+      "sha256": "9e6addd52829e3aa899470bdc56c2fd447bfc7ebcba7ab023ed7a1856177aea1"
+    },
+    {
+      "case_id": "K036",
+      "corpus": "mattress_run2.jsonl",
+      "family": "long_tail",
+      "line": 198,
+      "prompt_id": "MT-L05",
+      "run": 3,
+      "sha256": "36cdf66c9b647eb7dd74ee286c42752673812746200764fbefb6ccac1c504dd5"
+    },
+    {
+      "case_id": "K037",
+      "corpus": "pr_agency_run4.jsonl",
+      "family": "buyer_intent",
+      "line": 134,
+      "prompt_id": "PR-INT02",
+      "run": 2,
+      "sha256": "35db05e086cde273d80fd3e7b7ee55f6264a46931abc8f343b77776b6cc3f68c"
+    },
+    {
+      "case_id": "K038",
+      "corpus": "mattress_run2.jsonl",
+      "family": "problem",
+      "line": 108,
+      "prompt_id": "MT-P04",
+      "run": 4,
+      "sha256": "116ffba86cbb79b26ac67f2986ee13c12dc30379828c51b43b11094e48a6089c"
+    },
+    {
+      "case_id": "K039",
+      "corpus": "pr_agency_run4.jsonl",
+      "family": "buyer_intent",
+      "line": 146,
+      "prompt_id": "PR-INT03",
+      "run": 7,
+      "sha256": "db209e5624a13ac1e64052c5f4b8b7f3eacaca9af3af488e9e82d89b32c63b6f"
+    },
+    {
+      "case_id": "K040",
+      "corpus": "mattress_run2.jsonl",
+      "family": "long_tail",
+      "line": 176,
+      "prompt_id": "MT-L02",
+      "run": 2,
+      "sha256": "ac73f13f2c5deae424d8cd7c9e0064fe964a322994317c09224202189ed2bfc3"
+    },
+    {
+      "case_id": "K041",
+      "corpus": "mattress_run2.jsonl",
+      "family": "comparison",
+      "line": 47,
+      "prompt_id": "MT-C01",
+      "run": 6,
+      "sha256": "34a86653de881d47c58241521fb266b60565dae0171b21c22cea42b0bf3aeeae"
+    },
+    {
+      "case_id": "K042",
+      "corpus": "mattress_run2.jsonl",
+      "family": "buyer_intent",
+      "line": 148,
+      "prompt_id": "MT-B04",
+      "run": 2,
+      "sha256": "d57871928838907d2964a3f981e76a4569e966a759a833f7e654ba1f6c5db243"
+    },
+    {
+      "case_id": "K043",
+      "corpus": "mattress_run2.jsonl",
+      "family": "problem",
+      "line": 110,
+      "prompt_id": "MT-P04",
+      "run": 6,
+      "sha256": "d041926de8d45d1f9f8d0a557a76a0ebc4970a5cfaeb68492dd21a5475765c39"
+    },
+    {
+      "case_id": "K044",
+      "corpus": "mattress_run2.jsonl",
+      "family": "category",
+      "line": 10,
+      "prompt_id": "MT-C02",
+      "run": 4,
+      "sha256": "c695359b7568e23c4dead4130d5cb4abc9682b21a4466092e7bb7a94a5d68608"
+    },
+    {
+      "case_id": "K045",
+      "corpus": "pr_agency_run4.jsonl",
+      "family": "problem",
+      "line": 104,
+      "prompt_id": "PR-PRB03",
+      "run": 7,
+      "sha256": "ffc415831becc8489190dd1fdc7d03ed2af3a9fbfea51562ba857185d6408e51"
+    },
+    {
+      "case_id": "K046",
+      "corpus": "pr_agency_run4.jsonl",
+      "family": "category",
+      "line": 20,
+      "prompt_id": "PR-CAT03",
+      "run": 7,
+      "sha256": "4f1a28159875ba1923f7b67ad098f11b0ebadb2dc389b67e60dce5d21811fdba"
+    },
+    {
+      "case_id": "K047",
+      "corpus": "mattress_run2.jsonl",
+      "family": "category",
+      "line": 3,
+      "prompt_id": "MT-C01",
+      "run": 4,
+      "sha256": "f68521fd7b625b9b9a3644f87af79327abe06aa90a553bf130cf5d880895e10a"
+    },
+    {
+      "case_id": "K048",
+      "corpus": "mattress_run2.jsonl",
+      "family": "comparison",
+      "line": 62,
+      "prompt_id": "MT-C03",
+      "run": 7,
+      "sha256": "f7b4667d702935d2cc48f0327221a614e847b2c935f0a250c85af9755536e5f8"
+    },
+    {
+      "case_id": "K049",
+      "corpus": "pr_agency_run4.jsonl",
+      "family": "category",
+      "line": 3,
+      "prompt_id": "PR-CAT01",
+      "run": 4,
+      "sha256": "2f700ba72c8f7b5c507c347cdd40218f1f4b1863ea89d0a0660c366cec7d9ce9"
+    },
+    {
+      "case_id": "K050",
+      "corpus": "mattress_run2.jsonl",
+      "family": "comparison",
+      "line": 73,
+      "prompt_id": "MT-C05",
+      "run": 4,
+      "sha256": "0834745c60d0a3f1663e9b6ab49b2f6ff54f3def6d5f74e4f844f6cb75aa067d"
+    },
+    {
+      "case_id": "K051",
+      "corpus": "mattress_run2.jsonl",
+      "family": "category",
+      "line": 17,
+      "prompt_id": "MT-C03",
+      "run": 4,
+      "sha256": "74e6db71d6c77c5ffe26660d2758b20ecf9ec8f8b45483bacef1ea7636b4bdf1"
+    },
+    {
+      "case_id": "K052",
+      "corpus": "mattress_run2.jsonl",
+      "family": "long_tail",
+      "line": 189,
+      "prompt_id": "MT-L04",
+      "run": 1,
+      "sha256": "256309f78c8888aaa59a7849740ebdd62a743dce7b2b82e3a8f76478ede79aed"
+    },
+    {
+      "case_id": "K053",
+      "corpus": "pr_agency_run4.jsonl",
+      "family": "category",
+      "line": 9,
+      "prompt_id": "PR-CAT02",
+      "run": 3,
+      "sha256": "c7918217850777be630ba90c0415c10389b2a95e59834a427b2cc756ac23c39b"
+    },
+    {
+      "case_id": "K054",
+      "corpus": "pr_agency_run4.jsonl",
+      "family": "long_tail",
+      "line": 179,
+      "prompt_id": "PR-LNG02",
+      "run": 5,
+      "sha256": "b57fb80dc9fc127ee0590b4aae9c20b2c09231a97dab06f8d68506ad72fc86d3"
+    },
+    {
+      "case_id": "K055",
+      "corpus": "mattress_run2.jsonl",
+      "family": "buyer_intent",
+      "line": 137,
+      "prompt_id": "MT-B02",
+      "run": 5,
+      "sha256": "fbeeb3bd434227d95bbc81e2f40e2731aa78c4edbe55af85dcf775c44444ad66"
+    },
+    {
+      "case_id": "K056",
+      "corpus": "mattress_run2.jsonl",
+      "family": "long_tail",
+      "line": 207,
+      "prompt_id": "MT-L06",
+      "run": 5,
+      "sha256": "0b921a694d3492ef3291e94956be13b75a12d51256df135e8ac883a9390fe040"
+    },
+    {
+      "case_id": "K057",
+      "corpus": "mattress_run2.jsonl",
+      "family": "long_tail",
+      "line": 196,
+      "prompt_id": "MT-L05",
+      "run": 1,
+      "sha256": "a113b1b5bc955d5eaebb7552053d18dbbeac4194c383e7a7da0fc0c4d87fa903"
+    },
+    {
+      "case_id": "K058",
+      "corpus": "mattress_run2.jsonl",
+      "family": "long_tail",
+      "line": 205,
+      "prompt_id": "MT-L06",
+      "run": 3,
+      "sha256": "10d3a728b516f810e580bfffd8bddbb7db4b91b327fd6a2adb36e2c1e8f74214"
+    },
+    {
+      "case_id": "K059",
+      "corpus": "pr_agency_run4.jsonl",
+      "family": "problem",
+      "line": 124,
+      "prompt_id": "PR-PRB06",
+      "run": 6,
+      "sha256": "f10a0262d7ef76a3f1058223a538637120bb2a91b288a0384961293fa575447d"
+    },
+    {
+      "case_id": "K060",
+      "corpus": "pr_agency_run4.jsonl",
+      "family": "category",
+      "line": 13,
+      "prompt_id": "PR-CAT02",
+      "run": 7,
+      "sha256": "b7f58b88758399b0d6622e297114673f25c241b6b5be24af99dc7d73e87abd05"
+    },
+    {
+      "case_id": "K061",
+      "corpus": "mattress_run2.jsonl",
+      "family": "category",
+      "line": 38,
+      "prompt_id": "MT-C06",
+      "run": 4,
+      "sha256": "c9a44731e36ef555cfd018021aaa0d641192fe5d6299053ce223d013511be74e"
+    },
+    {
+      "case_id": "K062",
+      "corpus": "pr_agency_run4.jsonl",
+      "family": "category",
+      "line": 37,
+      "prompt_id": "PR-CAT06",
+      "run": 3,
+      "sha256": "fdfc7477aaea588010306c110289cdb74ec3f05a9932b049aea4fd235a16bf54"
+    },
+    {
+      "case_id": "K063",
+      "corpus": "pr_agency_run4.jsonl",
+      "family": "long_tail",
+      "line": 190,
+      "prompt_id": "PR-LNG04",
+      "run": 2,
+      "sha256": "175ff73eceb0d957cc9e86444f717232cf8ef8feac19a9fdb0d24983a57b415b"
+    },
+    {
+      "case_id": "K064",
+      "corpus": "mattress_run2.jsonl",
+      "family": "problem",
+      "line": 116,
+      "prompt_id": "MT-P05",
+      "run": 5,
+      "sha256": "3eb59a27f1ad1fe3410fed669610664aa2e0668d974144e5f136e21cfadfce39"
+    },
+    {
+      "case_id": "K065",
+      "corpus": "mattress_run2.jsonl",
+      "family": "problem",
+      "line": 119,
+      "prompt_id": "MT-P06",
+      "run": 1,
+      "sha256": "bc3896bcc8c27e902877b5bba07513bf9d3684562e7c7c52ec8b014d6a0ef552"
+    },
+    {
+      "case_id": "K066",
+      "corpus": "pr_agency_run4.jsonl",
+      "family": "long_tail",
+      "line": 188,
+      "prompt_id": "PR-LNG03",
+      "run": 7,
+      "sha256": "4dfb65bef8fed76f161ad56b57d06e9ba93f45cd312c73c6f9b6f2414e38c545"
+    },
+    {
+      "case_id": "K067",
+      "corpus": "pr_agency_run4.jsonl",
+      "family": "problem",
+      "line": 105,
+      "prompt_id": "PR-PRB04",
+      "run": 1,
+      "sha256": "f6f80f7e2a01572f3df81a70ad479219a8d33f59911d6b2d26beff57dadadbe0"
+    },
+    {
+      "case_id": "K068",
+      "corpus": "pr_agency_run4.jsonl",
+      "family": "long_tail",
+      "line": 194,
+      "prompt_id": "PR-LNG04",
+      "run": 6,
+      "sha256": "7d4c173c974ea7ba6602a26bcdd220e8c52e89e9909e69b08cdcdf35807e7bab"
+    },
+    {
+      "case_id": "K069",
+      "corpus": "mattress_run2.jsonl",
+      "family": "buyer_intent",
+      "line": 167,
+      "prompt_id": "MT-B06",
+      "run": 7,
+      "sha256": "a92b1e79ed5e0d3457e15780cd79ae57635bb8acde0a9442945a36cf49732198"
+    },
+    {
+      "case_id": "K070",
+      "corpus": "pr_agency_run4.jsonl",
+      "family": "problem",
+      "line": 92,
+      "prompt_id": "PR-PRB02",
+      "run": 2,
+      "sha256": "a0d2f0de0dc55cbf48ec30aaae45d8ec1eee3854cfea58d698fcbc1e342e4970"
+    },
+    {
+      "case_id": "K071",
+      "corpus": "pr_agency_run4.jsonl",
+      "family": "category",
+      "line": 0,
+      "prompt_id": "PR-CAT01",
+      "run": 1,
+      "sha256": "e3f0ca5e2831013e74b5672c0f7d6a9b1b367c885e30e75c795cac4f65c36178"
+    },
+    {
+      "case_id": "K072",
+      "corpus": "pr_agency_run4.jsonl",
+      "family": "problem",
+      "line": 125,
+      "prompt_id": "PR-PRB06",
+      "run": 7,
+      "sha256": "59e67e5e15207d0a2c9174ee75d303911b0cf5c9f53accda7d169cb124e41263"
+    },
+    {
+      "case_id": "K073",
+      "corpus": "pr_agency_run4.jsonl",
+      "family": "category",
+      "line": 41,
+      "prompt_id": "PR-CAT06",
+      "run": 7,
+      "sha256": "bec1e70658348d885315e693b47ea0d6934c00f62c1826bcd5d45f094c250316"
+    },
+    {
+      "case_id": "K074",
+      "corpus": "pr_agency_run4.jsonl",
+      "family": "category",
+      "line": 15,
+      "prompt_id": "PR-CAT03",
+      "run": 2,
+      "sha256": "cfac9ba4b0d96a007f2661406356932dabd03691a7c81ae11d84fbfd37ac76d8"
+    },
+    {
+      "case_id": "K075",
+      "corpus": "pr_agency_run4.jsonl",
+      "family": "buyer_intent",
+      "line": 141,
+      "prompt_id": "PR-INT03",
+      "run": 2,
+      "sha256": "caf56f88cfd0c0819adfa3673dc6f08ca714b93b0caf3206feb5a3abecc44c1f"
+    },
+    {
+      "case_id": "K076",
+      "corpus": "pr_agency_run4.jsonl",
+      "family": "comparison",
+      "line": 64,
+      "prompt_id": "PR-CMP04",
+      "run": 2,
+      "sha256": "8fc46e447de00d371343a589b88f8df30b9a6fad2d93d9e1e03b326bc33d91fc"
+    },
+    {
+      "case_id": "K077",
+      "corpus": "mattress_run2.jsonl",
+      "family": "problem",
+      "line": 88,
+      "prompt_id": "MT-P01",
+      "run": 5,
+      "sha256": "9c25560a5626306c9316e8eb8b9032b74bd6e97fa34199da5bea9c99b9a3e993"
+    },
+    {
+      "case_id": "K078",
+      "corpus": "pr_agency_run4.jsonl",
+      "family": "comparison",
+      "line": 75,
+      "prompt_id": "PR-CMP05",
+      "run": 6,
+      "sha256": "2f9173be5e50adaef91bff79d199877d66d75ca55809094c8def43882ab85525"
+    },
+    {
+      "case_id": "K079",
+      "corpus": "mattress_run2.jsonl",
+      "family": "problem",
+      "line": 91,
+      "prompt_id": "MT-P02",
+      "run": 1,
+      "sha256": "10020aa6d74556214f4c17bd2652084286966ad7f09effd57e20616bacba7695"
+    },
+    {
+      "case_id": "K080",
+      "corpus": "mattress_run2.jsonl",
+      "family": "buyer_intent",
+      "line": 163,
+      "prompt_id": "MT-B06",
+      "run": 3,
+      "sha256": "7303c1876af5b44c0b3dd32e554f4956c812ae932a57903886699985693e3175"
+    },
+    {
+      "case_id": "K081",
+      "corpus": "pr_agency_run4.jsonl",
+      "family": "buyer_intent",
+      "line": 147,
+      "prompt_id": "PR-INT04",
+      "run": 1,
+      "sha256": "42c0290a2aa0c9a9104c59a072aa39b45c49cfedc874587073f93764169bb886"
+    },
+    {
+      "case_id": "K082",
+      "corpus": "mattress_run2.jsonl",
+      "family": "comparison",
+      "line": 68,
+      "prompt_id": "MT-C04",
+      "run": 6,
+      "sha256": "80980292262a66211f9d331cffe05a5f773e04b5796bce227adab65b17e85036"
+    },
+    {
+      "case_id": "K083",
+      "corpus": "mattress_run2.jsonl",
+      "family": "buyer_intent",
+      "line": 126,
+      "prompt_id": "MT-B01",
+      "run": 1,
+      "sha256": "a45ee9fb4fdfd241edb83c526b42f5ed406417ff071d64af66a529809877a582"
+    },
+    {
+      "case_id": "K084",
+      "corpus": "pr_agency_run4.jsonl",
+      "family": "category",
+      "line": 2,
+      "prompt_id": "PR-CAT01",
+      "run": 3,
+      "sha256": "3413b6a1a8c5f2d07a40016415b2ade8ac3e5c94d205ae4d10b153c470bb532e"
+    },
+    {
+      "case_id": "K085",
+      "corpus": "pr_agency_run4.jsonl",
+      "family": "buyer_intent",
+      "line": 129,
+      "prompt_id": "PR-INT01",
+      "run": 4,
+      "sha256": "ad157827801780d8b0f1369b2f912cf1ffd947421526ef888274c6b0f9cec95b"
+    },
+    {
+      "case_id": "K086",
+      "corpus": "mattress_run2.jsonl",
+      "family": "comparison",
+      "line": 51,
+      "prompt_id": "MT-C02",
+      "run": 3,
+      "sha256": "d742f4da39bd955011747b55dba57ef509f6722c08a12470c8a8c0e8e8ac24e9"
+    },
+    {
+      "case_id": "K087",
+      "corpus": "pr_agency_run4.jsonl",
+      "family": "comparison",
+      "line": 62,
+      "prompt_id": "PR-CMP03",
+      "run": 7,
+      "sha256": "41c33a4c3d81fcc62c463c3f57e58d125208d511d9a4d0f7e75081f14a8d60bf"
+    },
+    {
+      "case_id": "K088",
+      "corpus": "mattress_run2.jsonl",
+      "family": "long_tail",
+      "line": 171,
+      "prompt_id": "MT-L01",
+      "run": 4,
+      "sha256": "40406b93c054a6dd0031a96bdf4fc9ed57a402be33df2973ebc20a61e7e6d05b"
+    },
+    {
+      "case_id": "K089",
+      "corpus": "pr_agency_run4.jsonl",
+      "family": "problem",
+      "line": 90,
+      "prompt_id": "PR-PRB01",
+      "run": 7,
+      "sha256": "39bea1498d42dc4f4918731a50ad45e2acd08d5b0497d7fe69029eca85f9f5e2"
+    },
+    {
+      "case_id": "K090",
+      "corpus": "mattress_run2.jsonl",
+      "family": "buyer_intent",
+      "line": 134,
+      "prompt_id": "MT-B02",
+      "run": 2,
+      "sha256": "4375097a7486c1595968851e6a58a6cd8f21e1dbdeff6e589d5360772c4e3d1b"
+    },
+    {
+      "case_id": "K091",
+      "corpus": "mattress_run2.jsonl",
+      "family": "buyer_intent",
+      "line": 133,
+      "prompt_id": "MT-B02",
+      "run": 1,
+      "sha256": "2b6534789f6818069af47690539ca416327e1db86bdce3d59483db685aa2f670"
+    },
+    {
+      "case_id": "K092",
+      "corpus": "pr_agency_run4.jsonl",
+      "family": "buyer_intent",
+      "line": 162,
+      "prompt_id": "PR-INT06",
+      "run": 2,
+      "sha256": "3474fc660c41a4dbc9c09131bd095f683fe76f260e5c6e7722ca1c9ac7b0394e"
+    },
+    {
+      "case_id": "K093",
+      "corpus": "pr_agency_run4.jsonl",
+      "family": "category",
+      "line": 31,
+      "prompt_id": "PR-CAT05",
+      "run": 4,
+      "sha256": "f8072049eb410a027130079fecdebc25397fd394e422dc368f6640de13db08c6"
+    },
+    {
+      "case_id": "K094",
+      "corpus": "mattress_run2.jsonl",
+      "family": "comparison",
+      "line": 76,
+      "prompt_id": "MT-C05",
+      "run": 7,
+      "sha256": "6e2f85d7b4f92b5765bf4e275e4c14a7724df0c98acb23b1a699fc5e2b73cc74"
+    },
+    {
+      "case_id": "K095",
+      "corpus": "mattress_run2.jsonl",
+      "family": "comparison",
+      "line": 49,
+      "prompt_id": "MT-C02",
+      "run": 1,
+      "sha256": "66aa91922ed8bac9dde808333a1b8d13737dcc84e8dd8df492ee33ade3d8314c"
+    },
+    {
+      "case_id": "K096",
+      "corpus": "mattress_run2.jsonl",
+      "family": "problem",
+      "line": 92,
+      "prompt_id": "MT-P02",
+      "run": 2,
+      "sha256": "6d5d85ded9123e4db00fe4474cb9a4a0ac08e827f5bfb5d3dbfd6a679abe5df5"
+    },
+    {
+      "case_id": "K097",
+      "corpus": "pr_agency_run4.jsonl",
+      "family": "buyer_intent",
+      "line": 156,
+      "prompt_id": "PR-INT05",
+      "run": 3,
+      "sha256": "03165c0f91763e0f674aafd58a647be14263ed1e55cadd42dbc1a460d1adbeb3"
+    },
+    {
+      "case_id": "K098",
+      "corpus": "pr_agency_run4.jsonl",
+      "family": "problem",
+      "line": 88,
+      "prompt_id": "PR-PRB01",
+      "run": 5,
+      "sha256": "1e9a6fdebaf3fba83358a0eee816211cd04d0f1b3a1218af03a99ee1de80a233"
+    },
+    {
+      "case_id": "K099",
+      "corpus": "mattress_run2.jsonl",
+      "family": "category",
+      "line": 6,
+      "prompt_id": "MT-C01",
+      "run": 7,
+      "sha256": "33a14e71c6ac98c3be321708b18ac4cb2e04dd83dbb9c424cf67ed772c0bd9e7"
+    }
+  ],
+  "n_drawn": 100,
+  "n_requested": 100,
+  "population_total": 385,
+  "rule": "proportional allocation by stratum with largest-remainder top-up; shuffle and allocation both driven by the published seed; drawn BEFORE any extractor was run on these responses",
+  "seed": 20260830,
+  "strata": {
+    "mattress_run2.jsonl|buyer_intent": {
+      "available": 42,
+      "drawn": 11
+    },
+    "mattress_run2.jsonl|category": {
+      "available": 26,
+      "drawn": 7
+    },
+    "mattress_run2.jsonl|comparison": {
+      "available": 42,
+      "drawn": 11
+    },
+    "mattress_run2.jsonl|long_tail": {
+      "available": 42,
+      "drawn": 11
+    },
+    "mattress_run2.jsonl|problem": {
+      "available": 42,
+      "drawn": 11
+    },
+    "pr_agency_run4.jsonl|buyer_intent": {
+      "available": 41,
+      "drawn": 10
+    },
+    "pr_agency_run4.jsonl|category": {
+      "available": 41,
+      "drawn": 11
+    },
+    "pr_agency_run4.jsonl|comparison": {
+      "available": 25,
+      "drawn": 6
+    },
+    "pr_agency_run4.jsonl|long_tail": {
+      "available": 42,
+      "drawn": 11
+    },
+    "pr_agency_run4.jsonl|problem": {
+      "available": 42,
+      "drawn": 11
+    }
+  },
+  "tool": "kappa_sample v0.1.0"
+}

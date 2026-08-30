@@ -10,3 +10,5 @@ verifier run 2026-08-29T21:39:49Z · bundle 9eb756a2ca6ae2175bfe55a09d5b2c99b30e
 b87939c1945f045bec5287015d9b293faf21cf5d86934e6db4512f2aef308afe *make_report.py
 8e4d8d306f3327b51eb458540f3b20ec7d3af4b270aad443be037156a7887d3c *out/report_pr_agency_v1.md
 report generated 2026-08-29T23:55:55Z
+4cc3563df19b35ca574ed7bab6041215261854102ab1867e9deba03efa2fb912 *kappa_sample_v1.json
+kappa sample drawn 2026-08-30T00:49:25Z seed=20260830
