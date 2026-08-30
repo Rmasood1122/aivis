@@ -1,0 +1,32 @@
+verify_evidence v0.1.0
+FILE            pr_agency_run4.jsonl
+ROWS            210   (malformed lines skipped: 0)
+CLEAN           191 of 210
+ERRORED         19 of 210
+
+CHECK 1 · per-row hash recomputed from response_text
+  MATCH         191 of 191 clean rows
+  MISMATCH      0
+  NO HASH       0
+
+  DISTINCT response_text   191 of 191 clean rows
+
+CHECK 2 · bundle digest
+  INPUT         191 row hashes, newline-joined, in file order
+  FROM STORED   9eb756a2ca6ae2175bfe55a09d5b2c99b30e1451c2cd60050ddc0d1e2ee4abea
+  FROM TEXT     9eb756a2ca6ae2175bfe55a09d5b2c99b30e1451c2cd60050ddc0d1e2ee4abea
+  AGREE         YES
+  IN REPORT     (not supplied -- pass --expect <digest> to compare)
+
+CHECK 3 · request payload present
+  POPULATED     191 of 191 clean rows
+  DECLARED      model=claude-sonnet-4-6 temperature=0.0 max_tokens=2048
+
+--------------------------------------------------------------
+VERDICT   PASS
+--------------------------------------------------------------
+WHAT PASS MEANS: the stored text and the stored hashes are consistent
+with each other. The file has not been edited since it was written.
+WHAT PASS DOES NOT MEAN: that the responses came from the engine named
+in the payload, or that the run happened as described. A hash cannot
+establish either. Ask for the console receipt and the probe record.

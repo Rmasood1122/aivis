@@ -1,0 +1,47 @@
+{
+  "bank_version": "pr_agency_v1",
+  "sealed": "2026-08-29",
+  "construction_rule": "Five families of six. Open-ended retrieval only: no prompt names a candidate agency, so the model's roster is its own. Every id is unique across the whole file. Written before any run.",
+  "families": {
+    "category": [
+      {"id": "PR-CAT01", "text": "Who are the best PR agencies for personal branding?"},
+      {"id": "PR-CAT02", "text": "Top public relations firms for entrepreneurs in 2026."},
+      {"id": "PR-CAT03", "text": "Which PR agencies specialize in getting people featured in major publications?"},
+      {"id": "PR-CAT04", "text": "Best boutique PR firms in the United States."},
+      {"id": "PR-CAT05", "text": "Leading personal branding and media placement agencies."},
+      {"id": "PR-CAT06", "text": "What PR companies work with doctors and aesthetic practitioners?"}
+    ],
+    "comparison": [
+      {"id": "PR-CMP01", "text": "Compare the top PR agencies for professionals seeking national media coverage."},
+      {"id": "PR-CMP02", "text": "For a small service business, is a boutique PR firm or a large agency better?"},
+      {"id": "PR-CMP03", "text": "PR agency versus doing your own media outreach: which gets better results?"},
+      {"id": "PR-CMP04", "text": "How do PR firms that guarantee placements compare to traditional agencies?"},
+      {"id": "PR-CMP05", "text": "Compare PR agencies that work with attorneys and law firms."},
+      {"id": "PR-CMP06", "text": "Which PR firms have the best track record with beauty and wellness professionals?"}
+    ],
+    "problem": [
+      {"id": "PR-PRB01", "text": "I run a business and nobody has heard of me. How do I get press coverage?"},
+      {"id": "PR-PRB02", "text": "How do I get featured in Forbes as a business owner?"},
+      {"id": "PR-PRB03", "text": "My competitors keep showing up in the news and I never do. What should I do?"},
+      {"id": "PR-PRB04", "text": "How can a cosmetic surgeon build credibility with new patients online?"},
+      {"id": "PR-PRB05", "text": "I was burned by a PR agency before. How do I find a legitimate one?"},
+      {"id": "PR-PRB06", "text": "How do I get my business to show up when people ask ChatGPT for recommendations?"}
+    ],
+    "buyer_intent": [
+      {"id": "PR-INT01", "text": "I want to hire a PR agency to get me into national media. Who should I contact?"},
+      {"id": "PR-INT02", "text": "Recommend a PR firm for a solo professional with a three thousand dollar monthly budget."},
+      {"id": "PR-INT03", "text": "Which PR agency should I hire to get featured in USA Today?"},
+      {"id": "PR-INT04", "text": "I need a PR agency for my aesthetic clinic. Who do you recommend?"},
+      {"id": "PR-INT05", "text": "Best PR agency to hire for building authority as an independent consultant."},
+      {"id": "PR-INT06", "text": "Who should an attorney hire for media placements and press coverage?"}
+    ],
+    "long_tail": [
+      {"id": "PR-LNG01", "text": "Are PR agencies that guarantee Forbes features legitimate?"},
+      {"id": "PR-LNG02", "text": "What does contributor content mean on Forbes and USA Today?"},
+      {"id": "PR-LNG03", "text": "How much does it cost to get featured in a top-tier publication?"},
+      {"id": "PR-LNG04", "text": "Do press placements actually bring a business more clients?"},
+      {"id": "PR-LNG05", "text": "What is AI search optimization and which agencies offer it?"},
+      {"id": "PR-LNG06", "text": "How do I tell whether my PR agency is actually delivering results?"}
+    ]
+  }
+}

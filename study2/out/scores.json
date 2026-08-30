@@ -1,0 +1,43 @@
+{
+  "source": "data\\mattress_run2.jsonl",
+  "tertile_cut_low": 0.0,
+  "tertile_cut_high": 0.0,
+  "rows_scored": 194,
+  "ranked": 0,
+  "non_ranked": 3,
+  "middle_excluded": 0,
+  "usable_discordant_pairs": 0,
+  "max_order_delta_pp": 0.0,
+  "brands": [
+    {
+      "brand_id": "B01",
+      "practice_name": "Purple",
+      "top3_rate": 0.0,
+      "n": 0,
+      "forward_rate": 0.0,
+      "reverse_rate": 0.0,
+      "order_delta_pp": 0.0,
+      "group": "non_ranked"
+    },
+    {
+      "brand_id": "B02",
+      "practice_name": "Casper",
+      "top3_rate": 0.0,
+      "n": 0,
+      "forward_rate": 0.0,
+      "reverse_rate": 0.0,
+      "order_delta_pp": 0.0,
+      "group": "non_ranked"
+    },
+    {
+      "brand_id": "B03",
+      "practice_name": "Tempur-Pedic",
+      "top3_rate": 0.0,
+      "n": 0,
+      "forward_rate": 0.0,
+      "reverse_rate": 0.0,
+      "order_delta_pp": 0.0,
+      "group": "non_ranked"
+    }
+  ]
+}

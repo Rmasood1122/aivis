@@ -1,0 +1,31 @@
+brand_id,practice_name,website,metro,state,size_band,founded_decade,size_source,founded_source,pair_id,notes
+# ---------------------------------------------------------------------------
+# FILL THIS BY HAND. NO SCRIPT MAY POPULATE IT. A generated row is a fabricated row.
+#
+# HOW TO FILL IT
+#  brand_id       B01..B50, unique, never reused
+#  practice_name  exact legal or trading name as it appears on the website
+#  website        root domain only, https://
+#  metro          one of: NYC, LongIsland, Westchester, NorthNJ, CentralNJ, FairfieldCT, NewHavenCT
+#  state          NY | NJ | CT
+#  size_band      1-3 | 4-10 | 11-25 | 26+   (clinical providers, not total staff)
+#  founded_decade 1980s | 1990s | 2000s | 2010s | 2020s
+#  size_source    URL or document you read it from. "estimate" is NOT allowed.
+#  founded_source URL or document. "estimate" is NOT allowed.
+#  pair_id        P01..P25. Exactly two rows share each pair_id.
+#  notes          anything a second person would need to reproduce your choice
+#
+# MATCHING RULE, MANDATORY
+#  The two rows sharing a pair_id must have IDENTICAL metro, size_band and
+#  founded_decade. If you cannot find a match on all three, DROP the pair.
+#  Do not relax a criterion to keep the sample size. A relaxed match is a
+#  confound with paperwork.
+#
+# WHAT YOU MUST NOT DO
+#  Do not look up whether a practice is AI-recommended before filling this in.
+#  The ranked/non-ranked split is assigned by 04_score.py from measurement,
+#  never by you. If you choose brands knowing the answer, the study is dead
+#  and no amount of downstream statistics recovers it.
+#
+# Delete these comment lines before running 02_validate_sample.py.
+# ---------------------------------------------------------------------------

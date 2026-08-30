@@ -1,0 +1,138 @@
+{
+  "bank_version": "mattress_premium_v1",
+  "sealed": "2026-08-29",
+  "category": "Premium mattresses, US",
+  "note": "Mirrors CAAI v1.0 category so results are comparable to the 2026-02-23 baseline. 30 prompts, 6 per family. Do not edit after first run.",
+  "families": {
+    "category": [
+      {
+        "id": "MT-C01",
+        "text": "Who makes the best premium mattresses?"
+      },
+      {
+        "id": "MT-C02",
+        "text": "Best mattress brands for 2026."
+      },
+      {
+        "id": "MT-C03",
+        "text": "Top rated luxury mattress companies."
+      },
+      {
+        "id": "MT-C04",
+        "text": "Which mattress brands are considered highest quality?"
+      },
+      {
+        "id": "MT-C05",
+        "text": "Best mattress brands sold in stores near New York."
+      },
+      {
+        "id": "MT-C06",
+        "text": "Leading premium mattress manufacturers in the US."
+      }
+    ],
+    "comparison": [
+      {
+        "id": "MT-C01",
+        "text": "Compare Tempur-Pedic, Purple and Casper."
+      },
+      {
+        "id": "MT-C02",
+        "text": "How does Tempur-Pedic compare to other premium mattresses?"
+      },
+      {
+        "id": "MT-C03",
+        "text": "Purple vs Tempur-Pedic: which is better?"
+      },
+      {
+        "id": "MT-C04",
+        "text": "Which premium mattress brand has the best pressure relief?"
+      },
+      {
+        "id": "MT-C05",
+        "text": "Compare memory foam mattress brands by durability."
+      },
+      {
+        "id": "MT-C06",
+        "text": "Best mattress brand for couples with different preferences?"
+      }
+    ],
+    "problem": [
+      {
+        "id": "MT-P01",
+        "text": "I have chronic lower back pain. Which mattress brand should I get?"
+      },
+      {
+        "id": "MT-P02",
+        "text": "I sleep hot. Which premium mattress brands stay coolest?"
+      },
+      {
+        "id": "MT-P03",
+        "text": "Which mattress is best for a side sleeper with shoulder pain?"
+      },
+      {
+        "id": "MT-P04",
+        "text": "My partner moves a lot at night. Which brand isolates motion best?"
+      },
+      {
+        "id": "MT-P05",
+        "text": "I need a mattress for a heavier body type. Which brands hold up?"
+      },
+      {
+        "id": "MT-P06",
+        "text": "Best mattress brand for someone recovering from spinal surgery?"
+      }
+    ],
+    "buyer_intent": [
+      {
+        "id": "MT-B01",
+        "text": "I'm ready to buy a premium mattress this week. Which brand?"
+      },
+      {
+        "id": "MT-B02",
+        "text": "Which mattress brand should I buy for around $3000?"
+      },
+      {
+        "id": "MT-B03",
+        "text": "I want to try a mattress in a store before buying. Which brands have showrooms?"
+      },
+      {
+        "id": "MT-B04",
+        "text": "Best premium mattress to buy with a good trial period and warranty."
+      },
+      {
+        "id": "MT-B05",
+        "text": "Which mattress brand should I buy for a guest room, premium tier?"
+      },
+      {
+        "id": "MT-B06",
+        "text": "I'm replacing a 15 year old mattress. Which brand do I buy?"
+      }
+    ],
+    "long_tail": [
+      {
+        "id": "MT-L01",
+        "text": "Which mattress brands publish independent durability testing?"
+      },
+      {
+        "id": "MT-L02",
+        "text": "Premium mattress brands that make their own foam in the US."
+      },
+      {
+        "id": "MT-L03",
+        "text": "Which mattress companies offer white glove delivery and old mattress removal?"
+      },
+      {
+        "id": "MT-L04",
+        "text": "Mattress brands recommended by chiropractors or sleep physicians."
+      },
+      {
+        "id": "MT-L05",
+        "text": "Which premium mattress brands have the lowest complaint rates?"
+      },
+      {
+        "id": "MT-L06",
+        "text": "Mattress brands with adjustable firmness on each side of the bed."
+      }
+    ]
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "bank_version": "cosmetic_tristate_v1",
+  "sealed": "2026-08-29",
+  "category": "Cosmetic and aesthetic practices, NY/NJ/CT",
+  "note": "30 prompts, 6 per family. Prompt text names no brand except where the family requires it. Do not edit after the first measurement run; edits create a new bank_version.",
+  "families": {
+    "category": [
+      {"id": "CT-D01", "text": "Who are the best cosmetic surgeons in northern New Jersey?"},
+      {"id": "CT-D02", "text": "Best med spas in Westchester County, New York."},
+      {"id": "CT-D03", "text": "Top plastic surgery practices in Fairfield County, Connecticut."},
+      {"id": "CT-D04", "text": "Which aesthetic clinics in the New York tri-state area have the strongest reputations?"},
+      {"id": "CT-D05", "text": "Leading cosmetic dermatology practices in Long Island."},
+      {"id": "CT-D06", "text": "Best board-certified plastic surgeons in Manhattan."}
+    ],
+    "comparison": [
+      {"id": "CT-C01", "text": "Compare the top cosmetic surgery practices in Bergen County, New Jersey."},
+      {"id": "CT-C02", "text": "How do med spas in Greenwich, Connecticut compare to those in Manhattan?"},
+      {"id": "CT-C03", "text": "Which is better for facial rejuvenation, a dermatology practice or a plastic surgery practice in the tri-state area?"},
+      {"id": "CT-C04", "text": "Compare cosmetic practices in New Jersey by patient reviews and credentials."},
+      {"id": "CT-C05", "text": "Ranked list of aesthetic clinics across New York, New Jersey and Connecticut."},
+      {"id": "CT-C06", "text": "Which tri-state cosmetic practices are most recommended for first-time patients?"}
+    ],
+    "problem": [
+      {"id": "CT-P01", "text": "I have deep nasolabial folds. Which practices in the tri-state area specialize in treating them?"},
+      {"id": "CT-P02", "text": "Where should I go in New Jersey for a revision rhinoplasty after a bad result?"},
+      {"id": "CT-P03", "text": "I want non-surgical body contouring near New York City. Who does it well?"},
+      {"id": "CT-P04", "text": "Which Connecticut practices handle complex breast reconstruction?"},
+      {"id": "CT-P05", "text": "I have melasma and darker skin. Which tri-state practices treat it safely?"},
+      {"id": "CT-P06", "text": "Where can I get filler dissolved and corrected in the New York area?"}
+    ],
+    "buyer_intent": [
+      {"id": "CT-B01", "text": "I am ready to book a consultation for a facelift in New Jersey. Who should I call?"},
+      {"id": "CT-B02", "text": "Recommend a specific med spa in Westchester I can book this month."},
+      {"id": "CT-B03", "text": "Best value cosmetic practice in the tri-state area for Botox and fillers."},
+      {"id": "CT-B04", "text": "Which tri-state plastic surgeons offer financing and have short wait times?"},
+      {"id": "CT-B05", "text": "I want a mommy makeover in Connecticut. Name practices to consult."},
+      {"id": "CT-B06", "text": "Where should I book a consultation for liposuction on Long Island?"}
+    ],
+    "long_tail": [
+      {"id": "CT-L01", "text": "Which tri-state cosmetic practices publish before-and-after outcome data?"},
+      {"id": "CT-L02", "text": "Cosmetic practices near New York City that specialize in ethnic rhinoplasty."},
+      {"id": "CT-L03", "text": "Which New Jersey aesthetic practices have in-house anesthesiologists?"},
+      {"id": "CT-L04", "text": "Tri-state practices offering awake facelift procedures under local anesthesia."},
+      {"id": "CT-L05", "text": "Which Connecticut med spas are physician-owned rather than investor-owned?"},
+      {"id": "CT-L06", "text": "Cosmetic practices in the tri-state area with published complication rates."}
+    ]
+  }
+}
