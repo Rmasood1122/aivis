@@ -138,3 +138,17 @@ Every session appends a block here. One row per inherited item. Nothing leaves b
 | NEW: B7, error-row shared hash, 13_HANDOFF absent, key rotation status unknown, `README.md.pre_*` and `_*_backup*` untracked and unlisted | OPEN | 0 |
 | API credits | DONE — live | — |
 | Battery 08 | 1 of 72 run | 0 |
+
+### Carry-forward, session 5 (2026-09-01)
+| Item | Status | Carried |
+|---|---|---|
+| Inbound reply (board #1) | OPEN — draft exists in session 5, unsent | since 08-27 |
+| Ahmad κ message | BLOCKED-ON: repo is private, needs collaborator add; command itself verified correct | 1 |
+| Battery 08 | 10 of 72 run, ledger pushed 20193ea; A04 sole FAIL | — |
+| B06 spec-recording gap | DONE — invocation recorded in results ledger | 1 |
+| A08 spec | AMENDED in ledger: 0 hits excluding enumerated notices | 1 |
+| cli.py unlink (B1/A04) | OPEN — armed, FAIL on record, awaiting "go" | 7 |
+| Key rotation check | OPEN — precedes any live run | 2 |
+| Five buyer conversations (B0) | OPEN — 0 of 5 | 9 |
+| Wilson intervals | OPEN — untouched | 9 |
+| RR-1b digest-bound artifact | OPEN — cheapest remaining rung-changer | 8 |
