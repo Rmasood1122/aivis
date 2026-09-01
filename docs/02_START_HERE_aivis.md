@@ -170,3 +170,12 @@ Every session appends a block here. One row per inherited item. Nothing leaves b
 | Named PR report | DONE — 1710ec9; absence row 0/41 CI 0.0-8.6 printed; Clarity 11.5% reproduced 3 routes | 0 |
 | Mattress report 20260901 | DONE — digest 781a341e new to record; D5 colour-Purple caveat until kappa | 0 |
 | Composite ruling (v2 band: annex or nowhere) | OPEN — operator decision | 0 |
+### Carry-forward close, session 5 (2026-09-01, part 2)
+| Item | Status | Carried |
+|---|---|---|
+| make_pdf.py + true PDF | DONE — reconciled 3 routes; problem+long_tail 0/84 all candidates | 0 |
+| 11_PILOT_CHARTER_v1 | DONE — 0a03f22; stagger fix (natural timing) OPEN as append | 0 |
+| Build order v1 | DONE — appended to 10, commit 12a8f49 | 0 |
+| WTP predictions (6 confidences, rows 1-6) | OPEN — unsealed | 0 |
+| G0 override | LOGGED — build session next | — |
+| Inbound reply / Ahmad add / key rotation | OPEN — unchanged, still outrank build | 5 days |
