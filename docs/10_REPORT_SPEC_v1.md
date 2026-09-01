@@ -98,3 +98,16 @@ The declaration is the moat move: competitors blur API vs consumer surfaces (Eve
 
 ---
 REPORT SPEC v1 · R0 · recipient: Sep 8 specimen, then pilot #001 · Lane I hours: log them
+
+## AMENDED 2026-09-01 — §6 BUILD ORDER v1 (approved session 5, G0 override logged)
+NOW (no gate, serves Sep 8):
+  - Wilson intervals -> product layer (board #6, near-zero)
+  - Pilot charter append: stagger replaced by natural timing variation
+  - Key rotation check at console.anthropic.com, then RR-1b bridge (battery B01)
+ON FIRST BUYER SIGNAL naming an engine:
+  - One adapter (OpenAI), N>=7, declared surface
+ON SIGNED FOUNDING ENGAGEMENT:
+  - Attribution kit intake artifact; remaining adapters as named
+NEVER WITHOUT ITS GATE:
+  - Second-opinion service (kappa published first)
+  - Index (kappa >= 0.75 AND external citation)
