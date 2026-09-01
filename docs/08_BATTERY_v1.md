@@ -157,3 +157,8 @@ task, not a design task. It follows this one.
 
 ---
 BATTERY v1 · RUNG R0 · 0 of 72 run · POPULATION 72 · STATUS=COMPLETE (design)
+
+## RESULTS LEDGER
+| Date | Test | Result | Evidence |
+|---|---|---|---|
+| 2026-09-01 | C01 | PASS | HTTP 200, msg_011CecoBQr85qo7utX1NnLsK, claude-haiku-4-5-20251001 [MEASURED: curl] — falsifies 02 "credits exhausted [QUOTED: 2026-08-20]"; 02 to be amended |
