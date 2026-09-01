@@ -166,3 +166,7 @@ Every session appends a block here. One row per inherited item. Nothing leaves b
 | Named PR report | DONE — 1710ec9; absence row 0/41 CI 0.0-8.6 printed; Clarity 11.5% reproduced 3 routes | 0 |
 | Mattress report 20260901 | DONE — digest 781a341e new to record; D5 colour-Purple caveat until kappa | 0 |
 | Composite ruling (v2 band: annex or nowhere) | OPEN — operator decision | 0 |
+| 10_REPORT_SPEC_v1 | DONE — committed cf7854a, hash-verified handoff | 0 |
+| Named PR report | DONE — 1710ec9; absence row 0/41 CI 0.0-8.6 printed; Clarity 11.5% reproduced 3 routes | 0 |
+| Mattress report 20260901 | DONE — digest 781a341e new to record; D5 colour-Purple caveat until kappa | 0 |
+| Composite ruling (v2 band: annex or nowhere) | OPEN — operator decision | 0 |
