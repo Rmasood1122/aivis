@@ -162,3 +162,13 @@ BATTERY v1 · RUNG R0 · 0 of 72 run · POPULATION 72 · STATUS=COMPLETE (design
 | Date | Test | Result | Evidence |
 |---|---|---|---|
 | 2026-09-01 | C01 | PASS | HTTP 200, msg_011CecoBQr85qo7utX1NnLsK, claude-haiku-4-5-20251001 [MEASURED: curl] — falsifies 02 "credits exhausted [QUOTED: 2026-08-20]"; 02 to be amended |
+| 2026-09-01 | A02 | PASS | 97 passed / 3 xfailed on f271f75 [MEASURED] |
+| 2026-09-01 | A03 | PASS | typer 0.27.1 declared = installed [MEASURED] |
+| 2026-09-01 | A04 | FAIL | cli.py:195 out.unlink() present, no guard, no refusal test [MEASURED] |
+| 2026-09-01 | A08 | PASS | 0 credentials, full history; 3 hits all length-21 documented exposure notice. Spec amended: pass = 0 hits excluding enumerated notices [MEASURED] |
+| 2026-09-01 | A10 | PASS | mattress 194/194, pr_agency 191/191 COMPLETE [MEASURED] |
+| 2026-09-01 | B06 | PASS | byte-identical 4cc3563d... via: kappa_sample.py --seed 20260830 --n 100 --corpus study2/data/mattress_run2.jsonl:study2/config/prompts_mattress_premium_v1.json --corpus study2/data/pr_agency_run4.jsonl:study2/config/prompts_pr_agency_v1.json — invocation now on record [MEASURED: R2] |
+| 2026-09-01 | D05 | PASS | 3 hits = battery's own spec text, population repo docs [MEASURED] |
+| 2026-09-01 | D06 | PASS | clean container, no aivis, stdlib; 3 attack classes caught [MEASURED: R2, third party] |
+| 2026-09-01 | D08 | PASS | anon clone aivis-method 44a1c55; chain LINKS 2/2, 3 hash routes agree [MEASURED: R2, third party] |
+| 2026-09-01 | F02 | PASS | offline verify after clone [MEASURED: R2] |
