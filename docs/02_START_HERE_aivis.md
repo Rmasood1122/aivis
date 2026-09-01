@@ -152,3 +152,13 @@ Every session appends a block here. One row per inherited item. Nothing leaves b
 | Five buyer conversations (B0) | OPEN — 0 of 5 | 9 |
 | Wilson intervals | OPEN — untouched | 9 |
 | RR-1b digest-bound artifact | OPEN — cheapest remaining rung-changer | 8 |
+| B2 PAT | OPEN — pushes work through 09-01; expiry date itself still unread | 4 |
+| B3 proof tool separate repo | OPEN — B7 is its sibling | 8 |
+| B4 _patch_v1 untracked | OPEN — armed, left in place | re-listed |
+| B5 accepted_non_claims | OPEN — never reviewed | re-listed |
+| B6 mutation score | OPEN — may not be quoted until re-run | re-listed |
+| B7 three bundle_digest impls | OPEN — caller ordering unverified; public copy tested session 5 | 1 |
+| Error rows share one hash | OPEN — DISTINCT quotes must say "clean" | 1 |
+| 13_HANDOFF | ABSENT from disk and project | 1 |
+| README.md.pre_* and _*_backup* | OPEN — untracked, left in place | 1 |
+| F03 note | session 5's first carry-forward block dropped these 9 rows; completed same session by this append | — |
