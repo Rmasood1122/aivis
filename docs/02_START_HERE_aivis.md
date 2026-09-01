@@ -121,3 +121,20 @@ Every session appends a block here. One row per inherited item. Nothing leaves b
 - This file now lives at aivis `docs/` and is canonical there. Append here, then re-upload to the project. 02–07 were not on disk anywhere under ~ before this session.
 - Board additions: B7 (three digest implementations); error-row shared hash; `docs/08_BATTERY_v1.md` — 1 of 72 run (C01 PASS).
 - Board item 1 unchanged: inbound still unanswered. OUTBOUND 0/1, population all channels all time.
+
+### Carry-forward, session 4 (2026-09-01)
+| Item | Status | Carried |
+|---|---|---|
+| `cli.py` unlink (B1) | OPEN — armed, untouched | 6 at 08-27, unlogged since |
+| GitHub PAT (B2) | OPEN — pushes work 08-31, 09-01; expiry date unread | 3 at 08-27, unlogged since |
+| Golden set / κ | OPEN — sample sealed, tools pushed f7deb78, 5 operator attempts voided, external labeller message drafted not sent | 9 at 08-27, unlogged since |
+| Wilson intervals at dimension layer | OPEN — untouched | 8 at 08-27, unlogged since |
+| RR-1b | SPLIT — see 03 2026-09-01 block | 7 at 08-27, unlogged since |
+| Five buyer conversations | OPEN — 0 of 5 | 8 at 08-27, unlogged since |
+| Proof tool in a different repo (B3) | OPEN — untouched; B7 is its sibling | 7 at 08-27, unlogged since |
+| Inbound reply (board #1) | OPEN — six days on 09-02 | since 08-27 |
+| B4 `_patch_v1` | OPEN — present untracked in working tree [MEASURED: git status 2026-09-01] | 4 queues, then dropped; re-listed |
+| B5, B6 | OPEN — untouched | re-listed |
+| NEW: B7, error-row shared hash, 13_HANDOFF absent, key rotation status unknown, `README.md.pre_*` and `_*_backup*` untracked and unlisted | OPEN | 0 |
+| API credits | DONE — live | — |
+| Battery 08 | 1 of 72 run | 0 |
