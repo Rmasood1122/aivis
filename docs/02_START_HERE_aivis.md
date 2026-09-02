@@ -179,3 +179,36 @@ Every session appends a block here. One row per inherited item. Nothing leaves b
 | WTP predictions (6 confidences, rows 1-6) | OPEN — unsealed | 0 |
 | G0 override | LOGGED — build session next | — |
 | Inbound reply / Ahmad add / key rotation | OPEN — unchanged, still outrank build | 5 days |
+
+## AMENDED 2026-09-02 — session 6 close
+RR-1b CLOSED on the product path: smoke_report_20260901_live_v1.pdf, DISTINCT=7,
+digest two-route verified. Board #6 (Wilson) DONE end-to-end; original description
+corrected: nothing was discarded in the product, the interval never existed there.
+Battery 10 -> 14 of 72. Suite 104/3. Surface change: API rejects temperature for
+claude-sonnet-5; invariant amended + chain receipt 728d9410... pushed (aivis-method
+9b2f3fa). Cross-surface DISTINCT comparisons refused per amendment.
+OUTBOUND 2/2 [MEASURED: Gmail]: meeting-time exchange with Tyler 09-01; Sep 8
+12:30 PST confirmed; invite ACCEPTED via Calendar API [MEASURED]. Meeting intel:
+Calendly intake shows Max's frame is SELLING partner services to Rehan ($2K-$10K
+bands pre-collected) — prep accordingly.
+### Carry-forward, session 6 (2026-09-02)
+| Item | Status | Carried |
+|---|---|---|
+| Inbound reply (board #1) | DONE — logistics reply sent, meeting confirmed; discovery content rides Sep 8 | closed at 5 days |
+| Sep 8 invite acceptance | DONE — needsAction -> accepted | 0 |
+| B1 unlink / A04 | DONE — guard + test, 5fc559b | closed at 7 |
+| D0 zero-clean DONE lie | DONE — 38b906e | closed |
+| RR-1b | DONE — see above | closed at 8 |
+| Wilson intervals | DONE — 0cba4ae, 56db675, live-verified | closed at 9 |
+| B07 kappa preflight | DONE — 93ac50c | closed |
+| B2 PAT | DOWNGRADED — no expiry header on gh token; pushes green 4 days past estimate; gh-vs-push token identity [UNVERIFIED] | residual |
+| Charter v2 meeting copy | DONE — f264ae4 | 0 |
+| 03_measure D0 + temp-v1 | DONE — 38b906e, 3c068e1 | 0 |
+| KEY ROTATION CHECK | OPEN — overridden for tonight's run (logged); REQUIRED before next live run; .env still PASTE_NEW_KEY_HERE | 3 |
+| Ahmad collaborator add | OPEN — Ahmad away ~3 days; add anyway when username known so return is unblocked | 2 |
+| Five B0 conversations | OPEN — 0 of 5, blocked on nothing | 10 |
+| WTP predictions seal | OPEN — seal BEFORE Sep 8 or the meeting contaminates them | 1 |
+| B3/B7 digest impls · B4 _patch_v1 · B5 non_claims · B6 mutation | OPEN — unchanged | carried |
+| chain HEAD external anchor | OPEN — 728d9410... lives only in operator-controlled repos; chain_receipt's own warning applies | 0 |
+| .pre_* backups (now +3 from this session) · error-row shared hash · 13_HANDOFF absent | OPEN | carried |
+| Project copy of 02 stale | OPEN — re-upload after this append | 1 |

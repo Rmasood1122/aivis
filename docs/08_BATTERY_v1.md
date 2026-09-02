@@ -172,3 +172,7 @@ BATTERY v1 · RUNG R0 · 0 of 72 run · POPULATION 72 · STATUS=COMPLETE (design
 | 2026-09-01 | D06 | PASS | clean container, no aivis, stdlib; 3 attack classes caught [MEASURED: R2, third party] |
 | 2026-09-01 | D08 | PASS | anon clone aivis-method 44a1c55; chain LINKS 2/2, 3 hash routes agree [MEASURED: R2, third party] |
 | 2026-09-01 | F02 | PASS | offline verify after clone [MEASURED: R2] |
+| 2026-09-02 | A04 | PASS | guard + test test_unlink_guard.py, commit 5fc559b [MEASURED] |
+| 2026-09-02 | B01 | PASS | smoke_evidence_20260901_live_v1.jsonl ROWS=7 DISTINCT=7; bundle_digest acea2d7a... printed in PDF AND recomputed independently, equal. SHAPE DEVIATION: 1 prompt x 7 runs, not 5x2; pass property (DISTINCT>=2, digest bound) met [MEASURED] |
+| 2026-09-02 | B02 | PASS | live page prints "100% [95% CI 64.6%-100.0%, n=7]"; pypdf extraction [MEASURED] |
+| 2026-09-02 | B07 | PASS | verify_kappa_sample.py 100/100, 0-based calibrated, commit 93ac50c [MEASURED] |
