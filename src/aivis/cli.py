@@ -61,7 +61,7 @@ def run(
     prompt_version: str = "v1.0",
     model_provider: str = "anthropic",
     model_name: str = "claude-sonnet-5",
-    temperature: float | None = 0.0,
+    temperature: float | None = None,  # temp-v1: API deprecated the param for claude-sonnet-5 (req_011Cedo5EDzMLp2paBDkgRXm); None -> omitted, provider default, declared per-row in request_payload
     max_tokens: int = 2048,
     run_index: int = 1,
     live: bool = False,
