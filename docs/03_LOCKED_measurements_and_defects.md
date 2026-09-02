@@ -286,22 +286,3 @@ window on 2026-08-29. **Rotate at console.anthropic.com if not already done.**
   raised ruff TRY004 (`RuntimeError` where `TypeError` belongs). The gate ran
   after the patch and caught it pre-commit. **Re-run the checker after the fix,
   never only before.**
-
-## AMENDED 2026-09-02 — session 7, lessons added to Part C
-- **`|| true` on a measurement step manufactures a false green.** A CI mutation
-  job exited ✓ in 35 seconds having generated zero mutants; the error was real
-  and the shell swallowed it. Identical mechanism to D0 (210 rows, zero calls).
-  What caught it was the wall clock looking implausible — not a gate. **Rule: a
-  step that produces a NUMBER may never carry `|| true`. Non-zero exit from a
-  measurement tool is data.**
-- **The environment is an assumption until it is declared.** Three instances in
-  one session: MSYS `/tmp` unreadable by Windows Python; mutmut refusing native
-  Windows; a test suite that passes only from the repo root because config paths
-  are relative. Same family as D7 (`signal.SIGPIPE` on Windows) and B3.
-- **Assert before write, always.** The `/tmp` failure crashed at the read step,
-  before `write_text` — so a source file was left untouched rather than
-  truncated. The ordering, not the luck, is what made it safe.
-- **A fix can introduce its own defect.** The isinstance guards added for mypy
-  raised ruff TRY004 (`RuntimeError` where `TypeError` belongs). The gate ran
-  after the patch and caught it pre-commit. **Re-run the checker after the fix,
-  never only before.**
