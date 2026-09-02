@@ -188,11 +188,18 @@ def smoke(
     aggregate_out: Path = Path("data/aggregates/smoke_aggregate.json"),
     pdf_out: Path = Path("data/reports/smoke_report.pdf"),
     evidence_out: Path = Path("data/reports/smoke_evidence.jsonl"),
+    force_overwrite: bool = False,
 ):
     """Run a single prompt N times, compute variance, generate PDF. Use --live for real API."""
-    # Clear previous smoke data
+    # guards-v1: evidence files are never overwritten by default (B1/A04)
     if out.exists():
-        out.unlink()
+        if not force_overwrite:
+            rprint(
+                f"[red]REFUSED[/red] {out} exists. Evidence is never overwritten by "
+                f"default. Pass --force-overwrite or a versioned --out path."
+            )
+            raise typer.Exit(code=1)
+        out.unlink()  # explicit, operator-flagged
 
     rprint(f"[cyan]Running {prompt_id} x {runs} ({'LIVE' if live else 'STUB'})...[/cyan]")
 
