@@ -119,3 +119,15 @@ UC27 acquisition/due-diligence code walk
 | 2026-09-02 | I01 | FAIL | NO_CI [MEASURED] |
 | 2026-09-02 | I02 | MEASURED | 30 commits/7d, population git log [MEASURED] |
 | 2026-09-02 | I06 | FAIL | 0 tags [MEASURED] |
+| 2026-09-02 | I01 | PASS[P] | first Actions run completed success 20s [MEASURED: gh run list] |
+| 2026-09-02 | H04 | PASS | 10/10 identical suite results [MEASURED] |
+| 2026-09-02 | H05 | PASS | ~1.0s suite [MEASURED] |
+| 2026-09-02 | G09 | PASS | 0 TODO/FIXME, population src/aivis [MEASURED] |
+| 2026-09-02 | J01 | PASS[P] | timeout present in runner [MEASURED: grep + read] |
+| 2026-09-02 | J10 | PASS | 0 naive datetime.now [MEASURED] |
+| 2026-09-02 | H10 | ABSTAIN | randomization active-state unproven, || chain ambiguity [MEASURED] |
+| 2026-09-02 | K01 | SPLIT | gitignored+no placeholder; perms WERE 644 falsifying 03 SE "chmod 600" -> fixed to 600 this session; live-key location [UNVERIFIED] |
+| 2026-09-02 | K04 | FAIL->FIXED | id_ed25519 was 644, chmod 600 applied [MEASURED] |
+| 2026-09-02 | K05 | PASS | 0 sk-ant hits in data/, STATUS=COMPLETE for that tree [MEASURED] |
+| 2026-09-02 | K07 | see next probe | caret ranges; lockfile presence decides; typer-lesson class |
+| 2026-09-02 | K03 | PARTIAL 2/4 | aivis (A08) + aivis-method scanned 0; evidence-verify + merge repos pending |
