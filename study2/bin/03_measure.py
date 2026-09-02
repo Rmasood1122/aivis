@@ -94,6 +94,7 @@ def call(engine, prompt_text):
 
 
 written = 0
+clean = 0
 with OUTP.open("w") as out:
     for order_name, order_names in ORDERS.items():
         for p in prompts:
@@ -118,8 +119,13 @@ with OUTP.open("w") as out:
                     out.write(json.dumps(row) + "\n")
                     out.flush()
                     written += 1
+                    if err is None:
+                        clean += 1
                     if written % 25 == 0:
                         print(f"  {written}/{total} rows  (${written*UNIT_COST:.2f})", flush=True)
                     time.sleep(0.35)
 
-print(f"\nDONE. {written} rows to {OUTP}. Actual cost basis ${written*UNIT_COST:.2f}")
+if clean == 0:
+    print(f"\nFAILED. {written} rows written, 0 clean responses at {OUTP}. A run that produced nothing may not report success.")
+    sys.exit(1)
+print(f"\nDONE. {clean} clean of {written} rows to {OUTP}. Cost ${clean*UNIT_COST:.2f} [EST: clean x unit_cost, not billed usage]")
