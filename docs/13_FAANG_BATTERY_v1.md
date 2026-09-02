@@ -109,3 +109,13 @@ UC27 acquisition/due-diligence code walk
 ## RESULTS LEDGER
 | Date | Test | Result | Evidence |
 |---|---|---|---|
+| 2026-09-02 | G01 | FAIL | ruff 17 errors, 8 fixable [MEASURED @66a16da] |
+| 2026-09-02 | G02 | PASS[P] | mypy count=7/3 files; cli.py:223 arg-type real [MEASURED] |
+| 2026-09-02 | G03 | FAIL | summarize_anchor rank E, parse_tool_list D [MEASURED: radon] |
+| 2026-09-02 | G04 | PASS[P] | findings listed; pydantic/typer hits = false positives, noted [MEASURED] |
+| 2026-09-02 | G07 | FINDING | wheel CVE-2026-24049 -> upgrade 0.46.2 [MEASURED: pip-audit] |
+| 2026-09-02 | H01 | PASS | line 80% total; runner.py 32% = worst file [MEASURED @66a16da] |
+| 2026-09-02 | H02 | PASS | branch measured, 192 branches, 25 partial [MEASURED] |
+| 2026-09-02 | I01 | FAIL | NO_CI [MEASURED] |
+| 2026-09-02 | I02 | MEASURED | 30 commits/7d, population git log [MEASURED] |
+| 2026-09-02 | I06 | FAIL | 0 tags [MEASURED] |
