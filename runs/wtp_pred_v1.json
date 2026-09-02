@@ -1,0 +1,19 @@
+{
+  "sealed": "2026-09-02",
+  "sealed_before": "Sep 8 Credible PR meeting and all B0 conversations",
+  "grading": "Brier score per row at each resolution date; grade against S10/calibration record",
+  "predictions": [
+    {"row": 1, "claim": "Market Shelf Report", "confidence": 0.55,
+     "resolves_true_if": "any agency signs >= $2,500 within 90 days of first offer"},
+    {"row": 2, "claim": "Placement Impact study accepted", "confidence": 0.45,
+     "resolves_true_if": "an agency agrees in writing to the measurement design (natural timing variant) within 90 days of first offer"},
+    {"row": 3, "claim": "Attribution kit adopted", "confidence": 0.40,
+     "resolves_true_if": "one practice runs the intake source field for one full quarter"},
+    {"row": 4, "claim": "Five-engine flagship audit sells", "confidence": 0.35,
+     "resolves_true_if": "one paid multi-engine audit within 90 days of a second adapter existing"},
+    {"row": 5, "claim": "Second-opinion service sells post-kappa", "confidence": 0.30,
+     "resolves_true_if": "one paid engagement within 90 days of kappa publication"},
+    {"row": 6, "claim": "Productized teardown at $1,500", "confidence": 0.50,
+     "resolves_true_if": "one paid teardown within 90 days of first named offer at that price"}
+  ]
+}
