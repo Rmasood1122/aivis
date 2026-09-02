@@ -33,3 +33,22 @@ PRICE              Founding engagements (first 3): $2,500/quarter per market, in
 DEFEATED-BY        Signing without the stagger (attribution dies) · skipping the intake
                    script (Join-2 returns nothing) · quoting any rate without its
                    denominator and interval (the charter's own rules apply to its output).
+
+## AMENDED 2026-09-01 — session 6: stagger replaced by natural timing variation
+SUPERSEDES the CONFOUNDING clause above. The staggered subset asked the agency to
+delay revenue-bearing work — the one clause that made the charter expensive to sign.
+Replacement: placements across a book of clients already land on DIFFERENT dates
+without anyone delaying anything. That existing spread IS the stagger, free.
+DESIGN      Each placement's date is recorded as it naturally occurs. Markets whose
+            placement lands in month k are compared against markets untreated as of
+            month k — the same before/after joins, using variation the business
+            already produces.
+COST        The agency delays nothing and delivers nothing early. Their only
+            operational ask is now the intake script (attribution kit, above).
+HONEST      Natural timing is not random assignment. Placement dates may correlate
+            with client readiness or seasonality; the report names this and controls
+            against each market's own pre-period, per the original design.
+DEFEATED-BY all placements landing in the same week (no spread, no contrast — the
+            design degrades to a single before/after and says so on its face) ·
+            selecting WHICH clients to measure after seeing early results (the
+            measured set is fixed at signing).
