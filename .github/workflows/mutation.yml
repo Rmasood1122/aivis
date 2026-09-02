@@ -19,7 +19,7 @@ jobs:
       - name: Baseline suite must be green
         run: pytest -q
       - name: Mutation run
-        run: mutmut run --paths-to-mutate src/aivis || true
+        run: mutmut run
       - name: Results
         run: |
           mutmut results

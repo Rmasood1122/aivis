@@ -39,3 +39,7 @@ norecursedirs = ["_*_backup*", "_patch_*", "caai_v1", "index_gate*"]
 [[tool.mypy.overrides]]
 module = "reportlab.*"
 ignore_missing_imports = true
+
+[tool.mutmut]
+paths_to_mutate = ["src/aivis/"]
+tests_dir = ["tests/"]
