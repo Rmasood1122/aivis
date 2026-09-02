@@ -1,0 +1,22 @@
+{
+  "conversation_id": null,
+  "sealed_at_utc": "",
+  "target_role": "",
+  "target_org_class": "agency | brand | point-of-sale buyer",
+  "sourcing_pool": "cold-outbound | referral | floor",
+  "inbound": false,
+  "already_bought_competitor": null,
+  "heard_of_category": null,
+  "window_closes_after": "Q5 or first description of aivis",
+  "predictions": [
+    {"id": "P1", "statement": "raises evidence/reproducibility/method/trust unprompted, in-window", "confidence": null, "outcome": null},
+    {"id": "P2", "statement": "names concretely what they do about AI visibility today", "confidence": null, "outcome": null},
+    {"id": "P3", "statement": "has paid or seriously evaluated paying a vendor in this category", "confidence": null, "outcome": null},
+    {"id": "P4", "statement": "states a number, budget or range unasked", "confidence": null, "outcome": null},
+    {"id": "P5", "statement": "asks how something would be measured", "confidence": null, "outcome": null},
+    {"id": "P6", "statement": "names an internal approver for spend", "confidence": null, "outcome": null}
+  ],
+  "brier_score": null,
+  "transcript_path": "",
+  "notes_written_within_hour": null
+}
