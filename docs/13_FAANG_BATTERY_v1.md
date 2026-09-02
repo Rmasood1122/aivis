@@ -136,3 +136,6 @@ UC27 acquisition/due-diligence code walk
 | 2026-09-02 | K04 | PASS[P] | icacls: rmaso+SYSTEM+Administrators only, no broad principals; the 644 was POSIX-display artifact on NTFS [MEASURED] |
 | 2026-09-02 | K01 | PASS[P] | ACL half same as K04; residuals: live-key location + rotation [UNVERIFIED] |
 | 2026-09-02 | RUNNING TOTAL | 24 of 72 | PASS 15 · FAIL 4 (G01,G03,I06->fixed,K07) · SPLIT/ABSTAIN/PARTIAL 5 · POPULATION 72 |
+| 2026-09-02 | K04 | PASS[P] | icacls: rmaso+SYSTEM+Administrators only, no broad principals; the 644 was POSIX-display artifact on NTFS [MEASURED] |
+| 2026-09-02 | K01 | PASS[P] | ACL half same as K04; residuals: live-key location + rotation [UNVERIFIED] |
+| 2026-09-02 | RUNNING TOTAL | 24 of 72 | PASS 15 · FAIL 4 (G01,G03,I06->fixed,K07) · SPLIT/ABSTAIN/PARTIAL 5 · POPULATION 72 |
