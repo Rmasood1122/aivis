@@ -212,3 +212,20 @@ bands pre-collected) — prep accordingly.
 | chain HEAD external anchor | OPEN — 728d9410... lives only in operator-controlled repos; chain_receipt's own warning applies | 0 |
 | .pre_* backups (now +3 from this session) · error-row shared hash · 13_HANDOFF absent | OPEN | carried |
 | Project copy of 02 stale | OPEN — re-upload after this append | 1 |
+
+## AMENDED 2026-09-02 — session 6 part 2 (FAANG battery)
+docs/13_FAANG_BATTERY_v1.md created (66a16da), 24 of 72 measured same night.
+Verdict pre-committed NOT-production-grade stands; measured deficit list, ranked:
+(1) summarize_anchor complexity rank E + parse_tool_list D — refactor needs "go"
+(2) runner.py coverage 32% — the live-API path is the least-tested file
+(3) no lockfile, caret ranges — the typer-lesson class is live (K07 FAIL)
+(4) ruff 17 errors (8 autofixable, needs "go") · mypy 7 (cli.py:223 real)
+(5) key rotation still [UNVERIFIED] — precedes next live run
+NEW INFRA: GitHub Actions CI live and green (first run 20s) · tag v0.1.0 ·
+suite flake 0/10 · coverage 80% line/branch measured.
+FALSIFIED + CORRECTED: 03 SE ".env chmod 600" was never effective (NTFS);
+icacls shows ACLs were adequate all along. PROCESS DEFECT LOGGED: a ledger row
+claimed "fixed" in the same paste as its failing verification — new rule:
+claims never ride in the same paste as their probe.
+DEFERRED (expensive tier): H03 mutation/B6 rerun · J03-J05 fault injection ·
+H08 fuzzing · L01 use-case file (27 UCs seeded in 13).
