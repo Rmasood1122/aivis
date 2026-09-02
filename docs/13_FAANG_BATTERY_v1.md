@@ -140,3 +140,4 @@ UC27 acquisition/due-diligence code walk
 | 2026-09-02 | K07 | PASS[P] | requirements-lock.txt, 326 pins via pip freeze, commit 72eced9 [MEASURED] |
 | 2026-09-02 | G12 | PARTIAL | inventory: 9 tracked backups (7 src/aivis + 2 study2) + untracked set enumerated [MEASURED]; policy pending item-1 gitignore |
 | 2026-09-02 | RUNNING TOTAL | 26 of 72 | PASS 16 · FAIL 3 (G01,G03 — K07 now closed) · SPLIT/ABSTAIN/PARTIAL 6 · POPULATION 72 |
+| 2026-09-02 | H01 | AMENDED | runner.py 32% -> 97% line via 11 mocked tests (retry/backoff/timeout/error/stub); suite 115/3; commit 8d69a7b [MEASURED] |
