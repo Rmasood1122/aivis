@@ -229,3 +229,43 @@ claimed "fixed" in the same paste as its failing verification — new rule:
 claims never ride in the same paste as their probe.
 DEFERRED (expensive tier): H03 mutation/B6 rerun · J03-J05 fault injection ·
 H08 fuzzing · L01 use-case file (27 UCs seeded in 13).
+
+## AMENDED 2026-09-02 — session 7 close (FAANG-deficit session)
+Scope was 13's ranked deficit list; all 7 items resolved. HEAD ba0b399, CI green,
+suite 115/3 (was 104/3), coverage TOTAL 90% line (was 80%), ruff 0, mypy 0.
+Battery 13: 24 -> 31 of 72. Battery 08: unchanged at 14 of 72.
+No live API calls this session, so the key-rotation gate was never triggered;
+it still precedes any live run.
+THREE ENVIRONMENT-ASSUMPTION DEFECTS, same class, all found tonight:
+  (1) MSYS /tmp != Windows C:\tmp — Windows Python could not read a bash-written
+      temp file. Assert-before-write ordering made it a harmless crash.
+  (2) mutmut refuses to run natively on Windows (points to WSL); WSL present but
+      no pip and sudo auth failed. Moved to CI on ubuntu-latest.
+  (3) tests/test_cli_brand_match.py passes only from repo root — relative config
+      path assumes a CWD. Surfaced under mutmut. H03's blocker.
+FALSE GREEN CAUGHT: mutation run 33586594787 exited ✓ in 35s having generated
+ZERO mutants ("No such option: --paths-to-mutate", mutmut 3.x moved paths to
+config), swallowed by '|| true'. Caught by wall-clock implausibility, NOT by a
+gate. D0's mechanism in CI form. Fix pushed 9721c73; rerun then failed HONESTLY.
+
+### Carry-forward, session 7 (2026-09-02)
+| Item | Status | Carried |
+|---|---|---|
+| Five B0 conversations | OPEN — 0 of 5, blocked on nothing, outranks all build work | 11 |
+| KEY ROTATION CHECK | OPEN — .env still PASTE_NEW_KEY_HERE; precedes any live call | 4 |
+| Ahmad collaborator add | OPEN — username still unknown | 3 |
+| G12 study2 backup pair | OPEN — still tracked; only src/aivis untracked this session | 0 |
+| H03 mutation score / B6 quote-ban | ABSTAIN — blocked on defect (3); workflow file exists, one-command retry | B6 re-listed |
+| B3/B7 three bundle_digest impls | OPEN — untouched | carried |
+| B4 _patch_v1 untracked+armed · B5 accepted_non_claims | OPEN — untouched | carried |
+| error-row shared hash · chain HEAD external anchor | OPEN — untouched | carried |
+| Project copy of 02 stale | OPEN — re-upload after this append | 2 |
+| G01 ruff | DONE — 9 -> 0, 2e395b9 | closed |
+| G02 mypy | DONE — 7 -> 0 incl. the real cli.py:223 arg-type, 2e395b9 | closed |
+| G03 complexity | DONE — summarize_anchor E->B 18161a4, parse_tool_list D->C a210ca2 | closed |
+| K07 lockfile | DONE — 326 pins, 72eced9 | closed |
+| runner.py coverage | DONE — 32% -> 97%, 11 mocked tests, 8d69a7b | closed |
+| G12 src/aivis untrack + ignore | DONE — f57e59e, files on disk and in history | closed |
+| G10 duplicate code | PARTIAL — parser failure-returns unified; B7 digest trio untouched | 0 |
+| NEW: mutation.yml workflow | DONE — 268ea0f, fixed 9721c73; measurement steps must never carry '|| true' | 0 |
+| NEW: agent scratch left in place | _agent_variance_tail_v1.py, _agent_parser_tail_v1.py, _agent_lint_patch_v1.py — untracked, per §1 | 0 |
