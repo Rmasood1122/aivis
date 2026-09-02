@@ -176,6 +176,39 @@ def extract_domain_candidates(text: str) -> list[str]:
     return _d4_walk(text, False)
 
 
+def _fail_meta(parse_errors: list[str], violations: list[str]) -> tuple[list[ToolEntry], dict]:
+    """The empty-result failure shape, unified (was duplicated verbatim)."""
+    return [], {
+        "parse_success": False,
+        "parse_errors": parse_errors,
+        "violations": violations,
+        "parse_mode": "unknown",
+        "has_duplicates": False,
+    }
+
+
+def _line_rank_rest(ln: str, prev_rank: int) -> tuple[int, str]:
+    """Extract (rank, rest) from a numbered or bulleted item line."""
+    rank_match = re.match(r"^(\d+)\s*[\.\)]\s+(.*)$", ln)
+    if rank_match:
+        return int(rank_match.group(1)), rank_match.group(2).strip()
+    return prev_rank + 1, re.sub(r"^[-•*]\s*", "", ln).strip()
+
+
+def _split_name_why(rest: str) -> tuple[str, str]:
+    """Split an item's text into (name_raw, why). Bold first, then delimiters."""
+    bold_match = re.match(r"^\*\*(.+?)\*\*\s*[:–—-]\s*(.*)$", rest)
+    if bold_match:
+        return bold_match.group(1).strip(), bold_match.group(2).strip()
+    parts = re.split(r"\s*[:–—]\s*", rest, maxsplit=1)
+    if len(parts) == 1:
+        # Try splitting on " - "
+        parts = re.split(r"\s+-\s+", rest, maxsplit=1)
+    name_raw = parts[0].strip()
+    why = parts[1].strip() if len(parts) > 1 else ""
+    return name_raw, why
+
+
 def parse_tool_list(raw: str) -> tuple[list[ToolEntry], dict]:
     """
     Parse a ranked tool list from raw model response.
@@ -187,31 +220,18 @@ def parse_tool_list(raw: str) -> tuple[list[ToolEntry], dict]:
     tool_list: list[ToolEntry] = []
 
     if not raw or not raw.strip():
-        return [], {
-            "parse_success": False,
-            "parse_errors": ["PE-06"],
-            "violations": ["OCV-01"],
-            "parse_mode": "unknown",
-            "has_duplicates": False,
-        }
+        return _fail_meta(["PE-06"], ["OCV-01"])
 
     lines = [ln.strip() for ln in raw.splitlines() if ln.strip()]
 
     # Detect numbered or bulleted list items
-    item_lines: list[str] = []
-    for ln in lines:
-        if re.match(r"^\d+\s*[\.\)]\s+", ln) or re.match(r"^[-•*]\s+", ln):
-            item_lines.append(ln)
+    item_lines = [
+        ln for ln in lines
+        if re.match(r"^\d+\s*[\.\)]\s+", ln) or re.match(r"^[-•*]\s+", ln)
+    ]
 
     if not item_lines:
-        violations.append("OCV-01")
-        return [], {
-            "parse_success": False,
-            "parse_errors": ["PE-06"],
-            "violations": violations,
-            "parse_mode": "unknown",
-            "has_duplicates": False,
-        }
+        return _fail_meta(["PE-06"], ["OCV-01"])
 
     parse_mode = "list"
     rank = 0
@@ -219,28 +239,8 @@ def parse_tool_list(raw: str) -> tuple[list[ToolEntry], dict]:
     has_dup = False
 
     for ln in item_lines:
-        # Try to extract explicit rank number
-        rank_match = re.match(r"^(\d+)\s*[\.\)]\s+(.*)$", ln)
-        if rank_match:
-            rank = int(rank_match.group(1))
-            rest = rank_match.group(2).strip()
-        else:
-            rank += 1
-            rest = re.sub(r"^[-•*]\s*", "", ln).strip()
-
-        # Split name from why using common delimiters
-        # Handle **bold names** first
-        bold_match = re.match(r"^\*\*(.+?)\*\*\s*[:–—-]\s*(.*)$", rest)
-        if bold_match:
-            name_raw = bold_match.group(1).strip()
-            why = bold_match.group(2).strip()
-        else:
-            parts = re.split(r"\s*[:–—]\s*", rest, maxsplit=1)
-            if len(parts) == 1:
-                # Try splitting on " - "
-                parts = re.split(r"\s+-\s+", rest, maxsplit=1)
-            name_raw = parts[0].strip()
-            why = parts[1].strip() if len(parts) > 1 else ""
+        rank, rest = _line_rank_rest(ln, rank)
+        name_raw, why = _split_name_why(rest)
 
         # Clean up name_raw
         name_raw = name_raw.strip("*").strip()
