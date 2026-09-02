@@ -146,3 +146,6 @@ UC27 acquisition/due-diligence code walk
 | 2026-09-02 | G12 | PASS[P] | 7 src/aivis backups untracked at f57e59e + *.pre_* gitignored; files on disk and in history; study2 pair still tracked [MEASURED] |
 | 2026-09-02 | RUNNING TOTAL | 28 of 72 | PASS 19 · FAIL 1 (G01) · SPLIT/ABSTAIN/PARTIAL 7 · POPULATION 72 |
 | 2026-09-02 | H01 | AMENDED[2] | TOTAL 90% line at a2f1c8c (was 80% @66a16da): parser 93%, variance 92%, runner 97%. Supersedes "runner.py 32% = worst file". G03's behavior pin therefore ran against >90%-covered files [MEASURED: pytest --cov] |
+| 2026-09-02 | G01 | PASS[P] | ruff 9 -> 0 at 2e395b9: 6x ISC004 parenthesized (no rendered-output change; continuations already correctly spaced), BLE001+S110 noqa with reason at runner.py:115, UP007 PEP604 [MEASURED] |
+| 2026-09-02 | G02 | PASS[P] | mypy 7 -> 0, 12 files clean at 2e395b9: INSUFFICIENT_EVIDENCE annotated Literal (killed 3 arg-type at scorer 54-56), isinstance guards at cli.py:106/222 raising TypeError (killed call-overload :111 and arg-type :223 — the one REAL bug), reportlab.* ignore_missing_imports [MEASURED] |
+| 2026-09-02 | NOTE | TRY004 | the two guards I added raised ruff's own new finding; RuntimeError -> TypeError. The gate caught it pre-commit — a fix that introduces a lint error is why the gate runs after the patch, not before |
