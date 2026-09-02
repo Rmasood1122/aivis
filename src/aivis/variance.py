@@ -53,6 +53,9 @@ def _abstained_summary(runs: int, abstained: int, reason: str) -> dict:
     }
 
 
+from .intervals import wilson  # wilson-v1
+
+
 def summarize_anchor(objs: list[VisibilityObj], scoring_cfg: dict) -> dict:
     """
     Compute variance summary for a set of runs sharing the same
@@ -81,7 +84,9 @@ def summarize_anchor(objs: list[VisibilityObj], scoring_cfg: dict) -> dict:
 
     # --- Mention stability ---
     mentioned = [o.brand_mentioned for o in scored]
-    mention_rate = sum(1 for x in mentioned if x) / n
+    _mention_n = sum(1 for x in mentioned if x)
+    mention_rate = _mention_n / n
+    _, _mr_lo, _mr_hi = wilson(_mention_n, n)  # wilson-v1
     mention_stable = mention_rate in (0.0, 1.0)
 
     # --- Rank stability ---
@@ -176,6 +181,7 @@ def summarize_anchor(objs: list[VisibilityObj], scoring_cfg: dict) -> dict:
         "run_count": runs,
         "runs_scored": n,
         "runs_abstained": n_abstained,
+        "mention_rate_ci95": [round(_mr_lo, 4), round(_mr_hi, 4)],  # wilson-v1
         "abstained": False,
         "mention_rate": mention_rate,
         "mention_stable": mention_stable,

@@ -248,7 +248,9 @@ def smoke(
         f"Runs abstained: {summ['runs_abstained']}",
         "",
         "=== MENTION ===",
-        f"  Mention rate: {_fmt(summ['mention_rate'], '.0%')} (stable={summ['mention_stable']})",
+        f"  Mention rate: {_fmt(summ['mention_rate'], '.0%')} "
+        f"[95% CI {summ['mention_rate_ci95'][0]:.1%}-{summ['mention_rate_ci95'][1]:.1%}, "
+        f"n={summ['runs_scored']}] (stable={summ['mention_stable']})",
         "",
         "=== RANK ===",
         f"  Rank values: {summ['rank_values']}",
