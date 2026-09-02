@@ -463,3 +463,13 @@ the whole thing.
 
 *Nothing deleted, nothing overwritten. Steps touching existing files (I-2, I-4, I-7, I-8,
 I-9, I-11) require a named "go" before execution. v1 stands as the record of what changed.*
+
+## AMENDED 2026-09-02 — session 7, P1/P4 were never defined
+§3's kill rule `P1 = 0/5 AND P4 <= 1/5` referenced undefined terms. Population searched:
+docs/, study2/, runs/. Only hit is the kill-rule line itself [MEASURED: grep 2026-09-02].
+CONSEQUENCE: the kill rule has been unevaluable since 2026-08-27 and could not have fired
+in either direction. M9 class — a rule with no runnable check is a ritual.
+RESOLVED FORWARD, not retroactively: P1-P6 are defined in docs/17_B0_SCREEN_KIT_v1.md §3
+and become the pre-registration. Legitimate because 0 of 5 conversations have been run —
+this is definition before measurement, not a bar moved after a result.
+17's "the sealed original governs" instruction is VOID: there is no sealed original.
