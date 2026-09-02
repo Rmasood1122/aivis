@@ -137,3 +137,6 @@ UC27 acquisition/due-diligence code walk
 | 2026-09-02 | K01 | PASS[P] | ACL half same as K04; residuals: live-key location + rotation [UNVERIFIED] |
 | 2026-09-02 | RUNNING TOTAL | 24 of 72 | PASS 15 · FAIL 4 (G01,G03,I06->fixed,K07) · SPLIT/ABSTAIN/PARTIAL 5 · POPULATION 72 |
 | 2026-09-02 | NOTE | dedupe | Block-T paste ran twice (f0e5e29, 08573d2): the K04/K01/RUNNING-TOTAL rows above and 02's session-6-part-2 block are each duplicated. One completion each. Stripping the duplicates edits existing lines -> deferred to a "go" in session 7. |
+| 2026-09-02 | K07 | PASS[P] | requirements-lock.txt, 326 pins via pip freeze, commit 72eced9 [MEASURED] |
+| 2026-09-02 | G12 | PARTIAL | inventory: 9 tracked backups (7 src/aivis + 2 study2) + untracked set enumerated [MEASURED]; policy pending item-1 gitignore |
+| 2026-09-02 | RUNNING TOTAL | 26 of 72 | PASS 16 · FAIL 3 (G01,G03 — K07 now closed) · SPLIT/ABSTAIN/PARTIAL 6 · POPULATION 72 |
