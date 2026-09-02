@@ -113,7 +113,9 @@ def run_once(
             error_body = ""
             try:
                 error_body = resp.text
-            except Exception:
+            except Exception:  # noqa: BLE001, S110
+                # Best-effort read of the error body for the message below.
+                # A failure to READ the body must not mask the real HTTP error.
                 pass
             raise RuntimeError(
                 f"Anthropic API returned {resp.status_code}: {error_body}"

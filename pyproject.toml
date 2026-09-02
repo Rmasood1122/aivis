@@ -35,3 +35,7 @@ build-backend = "poetry.core.masonry.api"
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 norecursedirs = ["_*_backup*", "_patch_*", "caai_v1", "index_gate*"]
+
+[[tool.mypy.overrides]]
+module = "reportlab.*"
+ignore_missing_imports = true

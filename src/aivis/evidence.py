@@ -72,8 +72,10 @@ def evidence_appendix_lines(objs: Sequence[VisibilityObj]) -> list[str]:
         "hash from its transcript must reproduce the value printed here.",
         "",
         f"Runs in trail: {len(objs)}",
-        f"Evidence bundle digest (sha256 over per-run hashes, run order): "
-        f"{bundle_digest(objs)}",
+        (
+            f"Evidence bundle digest (sha256 over per-run hashes, run order): "
+            f"{bundle_digest(objs)}"
+        ),
     ]
 
     problems = verify_hashes(objs)
@@ -94,14 +96,20 @@ def evidence_appendix_lines(objs: Sequence[VisibilityObj]) -> list[str]:
             [
                 "",
                 f"Run {o.run_index} - {o.executed_at_utc.isoformat()}",
-                f"  model requested: {o.model_provider}/{o.model_name}"
-                f"  served: {served}",
+                (
+                    f"  model requested: {o.model_provider}/{o.model_name}"
+                    f"  served: {served}"
+                ),
                 f"  temperature: {temp_s}  max_tokens: {o.max_tokens}",
-                f"  prompt: {o.prompt_id} {o.prompt_version}"
-                f"  family: {o.prompt_family}",
+                (
+                    f"  prompt: {o.prompt_id} {o.prompt_version}"
+                    f"  family: {o.prompt_family}"
+                ),
                 f"  response_sha256: {o.response_hash}",
-                f"  parse: mode={o.parse_mode} success={o.parse_success}"
-                f"  errors={','.join(o.parse_errors) or 'none'}",
+                (
+                    f"  parse: mode={o.parse_mode} success={o.parse_success}"
+                    f"  errors={','.join(o.parse_errors) or 'none'}"
+                ),
                 f"  anchor: {o.stability_anchor_key}",
             ]
         )

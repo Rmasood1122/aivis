@@ -1,12 +1,12 @@
 from __future__ import annotations
 
-from typing import Literal, NamedTuple, Union
+from typing import Literal, NamedTuple
 
 # The exact token. Nothing else is a valid abstention: not None, not 0.0,
 # not 0.5, not "n/a", not "approximately". One string, compared by equality.
-INSUFFICIENT_EVIDENCE = "INSUFFICIENT_EVIDENCE"
+INSUFFICIENT_EVIDENCE: Literal["INSUFFICIENT_EVIDENCE"] = "INSUFFICIENT_EVIDENCE"
 
-ScoreValue = Union[float, Literal["INSUFFICIENT_EVIDENCE"]]
+ScoreValue = float | Literal["INSUFFICIENT_EVIDENCE"]
 
 
 def is_abstained(value: object) -> bool:

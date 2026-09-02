@@ -104,6 +104,8 @@ def run(
 
     # Score. D6: an unparseable response abstains instead of scoring.
     scoring_cfg = _load_json(Path("config/scoring_v1.json"))
+    if not isinstance(scoring_cfg, dict):
+        raise TypeError("config/scoring_v1.json must be a JSON object, not a list")
     scores = compute_scores(
         brand_mentioned=brand_mentioned,
         brand_rank=brand_rank,
@@ -220,6 +222,8 @@ def smoke(
 
     objs = [VisibilityObj.model_validate(r) for r in rows]
     scoring_cfg = _load_json(Path("config/scoring_v1.json"))
+    if not isinstance(scoring_cfg, dict):
+        raise TypeError("config/scoring_v1.json must be a JSON object, not a list")
     summ = summarize_anchor(objs, scoring_cfg)
 
     # Write aggregate. This is written in both branches: an abstention is a
@@ -255,17 +259,21 @@ def smoke(
         f"Runs abstained: {summ['runs_abstained']}",
         "",
         "=== MENTION ===",
-        f"  Mention rate: {_fmt(summ['mention_rate'], '.0%')} "
-        f"[95% CI {summ['mention_rate_ci95'][0]:.1%}-{summ['mention_rate_ci95'][1]:.1%}, "
-        f"n={summ['runs_scored']}] (stable={summ['mention_stable']})",
+        (
+            f"  Mention rate: {_fmt(summ['mention_rate'], '.0%')} "
+            f"[95% CI {summ['mention_rate_ci95'][0]:.1%}-{summ['mention_rate_ci95'][1]:.1%}, "
+            f"n={summ['runs_scored']}] (stable={summ['mention_stable']})"
+        ),
         "",
         "=== RANK ===",
         f"  Rank values: {summ['rank_values']}",
         f"  Rank spread: {summ['rank_spread']} (stable={summ['rank_stable']})",
         "",
         "=== LIST STABILITY ===",
-        f"  Mean Jaccard: {_fmt(summ['list_stability_score'], '.2f')} "
-        f"(stable={summ['list_stable']})",
+        (
+            f"  Mean Jaccard: {_fmt(summ['list_stability_score'], '.2f')} "
+            f"(stable={summ['list_stable']})"
+        ),
         "",
         "=== SCORING ===",
         f"  Raw score: {_fmt(summ['raw_score'], '.3f')}",
