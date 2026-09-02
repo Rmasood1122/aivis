@@ -141,3 +141,7 @@ UC27 acquisition/due-diligence code walk
 | 2026-09-02 | G12 | PARTIAL | inventory: 9 tracked backups (7 src/aivis + 2 study2) + untracked set enumerated [MEASURED]; policy pending item-1 gitignore |
 | 2026-09-02 | RUNNING TOTAL | 26 of 72 | PASS 16 · FAIL 3 (G01,G03 — K07 now closed) · SPLIT/ABSTAIN/PARTIAL 6 · POPULATION 72 |
 | 2026-09-02 | H01 | AMENDED | runner.py 32% -> 97% line via 11 mocked tests (retry/backoff/timeout/error/stub); suite 115/3; commit 8d69a7b [MEASURED] |
+| 2026-09-02 | G03 | PASS[P] | summarize_anchor E(36)->B(7) at 18161a4 via _rates C(15)/_caps B(9)/_composite B(6); parse_tool_list D->C(17) at a210ca2 via _fail_meta/_line_rank_rest/_split_name_why; all functions <=C both files; suite 115/3 after each [MEASURED: radon cc -s] |
+| 2026-09-02 | G10 | PARTIAL | parser's two duplicate failure-return blocks unified to _fail_meta (a210ca2); the 3x bundle_digest class (B7) untouched [MEASURED] |
+| 2026-09-02 | G12 | PASS[P] | 7 src/aivis backups untracked at f57e59e + *.pre_* gitignored; files on disk and in history; study2 pair still tracked [MEASURED] |
+| 2026-09-02 | RUNNING TOTAL | 28 of 72 | PASS 19 · FAIL 1 (G01) · SPLIT/ABSTAIN/PARTIAL 7 · POPULATION 72 |
