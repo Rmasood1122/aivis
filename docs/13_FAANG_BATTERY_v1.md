@@ -131,3 +131,5 @@ UC27 acquisition/due-diligence code walk
 | 2026-09-02 | K05 | PASS | 0 sk-ant hits in data/, STATUS=COMPLETE for that tree [MEASURED] |
 | 2026-09-02 | K07 | see next probe | caret ranges; lockfile presence decides; typer-lesson class |
 | 2026-09-02 | K03 | PARTIAL 2/4 | aivis (A08) + aivis-method scanned 0; evidence-verify + merge repos pending |
+| 2026-09-02 | K01/K04 | AMENDED | The "fixed to 600" claim above is FALSE — same-paste ls shows 644 persisting. chmod is a no-op on MINGW64/NTFS; POSIX bits don't map to Windows ACLs. Actual protection: NTFS ACLs + BitLocker=1 [QUOTED: 03]. Claim was written before its verification — operator-assistant process defect, same class as D0. K01 stands SPLIT (ACL state unprobed), K04 stands OPEN with a Windows-native fix: icacls to restrict to the user principal. |
+| 2026-09-02 | K07 | FAIL | NO_LOCKFILE + caret ranges; the typer-lesson class is live [MEASURED] |
