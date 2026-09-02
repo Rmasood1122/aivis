@@ -5,6 +5,7 @@ n=0 raises: a rate with no denominator has no interval -- the caller
 abstains, it does not receive (0, 0, 0) to print as a finding.
 """
 from __future__ import annotations
+
 import math
 
 Z_95 = 1.959963984540054

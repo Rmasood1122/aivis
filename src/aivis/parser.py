@@ -59,19 +59,14 @@ def norm_name(name: str) -> str:
 # root: the cue/URL-shape test is the control, this is a secondary sieve, and
 # a fuller list would admit MORE source-file extensions, not fewer.
 # Reviewed 2026-08-19.
-_D4_TLD = frozenset("""
-com org net edu gov mil int info biz name pro io ai app dev co xyz online
-site tech store blog cloud digital agency media news press today world life
-live work space team group solutions systems services network global me tv
-uk de fr jp ca au nl it es se ch in br mx ru pl no fi dk be at ie nz sg kr
-""".split())
+_D4_TLD = frozenset(["com", "org", "net", "edu", "gov", "mil", "int", "info", "biz", "name", "pro", "io", "ai", "app", "dev", "co", "xyz", "online", "site", "tech", "store", "blog", "cloud", "digital", "agency", "media", "news", "press", "today", "world", "life", "live", "work", "space", "team", "group", "solutions", "systems", "services", "network", "global", "me", "tv", "uk", "de", "fr", "jp", "ca", "au", "nl", "it", "es", "se", "ch", "in", "br", "mx", "ru", "pl", "no", "fi", "dk", "be", "at", "ie", "nz", "sg", "kr"])
 
 # Suffixes that are real TLDs but overwhelmingly appear as source-file
 # extensions in software prose. "see README.md" must not mint a citation.
 # KNOWN ASYMMETRY, disclosed rather than discovered: a brand whose real domain
 # ends in one of these cannot earn a bare-token citation. It still qualifies
 # via URL shape.
-_D4_EXT = frozenset("md py sh ts rs so cc as im cd la ml".split())
+_D4_EXT = frozenset(["md", "py", "sh", "ts", "rs", "so", "cc", "as", "im", "cd", "la", "ml"])
 
 _D4_URLISH = re.compile(r"(?i)(?:https?://|www\.)[^\s<>\"')\]]+")
 _D4_HOSTOK = re.compile(r"(?i)^(?:[a-z0-9][-a-z0-9]*\.)+([a-z]{2,24})$")
@@ -90,7 +85,7 @@ _D4_NEG = re.compile(
 
 def _d4_clean(host):
     host = host.lower().strip(".,;:!?)]}'\"")
-    return host[4:] if host.startswith("www.") else host
+    return host.removeprefix("www.")
 
 
 _D4_PAREN_OPEN = "(["

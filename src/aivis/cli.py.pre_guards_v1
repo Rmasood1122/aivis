@@ -3,15 +3,15 @@ from __future__ import annotations
 import hashlib
 import json
 import uuid
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 import typer
 from rich import print as rprint
 
-from .evidence import evidence_appendix_lines, write_evidence_jsonl
 from .models import VisibilityObj
 from .parser import norm_name, parse_tool_list
+from .evidence import evidence_appendix_lines, write_evidence_jsonl
 from .reporter import write_simple_pdf
 from .runner import run_once, run_once_stub
 from .scorer import INSUFFICIENT_EVIDENCE, compute_scores
@@ -61,7 +61,7 @@ def run(
     prompt_version: str = "v1.0",
     model_provider: str = "anthropic",
     model_name: str = "claude-sonnet-5",
-    temperature: float | None = None,  # temp-v1: API deprecated the param for claude-sonnet-5 (req_011Cedo5EDzMLp2paBDkgRXm); None -> omitted, provider default, declared per-row in request_payload
+    temperature: float | None = 0.0,
     max_tokens: int = 2048,
     run_index: int = 1,
     live: bool = False,
@@ -132,7 +132,7 @@ def run(
         temperature=temperature,
         max_tokens=max_tokens,
         run_index=run_index,
-        executed_at_utc=datetime.now(UTC),
+        executed_at_utc=datetime.now(timezone.utc),
         request_payload=rr.request_payload,
         raw_response_text=raw,
         raw_response_json=rr.raw_json,
@@ -188,18 +188,11 @@ def smoke(
     aggregate_out: Path = Path("data/aggregates/smoke_aggregate.json"),
     pdf_out: Path = Path("data/reports/smoke_report.pdf"),
     evidence_out: Path = Path("data/reports/smoke_evidence.jsonl"),
-    force_overwrite: bool = False,
 ):
     """Run a single prompt N times, compute variance, generate PDF. Use --live for real API."""
-    # guards-v1: evidence files are never overwritten by default (B1/A04)
+    # Clear previous smoke data
     if out.exists():
-        if not force_overwrite:
-            rprint(
-                f"[red]REFUSED[/red] {out} exists. Evidence is never overwritten by "
-                f"default. Pass --force-overwrite or a versioned --out path."
-            )
-            raise typer.Exit(code=1)
-        out.unlink()  # explicit, operator-flagged
+        out.unlink()
 
     rprint(f"[cyan]Running {prompt_id} x {runs} ({'LIVE' if live else 'STUB'})...[/cyan]")
 
