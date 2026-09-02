@@ -9,3 +9,5 @@ dist/
 build/
 *.egg-info/
 parser_dump.txt
+
+*.pre_*
