@@ -287,3 +287,23 @@ NEW OPEN: make_report attempt-count blind to .errors.jsonl sibling
 NEW FILES: canon_pr_agency_v1/v2.json · canonv2 reports ×2 ·
 cross_engine_buyer_intent_v1.md · pr_agency_luna_run1_v1.jsonl (+.errors).
 [MEASURED: session 9 console record]
+
+### Carry-forward, session 9 close (2026-09-04)
+| Item | Status | Carried |
+|---|---|---|
+| Luna bank run | DONE — 89/90 clean, two-route digest 0e0772d1, discontinuities noted | closed at 1 |
+| Canon v1/v2 files + canonv2 reports x2 | DONE — pushed 20b53ae | 0 |
+| Cross-engine buyer_intent artifact | DONE — pushed 20b53ae | 0 |
+| Session-8 finding amended (asymmetric canon) | DONE — appended above, pushed | 0 |
+| Sep 8 demo v1 | DONE — 7e5a634, banned-words 0, all numbers measured | 0 |
+| WTP prediction seal | DONE — f8b4cbd, sealed 4 days pre-meeting; confidences adopted from assistant evidence read unedited — note at Brier scoring | closed at 3 |
+| Key rotation | SPLIT — real key in .env [MEASURED]; currency vs 08-29 exposure [UNVERIFIED, console] | 6 |
+| Five B0 conversations | OPEN — 0/5, drafts ready, outranks all build | 13 |
+| B0 sends (5 LinkedIn pastes) | OPEN — variants A/B/C written + checked this session | 0 |
+| Credible PR slide deck (inbox, 08-27 email) | OPEN — read before Sep 8 | 0 |
+| Vendor-page re-fetch (gating if demo §04 shown) | OPEN | carried |
+| Ahmad collaborator add | OPEN — username still unknown | 5 |
+| make_report attempt-count blind to .errors.jsonl | OPEN — needs "go" | 0 |
+| Luna evidence single-disk (study2/data gitignored) | OPEN — decide: force-add / copy / accept | 0 |
+| wtp template runs/wtp_pred_sep8_v1.json | NOTE — untracked scaffolding, left in place; cat> onto it post-creation logged as lock brush, zero loss | 0 |
+| D08 chain fix · G10 fork · B4/B5/B6/B7 · VOID move · C07 sleep | OPEN — unchanged | carried |
