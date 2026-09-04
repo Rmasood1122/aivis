@@ -269,3 +269,21 @@ gate. D0's mechanism in CI form. Fix pushed 9721c73; rerun then failed HONESTLY.
 | G10 duplicate code | PARTIAL — parser failure-returns unified; B7 digest trio untouched | 0 |
 | NEW: mutation.yml workflow | DONE — 268ea0f, fixed 9721c73; measurement steps must never carry '|| true' | 0 |
 | NEW: agent scratch left in place | _agent_variance_tail_v1.py, _agent_parser_tail_v1.py, _agent_lint_patch_v1.py — untracked, per §1 | 0 |
+
+## AMENDED 2026-09-04 — session 9 (Luna run + canon versioning)
+Session-8 line "Claude names small boutiques; both ChatGPT models name global
+incumbents, no boutiques" is SUPERSEDED — it was measured under asymmetric
+extraction (run4 canon contained no incumbent names). Under shared canon v2
+(study2/config/canon_pr_agency_v2.json, 23 names), Claude buyer_intent is led
+by Weber Shandwick and Edelman (14.6% each, n=41). Surviving divergence:
+Luna names Bospar/5WPR/Otter/Method (0/41 on Claude, CI-separated); Claude
+names Reputation Ink/Rhino (0/18 on Luna, NOT separated at these n).
+Luna run: 89/90 clean, verified two-route (digest 0e0772d1…), two idle
+discontinuities (3h18m, 26m) in wall clock, ~19min active.
+Key rotation: SPLIT — .env carries a real key [MEASURED: grep 09-04];
+currency vs the 08-29 exposure [UNVERIFIED — console check pending].
+NEW OPEN: make_report attempt-count blind to .errors.jsonl sibling
+(prints attempted=clean on split-file runs) — needs "go".
+NEW FILES: canon_pr_agency_v1/v2.json · canonv2 reports ×2 ·
+cross_engine_buyer_intent_v1.md · pr_agency_luna_run1_v1.jsonl (+.errors).
+[MEASURED: session 9 console record]
