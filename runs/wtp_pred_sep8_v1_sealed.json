@@ -1,0 +1,16 @@
+{
+  "seal": "wtp_predictions_sep8_meeting_v1_sealed",
+  "sealed_utc": "2026-09-04T12:15:00Z",
+  "meeting": "Credible PR (Max Muir, Tyler Tran), 2026-09-08 12:30 PST",
+  "rule": "sealed before the meeting; each prediction Brier-scored within 24h after; results appended to 02, this file never edited",
+  "priors": "confidences set from probed evidence [MEASURED: Gmail 2026-09-04]: Calendly intake pre-collected budget in $2K-$10K bands; sales deck attached to intro email; Tyler framed aivis to Max as ranking + losing-money SEO/AEO (zero measurement vocabulary); trashed cadence is pure media-opportunity selling; scheduling behavior disciplined",
+  "predictions": [
+    {"id": 1, "claim": "Max opens by pitching Credible PR services before asking about aivis", "pred": true, "confidence": 0.85},
+    {"id": 2, "claim": "They ask what the audit costs before asking how the measurement works", "pred": true, "confidence": 0.65},
+    {"id": 3, "claim": "Evidence, method, proof, or trust raised by them unprompted before aivis is described", "pred": false, "confidence": 0.75},
+    {"id": 4, "claim": "They engage with >= $2,500/quarter founding price without immediate pushback", "pred": true, "confidence": 0.60},
+    {"id": 5, "claim": "They name a specific client market as a pilot candidate on the call", "pred": true, "confidence": 0.50},
+    {"id": 6, "claim": "A concrete next step with a date is agreed before the call ends", "pred": true, "confidence": 0.90}
+  ],
+  "kill_relevance": "these six inform WTP confidence only; they are NOT B0 evidence — inbound/warm lead, screened separately per screen rule 4"
+}
