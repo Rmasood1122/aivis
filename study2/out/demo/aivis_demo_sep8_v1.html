@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>aivis — measurement demonstration · prepared for Sep 8</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FCFCFB; --ink:#1A2422; --muted:#5C6663; --faint:#8A928F;
+    --rule:#DCDAD2; --rule-strong:#B9B6AC;
+    --teal:#0E6B54; --teal-bg:#EDF5F1;
+    --red:#A32D2D; --red-bg:#FAEFEF;
+    --mono:'Spline Sans Mono',ui-monospace,monospace;
+    --sans:'Instrument Sans',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{background:var(--paper)}
+  body{font-family:var(--sans);color:var(--ink);line-height:1.55;font-size:16px;
+       max-width:880px;margin:0 auto;padding:48px 28px 80px}
+  .num{font-family:var(--mono)}
+  header{border-bottom:2px solid var(--ink);padding-bottom:20px;margin-bottom:8px}
+  .kicker{font-size:13px;color:var(--muted);letter-spacing:.02em}
+  h1{font-size:30px;font-weight:600;line-height:1.2;margin-top:6px}
+  h1 .sub{display:block;font-size:17px;font-weight:400;color:var(--muted);margin-top:6px}
+  section{padding:34px 0;border-bottom:1px solid var(--rule)}
+  h2{font-size:13px;font-weight:600;letter-spacing:.08em;color:var(--muted);margin-bottom:16px}
+  h2 .n{font-family:var(--mono);color:var(--teal);margin-right:10px}
+  p{max-width:64ch}
+  p+p{margin-top:10px}
+  .face{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:0;
+        border:1px solid var(--rule-strong);margin-top:14px}
+  .face>div{padding:10px 14px;border-right:1px solid var(--rule);font-size:13px}
+  .face>div:last-child{border-right:0}
+  .face .k{color:var(--faint);font-size:11.5px;display:block;margin-bottom:2px}
+  .face .v{font-family:var(--mono);font-size:13px}
+  .hero{display:flex;flex-wrap:wrap;gap:14px;margin:18px 0 10px}
+  .zero{flex:1;min-width:230px;border:1px solid var(--rule-strong);padding:20px 22px}
+  .zero .big{font-family:var(--mono);font-size:56px;line-height:1;font-weight:500}
+  .zero .den{font-family:var(--mono);font-size:15px;color:var(--muted);margin-top:4px}
+  .zero .ci{font-family:var(--mono);font-size:12.5px;color:var(--faint)}
+  .zero .lbl{font-size:13.5px;margin-top:10px;color:var(--ink)}
+  .zero .surf{font-size:12px;color:var(--muted)}
+  table{border-collapse:collapse;width:100%;margin-top:14px;font-size:14px}
+  th{font-size:12px;font-weight:600;color:var(--muted);text-align:left;
+     border-bottom:1px solid var(--ink);padding:8px 10px 6px;letter-spacing:.02em}
+  td{padding:7px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
+  td.num,th.num{font-family:var(--mono);font-size:13px;white-space:nowrap}
+  tr.sep td{background:var(--teal-bg)}
+  .tag{font-family:var(--mono);font-size:11px;color:var(--faint)}
+  .yes{color:var(--teal);font-family:var(--mono);font-weight:500}
+  .no{color:var(--faint);font-family:var(--mono)}
+  .instrument{border:1px solid var(--rule-strong);margin-top:16px}
+  .instrument .row{display:flex;align-items:baseline;gap:18px;padding:16px 20px;flex-wrap:wrap}
+  .instrument .row+.row{border-top:1px solid var(--rule)}
+  .reading{font-family:var(--mono);font-size:34px;line-height:1}
+  .reading.bad{color:var(--red)}
+  .reading.good{color:var(--teal)}
+  .instrument .what{font-size:13.5px;max-width:52ch}
+  .instrument .what b{font-weight:600}
+  .pill{font-family:var(--mono);font-size:11px;padding:2px 8px;border:1px solid currentColor;border-radius:2px}
+  .pill.bad{color:var(--red);background:var(--red-bg)}
+  .pill.good{color:var(--teal);background:var(--teal-bg)}
+  .hash{font-family:var(--mono);font-size:12px;word-break:break-all;color:var(--muted);
+        background:#F4F3EF;padding:10px 14px;border-left:2px solid var(--teal);margin-top:8px}
+  .note{font-size:13px;color:var(--muted);margin-top:12px;max-width:70ch}
+  .warn{border:1px solid var(--rule-strong);background:#F7F6F2;padding:12px 16px;
+        font-size:13px;color:var(--muted);margin-top:16px;max-width:100%}
+  .notclaimed{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:14px}
+  .nc{border:1px solid var(--rule);padding:14px 16px;font-size:13.5px}
+  .nc .t{font-weight:600;margin-bottom:4px}
+  .nc .u{font-size:12.5px;color:var(--muted)}
+  footer{padding-top:26px;font-size:12.5px;color:var(--faint)}
+  footer .num{font-size:12px}
+  .verifyrec{font-family:var(--mono);font-size:12.5px;background:#F4F3EF;
+             padding:12px 16px;margin-top:10px;white-space:pre-wrap}
+  @media print{body{padding:20px}section{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="kicker">aivis · AI visibility measurement · demonstration prepared 2026-09-04</div>
+  <h1>What AI assistants answer when a prospect asks who to hire
+    <span class="sub">Measured on the cosmetic-practice PR market. Every number below is computed from a stored evidence file and carries its denominator.</span>
+  </h1>
+  <div class="face">
+    <div><span class="k">Rung</span><span class="v">R1 — operator's machine</span></div>
+    <div><span class="k">Prompt bank</span><span class="v">pr_agency_v1 · 30 prompts · sealed 2026-08-29</span></div>
+    <div><span class="k">Engine 1</span><span class="v">claude-sonnet-4-6 · temp 0.0 · 210 attempted / 191 clean</span></div>
+    <div><span class="k">Engine 2</span><span class="v">gpt-5.6-luna · temp omitted (API rejects) · 90 attempted / 89 clean</span></div>
+    <div><span class="k">Extraction</span><span class="v">shared canon v2, 23 names · parse unvalidated, κ pending</span></div>
+  </div>
+</header>
+
+<section>
+  <h2><span class="n">01</span>The finding</h2>
+  <p>When AI assistants are asked buyer-intent questions in this market — who to hire, who to shortlist, who to trust with a cosmetic practice — Credible PR does not appear. Not on Claude, and not on ChatGPT's free consumer default, the surface most prospects actually use.</p>
+  <div class="hero">
+    <div class="zero">
+      <div class="big">0</div>
+      <div class="den">of 191 responses</div>
+      <div class="ci">all five prompt families</div>
+      <div class="lbl">Claude</div>
+      <div class="surf">claude-sonnet-4-6 · developer API</div>
+    </div>
+    <div class="zero">
+      <div class="big">0</div>
+      <div class="den">of 41 · 95% CI 0.0–8.6%</div>
+      <div class="ci">buyer-intent family</div>
+      <div class="lbl">Claude, at the moment of purchase intent</div>
+      <div class="surf">tightest bound in this study</div>
+    </div>
+    <div class="zero">
+      <div class="big">0</div>
+      <div class="den">of 89 responses · buyer-intent 0/18, CI 0.0–17.6%</div>
+      <div class="ci">all families</div>
+      <div class="lbl">ChatGPT free default</div>
+      <div class="surf">gpt-5.6-luna · what prospects use</div>
+    </div>
+  </div>
+  <p class="note">Same null on both engines, different certainty: the Claude bound is tighter because its denominator is larger. Both are printed rather than pooled — an interval is part of the measurement, not a footnote. Clarity PR, Brandstyle and the other named boutiques in this competitive set read 0 at buyer intent on both engines as well; absence is the norm here, which is exactly why it is worth measuring who breaks it.</p>
+</section>
+
+<section>
+  <h2><span class="n">02</span>Who the models do name — and how the engines disagree</h2>
+  <p>Under one shared extraction rule (canon v2, 23 names), the two engines name different firms to the same buyer. Rates below are presence in buyer-intent responses, with 95% intervals.</p>
+  <table>
+    <tr><th>Firm</th><th class="num">Claude (n=41)</th><th class="num">ChatGPT free (n=18)</th><th>Read</th></tr>
+    <tr><td>Weber Shandwick</td><td class="num">14.6% (6/41) [6.9–28.4]</td><td class="num">11.1% (2/18) [3.1–32.8]</td><td>named by both</td></tr>
+    <tr><td>Edelman</td><td class="num">14.6% (6/41) [6.9–28.4]</td><td class="num">16.7% (3/18) [5.8–39.2]</td><td>named by both</td></tr>
+    <tr class="sep"><td>Bospar</td><td class="num">0.0% (0/41) [0.0–8.6]</td><td class="num">33.3% (6/18) [16.3–56.3]</td><td>ChatGPT only — intervals separated</td></tr>
+    <tr class="sep"><td>5WPR</td><td class="num">0.0% (0/41) [0.0–8.6]</td><td class="num">33.3% (6/18) [16.3–56.3]</td><td>ChatGPT only — intervals separated</td></tr>
+    <tr class="sep"><td>Otter PR</td><td class="num">0.0% (0/41) [0.0–8.6]</td><td class="num">27.8% (5/18) [12.5–50.9]</td><td>ChatGPT only — intervals separated</td></tr>
+    <tr><td>Reputation Ink</td><td class="num">9.8% (4/41) [3.9–22.5]</td><td class="num">0.0% (0/18) [0.0–17.6]</td><td>Claude direction — not separated at these n</td></tr>
+    <tr><td>Credible PR</td><td class="num">0.0% (0/41) [0.0–8.6]</td><td class="num">0.0% (0/18) [0.0–17.6]</td><td>absent on both</td></tr>
+  </table>
+  <p class="note">No ranking is claimed anywhere in this document — no order-bias test has been run, so presence and position counts are reported, never a rank. Where intervals overlap, the honest word is "not separated," and it is used. The practical point: a single-engine number would have missed half of this table. Whatever moves visibility on one engine demonstrably does not transfer for free to the other.</p>
+</section>
+
+<section>
+  <h2><span class="n">03</span>Why an unmeasured extractor cannot be trusted — demonstrated on this data</h2>
+  <p>During this study's own run, a naive text match was tried first. It is the kind of matching most tools in this category ship.</p>
+  <div class="instrument">
+    <div class="row">
+      <span class="reading bad">34<span style="font-size:16px;color:var(--muted)">/89</span></span>
+      <span class="pill bad">naive match "credible"</span>
+      <span class="what">A substring match hands the brand a <b>38% mention rate</b>. Every hit was the English adjective — "credible sources," "credible agency," "credible proof." Zero were the firm.</span>
+    </div>
+    <div class="row">
+      <span class="reading good">0<span style="font-size:16px;color:var(--muted)">/89</span></span>
+      <span class="pill good">phrase-matched, read in context</span>
+      <span class="what">The corrected figure. The stored transcripts made the check possible — the raw text was read, not just counted. A second near-collision ("Credibility," 6/89) was caught the same way.</span>
+    </div>
+  </div>
+  <p class="note">This is why every count in this document is labelled <b>unvalidated parse</b> until an agreement coefficient (Cohen's κ) is published against a hand-labelled set — with the labelled set itself made public, so the grade can be re-marked by anyone. No vendor in this category publishes that number. Until it exists here, it is not claimed here either.</p>
+</section>
+
+<section>
+  <h2><span class="n">04</span>What this report contains that the category's reports do not</h2>
+  <p>The five most-funded tools in this category converge on the same report anatomy — score, share of voice, position, sentiment, citations, trend. The rows below that anatomy are where measurement lives, and they are empty across the board.</p>
+  <table>
+    <tr><th>Report element</th><th>Profound</th><th>Evertune</th><th>Peec</th><th>Scrunch</th><th>Otterly</th><th>this document</th></tr>
+    <tr><td>Runs-per-prompt printed on the report</td><td class="no">no</td><td class="no">site only</td><td class="no">no</td><td class="no">no</td><td class="no">no</td><td class="yes">on the face</td></tr>
+    <tr><td>Interval beside every rate</td><td class="no">no</td><td class="no">claimed</td><td class="no">no</td><td class="no">no</td><td class="no">no</td><td class="yes">every rate above</td></tr>
+    <tr><td>Denominator beside every count</td><td class="no">no</td><td class="no">no</td><td class="no">no</td><td class="no">no</td><td class="no">no</td><td class="yes">every count above</td></tr>
+    <tr><td>Raw transcripts delivered to the recipient</td><td class="no">no</td><td class="no">roadmap</td><td class="no">no</td><td class="no">no</td><td class="no">no</td><td class="yes">evidence file ships</td></tr>
+    <tr><td>Model version + temperature declared</td><td class="no">no</td><td class="no">partial</td><td class="no">no</td><td class="no">no</td><td class="no">no</td><td class="yes">on the face</td></tr>
+    <tr><td>Recipient can check without vendor software</td><td class="no">no</td><td class="no">no</td><td class="no">no</td><td class="no">no</td><td class="no">no</td><td class="yes">stdlib checker, §05</td></tr>
+    <tr><td>Abstains when data is insufficient</td><td class="no">no</td><td class="no">no</td><td class="no">no</td><td class="no">no</td><td class="no">no</td><td class="yes">rule declared, §06</td></tr>
+    <tr><td>Single composite score</td><td class="num">yes</td><td class="num">yes</td><td class="num">yes</td><td class="num">yes</td><td class="num">yes</td><td class="yes">refused, by design</td></tr>
+  </table>
+  <div class="warn">Competitor rows are [REPORTED: vendor pages and reviews, 2026-09-01] and decay — they are re-fetched before any external quotation. The measurement rows for this document are [MEASURED] against the evidence files named in §05. The composite-score refusal has a reason on record: a prior industry composite was found to carry a hidden linear identity (one dimension was exactly 100 minus another), so presence silently carried 45% of a score presented as 25%. One number that cannot be decomposed is one number that cannot be checked.</div>
+</section>
+
+<section>
+  <h2><span class="n">05</span>Check this yourself</h2>
+  <p>Every response in this study is stored raw, with its request payload and a SHA-256 hash, at the moment of collection. The whole file folds into one digest. Change any byte of any response afterward and the digest breaks. Tamper-evident, hash-verified — nothing stronger is claimed.</p>
+  <div class="hash">claude evidence · 191 rows · pr_agency_run4.jsonl<br>9eb756a2ca6ae2175bfe55a09d5b2c99b30e1451c2cd60050ddc0d1e2ee4abea</div>
+  <div class="hash">chatgpt evidence · 89 rows · pr_agency_luna_run1_v1.jsonl<br>0e0772d123cd2afcfbc5e4b512b0742d3b4b3bfd3ab9d2e206e9d858b5d5c141</div>
+  <p class="note" style="margin-top:14px">The checker is a single Python file using only the standard library — no install of anything from this project, no network. It recomputes every row hash from the stored text and the bundle digest from the rows, and compares against the figures printed above. It has been run in a clean container by a third party.</p>
+  <div class="verifyrec">python verify_evidence.py pr_agency_run4.jsonl --expect 9eb756a2…
+&gt; MATCH 191 of 191 clean rows · VERDICT PASS</div>
+  <p class="note">Printed limitation, verbatim from the checker itself: a pass means the file was not edited after it was written. It does not prove the responses came from the engine named in the payload, or that the run happened as described — a hash cannot establish either. Printing that limit is the point: a measurement whose boundaries are stated is one that can be trusted inside them.</p>
+</section>
+
+<section>
+  <h2><span class="n">06</span>What is not claimed</h2>
+  <div class="notclaimed">
+    <div class="nc"><div class="t">No accuracy figure</div><div class="u">Unlocked by a published κ against a public labelled set. In progress; not claimed before it exists.</div></div>
+    <div class="nc"><div class="t">No ranking</div><div class="u">Unlocked by an order-flip test showing position is stable under prompt reordering. Until then: presence and position counts only.</div></div>
+    <div class="nc"><div class="t">No revenue link</div><div class="u">Zero published evidence connects AI recommendation rates to consultations, in any vertical. Measuring whether that link exists is the study proposed below — it is not assumed at signing.</div></div>
+    <div class="nc"><div class="t">Abstention over estimation</div><div class="u">A metric below its power floor prints ABSTAIN, not a point estimate. Below-power silence is a feature of the instrument, not a gap in it.</div></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">07</span>The study this makes possible</h2>
+  <p>An agency that places clients in media controls an intervention with a known date. That is a natural experiment sitting unused across an entire book of business, and nobody in this category has run it: measure the AI recommendation rate before a placement, re-measure at 30, 60 and 90 days, control against untreated competitors in the same market.</p>
+  <p>Outcomes are pre-committed in writing before the first measurement. If placements move AI answers: a jointly written case study, agency named. If they don't at the stated minimum detectable change: the agency learns first, with reweighting guidance in the deliverable. Either way the number is real — and either way it is a number no competitor of the agency has.</p>
+  <p class="note">Founding engagements (first three): $2,500 per quarter per market, in exchange for named case-study rights. List thereafter: $5,000. Full charter, including the power floor, confounding controls, and the intake attribution kit, is a two-page read.</p>
+</section>
+
+<footer>
+  Prepared 2026-09-04 · rung R1 (runs on the operator's machine; the checker is R2 — run by a third party in a clean shell) · extraction unvalidated pending κ · engines and parameters declared on the face · evidence files and digests above · method invariants published and hash-chained at <span class="num">github.com/Rmasood1122/aivis-method</span>
+</footer>
+
+</body>
+</html>
