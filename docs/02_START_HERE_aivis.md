@@ -307,3 +307,21 @@ cross_engine_buyer_intent_v1.md · pr_agency_luna_run1_v1.jsonl (+.errors).
 | Luna evidence single-disk (study2/data gitignored) | OPEN — decide: force-add / copy / accept | 0 |
 | wtp template runs/wtp_pred_sep8_v1.json | NOTE — untracked scaffolding, left in place; cat> onto it post-creation logged as lock brush, zero loss | 0 |
 | D08 chain fix · G10 fork · B4/B5/B6/B7 · VOID move · C07 sleep | OPEN — unchanged | carried |
+
+## AMENDED 2026-09-04 — session 9, part 2: B0 OUTBOUND SENT
+First B0 outreach in project history. 5 messages sent via LinkedIn DM,
+2026-09-04, to existing connections screened as strangers (no prior
+exchanges):
+| # | Recipient | Segment | Variant |
+|---|---|---|---|
+| 1 | Doug Simon (D S Simon Media) | competitor-adjacent / agency | 2 or 5 |
+| 2 | Mitesh Shah (Acuity Digital) | agency operator | 5 |
+| 3 | Parth Suba (AI Search architect) | competitor-adjacent | 2 |
+| 4 | Serge Isac (Meanwhile, skincare) | category-naive brand-side | 3 |
+| 5 | Sevilay E. (SDT Dental Studio) | category-naive practice owner | 4 |
+OUTBOUND: 7/2 — population: all outbound about aivis, all channels, all
+time (2 prior Gmail/Tyler + 5 LinkedIn today). Replies unchanged at 2
+(both Tyler logistics; 0 B0 replies yet).
+RULES ARMED: a reply outranks all build work, within the hour ·
+buyer_pred_<n>_v1.json sealed BEFORE any call that gets scheduled ·
+Max Muir excluded from B0 (warm lead, screen rule 4).
