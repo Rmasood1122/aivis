@@ -296,3 +296,7 @@ def smoke(
     rprint(f"\n[magenta]Aggregate -> {aggregate_out}[/magenta]")
     rprint(f"[magenta]Evidence -> {evidence_out}[/magenta]")
     rprint(f"[magenta]PDF -> {pdf_out}[/magenta]")
+
+
+if __name__ == "__main__":
+    app()
