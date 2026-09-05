@@ -1,0 +1,48 @@
+{
+  "bank_version": "jeweler_v1",
+  "sealed": "2026-09-05",
+  "geo_anchor": "Carle Place, NY (Old Country Road corridor); breadth: Nassau County / Long Island",
+  "construction_rule": "Five families of six. Open-ended retrieval only: no prompt names a candidate jeweler or chain, so the model's roster is its own. Every id is unique across the whole file. Written before any run.",
+  "families": {
+    "category": [
+      {"id": "JW-CAT01", "text": "Best jewelers in Carle Place, New York."},
+      {"id": "JW-CAT02", "text": "Who are the best jewelry stores on Long Island for engagement rings?"},
+      {"id": "JW-CAT03", "text": "Top-rated family-owned jewelers in Nassau County."},
+      {"id": "JW-CAT04", "text": "Where should I shop for fine jewelry near Roosevelt Field?"},
+      {"id": "JW-CAT05", "text": "Best places to buy a diamond necklace on Long Island."},
+      {"id": "JW-CAT06", "text": "Leading jewelry stores on Old Country Road in Carle Place or Westbury."}
+    ],
+    "comparison": [
+      {"id": "JW-CMP01", "text": "For an engagement ring, is a local independent jeweler or a national mall chain the smarter buy?"},
+      {"id": "JW-CMP02", "text": "Compare the best jewelry stores in Nassau County for diamond engagement rings."},
+      {"id": "JW-CMP03", "text": "Buying a diamond online versus from a local Long Island jeweler: which gets better value?"},
+      {"id": "JW-CMP04", "text": "How do mall jewelry chains compare to family-owned jewelers on quality, price, and service?"},
+      {"id": "JW-CMP05", "text": "Compare jewelers near Carle Place for custom jewelry design."},
+      {"id": "JW-CMP06", "text": "Which Long Island jewelers have the best reputation for watch repair and service?"}
+    ],
+    "problem": [
+      {"id": "JW-PRB01", "text": "I'm getting engaged and know nothing about diamonds. Where do I start on Long Island?"},
+      {"id": "JW-PRB02", "text": "How do I find a trustworthy jeweler who won't rip me off?"},
+      {"id": "JW-PRB03", "text": "My grandmother's ring needs to be reset. Who does heirloom jewelry work near Carle Place?"},
+      {"id": "JW-PRB04", "text": "I got a quote from a mall jewelry store and it feels high. What are my options in Nassau County?"},
+      {"id": "JW-PRB05", "text": "Where can I sell or trade in gold jewelry on Long Island without getting lowballed?"},
+      {"id": "JW-PRB06", "text": "A store quoted me two weeks to resize a ring. Is that normal, and who's faster near Westbury?"}
+    ],
+    "buyer_intent": [
+      {"id": "JW-INT01", "text": "I want to buy an engagement ring in Carle Place, New York. Where should I go?"},
+      {"id": "JW-INT02", "text": "Recommend a Long Island jeweler for a custom engagement ring with a ten thousand dollar budget."},
+      {"id": "JW-INT03", "text": "Which jeweler should I use for watch repair or a battery replacement in Nassau County?"},
+      {"id": "JW-INT04", "text": "I need my engagement ring appraised for insurance. Who do you recommend near Mineola or Carle Place?"},
+      {"id": "JW-INT05", "text": "Best jeweler on Long Island to buy an anniversary gift from."},
+      {"id": "JW-INT06", "text": "Who should I trust to repair an heirloom watch in western Nassau County?"}
+    ],
+    "long_tail": [
+      {"id": "JW-LNG01", "text": "Are the diamond deals at mall jewelry chains actually good value?"},
+      {"id": "JW-LNG02", "text": "What does GIA certified mean, and does it matter which jeweler sells the stone?"},
+      {"id": "JW-LNG03", "text": "Do independent jewelers negotiate on engagement ring prices?"},
+      {"id": "JW-LNG04", "text": "What should I check before leaving a watch for repair at a jewelry store?"},
+      {"id": "JW-LNG05", "text": "Lab-grown versus natural diamonds: what do jewelers say about resale value?"},
+      {"id": "JW-LNG06", "text": "How much does it cost to reset a diamond into a new setting on Long Island?"}
+    ]
+  }
+}
