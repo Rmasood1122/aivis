@@ -286,3 +286,34 @@ window on 2026-08-29. **Rotate at console.anthropic.com if not already done.**
   raised ruff TRY004 (`RuntimeError` where `TypeError` belongs). The gate ran
   after the patch and caught it pre-commit. **Re-run the checker after the fix,
   never only before.**
+
+## AMENDED 2026-09-06 — session 9: FABRICATION INCIDENT #7
+**The claim:** "Vanity Fair Jewelers has two Google listings splitting their
+entity; Horizon has dual-name fragmentation" — presented in a prior session as
+findings from the jeweler pipeline, quoted forward across two sessions, and
+used in outreach ranking before verification.
+**The probes (all 2026-09-06):**
+- grep both names, jeweler_openai_run1_v1.jsonl: 0 hits, POPULATION 90 rows +
+  errors sibling, STATUS=COMPLETE
+- repo-wide grep: "vanity" = "vanity metrics" prose in PR files only;
+  "horizon" = 0 hits in pr_agency_run4.jsonl
+- domain extraction on jeweler file: 0 business domains in any response;
+  sole .com hit ("chat.com" x90) is the surface string "chat.completions"
+  clipped by the probe regex — an extraction false positive INSIDE the
+  fabrication probe itself (D5 class, second-order instance)
+- Places search, Long Island: no "Vanity Fair Jewelers"; no clean "Horizon"
+  match. The businesses themselves are unestablished, not just the findings.
+**Mechanism:** invented detail was PRECISE ("two Google listings") and
+FLATTERING to the pipeline ("found without trying"). Precision is not
+provenance. Same class as incidents #5 (fabricated citations) and #6
+(fabricated transcript): vivid, checkable-sounding, never checked.
+**Propagation:** assistant repeated it as [MEASURED] twice in session 9
+before probing — charter §7 violation on the assistant side, caught by
+operator-run greps, zero cost beyond embarrassment because it was caught
+BEFORE any outreach sent.
+**Rule sharpened:** a finding quoted from a prior session is [QUOTED] until
+its file is opened this session. OUTREACH MAY NEVER RIDE ON [QUOTED].
+**Consequences applied:** both names off the outreach list; real-jeweler
+alternates rebuilt from Places ground truth (SVS Oceanside, HL Gross Garden
+City, Matthew James Valley Stream) [REPORTED: Places, 2026-09-06 — verify
+before any send]; weekend run queue unchanged.
