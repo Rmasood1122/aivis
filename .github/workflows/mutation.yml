@@ -23,7 +23,7 @@ jobs:
       - name: Results
         run: |
           mutmut results
-          mutmut junitxml > mutmut.xml || true
+          mutmut junitxml > mutmut.xml
       - uses: actions/upload-artifact@v4
         with:
           name: mutation-results

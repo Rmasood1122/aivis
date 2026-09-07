@@ -8,5 +8,5 @@ jobs:
       - uses: actions/setup-python@v5
         with: {python-version: "3.12"}
       - run: pip install -e . pytest pytest-cov ruff
-      - run: ruff check src/aivis/ --output-format=github || true
+      - run: ruff check src/aivis/ --output-format=github
       - run: pytest -q --cov=src/aivis --cov-branch --cov-report=term
