@@ -325,3 +325,32 @@ time (2 prior Gmail/Tyler + 5 LinkedIn today). Replies unchanged at 2
 RULES ARMED: a reply outranks all build work, within the hour ·
 buyer_pred_<n>_v1.json sealed BEFORE any call that gets scheduled ·
 Max Muir excluded from B0 (warm lead, screen rule 4).
+
+## AMENDED 2026-09-07 — session 9 close (appended at session 10 boot)
+Perplexity adapter live: src/aivis/perplexity_adapter.py (sha256 9009572a...4744b)
++ run_bank_perplexity_v1.py. Citations/search_results/usage stored per row;
+sha256-over-response_text unchanged; verify_evidence.py passes pplx rows.
+Runs: cosmetic_tristate_pplx_run1 90/90 ($0.4937) · jeweler_pplx_run1 90/90
+($0.4859) · smoke pr_agency 10/10. Pplx C02 ~= $0.0054/call [MEASURED: 190 rows].
+Findings [MEASURED 2026-09-06, sonar, T=0.0, 3 runs/prompt]: Credible PR 0/90
+responses AND 0/1,754 cited sources (378 domains). Jeweler: SVS 30/90, Jared
+19/90, Solomons 11/90, HL Gross 11/90, Loucri 8/90, London 7/90, Tri-County
+5/90 (site 32 reads — read-not-named), Matthew James 0/90.
+FABRICATION INCIDENT #7 logged+pushed de83a4f ("Vanity Fair Jewelers split
+listings" — real seed + invented detail). Rule: prior-session findings are
+[QUOTED] until file opened this session; outreach never rides on [QUOTED].
+B1 guard FIRED in production (refused jeweler re-run overwrite).
+
+### Carry-forward, session 9 (2026-09-06/07)
+| Item | Status | Carried |
+|---|---|---|
+| Five B0 conversations | OPEN — 0 of 5 | 13 |
+| ANTHROPIC key rotation | OPEN — precedes any Anthropic live run | 6 |
+| Ahmad collaborator add | OPEN — username unknown | 5 |
+| jeweler verify_evidence + backup cloud/USB push | PENDING CONFIRM — single-disk until done | 0 |
+| 10 staged sends (Carson, Lou, Matthew James, Tri-County, London, Solomons*, 3 texts, recruiter) | OPEN — *Solomons banned-word fix required pre-send | 0 |
+| Bridal + kitchen&bath banks (committed by texts 7-8) | OPEN — build+seal+run this week | 0 |
+| Sep 8 demo/one-pager update w/ tristate numbers + intervals | OPEN — due TODAY, mtg is TOMORROW Tue 3:30 EDT | 0 |
+| WTP seal | UNTOUCHED — stays sealed until post-meeting | 0 |
+| B3/B7 · B4 · B5 · H03 · chain external anchor · study2 gitignored data | OPEN — unchanged | carried |
+| Project copies of 02/03 stale | OPEN — re-upload after this append | 0 |
