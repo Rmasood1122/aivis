@@ -354,3 +354,24 @@ B1 guard FIRED in production (refused jeweler re-run overwrite).
 | WTP seal | UNTOUCHED — stays sealed until post-meeting | 0 |
 | B3/B7 · B4 · B5 · H03 · chain external anchor · study2 gitignored data | OPEN — unchanged | carried |
 | Project copies of 02/03 stale | OPEN — re-upload after this append | 0 |
+
+## AMENDED 2026-09-07 — session 10 (Sep 8 prep + first send)
+KEY ROTATION CLOSED [MEASURED: new key prefix NjV..., live 200
+msg_011CeowRHp4tGdrZ4QGfMriv; old dt_tskt9 prefix gone from .env; old-key
+revocation at console assumed, unprobed]. Anthropic surface reopened.
+JEWELER VERIFY: PASS on data/audits/jeweler_pplx_run1_v1.jsonl [MEASURED].
+TRISTATE RE-DERIVED IN-SESSION: Credible PR 0/90 responses [95% CI 0.0-4.1]
+AND 0/1754 citations [0.0-0.2], 378 domains; naive grep "credible" found 4,
+all read as adjective ("most credible names"), entity count 0 — the 4->0
+read is the live kappa argument. New Skin Image 0/90 [0.0-4.1]; long island
+27/90, carle place 3/90.
+CLAUDE RE-DERIVED: 0/191 overall, 0/41 buyer_intent (PR-IN clean rows = 41,
+reconciles session-5 figure) [MEASURED: pr_agency_run4.jsonl].
+ARTIFACTS: aivis_demo_sep8_v2.html (v1 + Perplexity section, v1 untouched) ·
+aivis_crediblepr_onepager_sep8_v1.html. Banned-word grep both: one-pager 0
+hits; demo 4 hits all read in context = refusal statements (claim-ceiling +
+not-claimed cards), CLEAN. PDF print of one-pager pending.
+SENT: New Skin Image text to Olga (0/90 + 27/90, zero claims, "nothing for
+sale"). OUTBOUND 3/2 [population all channels all time].
+GAP FOUND: jeweler_openai_run1_v1.jsonl absent from ~/aivis_backup_20260906
+(pplx trio present) — add before cloud/USB push. Backup push still PENDING.
