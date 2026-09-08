@@ -375,3 +375,36 @@ SENT: New Skin Image text to Olga (0/90 + 27/90, zero claims, "nothing for
 sale"). OUTBOUND 3/2 [population all channels all time].
 GAP FOUND: jeweler_openai_run1_v1.jsonl absent from ~/aivis_backup_20260906
 (pplx trio present) — add before cloud/USB push. Backup push still PENDING.
+
+## AMENDED 2026-09-08 — session 10/11 close (delivery night)
+DELIVERED 0 -> 1: 4-engine report v2 + four evidence files + checker EMAILED to Max Muir.
+OUTBOUND: sent +2 this arc (logistics reply 09-02 counted prior; report email 09-08 new).
+Recompute both integers from population at next boot per §3.
+EVIDENCE (all MEASURED 2026-09-08, one collection night, all verify PASS):
+  multi_anthropic_run3 88/90 clean (claude-sonnet-5, temp rejected+declared) 5ac8d9d8...
+  multi_openai_run3 90/90 (chat-latest alias; snapshot undisclosed by API) 82660a1f...
+  multi_gemini_run3 88/90 (resolved gemini-3.8-flash; free tier declared) 81fc2f91...
+  multi_perplexity_run3 84/90 (sonar; 6 errors clustered in comparison - D3 again) 442259f4...
+FINDING: Credible PR 0/350 responses, 0/120 prompts, four engines, incl. all buyer-intent.
+  Comparably-sized firms register (Otter PR 19/90, SourceCode 14/90 ChatGPT) - zero discriminates.
+  Engine leaderboards diverge: Claude->Bospar, ChatGPT->Otter/5WPR, Gemini->Edelman-heavy.
+ARTIFACTS: make_pdf2 (1-engine designed), make_pdf3 (4-engine v1), make_pdf4 (v2, post-critique:
+  prompt-level sampling unit, verbatim prompts, cross-version refusal, matcher-bias note,
+  cost anchor removed). run_bank_multi_v1.py (4 engines, honest terminal check).
+  All pushed through 17235f9; evidence force-added ca3dcde (gitignore blanket caught by hand).
+DEFECTS CAUGHT BY GATES THIS ARC (none reached recipient): discovery-mode silent subject skip ·
+  placeholder-as-name (assistant) · deprecated model alias (gpt-5.3-chat-latest listed but 404) ·
+  silent runner killed twice -> progress lines · bank schema guess · banned words in quoted
+  excerpts · commit msg described absent files · TWO defective assistant probes ($3 bash-expansion
+  gate always-false; \$3 regex never-match). NEW RULE: string gates in bash double quotes are
+  untrustworthy near $; use heredocs.
+5-EXPERT CRITIQUE: effective-n accepted+fixed (prompt is sampling unit); "page 6 truncated" and
+  "no small firm registers" checked FALSE against the artifact; consumer-surface gap and
+  annex/sales split logged as v3 items, not blockers.
+OPEN, priority order: (1) Max reply - outranks everything, within the hour, per §3.
+  (2) Ahmad collaborator add - 12+ sessions. (3) B0 five conversations - 0/5, 12+ sessions.
+  (4) v3 report items: search-grounded surfaces (gpt-5-search-api seen in probe), annex split,
+  per-client productization. (5) K06 formal pass on 4 new evidence files before any further
+  external share (Claude-bank precedent scan was clean). (6) pr_agency_run4.jsonl still
+  uncommitted under same gitignore blanket - force-add next repo touch. (7) One-pager print.
+NOT COUNTED TOWARD B0: Max remains inbound/warm. 0/5 stands.
