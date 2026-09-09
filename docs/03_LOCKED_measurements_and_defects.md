@@ -317,3 +317,13 @@ its file is opened this session. OUTREACH MAY NEVER RIDE ON [QUOTED].
 alternates rebuilt from Places ground truth (SVS Oceanside, HL Gross Garden
 City, Matthew James Valley Stream) [REPORTED: Places, 2026-09-06 — verify
 before any send]; weekend run queue unchanged.
+
+## AMENDED 2026-09-08 — surface-presence layer, first measurement
+| Item | Value | Tag |
+|---|---|---|
+| Tool | study2/surface_presence.py, 15/15 tests on operator machine; canon referral_surfaces_v0.1 sha256 8655137737de2e0e… | [MEASURED] |
+| Behavior modes, run4, per family | buyer_intent NAMES 7/41 REFERS 28/41 (SPARSE) · category NAMES 25/41 · comparison NAMES 12/25 · long_tail NAMES 0/42 (SPARSE) · problem NAMES 0/42 REFERS 21/42 (SPARSE) | [MEASURED: surface_presence_run4_v2.json] — unvalidated parse, 5-name seed firms list, NAMES is a lower bound |
+| Top surfaces at buyer_intent | journalist_matching 16/41 · media_database 14/41 · review_marketplace 9/41 · directory 8/41 · peer_referral 8/41 | [MEASURED: same file] |
+| FP probe | "Credible PR" case-insensitive: 0 hits of any case in 191 clean rows — reproduces the sealed 0/191 by a second implementation | [MEASURED: probe 2026-09-08] |
+| Buyer_intent naming, refined | 7/41 genuine (Reputation Ink 4, Reputation Rhino 3); Clarity PR remains category-only (22/22 hits in category) — sealed finding confirmed, not amended | [MEASURED] |
+| Caveat | problem-family journalist_matching 18/42 equals criteria_miner's owned_media_diy 18/42 — two keyword parses over one corpus, shared-assumption rule: consistency, not confirmation | [DERIVED] |

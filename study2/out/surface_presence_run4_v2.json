@@ -1,0 +1,260 @@
+{
+  "canon_sha256": "8655137737de2e0e3b0ba662f481fbc0d6e434c480cdb203d48f5cfa77022bbf",
+  "canon_version": "referral_surfaces_v0.1",
+  "engine_behavior": [
+    {
+      "denominator": 41,
+      "engine": "anthropic",
+      "family": "buyer_intent",
+      "modes": {
+        "NAMES_FIRMS": 7,
+        "OTHER": 6,
+        "REFERS_TO_SURFACES": 28,
+        "REFUSES_OPAQUE": 0
+      },
+      "naming_sparse": true,
+      "primary_finding": "naming-share UNDEFINED in this cell (naming-sparse); referral-surface presence is the measurable layer",
+      "search_enabled": "unknown"
+    },
+    {
+      "denominator": 41,
+      "engine": "anthropic",
+      "family": "category",
+      "modes": {
+        "NAMES_FIRMS": 25,
+        "OTHER": 11,
+        "REFERS_TO_SURFACES": 5,
+        "REFUSES_OPAQUE": 0
+      },
+      "naming_sparse": false,
+      "primary_finding": "NAMES_FIRMS 25/41",
+      "search_enabled": "unknown"
+    },
+    {
+      "denominator": 25,
+      "engine": "anthropic",
+      "family": "comparison",
+      "modes": {
+        "NAMES_FIRMS": 12,
+        "OTHER": 13,
+        "REFERS_TO_SURFACES": 0,
+        "REFUSES_OPAQUE": 0
+      },
+      "naming_sparse": false,
+      "primary_finding": "NAMES_FIRMS 12/25",
+      "search_enabled": "unknown"
+    },
+    {
+      "denominator": 42,
+      "engine": "anthropic",
+      "family": "long_tail",
+      "modes": {
+        "NAMES_FIRMS": 0,
+        "OTHER": 39,
+        "REFERS_TO_SURFACES": 3,
+        "REFUSES_OPAQUE": 0
+      },
+      "naming_sparse": true,
+      "primary_finding": "naming-share UNDEFINED in this cell (naming-sparse); referral-surface presence is the measurable layer",
+      "search_enabled": "unknown"
+    },
+    {
+      "denominator": 42,
+      "engine": "anthropic",
+      "family": "problem",
+      "modes": {
+        "NAMES_FIRMS": 0,
+        "OTHER": 21,
+        "REFERS_TO_SURFACES": 21,
+        "REFUSES_OPAQUE": 0
+      },
+      "naming_sparse": true,
+      "primary_finding": "naming-share UNDEFINED in this cell (naming-sparse); referral-surface presence is the measurable layer",
+      "search_enabled": "unknown"
+    }
+  ],
+  "extraction_status": "UNVALIDATED_PARSE_PENDING_KAPPA",
+  "firms_count": 5,
+  "firms_list_supplied": true,
+  "inputs": [
+    "study2/data/pr_agency_run4.jsonl"
+  ],
+  "note_no_firms": null,
+  "referral_surfaces": [
+    {
+      "count": 16,
+      "denominator": 41,
+      "engine": "anthropic",
+      "family": "buyer_intent",
+      "low_n": false,
+      "search_enabled": "unknown",
+      "subject_presence": "NOT_MEASURED",
+      "surface_id": "journalist_matching"
+    },
+    {
+      "count": 8,
+      "denominator": 41,
+      "engine": "anthropic",
+      "family": "buyer_intent",
+      "low_n": false,
+      "search_enabled": "unknown",
+      "subject_presence": "NOT_MEASURED",
+      "surface_id": "professional_directory"
+    },
+    {
+      "count": 9,
+      "denominator": 41,
+      "engine": "anthropic",
+      "family": "buyer_intent",
+      "low_n": false,
+      "search_enabled": "unknown",
+      "subject_presence": "NOT_MEASURED",
+      "surface_id": "review_marketplace"
+    },
+    {
+      "count": 2,
+      "denominator": 41,
+      "engine": "anthropic",
+      "family": "buyer_intent",
+      "low_n": true,
+      "search_enabled": "unknown",
+      "subject_presence": "NOT_MEASURED",
+      "surface_id": "trade_press"
+    },
+    {
+      "count": 14,
+      "denominator": 41,
+      "engine": "anthropic",
+      "family": "buyer_intent",
+      "low_n": false,
+      "search_enabled": "unknown",
+      "subject_presence": "NOT_MEASURED",
+      "surface_id": "media_database"
+    },
+    {
+      "count": 8,
+      "denominator": 41,
+      "engine": "anthropic",
+      "family": "buyer_intent",
+      "low_n": false,
+      "search_enabled": "unknown",
+      "subject_presence": "NOT_MEASURED",
+      "surface_id": "peer_referral"
+    },
+    {
+      "count": 2,
+      "denominator": 41,
+      "engine": "anthropic",
+      "family": "category",
+      "low_n": true,
+      "search_enabled": "unknown",
+      "subject_presence": "NOT_MEASURED",
+      "surface_id": "journalist_matching"
+    },
+    {
+      "count": 1,
+      "denominator": 41,
+      "engine": "anthropic",
+      "family": "category",
+      "low_n": true,
+      "search_enabled": "unknown",
+      "subject_presence": "NOT_MEASURED",
+      "surface_id": "professional_directory"
+    },
+    {
+      "count": 7,
+      "denominator": 41,
+      "engine": "anthropic",
+      "family": "category",
+      "low_n": false,
+      "search_enabled": "unknown",
+      "subject_presence": "NOT_MEASURED",
+      "surface_id": "review_marketplace"
+    },
+    {
+      "count": 5,
+      "denominator": 41,
+      "engine": "anthropic",
+      "family": "category",
+      "low_n": false,
+      "search_enabled": "unknown",
+      "subject_presence": "NOT_MEASURED",
+      "surface_id": "trade_press"
+    },
+    {
+      "count": 4,
+      "denominator": 41,
+      "engine": "anthropic",
+      "family": "category",
+      "low_n": false,
+      "search_enabled": "unknown",
+      "subject_presence": "NOT_MEASURED",
+      "surface_id": "media_database"
+    },
+    {
+      "count": 1,
+      "denominator": 41,
+      "engine": "anthropic",
+      "family": "category",
+      "low_n": true,
+      "search_enabled": "unknown",
+      "subject_presence": "NOT_MEASURED",
+      "surface_id": "peer_referral"
+    },
+    {
+      "count": 1,
+      "denominator": 42,
+      "engine": "anthropic",
+      "family": "long_tail",
+      "low_n": true,
+      "search_enabled": "unknown",
+      "subject_presence": "NOT_MEASURED",
+      "surface_id": "journalist_matching"
+    },
+    {
+      "count": 1,
+      "denominator": 42,
+      "engine": "anthropic",
+      "family": "long_tail",
+      "low_n": true,
+      "search_enabled": "unknown",
+      "subject_presence": "NOT_MEASURED",
+      "surface_id": "media_database"
+    },
+    {
+      "count": 2,
+      "denominator": 42,
+      "engine": "anthropic",
+      "family": "long_tail",
+      "low_n": true,
+      "search_enabled": "unknown",
+      "subject_presence": "NOT_MEASURED",
+      "surface_id": "peer_referral"
+    },
+    {
+      "count": 18,
+      "denominator": 42,
+      "engine": "anthropic",
+      "family": "problem",
+      "low_n": false,
+      "search_enabled": "unknown",
+      "subject_presence": "NOT_MEASURED",
+      "surface_id": "journalist_matching"
+    },
+    {
+      "count": 3,
+      "denominator": 42,
+      "engine": "anthropic",
+      "family": "problem",
+      "low_n": false,
+      "search_enabled": "unknown",
+      "subject_presence": "NOT_MEASURED",
+      "surface_id": "professional_directory"
+    }
+  ],
+  "rows_attempted": 210,
+  "rows_clean": 191,
+  "rows_skipped_error_or_empty": 19,
+  "subject": "Credible PR",
+  "tool": "surface_presence.py"
+}
