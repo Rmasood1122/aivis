@@ -327,3 +327,10 @@ before any send]; weekend run queue unchanged.
 | FP probe | "Credible PR" case-insensitive: 0 hits of any case in 191 clean rows — reproduces the sealed 0/191 by a second implementation | [MEASURED: probe 2026-09-08] |
 | Buyer_intent naming, refined | 7/41 genuine (Reputation Ink 4, Reputation Rhino 3); Clarity PR remains category-only (22/22 hits in category) — sealed finding confirmed, not amended | [MEASURED] |
 | Caveat | problem-family journalist_matching 18/42 equals criteria_miner's owned_media_diy 18/42 — two keyword parses over one corpus, shared-assumption rule: consistency, not confirmation | [DERIVED] |
+
+## AMENDED 2026-09-08 — four-engine delivery verified; repo map probed
+| Item | Value | Tag |
+|---|---|---|
+| Four-engine claim (Max email) | VERIFIED: anthropic 88/90 · gemini 88/90 · openai 90/90 · perplexity 84/90 clean; MATCH 350/350 clean rows, 0 mismatch, all DISTINCT; fourth engine = Gemini | [MEASURED: verify_evidence.py on delivery files, 2026-09-08] |
+| run4 force-add directive (02) | STALE — file already tracked (git ls-files confirms); directive predates the commit that picked it up | [MEASURED: probe 2026-09-08] |
+| Repo map | aivis local=origin e7cdb02 · aivis-method local=origin 9b2f3fa · evidence-verify local=origin 5ca720e; all trees clean; load-bearing single-disk exposure closed by e7cdb02 | [MEASURED: git ls-remote, 2026-09-08] |
