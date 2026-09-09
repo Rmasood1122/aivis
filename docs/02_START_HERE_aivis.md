@@ -431,3 +431,21 @@ NOT COUNTED TOWARD B0: Max remains inbound/warm. 0/5 stands.
   D04/D05/D07 PASS on the v3 bytes.
 - A08 spec amended (see 08 ledger 2026-09-09); harness encoding defect logged,
   patch awaiting "go".
+
+### Carry-forward, session 9 (2026-09-09)
+| Item | Status | Carried |
+|---|---|---|
+| D04 banned-word FAIL on v2 PDF | DONE — semantic false positive ("signed client"); reworded in new emitter make_pdf5.py; v3 re-graded PASS on shipping bytes | 0 |
+| Harness cp1252 truncation (A08 false "0 hits") | DONE — encoding fix at aivis_battery_v2.py:80, pushed 321ea5b; A08 spec amended with enumerated classes, reference route = grep -a | 0 |
+| Max Muir deliverable | STAGED — v3 PDF + 4 evidence files + verifier in ~/Downloads/maxmuir_package; SEND OPEN, outranks all build | 1 |
+| Zenodo deposit | BUILT — study2/zenodo_v1 (8257afc), findings recomputed, K06 clean, 4x VERDICT PASS; chain receipt seq 3 (aivis-method a41c271); PUBLISH OPEN (draft/DOI pending) | 0 |
+| Germovic (Edelman) email | DRAFTED — corrected unique-top-5 claim [MEASURED]; sends after DOI; not a B0 screen | 0 |
+| Evidence files single-disk | DONE — in git history via study2/zenodo_v1 commit 8257afc | closed |
+| chain verify VERDICT FAIL | OPEN — seq 0 CHANGED = amendment-by-append signature, not tamper; README doc para + SUPERSEDED checker state (needs "go") | 0 |
+| chain HEAD external anchor | IN PROGRESS — ec87fa32... goes in Zenodo description; DOI = anchor | carried from s6 |
+| Ahmad collaborator add | OPEN — username unknown | 4 |
+| Five B0 conversations | OPEN — 0 of 5, blocked on nothing | 12 |
+| Key rotation / .env PASTE_NEW_KEY_HERE | OPEN — no live calls tonight (all work from stored evidence); still precedes next live run | 5 |
+| Fabrication near-miss #7-class | LOGGED — "only firm named on all four engines" typed-not-computed in outreach draft; caught against open P4 table pre-send; corrected to unique-top-5 [MEASURED] | — |
+| B3/B7 digest impls · B4 _patch_v1 · B5 non_claims · B6 mutation/H03 CWD fix · G10 · D08-class | OPEN — untouched tonight | carried |
+| Project copy of 02 stale | OPEN — re-upload after this append | 3 |
