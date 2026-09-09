@@ -1,0 +1,15 @@
+{
+  "seal": "wtp_predictions_sep8_meeting_v1",
+  "sealed_utc": "2026-09-04T00:00:00Z",
+  "meeting": "Credible PR (Max Muir, Tyler Tran), 2026-09-08 12:30 PST",
+  "rule": "sealed before the meeting; Brier-scored against what the meeting reveals; confidences must span wide, not cluster at 0.80",
+  "predictions": [
+    {"id": 1, "claim": "[e.g. Max opens by pitching their services before asking about aivis]", "pred": true, "confidence": 0.0},
+    {"id": 2, "claim": "[e.g. they ask what the audit costs before asking how it works]", "pred": true, "confidence": 0.0},
+    {"id": 3, "claim": "[e.g. evidence/method/proof raised by them unprompted]", "pred": false, "confidence": 0.0},
+    {"id": 4, "claim": "[e.g. willing to discuss >= $2,500/quarter founding price without pushback]", "pred": false, "confidence": 0.0},
+    {"id": 5, "claim": "[e.g. they name a specific client market for a pilot]", "pred": false, "confidence": 0.0},
+    {"id": 6, "claim": "[e.g. a concrete next step with a date is agreed on the call]", "pred": false, "confidence": 0.0}
+  ],
+  "scoring": "each prediction Brier-scored within 24h of the meeting; results appended to 02, never edited here"
+}
