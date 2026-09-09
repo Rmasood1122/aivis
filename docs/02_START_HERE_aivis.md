@@ -421,3 +421,13 @@ NOT COUNTED TOWARD B0: Max remains inbound/warm. 0/5 stands.
 | Five B0 conversations | OPEN — 0 of 5, outranks all build work | 12 |
 | B3/B7 digest impls (surface_presence computes canon hash only, not bundle_digest — not a 4th impl) · B4 · B5 · B6/H03 · chain HEAD anchor · backup push | OPEN — unchanged | carried |
 | Project copies of 02 AND 03 stale | OPEN — repo is ahead (03 has a 2026-09-06 block absent from project) | 3 |
+
+## AMENDED 2026-09-09 — session 9
+- Engines wired: 4 (Claude, ChatGPT via chat-latest, Gemini, Perplexity), evidence
+  files multi_{anthropic,openai,gemini,perplexity}_run3_20260908.jsonl, all four
+  digests bound in the delivery PDF [MEASURED: D07 4/4].
+- Max Muir deliverable is out/aivis_crediblepr_report_4engine_20260909_v3.pdf
+  (emitter study2/make_pdf5.py, 9091f44). v1/v2 SUPERSEDED, on disk, never sent.
+  D04/D05/D07 PASS on the v3 bytes.
+- A08 spec amended (see 08 ledger 2026-09-09); harness encoding defect logged,
+  patch awaiting "go".

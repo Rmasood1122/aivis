@@ -334,3 +334,12 @@ before any send]; weekend run queue unchanged.
 | Four-engine claim (Max email) | VERIFIED: anthropic 88/90 · gemini 88/90 · openai 90/90 · perplexity 84/90 clean; MATCH 350/350 clean rows, 0 mismatch, all DISTINCT; fourth engine = Gemini | [MEASURED: verify_evidence.py on delivery files, 2026-09-08] |
 | run4 force-add directive (02) | STALE — file already tracked (git ls-files confirms); directive predates the commit that picked it up | [MEASURED: probe 2026-09-08] |
 | Repo map | aivis local=origin e7cdb02 · aivis-method local=origin 9b2f3fa · evidence-verify local=origin 5ca720e; all trees clean; load-bearing single-disk exposure closed by e7cdb02 | [MEASURED: git ls-remote, 2026-09-08] |
+
+## AMENDED 2026-09-09 — session 9, lesson added to Part C
+- **An exception guard on the caller cannot see a death inside the capture
+  machinery.** A subprocess reader thread died on a cp1252 decode; the harness's
+  try/except wrapped the probe call, survived, and graded a truncated stream as
+  "0 hits, population = full history" — falsified by a byte-safe grep finding 8.
+  Input COMPLETENESS is a separate check from call SURVIVAL. Fourth member of
+  the D0 / '|| true' / stale-receipt family: the verdict printed because nothing
+  between the failure and the print checked truth.
