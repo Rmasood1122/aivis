@@ -408,3 +408,16 @@ OPEN, priority order: (1) Max reply - outranks everything, within the hour, per 
   external share (Claude-bank precedent scan was clean). (6) pr_agency_run4.jsonl still
   uncommitted under same gitignore blanket - force-add next repo touch. (7) One-pager print.
 NOT COUNTED TOWARD B0: Max remains inbound/warm. 0/5 stands.
+
+### Carry-forward, session 8 (2026-09-08)
+| Item | Status | Carried |
+|---|---|---|
+| Report to Max/Tyler | SENT 2026-09-08 — four-engine claim needs evidence-file verification before it is defended in any follow-up | 0 |
+| Surface-presence layer | DONE — study2/surface_presence.py, 15/15 tests, run4 measured per family, 03 amended, commit 6dfd3f8 pushed | 0 |
+| "Four engines" verification | OPEN — fourth engine's run file not yet opened in-session | 0 |
+| Subject-presence measurement (presence.json) | OPEN — afternoon of manual checks (HARO/Qwoted, PRSA, Clutch, Muck Rack); converts buyer_intent table into the Max follow-up page | 0 |
+| Canon-v2 firms list → _v3 rerun | OPEN — 5-name seed means NAMES is a lower bound, OTHER inflated | 0 |
+| Ahmad κ email | OPEN — his email known (ahmadaiengineer859@gmail.com), draft text written, unsent; unblocks the entire κ lane | 4 |
+| Five B0 conversations | OPEN — 0 of 5, outranks all build work | 12 |
+| B3/B7 digest impls (surface_presence computes canon hash only, not bundle_digest — not a 4th impl) · B4 · B5 · B6/H03 · chain HEAD anchor · backup push | OPEN — unchanged | carried |
+| Project copies of 02 AND 03 stale | OPEN — repo is ahead (03 has a 2026-09-06 block absent from project) | 3 |
