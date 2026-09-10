@@ -449,3 +449,14 @@ NOT COUNTED TOWARD B0: Max remains inbound/warm. 0/5 stands.
 | Fabrication near-miss #7-class | LOGGED — "only firm named on all four engines" typed-not-computed in outreach draft; caught against open P4 table pre-send; corrected to unique-top-5 [MEASURED] | — |
 | B3/B7 digest impls · B4 _patch_v1 · B5 non_claims · B6 mutation/H03 CWD fix · G10 · D08-class | OPEN — untouched tonight | carried |
 | Project copy of 02 stale | OPEN — re-upload after this append | 3 |
+
+## AMENDED 2026-09-09 — session 10: git evidence copies were not byte-identical
+Session-9 row "Evidence files single-disk: DONE — in git history via 8257afc" is
+CORRECTED: with core.autocrlf=true and no .gitattributes, git stored LF-normalized
+blobs of CRLF-on-disk evidence JSONLs (probe: DISK 232,416 B / 90 CRLF vs BLOB
+232,326 B / 0 CRLF; diff exactly CRLF-vs-LF) [MEASURED: 2026-09-09]. Disk copies
+remain canonical and are the graded artifacts. Blob-version verifier verdict:
+recorded in 08 ledger this session. RULE (Part C class): a backup of evidence is
+verified by blob-hash comparison against the graded bytes, never by the push
+succeeding — a text-mode copy is a different file. .gitattributes now pins
+*.jsonl -text. Zenodo uploads FROM DISK ONLY until the re-add lands.
