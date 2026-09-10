@@ -460,3 +460,16 @@ recorded in 08 ledger this session. RULE (Part C class): a backup of evidence is
 verified by blob-hash comparison against the graded bytes, never by the push
 succeeding — a text-mode copy is a different file. .gitattributes now pins
 *.jsonl -text. Zenodo uploads FROM DISK ONLY until the re-add lands.
+
+### Carry-forward, session 10 (2026-09-09)
+| Item | Status | Carried |
+|---|---|---|
+| Max Muir send (v3 package) | OPEN — staged, outranks all build; v3 REMAINS the send artifact unless actively swapped for v4 (swap = new digests + new covering note, a named step) | 2 |
+| v4 report | BUILT+GRADED except eyeball — 0f1409d, sha256 6387d331...b2528; D04(amended)/D05 PASS; NOT DONE until pages 5/7/8 eyeballed | 0 |
+| D04 spec | AMENDED — population excludes EXHIBIT blocks; reference route in 08 ledger | 0 |
+| Runner citation-field capture | OPEN — needs "go" (runner change); unlocks sources page for all future runs | 0 |
+| CRLF blob defect | DONE — .gitattributes 4e8867a, renormalize cf6a698, sweep 22/22 MISMATCH 0; blob verifier 4x PASS; lesson in 08 + 02 amendments | closed same session |
+| Competitor anatomy | RE-FETCHED [REPORTED: 2026-09-09] — 4 new anatomy rows (personas, actions, agent-traffic, MCP delivery); bottom-six rows still empty category-wide; Gumshoe publishing sampling methodology -> E08 must include them before any "0 of 9" quote | 0 |
+| Zenodo upload / DOI | OPEN — upload FROM DISK; chain HEAD in description; gates Germovic send | 1 |
+| Ahmad username · Five B0 (0/5) · key rotation · B3/B7 · B4 _patch_v1 (untracked, armed, left in place) · B5 · B6/H03 · chain SUPERSEDED state (needs go) | OPEN — unchanged | carried |
+| Project copy of 02 stale | OPEN — re-upload after this append | 4 |
