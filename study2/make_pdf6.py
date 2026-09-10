@@ -21,7 +21,7 @@ for req in ("ENGINES","NAMES","SUBJ","FAMS","OUT","TEAL","RED","GREY","LGREY","B
 ENGINES=m5.ENGINES; NAMES=m5.NAMES; SUBJ=m5.SUBJ; FAMS=m5.FAMS
 TEAL=m5.TEAL; RED=m5.RED; GREY=m5.GREY; LGREY=m5.LGREY; BLACK=m5.BLACK
 W,H=letter; M=54; TP=9
-OUT=str(Path(m5.OUT).with_name("aivis_crediblepr_report_4engine_20260909_v4.pdf"))
+OUT=str(Path(m5.OUT).with_name("aivis_crediblepr_report_4engine_20260909_v5.pdf"))
 EXB="--- EXHIBIT BEGIN ---"
 EXE="--- EXHIBIT END ---"
 
@@ -143,7 +143,7 @@ def main():
         "small (84-90) and cross-engine gaps mostly do not separate statistically - the intervals on page 3 say so."%len(NAMES),M,y,wd)-16
     c.setFillColor(TEAL); c.setFont("Helvetica-Bold",12); c.drawString(M,y,"Three actions"); y-=18
     for t,q in [("1. Baseline each client market on these four engines.",
-                 "Is the client winning where its buyers actually ask? ~$3 per market [EST: unit cost measured on Claude, extrapolated to the other engines at current API prices] - negligible next to one new client."),
+                 "Is the client winning where its buyers actually ask? One baseline per client market, same bank, same evidence trail as this report."),
                 ("2. Re-measure 30 days after the next placement lands.",
                  "Does a placement move any engine's answers? The pilot's first join."),
                 ("3. Prioritise the engine your buyers use.",
