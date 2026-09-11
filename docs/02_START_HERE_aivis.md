@@ -473,3 +473,17 @@ succeeding — a text-mode copy is a different file. .gitattributes now pins
 | Zenodo upload / DOI | OPEN — upload FROM DISK; chain HEAD in description; gates Germovic send | 1 |
 | Ahmad username · Five B0 (0/5) · key rotation · B3/B7 · B4 _patch_v1 (untracked, armed, left in place) · B5 · B6/H03 · chain SUPERSEDED state (needs go) | OPEN — unchanged | carried |
 | Project copy of 02 stale | OPEN — re-upload after this append | 4 |
+
+## AMENDED 2026-09-09 — session 10 part 2: the Max send happened on 2026-09-08
+Sessions 9-10 carried "Max Muir deliverable: SEND OPEN" as the top item. FALSE.
+Report sent 2026-09-08 23:23 UTC (msg 1a0835552cc87b7c, to partners@ + tyler@) and
+23:33 UTC (msg 1a0835effd7396ed, to max@ + tyler@) [MEASURED: Gmail search_threads].
+Version sent = Sep-8 four-engine build (pre-v3; send predates make_pdf5). v6
+(686b0074...) is the artifact for the NEXT touch, not an unprompted re-send.
+No reply visible post-send as of 2026-09-09 (one thread truncated at 5-msg view).
+LESSON (charter §3 restated): the OUTBOUND state is computed from Gmail at session
+open, never carried from a ledger row - a ledger claimed OPEN for two sessions on
+an item already DONE, and the operator caught it, not the boot check.
+UNBLOCK FOUND: Ahmad reachable at ahmadaiengineer859@gmail.com [MEASURED: sent fwds
+09-07/09-08]; GitHub collaborator invites accept email - the "username unknown"
+blocker on the kappa lane was already dissolved.
