@@ -21,7 +21,7 @@ for req in ("ENGINES","NAMES","SUBJ","FAMS","OUT","TEAL","RED","GREY","LGREY","B
 ENGINES=m5.ENGINES; NAMES=m5.NAMES; SUBJ=m5.SUBJ; FAMS=m5.FAMS
 TEAL=m5.TEAL; RED=m5.RED; GREY=m5.GREY; LGREY=m5.LGREY; BLACK=m5.BLACK
 W,H=letter; M=54; TP=9
-OUT=str(Path(m5.OUT).with_name("aivis_crediblepr_report_4engine_20260909_v5.pdf"))
+OUT=str(Path(m5.OUT).with_name("aivis_crediblepr_report_4engine_20260909_v6.pdf"))
 EXB="--- EXHIBIT BEGIN ---"
 EXE="--- EXHIBIT END ---"
 
@@ -42,7 +42,11 @@ def why(c,text,y):
     return wrap(c,"WHY THIS PAGE MATTERS - "+text,M,y,W-2*M,
                 font="Helvetica-Oblique",size=8.5,leading=11,color=GREY)-8
 
-def latin(t): return t.encode("latin-1","replace").decode("latin-1")
+UMAP={"\u2014":"-","\u2013":"-","\u2018":"'","\u2019":"'","\u201c":'"',"\u201d":'"',
+      "\u2022":"-","\u2026":"...","\u00a0":" ","\u2192":"->","\u00b7":"-"}
+def latin(t):
+    for k,v in UMAP.items(): t=t.replace(k,v)
+    return t.encode("latin-1","replace").decode("latin-1")
 
 def first3_names(text):
     pos=[]
@@ -100,11 +104,12 @@ def main():
     c.setFont("Helvetica",9); c.setFillColor(GREY)
     c.drawCentredString(W/2,H-354,"0 of %d prompts on any engine - the 3 runs per prompt are near-replicates, so the prompt is the sampling unit"%tp2)
     ubline=" - ".join("%s <= %.1f%%"%(l,wilson(0,E[l]["pids"])[1]*100) for l,_ in ENGINES)
-    c.drawCentredString(W/2,H-368,"What a zero can rule out at this sample (95%% upper bound on the true prompt rate): %s"%ubline)
+    c.drawCentredString(W/2,H-368,"What a zero can rule out at this sample (95% upper bound on the true prompt rate):")
+    c.drawCentredString(W/2,H-379,ubline)
     c.setFont("Helvetica-Oblique",8.5)
-    c.drawCentredString(W/2,H-384,"Why this number matters: when a prospect asks an AI to recommend PR firms, the answer draws from a set of names.")
-    c.drawCentredString(W/2,H-395,"This page states whether %s is in that set today - the baseline any campaign would be measured against."%SUBJ)
-    bx,by,bw,bh=M,110,W-2*M,120
+    c.drawCentredString(W/2,H-393,"Why this number matters: when a prospect asks an AI to recommend PR firms, the answer draws from a set of names.")
+    c.drawCentredString(W/2,H-404,"This page states whether %s is in that set today - the baseline any campaign would be measured against."%SUBJ)
+    bx,by,bw,bh=M,104,W-2*M,130
     c.setStrokeColor(TEAL); c.rect(bx,by,bw,bh)
     c.setFont("Helvetica-Bold",8); c.setFillColor(TEAL); yy=by+bh-14
     c.drawString(bx+10,yy,"BANK pr_agency_v1 - 30 PROMPTS, 5 FAMILIES - 3 RUNS/PROMPT - RUNG R1"); yy-=13
@@ -260,7 +265,10 @@ def main():
             nfp,pp=E[l]["fam_pp"][f]
             if nfp:
                 nm,k=sorted(pp.items(),key=lambda t:(-t[1],t[0]))[0]
-                c.setFillColor(BLACK); c.drawString(gx[i+1],y,"%s %d/%d"%(nm[:13],k,nfp))
+                if k==0:
+                    c.setFillColor(LGREY); c.drawString(gx[i+1],y,"none of %d named"%len(NAMES))
+                else:
+                    c.setFillColor(BLACK); c.drawString(gx[i+1],y,"%s %d/%d"%(nm[:13],k,nfp))
             else:
                 c.setFillColor(LGREY); c.drawString(gx[i+1],y,"-")
         y-=15
@@ -300,7 +308,7 @@ def main():
         "text. Selection is by fixed rule, not curation: for each engine, its most-named firm, then the first "
         "buyer-intent row in file order naming that firm (first clean row anywhere if buyer-intent has none). "
         "Verbatim model text sits between the EXHIBIT markers; it is the engines' language, not aivis's. "
-        "Whitespace is normalised and non-Latin characters replaced for layout - the byte-exact text lives in the "
+        "The excerpt is windowed around that firm's first mention; whitespace and typography are normalised for layout - the byte-exact text lives in the "
         "evidence file at the row hash printed above each exhibit.",H-100)
     for label,_ in ENGINES:
         e=E[label]
@@ -317,7 +325,12 @@ def main():
         c.drawString(M,y,"prompt %s - run %s - row sha256 %s"%(pick.get("prompt_id"),pick.get("run_index"),pick.get("sha256"))); y-=10
         c.setFillColor(BLACK); c.setFont("Courier",6.5); c.drawString(M,y,EXB); y-=9
         t=latin(pick["response_text"])
-        cut=t[:430]+(" [...truncated for layout - full text in the evidence file at the row hash above]" if len(t)>430 else "")
+        mt=re.search(r'\b'+re.escape(top_nm)+r'\b',t,re.I)
+        st=0
+        if mt and mt.end()>430:
+            st=max(0,mt.start()-140); st=t.rfind(" ",0,st)+1
+        seg=t[st:st+430]
+        cut=("[...] " if st>0 else "")+seg+(" [...truncated for layout - full text in the evidence file at the row hash above]" if st+430<len(t) else "")
         y=wrap(c,cut,M,y,W-2*M,font="Courier",size=6.5,leading=8.5)-1
         c.setFillColor(BLACK); c.setFont("Courier",6.5); c.drawString(M,y,EXE); y-=16
     footer(c,7); c.showPage()
