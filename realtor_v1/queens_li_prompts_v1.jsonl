@@ -1,0 +1,20 @@
+{"prompt_id": "Q01", "region": "Queens", "area": "Astoria", "intent": "sell", "text": "Who is the best real estate agent to sell my house in Astoria, Queens?"}
+{"prompt_id": "Q02", "region": "Queens", "area": "Astoria", "intent": "buy_condo", "text": "Can you recommend a top realtor for buying a condo in Astoria?"}
+{"prompt_id": "Q03", "region": "Queens", "area": "Long Island City", "intent": "buy_condo", "text": "Which real estate agents are best for new development condos in Long Island City?"}
+{"prompt_id": "Q04", "region": "Queens", "area": "Forest Hills", "intent": "sell", "text": "I want to sell my home in Forest Hills. Which agent should I hire?"}
+{"prompt_id": "Q05", "region": "Queens", "area": "Flushing", "intent": "buy", "text": "Who are the most recommended real estate agents in Flushing, NY?"}
+{"prompt_id": "Q06", "region": "Queens", "area": "Bayside", "intent": "sell", "text": "Best listing agent in Bayside Queens for a single-family house?"}
+{"prompt_id": "Q07", "region": "Queens", "area": "Jackson Heights", "intent": "buy_coop", "text": "I'm a first-time buyer looking at co-ops in Jackson Heights. Which realtor should I work with?"}
+{"prompt_id": "Q08", "region": "Queens", "area": "Ridgewood", "intent": "sell_multifamily", "text": "Who is a good agent to sell a two-family house in Ridgewood, Queens?"}
+{"prompt_id": "Q09", "region": "Queens", "area": "Sunnyside", "intent": "buy_coop", "text": "Recommend a real estate agent who knows Sunnyside co-ops well."}
+{"prompt_id": "Q10", "region": "Queens", "area": "Whitestone", "intent": "sell", "text": "Top rated real estate agents in Whitestone, NY for selling a home?"}
+{"prompt_id": "L01", "region": "Long Island", "area": "Garden City", "intent": "sell", "text": "Who is the best agent to sell my house in Garden City, NY?"}
+{"prompt_id": "L02", "region": "Long Island", "area": "Great Neck", "intent": "buy", "text": "Which realtors are best for buying a home in Great Neck?"}
+{"prompt_id": "L03", "region": "Long Island", "area": "Manhasset", "intent": "sell_luxury", "text": "Who are the top luxury real estate agents in Manhasset, Long Island?"}
+{"prompt_id": "L04", "region": "Long Island", "area": "Huntington", "intent": "sell", "text": "I'm selling my home in Huntington, NY. Which real estate agent do you recommend?"}
+{"prompt_id": "L05", "region": "Long Island", "area": "Massapequa", "intent": "buy_first", "text": "Good real estate agent for first-time home buyers in Massapequa?"}
+{"prompt_id": "L06", "region": "Long Island", "area": "Long Beach", "intent": "buy_condo", "text": "Who should I use as a realtor to buy a condo in Long Beach, NY?"}
+{"prompt_id": "L07", "region": "Long Island", "area": "Port Washington", "intent": "sell", "text": "Best listing agents in Port Washington, Long Island?"}
+{"prompt_id": "L08", "region": "Long Island", "area": "Rockville Centre", "intent": "buy", "text": "Recommend a real estate agent in Rockville Centre, NY."}
+{"prompt_id": "L09", "region": "Long Island", "area": "Smithtown", "intent": "sell", "text": "Which realtor sells the most homes in Smithtown, NY?"}
+{"prompt_id": "L10", "region": "Long Island", "area": "Syosset", "intent": "buy", "text": "Who are the best real estate agents in Syosset for families relocating from the city?"}
