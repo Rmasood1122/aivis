@@ -1,0 +1,11 @@
+Realtor AI-visibility run — PROVISIONAL — person counts are UNVERIFIED regex candidates; verify person_candidates.csv, re-run with --verified
+Responses: 399
+
+[anthropic] n=100  M1 named-person=76%  brokerage=82%  M4 deflection=13%  with-citations=71%
+[gemini] n=99  M1 named-person=100%  brokerage=100%  M4 deflection=0%  with-citations=100%
+[openai] n=100  M1 named-person=100%  brokerage=99%  M4 deflection=0%  with-citations=100%
+[perplexity] n=100  M1 named-person=99%  brokerage=67%  M4 deflection=0%  with-citations=100%
+[OVERALL] n=399  M1 named-person=94%  brokerage=87%  M4 deflection=3%  with-citations=93%
+
+M2 agents named in >=3/5 reps (same prompt+engine): 307
+M3 agents named by >=2 engines (same prompt): 159

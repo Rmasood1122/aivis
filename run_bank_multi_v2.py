@@ -158,6 +158,8 @@ def call_perplexity(e, model, prompt, temp, maxtok, search):
     hdr = {"Authorization": "Bearer " + key}
     # 2026-09: Sonar moved to the Agent API (/v1/responses). Shape [UNVERIFIED]; smoke prints raw keys.
     pay = {"model": model, "input": prompt, "max_output_tokens": maxtok}
+    if search:
+        pay["tools"] = [{"type": "web_search"}]   # [MEASURED 2026-09-23] without this the Agent API does NOT search
     if temp is not None: pay["temperature"] = temp
     try:
         d = http("https://api.perplexity.ai/v1/responses", hdr, pay)
@@ -174,6 +176,20 @@ def call_perplexity(e, model, prompt, temp, maxtok, search):
         else:
             raise RuntimeError("HTTP %s %s" % (ex.code, msg))
     txt, cites = _extract_responses_shape(d)
+    # Agent API returns sources as an output item of type "search_results" [MEASURED 2026-09-23]
+    if not cites:
+        seen = set()
+        def walk(o):
+            if isinstance(o, dict):
+                u = o.get("url") or o.get("uri")
+                if isinstance(u, str) and u.startswith("http") and u not in seen:
+                    seen.add(u); cites.append({"url": u, "title": str(o.get("title") or o.get("name") or "")})
+                for v in o.values(): walk(v)
+            elif isinstance(o, list):
+                for v in o: walk(v)
+        for item in d.get("output", []) or []:
+            if item.get("type") == "search_results":
+                walk(item)
     # legacy fields, if the Agent API still returns them
     if not cites:
         for sr in d.get("search_results", []) or []:

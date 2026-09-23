@@ -59,7 +59,3 @@ M5 is reported separately for the ≥10 tier and the 3–9 sample.
 Perplexity v1 rows were collected WITHOUT web search (Agent API default); they are retained,
 labelled, and a search-enabled Perplexity run is added before the verdict.
 Thresholds in "Decision rule" are unchanged.
-git add realtor_v1/PREREG_realtor_test_v1.md
-git commit -m "realtor_v1: predictions recorded before run"
-git push
-
