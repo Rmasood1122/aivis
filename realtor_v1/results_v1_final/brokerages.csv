@@ -1,0 +1,79 @@
+engine,brokerage,responses
+anthropic,Douglas Elliman,55
+anthropic,Compass,44
+anthropic,Keller Williams,37
+anthropic,Corcoran,26
+anthropic,Daniel Gale,22
+anthropic,Coldwell Banker,21
+anthropic,Sotheby's,20
+anthropic,Signature Premier,10
+anthropic,RE/MAX,10
+anthropic,eXp Realty,10
+anthropic,Nest Seekers,9
+anthropic,Howard Hanna,8
+anthropic,Laffey,7
+anthropic,Redfin Agent,4
+anthropic,Serhant,4
+anthropic,SERHANT,4
+anthropic,Brown Harris Stevens,3
+anthropic,Charles Rutenberg,2
+anthropic,Century 21,2
+anthropic,EXIT Realty,1
+gemini,Compass,73
+gemini,Douglas Elliman,49
+gemini,Daniel Gale,41
+gemini,Signature Premier,23
+gemini,Corcoran,21
+gemini,Keller Williams,20
+gemini,Coldwell Banker,18
+gemini,Sotheby's,13
+gemini,Howard Hanna,13
+gemini,Laffey,10
+gemini,SERHANT,9
+gemini,Serhant,9
+gemini,Berkshire Hathaway,5
+gemini,eXp Realty,5
+gemini,Century 21,5
+gemini,Brown Harris Stevens,3
+gemini,RE/MAX,2
+gemini,Nest Seekers,2
+gemini,Realty ONE,2
+gemini,EXIT Realty,2
+openai,Compass,70
+openai,Douglas Elliman,58
+openai,Keller Williams,46
+openai,Coldwell Banker,32
+openai,Signature Premier,31
+openai,eXp Realty,28
+openai,Daniel Gale,24
+openai,Laffey,17
+openai,EXIT Realty,14
+openai,Berkshire Hathaway,9
+openai,Howard Hanna,6
+openai,RE/MAX,6
+openai,Redfin Agent,6
+openai,SERHANT,5
+openai,Serhant,5
+openai,Brown Harris Stevens,5
+openai,Nest Seekers,4
+openai,Corcoran,3
+openai,Weichert,3
+openai,Century 21,3
+openai,Remax,2
+openai,Engel & Völkers,1
+perplexity,Compass,35
+perplexity,Douglas Elliman,24
+perplexity,Coldwell Banker,12
+perplexity,Daniel Gale,10
+perplexity,Signature Premier,10
+perplexity,SERHANT,8
+perplexity,Serhant,8
+perplexity,Nest Seekers,6
+perplexity,Keller Williams,5
+perplexity,Century 21,4
+perplexity,Laffey,3
+perplexity,Engel & Völkers,3
+perplexity,Corcoran,3
+perplexity,Howard Hanna,2
+perplexity,eXp Realty,1
+perplexity,Weichert,1

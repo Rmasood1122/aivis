@@ -1,0 +1,400 @@
+engine,prompt_id,rep,person_candidates,persons_counted,brokerages,pure_deflection,n_citations
+anthropic,L01,1,0,0,Keller Williams;Signature Premier,0,6
+anthropic,L02,1,5,5,Corcoran;Daniel Gale;Douglas Elliman;Keller Williams;Laffey;Sotheby's,0,6
+anthropic,L03,1,1,0,Compass;Daniel Gale;Douglas Elliman;Keller Williams;Nest Seekers;Sotheby's,0,4
+anthropic,L04,1,0,0,Coldwell Banker;Compass;Daniel Gale;Douglas Elliman;Signature Premier;Sotheby's,0,0
+anthropic,L05,1,2,2,Douglas Elliman;Keller Williams,0,5
+anthropic,L06,1,1,1,Douglas Elliman,0,4
+anthropic,L07,1,4,4,Coldwell Banker;Compass;Daniel Gale;Douglas Elliman;Laffey;Sotheby's,0,4
+anthropic,L08,1,0,0,Douglas Elliman;Howard Hanna;Redfin Agent,0,6
+anthropic,L09,1,0,0,Coldwell Banker;Douglas Elliman;Howard Hanna;RE/MAX,0,2
+anthropic,L10,1,3,3,Charles Rutenberg;Compass;Daniel Gale;Douglas Elliman;Signature Premier;Sotheby's;eXp Realty,0,4
+anthropic,Q01,1,0,0,Brown Harris Stevens;Keller Williams,0,3
+anthropic,Q02,1,0,0,,1,0
+anthropic,Q03,1,0,0,Compass;Nest Seekers;SERHANT;Serhant,0,3
+anthropic,Q04,1,0,0,Compass;Corcoran;Douglas Elliman,0,0
+anthropic,Q05,1,6,5,Compass;Corcoran;Keller Williams,0,5
+anthropic,Q06,1,3,3,Douglas Elliman;EXIT Realty;Keller Williams;RE/MAX,0,4
+anthropic,Q07,1,0,0,,1,0
+anthropic,Q08,1,1,1,Compass;Keller Williams;eXp Realty,0,3
+anthropic,Q09,1,0,0,,1,0
+anthropic,Q10,1,6,5,Corcoran;Keller Williams;eXp Realty,0,7
+anthropic,L01,2,0,0,Daniel Gale;Douglas Elliman;Sotheby's,0,0
+anthropic,L02,2,5,4,Compass;Corcoran;Daniel Gale;Douglas Elliman;Keller Williams;Sotheby's,0,7
+anthropic,L03,2,1,0,Compass;Daniel Gale;Douglas Elliman;Nest Seekers;Sotheby's,0,5
+anthropic,L04,2,0,0,,1,0
+anthropic,L05,2,2,2,Keller Williams,0,6
+anthropic,L06,2,2,2,Coldwell Banker;Douglas Elliman,0,4
+anthropic,L07,2,7,6,Coldwell Banker;Compass;Daniel Gale;Douglas Elliman;Laffey;Sotheby's,0,5
+anthropic,L08,2,1,1,Douglas Elliman;Howard Hanna,0,7
+anthropic,L09,2,0,0,Coldwell Banker;Douglas Elliman;Howard Hanna;RE/MAX,0,3
+anthropic,L10,2,4,4,Century 21;Coldwell Banker;Compass;Douglas Elliman;Signature Premier,0,5
+anthropic,Q01,2,0,0,,1,6
+anthropic,Q02,2,0,0,Brown Harris Stevens;Keller Williams,0,3
+anthropic,Q03,2,0,0,Compass;Douglas Elliman;Nest Seekers;SERHANT;Serhant,0,3
+anthropic,Q04,2,0,0,,1,0
+anthropic,Q05,2,6,5,Compass;Corcoran;Keller Williams,0,6
+anthropic,Q06,2,3,3,Douglas Elliman;Keller Williams,0,6
+anthropic,Q07,2,0,0,RE/MAX,0,4
+anthropic,Q08,2,2,1,Compass;Corcoran;Keller Williams;eXp Realty,0,5
+anthropic,Q09,2,0,0,,1,0
+anthropic,Q10,2,6,5,Corcoran;Keller Williams;eXp Realty,0,8
+anthropic,L01,3,1,1,Coldwell Banker;Compass;Daniel Gale;Douglas Elliman;Keller Williams,0,4
+anthropic,L02,3,5,4,Century 21;Coldwell Banker;Compass;Corcoran;Daniel Gale;Douglas Elliman;Keller Williams;Sotheby's,0,4
+anthropic,L03,3,1,0,Compass;Daniel Gale;Douglas Elliman;Nest Seekers;Sotheby's,0,4
+anthropic,L04,3,0,0,,1,0
+anthropic,L05,3,2,2,Douglas Elliman;Keller Williams;RE/MAX,0,4
+anthropic,L06,3,0,0,Charles Rutenberg;Coldwell Banker;Douglas Elliman,0,0
+anthropic,L07,3,5,5,Coldwell Banker;Daniel Gale;Douglas Elliman;Laffey;Sotheby's,0,6
+anthropic,L08,3,0,0,Coldwell Banker;Daniel Gale;Douglas Elliman;Keller Williams;Sotheby's,0,0
+anthropic,L09,3,0,0,Douglas Elliman;Howard Hanna;RE/MAX,0,3
+anthropic,L10,3,3,3,Douglas Elliman;Signature Premier,0,5
+anthropic,Q01,3,0,0,Brown Harris Stevens;Compass,0,3
+anthropic,Q02,3,0,0,Compass;Corcoran;Douglas Elliman,0,0
+anthropic,Q03,3,1,1,Compass;Corcoran;Douglas Elliman;Nest Seekers;SERHANT;Serhant,0,6
+anthropic,Q04,3,0,0,,1,0
+anthropic,Q05,3,6,5,Compass;Corcoran;Keller Williams,0,6
+anthropic,Q06,3,2,2,Compass;Douglas Elliman;Keller Williams,0,6
+anthropic,Q07,3,1,0,Corcoran;Keller Williams;eXp Realty,0,4
+anthropic,Q08,3,2,1,Compass;Corcoran;Keller Williams;eXp Realty,0,3
+anthropic,Q09,3,0,0,Compass;Corcoran;Douglas Elliman,0,0
+anthropic,Q10,3,6,5,Corcoran;Keller Williams;eXp Realty,0,8
+anthropic,L01,4,1,1,Compass;Daniel Gale;Douglas Elliman,0,4
+anthropic,L02,4,5,4,Corcoran;Douglas Elliman;Keller Williams;Laffey,0,6
+anthropic,L03,4,1,0,Coldwell Banker;Compass,0,3
+anthropic,L04,4,0,0,Coldwell Banker;Daniel Gale;Douglas Elliman;Sotheby's,0,0
+anthropic,L05,4,2,2,Douglas Elliman;Keller Williams;RE/MAX,0,5
+anthropic,L06,4,0,0,,1,0
+anthropic,L07,4,7,6,Coldwell Banker;Compass;Daniel Gale;Douglas Elliman;Laffey;Sotheby's,0,7
+anthropic,L08,4,1,1,Compass;Howard Hanna;Signature Premier,0,4
+anthropic,L09,4,0,0,Douglas Elliman;Howard Hanna;RE/MAX,0,2
+anthropic,L10,4,3,3,Coldwell Banker;Douglas Elliman;Signature Premier,0,4
+anthropic,Q01,4,0,0,Compass;Corcoran;Douglas Elliman,0,0
+anthropic,Q02,4,0,0,Keller Williams,0,4
+anthropic,Q03,4,0,0,Compass;Corcoran;Douglas Elliman;Nest Seekers,0,3
+anthropic,Q04,4,0,0,,1,0
+anthropic,Q05,4,6,5,Coldwell Banker;Compass;Corcoran;Keller Williams,0,5
+anthropic,Q06,4,2,2,Coldwell Banker;Douglas Elliman;Keller Williams,0,4
+anthropic,Q07,4,0,0,,1,0
+anthropic,Q08,4,0,0,,1,0
+anthropic,Q09,4,0,0,Compass;Corcoran,0,0
+anthropic,Q10,4,3,3,Keller Williams,0,7
+anthropic,L01,5,0,0,Compass;Daniel Gale;Douglas Elliman;Sotheby's,0,0
+anthropic,L02,5,5,4,Coldwell Banker;Compass;Corcoran;Daniel Gale;Douglas Elliman;Keller Williams;Sotheby's,0,6
+anthropic,L03,5,1,0,Compass;Daniel Gale;Douglas Elliman;Nest Seekers;Redfin Agent;Sotheby's,0,5
+anthropic,L04,5,0,0,Coldwell Banker;Compass;Daniel Gale;Douglas Elliman;Sotheby's,0,0
+anthropic,L05,5,2,2,Douglas Elliman;Keller Williams;RE/MAX,0,5
+anthropic,L06,5,0,0,,1,0
+anthropic,L07,5,4,4,Coldwell Banker;Compass;Daniel Gale;Douglas Elliman;Laffey;Redfin Agent;Sotheby's,0,5
+anthropic,L08,5,1,1,Compass;Douglas Elliman;Signature Premier,0,5
+anthropic,L09,5,0,0,Compass;Douglas Elliman;Howard Hanna;RE/MAX;Signature Premier,0,2
+anthropic,L10,5,4,4,Douglas Elliman;Redfin Agent;Signature Premier,0,5
+anthropic,Q01,5,0,0,Compass;Corcoran;Douglas Elliman,0,0
+anthropic,Q02,5,0,0,,1,4
+anthropic,Q03,5,0,0,Compass;Nest Seekers;SERHANT;Serhant,0,3
+anthropic,Q04,5,0,0,,1,0
+anthropic,Q05,5,6,5,Compass;Corcoran;Keller Williams,0,6
+anthropic,Q06,5,2,2,Douglas Elliman;Keller Williams,0,5
+anthropic,Q07,5,0,0,,1,0
+anthropic,Q08,5,2,1,Compass;Corcoran;Keller Williams;eXp Realty,0,4
+anthropic,Q09,5,0,0,,1,0
+anthropic,Q10,5,6,5,Corcoran;Keller Williams;eXp Realty,0,6
+gemini,L01,1,0,0,Compass;Daniel Gale;Douglas Elliman;Howard Hanna;Sotheby's,0,10
+gemini,L02,1,3,3,Compass;Daniel Gale;Douglas Elliman;Laffey,0,6
+gemini,L03,1,3,3,Compass;Daniel Gale;Douglas Elliman;Sotheby's,0,22
+gemini,L04,1,1,1,Compass;Daniel Gale;SERHANT;Serhant;Signature Premier;Sotheby's,0,15
+gemini,L05,1,1,1,Coldwell Banker;Signature Premier,0,6
+gemini,L06,1,1,1,Berkshire Hathaway;Coldwell Banker;Douglas Elliman;Laffey,0,5
+gemini,L07,1,3,3,Compass;Daniel Gale;Douglas Elliman;Laffey,0,12
+gemini,L08,1,2,2,Daniel Gale;Douglas Elliman;Howard Hanna;Signature Premier;Sotheby's,0,12
+gemini,L09,1,1,1,Coldwell Banker;RE/MAX;Signature Premier,0,8
+gemini,L10,1,1,1,Compass;Daniel Gale;Douglas Elliman,0,9
+gemini,Q01,1,5,5,Compass;Corcoran,0,5
+gemini,Q02,1,4,4,Compass;Corcoran,0,4
+gemini,Q03,1,2,2,Corcoran;Douglas Elliman;Nest Seekers;SERHANT;Serhant,0,11
+gemini,Q04,1,3,3,Compass;Douglas Elliman;Keller Williams;eXp Realty,0,11
+gemini,Q05,1,2,2,Compass;Keller Williams,0,14
+gemini,Q06,1,2,2,Compass;Daniel Gale;Douglas Elliman;Keller Williams,0,12
+gemini,Q07,1,1,1,Compass,0,4
+gemini,Q08,1,1,1,Coldwell Banker;Compass;Corcoran,0,4
+gemini,Q09,1,0,0,Century 21;Compass,0,10
+gemini,Q10,1,2,2,Century 21;Douglas Elliman;Keller Williams;Realty ONE,0,10
+gemini,L01,2,0,0,Compass;Daniel Gale;Howard Hanna;Signature Premier;Sotheby's,0,6
+gemini,L02,2,3,3,Compass;Daniel Gale;Douglas Elliman;Laffey,0,8
+gemini,L03,2,3,3,Compass;Daniel Gale;Douglas Elliman;Sotheby's,0,21
+gemini,L04,2,1,1,Compass;Daniel Gale;Howard Hanna;SERHANT;Serhant;Signature Premier,0,3
+gemini,L05,2,1,1,Coldwell Banker;EXIT Realty;Signature Premier,0,4
+gemini,L06,2,1,1,Berkshire Hathaway;Douglas Elliman;Laffey,0,6
+gemini,L07,2,3,3,Compass;Daniel Gale;Douglas Elliman;Sotheby's,0,9
+gemini,L08,2,2,2,Compass;Daniel Gale;Douglas Elliman;Howard Hanna;Signature Premier,0,11
+gemini,L09,2,1,1,Coldwell Banker;RE/MAX;Signature Premier,0,6
+gemini,L10,2,1,1,Coldwell Banker;Compass;Daniel Gale;Douglas Elliman,0,16
+gemini,Q01,2,4,4,Compass;Corcoran,0,3
+gemini,Q02,2,1,1,Compass,0,5
+gemini,Q03,2,1,1,Corcoran;Douglas Elliman;SERHANT;Serhant,0,15
+gemini,Q04,2,3,3,Brown Harris Stevens;Compass;Corcoran;eXp Realty,0,9
+gemini,Q05,2,3,3,Keller Williams,0,12
+gemini,Q06,2,2,2,Compass;Daniel Gale;Douglas Elliman;Keller Williams;Signature Premier,0,10
+gemini,Q07,2,2,2,Brown Harris Stevens;Compass,0,7
+gemini,Q08,2,1,1,Coldwell Banker;Compass,0,12
+gemini,Q09,2,1,1,Compass;Corcoran,0,10
+gemini,Q10,2,3,3,Daniel Gale;Douglas Elliman;Keller Williams,0,10
+gemini,L01,3,0,0,Compass;Daniel Gale;Douglas Elliman;Howard Hanna;Signature Premier;Sotheby's,0,4
+gemini,L02,3,3,3,Compass;Daniel Gale;Douglas Elliman;Laffey,0,6
+gemini,L03,3,4,4,Compass;Daniel Gale;Douglas Elliman;Sotheby's,0,20
+gemini,L04,3,0,0,Compass;Daniel Gale;Douglas Elliman;SERHANT;Serhant;Signature Premier,0,7
+gemini,L05,3,1,1,Coldwell Banker;Signature Premier;eXp Realty,0,4
+gemini,L06,3,1,1,Berkshire Hathaway;Douglas Elliman;Laffey,0,5
+gemini,L07,3,3,3,Compass;Daniel Gale;Douglas Elliman,0,11
+gemini,L08,3,2,2,Compass;Daniel Gale;Howard Hanna;Signature Premier,0,11
+gemini,L09,3,1,1,Coldwell Banker;Signature Premier,0,5
+gemini,L10,3,0,0,Coldwell Banker;Compass;Daniel Gale;Douglas Elliman,0,11
+gemini,Q01,3,5,5,Compass;Corcoran,0,2
+gemini,Q02,3,4,4,Compass;Corcoran,0,3
+gemini,Q03,3,3,3,Compass;Corcoran;Nest Seekers;SERHANT;Serhant,0,14
+gemini,Q04,3,2,2,Compass;Douglas Elliman,0,7
+gemini,Q05,3,4,4,Compass;Keller Williams,0,6
+gemini,Q06,3,4,4,Compass;Daniel Gale;Keller Williams;eXp Realty,0,7
+gemini,Q07,3,1,1,Compass,0,5
+gemini,Q08,3,1,1,Coldwell Banker;Compass,0,11
+gemini,Q09,3,0,0,Century 21;Corcoran,0,15
+gemini,Q10,3,2,2,Century 21;Douglas Elliman;Keller Williams,0,8
+gemini,L01,4,0,0,Compass;Daniel Gale;Howard Hanna;Sotheby's,0,6
+gemini,L02,4,3,3,Compass;Daniel Gale;Douglas Elliman;Keller Williams;Laffey,0,9
+gemini,L03,4,4,4,Compass;Daniel Gale;Douglas Elliman;Sotheby's,0,13
+gemini,L04,4,0,0,Compass;Daniel Gale;Signature Premier,0,9
+gemini,L05,4,1,1,Coldwell Banker;Howard Hanna;Signature Premier,0,4
+gemini,L06,4,2,2,Berkshire Hathaway;Compass;Douglas Elliman,0,6
+gemini,L07,4,4,4,Compass;Daniel Gale;Douglas Elliman;Keller Williams,0,17
+gemini,L08,4,2,2,Compass;Daniel Gale;Douglas Elliman;Howard Hanna;Signature Premier;Sotheby's,0,15
+gemini,L09,4,1,1,Coldwell Banker;Douglas Elliman;Howard Hanna;Signature Premier,0,4
+gemini,L10,4,0,0,Berkshire Hathaway;Compass;Daniel Gale;Douglas Elliman;Laffey,0,9
+gemini,Q01,4,5,5,Compass;Corcoran,0,7
+gemini,Q02,4,4,4,Compass;Corcoran,0,6
+gemini,Q03,4,2,2,Compass;Corcoran;SERHANT;Serhant,0,17
+gemini,Q04,4,3,3,Compass;Douglas Elliman,0,6
+gemini,Q05,4,2,2,Compass;Douglas Elliman;Keller Williams,0,9
+gemini,Q06,4,2,2,Douglas Elliman;Keller Williams;Signature Premier,0,18
+gemini,Q07,4,1,1,Compass,0,8
+gemini,Q08,4,1,1,Coldwell Banker;Compass;Corcoran,0,6
+gemini,Q09,4,1,1,Century 21;Compass,0,11
+gemini,Q10,4,1,1,Douglas Elliman;Keller Williams,0,9
+gemini,L01,5,0,0,Compass;Daniel Gale;Douglas Elliman;Howard Hanna,0,14
+gemini,L02,5,3,3,Compass;Daniel Gale;Douglas Elliman;Keller Williams;Laffey,0,8
+gemini,L03,5,4,4,Compass;Daniel Gale;Douglas Elliman,0,13
+gemini,L04,5,1,1,Daniel Gale;SERHANT;Serhant;Signature Premier,0,10
+gemini,L05,5,0,0,Coldwell Banker;EXIT Realty;Keller Williams;Signature Premier,0,5
+gemini,L06,5,2,2,Douglas Elliman,0,5
+gemini,L07,5,3,3,Coldwell Banker;Compass;Daniel Gale;Douglas Elliman,0,14
+gemini,L08,5,2,2,Daniel Gale;Howard Hanna;Signature Premier;Sotheby's,0,9
+gemini,L10,5,1,1,Compass;Daniel Gale;Douglas Elliman,0,10
+gemini,Q01,5,4,4,Compass;Corcoran,0,3
+gemini,Q02,5,3,3,Compass;Corcoran,0,6
+gemini,Q03,5,2,2,Compass;Corcoran;Douglas Elliman;SERHANT;Serhant,0,11
+gemini,Q04,5,2,2,Brown Harris Stevens;Compass;Corcoran;Daniel Gale;Douglas Elliman;eXp Realty,0,5
+gemini,Q05,5,2,2,Compass;Keller Williams,0,13
+gemini,Q06,5,2,2,Compass;Daniel Gale;Keller Williams,0,12
+gemini,Q07,5,1,1,Compass,0,5
+gemini,Q08,5,2,2,Coldwell Banker;Compass,0,7
+gemini,Q09,5,0,0,Compass;Corcoran,0,21
+gemini,Q10,5,2,2,Douglas Elliman;Keller Williams;Realty ONE,0,18
+openai,L01,1,2,2,Compass;Douglas Elliman;Howard Hanna;eXp Realty,0,5
+openai,L02,1,11,10,Coldwell Banker;Compass;Daniel Gale;Douglas Elliman;EXIT Realty;Keller Williams;Laffey;Signature Premier;eXp Realty,0,6
+openai,L03,1,4,4,Coldwell Banker;Compass;Daniel Gale;Douglas Elliman;Laffey,0,9
+openai,L04,1,3,3,Berkshire Hathaway;Coldwell Banker;Keller Williams;Signature Premier,0,6
+openai,L05,1,1,1,Compass;Douglas Elliman;Keller Williams;Signature Premier,0,9
+openai,L06,1,2,1,Berkshire Hathaway;Coldwell Banker;Compass;Daniel Gale;Douglas Elliman,0,7
+openai,L07,1,5,5,Compass;Daniel Gale;Douglas Elliman;Laffey;Signature Premier,0,5
+openai,L08,1,2,2,Coldwell Banker;Douglas Elliman;Signature Premier;eXp Realty,0,5
+openai,L09,1,1,1,Coldwell Banker;Daniel Gale;Douglas Elliman;Howard Hanna;RE/MAX,0,4
+openai,L10,1,1,1,Compass;Douglas Elliman,0,6
+openai,Q01,1,3,3,Compass;Douglas Elliman;Keller Williams,0,7
+openai,Q02,1,4,4,Compass;eXp Realty,0,9
+openai,Q03,1,2,2,Douglas Elliman;SERHANT;Serhant,0,6
+openai,Q04,1,9,9,Brown Harris Stevens;Compass;Keller Williams;Signature Premier;eXp Realty,0,11
+openai,Q05,1,5,4,Coldwell Banker;EXIT Realty;Keller Williams,0,6
+openai,Q06,1,4,4,Compass;Douglas Elliman;Keller Williams,0,8
+openai,Q07,1,2,2,Compass,0,7
+openai,Q08,1,3,3,Compass,0,6
+openai,Q09,1,2,2,Compass;Corcoran;Keller Williams,0,9
+openai,Q10,1,6,6,Compass;Douglas Elliman;Keller Williams,0,4
+openai,L01,2,2,2,Compass;Douglas Elliman;Howard Hanna;eXp Realty,0,5
+openai,L02,2,7,6,Coldwell Banker;Compass;Daniel Gale;Douglas Elliman;EXIT Realty;Keller Williams;Laffey;Redfin Agent;Signature Premier;eXp Realty,0,6
+openai,L03,2,6,5,Coldwell Banker;Compass;Daniel Gale;Douglas Elliman;Keller Williams;Laffey,0,9
+openai,L04,2,3,3,Berkshire Hathaway;Coldwell Banker;Douglas Elliman;Keller Williams;Laffey;Signature Premier,0,5
+openai,L05,2,3,3,Compass;Douglas Elliman;Keller Williams;Signature Premier;Weichert,0,9
+openai,L06,2,2,1,Berkshire Hathaway;Coldwell Banker;Compass;Daniel Gale;Douglas Elliman;Engel & Völkers,0,6
+openai,L07,2,4,4,Compass;Daniel Gale;Douglas Elliman;Laffey;Signature Premier,0,5
+openai,L08,2,2,2,Daniel Gale;Douglas Elliman;EXIT Realty;Signature Premier;eXp Realty,0,5
+openai,L09,2,1,1,Coldwell Banker;RE/MAX;Signature Premier,0,4
+openai,L10,2,1,1,Compass;Daniel Gale;Douglas Elliman,0,6
+openai,Q01,2,3,3,Compass;Keller Williams;eXp Realty,0,7
+openai,Q02,2,3,3,Compass,0,7
+openai,Q03,2,2,2,Compass;Douglas Elliman;Nest Seekers;SERHANT;Serhant,0,5
+openai,Q04,2,7,7,Brown Harris Stevens;Keller Williams;Signature Premier;eXp Realty,0,9
+openai,Q05,2,9,8,Coldwell Banker;Douglas Elliman;EXIT Realty;Keller Williams,0,5
+openai,Q06,2,5,5,Compass;Douglas Elliman;EXIT Realty;eXp Realty,0,6
+openai,Q07,2,3,3,,0,9
+openai,Q08,2,3,3,Coldwell Banker;Compass;Keller Williams;Remax,0,4
+openai,Q09,2,0,0,Compass;Keller Williams,0,7
+openai,Q10,2,7,7,Compass;Douglas Elliman;Keller Williams,0,4
+openai,L01,3,2,2,Douglas Elliman;Howard Hanna;Keller Williams;eXp Realty,0,6
+openai,L02,3,7,6,Coldwell Banker;Compass;Daniel Gale;Douglas Elliman;EXIT Realty;Keller Williams;Laffey;Redfin Agent;Signature Premier;eXp Realty,0,6
+openai,L03,3,4,4,Coldwell Banker;Compass;Daniel Gale;Douglas Elliman;Laffey,0,9
+openai,L04,3,4,4,Berkshire Hathaway;Coldwell Banker;Compass;Daniel Gale;Keller Williams;Signature Premier,0,9
+openai,L05,3,3,3,Compass;Keller Williams;Weichert,0,8
+openai,L06,3,2,1,Berkshire Hathaway;Coldwell Banker;Daniel Gale;Douglas Elliman,0,7
+openai,L07,3,3,3,Compass;Daniel Gale;Douglas Elliman;Laffey;Signature Premier,0,4
+openai,L08,3,1,1,Daniel Gale;Douglas Elliman;Signature Premier,0,4
+openai,L09,3,1,1,Coldwell Banker;Daniel Gale;Douglas Elliman;RE/MAX;Signature Premier,0,4
+openai,L10,3,2,2,Berkshire Hathaway;Compass;Douglas Elliman;Keller Williams;Laffey;Signature Premier;eXp Realty,0,7
+openai,Q01,3,2,2,Compass;Keller Williams,0,6
+openai,Q02,3,4,4,Compass;eXp Realty,0,8
+openai,Q03,3,2,2,Compass;Douglas Elliman;Nest Seekers;SERHANT;Serhant,0,5
+openai,Q04,3,5,5,Brown Harris Stevens;Keller Williams;eXp Realty,0,11
+openai,Q05,3,10,10,Coldwell Banker;Douglas Elliman;EXIT Realty;Keller Williams;Signature Premier;eXp Realty,0,5
+openai,Q06,3,3,3,Compass;Douglas Elliman;Keller Williams;eXp Realty,0,5
+openai,Q07,3,2,2,Compass,0,8
+openai,Q08,3,3,3,Compass,0,5
+openai,Q09,3,0,0,Compass;Corcoran;Keller Williams,0,10
+openai,Q10,3,6,6,Compass;Douglas Elliman;Keller Williams,0,3
+openai,L01,4,2,2,Douglas Elliman;Howard Hanna;Keller Williams;eXp Realty,0,7
+openai,L02,4,5,5,Compass;Douglas Elliman;Laffey;Redfin Agent;eXp Realty,0,5
+openai,L03,4,4,4,Coldwell Banker;Daniel Gale;Douglas Elliman;Laffey,0,8
+openai,L04,4,3,3,Berkshire Hathaway;Coldwell Banker;Compass;Keller Williams;Signature Premier,0,8
+openai,L05,4,2,2,Compass;Keller Williams,0,9
+openai,L06,4,3,2,Compass;Daniel Gale;Douglas Elliman,0,8
+openai,L07,4,4,4,Compass;Daniel Gale;Douglas Elliman;Laffey;Signature Premier,0,5
+openai,L08,4,2,2,Coldwell Banker;Douglas Elliman;Signature Premier,0,4
+openai,L09,4,1,1,Coldwell Banker;RE/MAX;Signature Premier,0,5
+openai,L10,4,5,4,Compass;Douglas Elliman;Redfin Agent;Signature Premier,0,8
+openai,Q01,4,3,3,Compass,0,9
+openai,Q02,4,4,4,Compass,0,8
+openai,Q03,4,2,2,Compass;Douglas Elliman;Nest Seekers;SERHANT;Serhant,0,5
+openai,Q04,4,3,3,Brown Harris Stevens;Century 21;Keller Williams;eXp Realty,0,10
+openai,Q05,4,11,11,Coldwell Banker;Douglas Elliman;EXIT Realty;Keller Williams;RE/MAX;Signature Premier;eXp Realty,0,5
+openai,Q06,4,5,5,Compass;EXIT Realty,0,6
+openai,Q07,4,2,2,Compass,0,8
+openai,Q08,4,3,3,Coldwell Banker;Compass;Remax,0,6
+openai,Q09,4,0,0,Corcoran;Keller Williams,0,9
+openai,Q10,4,7,7,Compass;Douglas Elliman;Keller Williams,0,4
+openai,L01,5,1,1,Compass;Douglas Elliman;Howard Hanna,0,4
+openai,L02,5,7,6,Coldwell Banker;Compass;Douglas Elliman;EXIT Realty;Keller Williams;Laffey;Redfin Agent;eXp Realty,0,5
+openai,L03,5,3,3,Coldwell Banker;Daniel Gale;Douglas Elliman;Laffey,0,8
+openai,L04,5,4,4,Berkshire Hathaway;Coldwell Banker;Keller Williams;Signature Premier,0,7
+openai,L05,5,3,3,Compass;Keller Williams;Signature Premier;Weichert,0,9
+openai,L06,5,3,2,Compass;Daniel Gale;Douglas Elliman,0,7
+openai,L07,5,3,3,Compass;Daniel Gale;Douglas Elliman;Laffey;Signature Premier,0,4
+openai,L08,5,2,1,Redfin Agent;Signature Premier,0,5
+openai,L09,5,0,0,Coldwell Banker;RE/MAX;Signature Premier,0,3
+openai,L10,5,0,0,Century 21;Compass;Douglas Elliman;eXp Realty,0,7
+openai,Q01,5,1,1,Compass;Keller Williams;eXp Realty,0,8
+openai,Q02,5,4,4,Compass;eXp Realty,0,9
+openai,Q03,5,2,2,Compass;Douglas Elliman;Nest Seekers;SERHANT;Serhant,0,5
+openai,Q04,5,3,3,Brown Harris Stevens;Keller Williams;eXp Realty,0,10
+openai,Q05,5,10,9,Coldwell Banker;Douglas Elliman;EXIT Realty;Keller Williams,0,4
+openai,Q06,5,3,3,Compass;EXIT Realty,0,5
+openai,Q07,5,4,4,Compass;eXp Realty,0,7
+openai,Q08,5,3,3,Coldwell Banker;Compass;Douglas Elliman;EXIT Realty;Keller Williams,0,5
+openai,Q09,5,0,0,Compass;Keller Williams,0,10
+openai,Q10,5,7,7,Century 21;Compass;Douglas Elliman;Keller Williams,0,6
+perplexity,L01,1,2,1,Daniel Gale,0,15
+perplexity,L02,1,1,1,Compass;Keller Williams,0,15
+perplexity,L03,1,1,1,Coldwell Banker;Compass;Douglas Elliman;Laffey,0,15
+perplexity,L04,1,0,0,Signature Premier,0,15
+perplexity,L05,1,1,1,Century 21;Coldwell Banker;Compass,0,15
+perplexity,L06,1,0,0,Douglas Elliman;Engel & Völkers,0,15
+perplexity,L07,1,0,0,,1,15
+perplexity,L08,1,1,1,Signature Premier,0,15
+perplexity,L09,1,1,1,,0,15
+perplexity,L10,1,2,2,Compass;Douglas Elliman,0,15
+perplexity,Q01,1,3,3,Compass,0,15
+perplexity,Q02,1,2,2,Compass,0,15
+perplexity,Q03,1,2,2,Douglas Elliman;Nest Seekers;SERHANT;Serhant,0,15
+perplexity,Q04,1,1,1,SERHANT;Serhant;eXp Realty,0,15
+perplexity,Q05,1,2,2,,0,15
+perplexity,Q06,1,0,0,Douglas Elliman,0,15
+perplexity,Q07,1,0,0,Compass,0,15
+perplexity,Q08,1,0,0,Compass;Corcoran,0,15
+perplexity,Q09,1,0,0,Century 21,0,15
+perplexity,Q10,1,2,2,,0,15
+perplexity,L01,2,1,1,,0,15
+perplexity,L02,2,1,1,,0,15
+perplexity,L03,2,1,1,Compass;Daniel Gale;Douglas Elliman;Laffey;SERHANT;Serhant,0,15
+perplexity,L04,2,0,0,Coldwell Banker;Signature Premier,0,15
+perplexity,L05,2,0,0,Century 21;Coldwell Banker,0,15
+perplexity,L06,2,0,0,Douglas Elliman;Engel & Völkers,0,15
+perplexity,L07,2,1,1,,0,15
+perplexity,L08,2,0,0,,1,15
+perplexity,L09,2,0,0,Signature Premier,0,15
+perplexity,L10,2,2,2,Compass;Douglas Elliman;Howard Hanna;Signature Premier,0,15
+perplexity,Q01,2,3,3,Compass,0,15
+perplexity,Q02,2,2,2,Compass,0,15
+perplexity,Q03,2,2,2,Nest Seekers;SERHANT;Serhant,0,15
+perplexity,Q04,2,1,1,,0,15
+perplexity,Q05,2,6,6,,0,15
+perplexity,Q06,2,0,0,Douglas Elliman,0,15
+perplexity,Q07,2,1,1,Compass,0,15
+perplexity,Q08,2,1,1,Compass;Corcoran;Keller Williams,0,15
+perplexity,Q09,2,2,2,Compass,0,15
+perplexity,Q10,2,2,2,,0,15
+perplexity,L01,3,2,1,Daniel Gale,0,15
+perplexity,L02,3,1,1,Coldwell Banker;Howard Hanna;Keller Williams;Weichert,0,15
+perplexity,L03,3,1,1,Compass;Daniel Gale;Douglas Elliman;Nest Seekers,0,15
+perplexity,L04,3,0,0,Coldwell Banker;Daniel Gale,0,15
+perplexity,L05,3,0,0,,0,15
+perplexity,L06,3,1,1,Douglas Elliman,0,15
+perplexity,L07,3,0,0,Daniel Gale,0,15
+perplexity,L08,3,0,0,,1,15
+perplexity,L09,3,1,1,,0,15
+perplexity,L10,3,2,2,Coldwell Banker;Compass;Douglas Elliman;Signature Premier,0,15
+perplexity,Q01,3,2,2,Compass,0,28
+perplexity,Q02,3,2,2,,0,15
+perplexity,Q03,3,2,2,Douglas Elliman;Nest Seekers;SERHANT;Serhant,0,15
+perplexity,Q04,3,1,1,,0,15
+perplexity,Q05,3,0,0,,1,15
+perplexity,Q06,3,0,0,Douglas Elliman,0,15
+perplexity,Q07,3,0,0,,0,15
+perplexity,Q08,3,2,2,Compass,0,15
+perplexity,Q09,3,0,0,Compass;Keller Williams,0,15
+perplexity,Q10,3,2,2,Keller Williams,0,15
+perplexity,L01,4,2,1,Daniel Gale,0,15
+perplexity,L02,4,1,1,,0,15
+perplexity,L03,4,1,1,Coldwell Banker;Compass;Daniel Gale;Douglas Elliman;Laffey,0,15
+perplexity,L04,4,0,0,,0,15
+perplexity,L05,4,0,0,,0,15
+perplexity,L06,4,0,0,Douglas Elliman;Engel & Völkers,0,15
+perplexity,L07,4,0,0,Compass;Douglas Elliman,0,15
+perplexity,L08,4,1,1,Signature Premier,0,15
+perplexity,L09,4,1,1,Coldwell Banker,0,15
+perplexity,L10,4,2,2,Coldwell Banker;Compass;Douglas Elliman;Signature Premier,0,15
+perplexity,Q01,4,3,3,Compass,0,15
+perplexity,Q02,4,1,1,Compass,0,15
+perplexity,Q03,4,4,4,Compass;Corcoran;Nest Seekers;SERHANT;Serhant,0,15
+perplexity,Q04,4,1,1,,0,15
+perplexity,Q05,4,1,1,,0,15
+perplexity,Q06,4,0,0,,0,15
+perplexity,Q07,4,1,1,Compass,0,15
+perplexity,Q08,4,1,1,,0,15
+perplexity,Q09,4,1,1,Compass,0,15
+perplexity,Q10,4,2,2,,0,15
+perplexity,L01,5,1,1,Douglas Elliman,0,15
+perplexity,L02,5,1,1,,0,15
+perplexity,L03,5,2,2,Compass;Douglas Elliman;SERHANT;Serhant,0,15
+perplexity,L04,5,0,0,Coldwell Banker;Compass,0,15
+perplexity,L05,5,0,0,Century 21,0,15
+perplexity,L06,5,0,0,Douglas Elliman,0,15
+perplexity,L07,5,2,2,Daniel Gale;Douglas Elliman,0,15
+perplexity,L08,5,0,0,Daniel Gale;Signature Premier,0,15
+perplexity,L09,5,1,1,Compass;Signature Premier,0,15
+perplexity,L10,5,2,2,Coldwell Banker;Compass;Douglas Elliman,0,15
+perplexity,Q01,5,3,3,Compass,0,15
+perplexity,Q02,5,3,3,,0,15
+perplexity,Q03,5,2,2,Douglas Elliman;Nest Seekers;SERHANT;Serhant,0,15
+perplexity,Q04,5,0,0,,1,15
+perplexity,Q05,5,1,1,,0,15
+perplexity,Q06,5,0,0,,0,15
+perplexity,Q07,5,0,0,Compass,0,15
+perplexity,Q08,5,1,1,,0,15
+perplexity,Q09,5,1,1,Compass,0,15
+perplexity,Q10,5,2,2,,0,15

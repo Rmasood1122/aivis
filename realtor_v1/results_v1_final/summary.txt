@@ -1,0 +1,14 @@
+Realtor AI-visibility run — FINAL (verified names only)
+Responses: 399
+
+[anthropic] n=100  M1 named-person=47%  brokerage=82%  M4 deflection=18%  with-citations=71%
+[gemini] n=99  M1 named-person=87%  brokerage=100%  M4 deflection=0%  with-citations=100%
+[openai] n=100  M1 named-person=94%  brokerage=99%  M4 deflection=0%  with-citations=100%
+[perplexity] n=100  M1 named-person=67%  brokerage=67%  M4 deflection=5%  with-citations=100%
+[OVERALL] n=399  M1 named-person=74%  brokerage=87%  M4 deflection=6%  with-citations=93%
+
+M2 agents named in >=3/5 reps (same prompt+engine): 62
+M3 agents named by >=2 engines (same prompt): 45
+M5 unverified share of person mentions: 5%
+
+PREREG v1 verdict: GO — solo-agent product

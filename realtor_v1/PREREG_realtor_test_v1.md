@@ -59,3 +59,10 @@ M5 is reported separately for the ≥10 tier and the 3–9 sample.
 Perplexity v1 rows were collected WITHOUT web search (Agent API default); they are retained,
 labelled, and a search-enabled Perplexity run is added before the verdict.
 Thresholds in "Decision rule" are unchanged.
+## AMENDMENT v1.2 — 2026-09-23, before verdict
+"Verified" for the v1 verdict = web existence: a profile with that name as a real estate agent in
+Queens/Nassau/Suffolk on Zillow, Realtor.com, a brokerage site or equivalent, found by web search
+(AI-assisted, URLs recorded in verify_sheet_v1_filled.csv, 10 rows spot-checked by the operator).
+NY DOS license status was NOT checked for the verdict. "ambiguous" (real agent, wrong region/state)
+is counted as UNVERIFIED. Extractor noise (non-names) and duplicates are EXCLUDED, not counted as
+fabrication. License checks are required before any name appears in a client deliverable.

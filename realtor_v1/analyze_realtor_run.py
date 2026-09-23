@@ -159,13 +159,15 @@ def main():
 
     verified = None
     if a.verified:
+        # any CSV with columns name,verified. yes -> counted; no/ambiguous -> unverified (M5);
+        # exclude or absent -> dropped from every metric (PREREG amendment v1.1/v1.2).
         verified = {}
         with open(a.verified, encoding="utf-8") as fh:
             for r in csv.DictReader(fh):
                 v = (r.get("verified") or "").strip().lower()
-                if v not in ("yes", "no"):
-                    sys.exit(f"Unverified row for '{r['name']}': fill verified=yes/no for EVERY candidate.")
-                verified[r["name"]] = v == "yes"
+                if v == "yes": verified[r["name"]] = True
+                elif v in ("no", "ambiguous"): verified[r["name"]] = False
+                # anything else -> excluded
 
     out = Path(a.out); out.mkdir(parents=True, exist_ok=True)
     per_engine = defaultdict(lambda: Counter())
@@ -178,6 +180,8 @@ def main():
     for r in rows:
         e = r["engine"]
         ppl = people(r["text"])
+        if verified is not None:
+            ppl = {p for p in ppl if p in verified}       # drop excluded / unlisted candidates
         vppl = {p for p in ppl if verified.get(p)} if verified is not None else ppl
         unv = {p for p in ppl if verified is not None and not verified.get(p)}
         bks = brokerages(r["text"])
