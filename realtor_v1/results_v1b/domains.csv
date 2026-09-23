@@ -1,0 +1,266 @@
+engine,domain,responses
+anthropic,Zillow (mentioned),65
+anthropic,Yelp (mentioned),58
+anthropic,yelp.com,48
+anthropic,Redfin (mentioned),47
+anthropic,FastExpert (mentioned),37
+anthropic,HomeLight (mentioned),27
+anthropic,Realtor.com (mentioned),23
+anthropic,fastexpert.com,23
+anthropic,angi.com,22
+anthropic,Google (mentioned),21
+anthropic,redfin.com,18
+anthropic,Angi (mentioned),16
+anthropic,StreetEasy (mentioned),16
+anthropic,homelight.com,14
+anthropic,zillow.com,11
+anthropic,effectiveagents.com,11
+anthropic,realestate.usnews.com,11
+anthropic,iondocs.com,9
+anthropic,realestateagents.com,8
+anthropic,theericbermanteam.com,8
+anthropic,queenshometeam.com,8
+anthropic,agentpronto.com,7
+anthropic,bestrealestateagentnear.me,7
+anthropic,Nextdoor (mentioned),7
+anthropic,ratemyagent.com,7
+anthropic,biancainqueens.com,6
+anthropic,compass.com,6
+anthropic,yellowpages.com,5
+anthropic,manhassetchamber.com,5
+anthropic,manhassetrealtygroup.com,5
+anthropic,local.yahoo.com,4
+anthropic,halvatzisrealty.com,4
+anthropic,maureenfolan.com,4
+anthropic,therealdeal.com,3
+anthropic,realtorson.com,3
+anthropic,appext20.dos.ny.gov,2
+anthropic,tripodishemtovteam.com,2
+anthropic,m.yelp.com,2
+anthropic,coachrealtors.com,2
+anthropic,6sqft.com,2
+anthropic,onekeymls.com,2
+anthropic,contractorlistshq.com,2
+anthropic,streeteasy.com,2
+anthropic,azurerealtyny.com,2
+anthropic,homes.com,2
+anthropic,jacksonheightslistings.com,2
+anthropic,bluebrickrealestate.com,2
+anthropic,amorellirealty.com,1
+anthropic,remax.com,1
+anthropic,homeguide.com,1
+anthropic,nitingadura.com,1
+anthropic,gadurarealestate.com,1
+anthropic,rocketmortgage.com,1
+anthropic,qns.com,1
+anthropic,armasgroupnyc.com,1
+anthropic,rew-online.com,1
+anthropic,arcfe.com,1
+anthropic,corcoran.com,1
+anthropic,movewithmomentum.com,1
+anthropic,raveis.com,1
+anthropic,nyrej.com,1
+gemini,zillow.com,88
+gemini,compass.com,58
+gemini,realtor.com,50
+gemini,sothebysrealty.com,32
+gemini,fastexpert.com,29
+gemini,elliman.com,24
+gemini,homes.com,22
+gemini,top10reagents.com,22
+gemini,Zillow (mentioned),22
+gemini,reddit.com,20
+gemini,StreetEasy (mentioned),19
+gemini,queenshometeam.com,15
+gemini,streeteasy.com,14
+gemini,effectiveagents.com,14
+gemini,Angi (mentioned),13
+gemini,facebook.com,11
+gemini,maureenfolan.com,10
+gemini,laffey.com,8
+gemini,youtube.com,8
+gemini,agentpronto.com,7
+gemini,therealdeal.com,6
+gemini,serhant.com,6
+gemini,modernspaces.com,6
+gemini,Realtor.com (mentioned),6
+gemini,gardencitychamber.org,5
+gemini,lauracarrollteam.com,5
+gemini,nealmodi.com,5
+gemini,tripodishemtovteam.com,5
+gemini,maggiekeats.com,5
+gemini,coachrealtors.com,5
+gemini,realtrends.com,5
+gemini,corcoran.com,5
+gemini,jacksonheightslistings.com,5
+gemini,welcomehomerealestate.biz,5
+gemini,samaki.com,5
+gemini,experience.com,5
+gemini,biancainqueens.com,5
+gemini,thefriedmanteam.com,4
+gemini,kieranrodgers.com,4
+gemini,homelight.com,4
+gemini,testimonialtree.com,4
+gemini,signaturepremier.com,4
+gemini,thesmithgroup.nyc,4
+gemini,serenepowers.com,4
+gemini,Google (mentioned),4
+gemini,loopnet.com,4
+gemini,newsday.com,4
+gemini,anniehrealestate.com,3
+gemini,realtorson.com,3
+gemini,nystatemls.com,3
+gemini,korisassower.com,3
+gemini,montaukdunes.com,3
+gemini,benjaminrealty.net,3
+gemini,theericbermanteam.com,3
+gemini,mpcproperties.com,3
+gemini,century21.com,3
+gemini,baybenjamin.com,3
+gemini,maureenfolanblog.com,3
+gemini,irenerallisrealtor.com,2
+gemini,luxurylongisland.com,2
+gemini,luckytolivehererealty.com,2
+gemini,liherald.com,2
+gemini,realty.com,2
+gemini,halvatzisrealty.com,2
+gemini,nestseekers.com,2
+gemini,offthemrkt.com,2
+gemini,armasgroupnyc.com,2
+gemini,shopmanhasset.com,2
+gemini,patch.com,2
+gemini,coldwellbanker.com,2
+gemini,spark.re,2
+gemini,traded.co,2
+gemini,FastExpert (mentioned),2
+gemini,alanabenjamingroup.com,2
+gemini,birdeye.com,2
+gemini,mystatemls.com,2
+gemini,manhassetchamber.com,1
+gemini,luckytolivehere.com,1
+gemini,laurazambratto.com,1
+gemini,soldbybryan.com,1
+gemini,baybridgerealestate.com,1
+gemini,movoto.com,1
+gemini,paulgoldrealestate.com,1
+gemini,thelenardteam.com,1
+gemini,homesbymara.com,1
+gemini,bluebrickrealestate.com,1
+gemini,prlog.org,1
+gemini,remax.com,1
+gemini,jacksonheightsproperties.com,1
+gemini,werbagroup.com,1
+gemini,theempireteam.com,1
+gemini,luxurywithinreach.co,1
+gemini,cbamhomes.com,1
+gemini,bisnow.com,1
+gemini,redfin.com,1
+gemini,jlmhomes.com,1
+gemini,calameo.com,1
+gemini,adriannerealty.com,1
+gemini,movetofl.com,1
+gemini,topproducerwebsite.com,1
+gemini,thepescelanzillottateam.com,1
+gemini,qgazette.com,1
+gemini,wonder-st.com,1
+gemini,benaimxpartners.com,1
+gemini,modernspacesnyc.com,1
+gemini,activerain.com,1
+gemini,kw.com,1
+gemini,baysidetammy.com,1
+gemini,gadurarealestate.com,1
+gemini,vkokoris.com,1
+gemini,HomeLight (mentioned),1
+gemini,colgateathletics.com,1
+gemini,longislandmediagroup.com,1
+gemini,bonannorealty.com,1
+gemini,parvizrealestate.com,1
+gemini,mannpublications.com,1
+gemini,foresthillsgigi.com,1
+gemini,mycenturyhomes.com,1
+gemini,Yelp (mentioned),1
+gemini,beaudoinrealty.com,1
+gemini,caprijetrealty.com,1
+gemini,avail.com,1
+gemini,nwmls.com,1
+gemini,trulia.com,1
+gemini,carollorealtyandmanagement.com,1
+gemini,bbb.org,1
+openai,effectiveagents.com,70
+openai,Zillow (mentioned),63
+openai,zillow.com,63
+openai,Realtor.com (mentioned),59
+openai,realtor.com,52
+openai,reviews.birdeye.com,40
+openai,reddit.com,31
+openai,FastExpert (mentioned),30
+openai,fastexpert.com,30
+openai,HomeLight (mentioned),26
+openai,homelight.com,26
+openai,compass.com,20
+openai,experience.com,18
+openai,realestateagents.com,16
+openai,Google (mentioned),13
+openai,homes.com,13
+openai,ratemyagent.com,13
+openai,Redfin (mentioned),12
+openai,redfin.com,11
+openai,tabtablabs.com,9
+openai,iondocs.com,9
+openai,jacksonheightslistings.com,9
+openai,bestrealestateagentnear.me,8
+openai,miltoncoste.com,7
+openai,luxenhouse.com,6
+openai,coldwellbankerluxury.com,5
+openai,paulineconti.laffey.com,5
+openai,adelekuczmarski.cbamhomes.com,5
+openai,expertise.com,5
+openai,realtrends.com,5
+openai,elliman.com,5
+openai,modernspaces.com,5
+openai,streeteasy.com,5
+openai,StreetEasy (mentioned),5
+openai,agentpronto.com,5
+openai,Angi (mentioned),5
+openai,listingswithlucy.com,4
+openai,mpcproperties.com,4
+openai,theericbermanteam.com,4
+openai,cmcauliffe.coachrealtors.com,3
+openai,trustindex.io,3
+openai,realtyhop.com,3
+openai,werbagroup.com,3
+openai,braithrealty.com,3
+openai,theweek.com,3
+openai,manhassetchamber.com,2
+openai,ransells.homes,2
+openai,sherylfine.laffey.com,2
+openai,nydreamhomesbymp.com,2
+openai,jacksonheightsproperties.com,2
+openai,parvizrealestate.com,2
+openai,buysellhomesli.com,2
+openai,wesellastoria.com,2
+openai,longbeachcondoforsale.com,2
+openai,consumerfed.org,1
+openai,biggerpockets.com,1
+openai,libn.com,1
+openai,serhant.com,1
+openai,bhsusa.com,1
+openai,mijalkovicbennett.com,1
+openai,realtegrityny.com,1
+openai,danielgale.com,1
+openai,luxuryestate.com,1
+openai,gorizont.com,1
+openai,biancainqueens.com,1
+openai,liveastoria.com,1
+openai,brickunderground.com,1
+openai,dmeres.com,1
+openai,aidahomerealty.com,1
+openai,jhrealestatereport.com,1
+perplexity,Zillow (mentioned),41
+perplexity,Realtor.com (mentioned),37
+perplexity,Google (mentioned),24
+perplexity,StreetEasy (mentioned),19
+perplexity,Redfin (mentioned),3
+perplexity,FastExpert (mentioned),2
+perplexity,Yelp (mentioned),2
+perplexity,HomeLight (mentioned),1

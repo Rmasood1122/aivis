@@ -46,3 +46,20 @@ do the engines name individual agents consistently enough to sell an "AI Visibil
 - Public (FB group): aggregate numbers only; agent names anonymized.
 - Private: a named agent may receive their own results only.
 - Never claim an agent is "ranked #1 by AI"; report what was observed, with counts and dates.
+
+## AMENDMENT v1.1 — 2026-09-23, written after the v1 run, before any verification
+Reason: the run produced 872 distinct candidate names (324 in ≥3 responses). Verifying every
+candidate against NY DOS is infeasible. The regex extractor was also tightened after seeing the
+raw output (firms, places and headings excluded; agent-cue window required) — a post-hoc change
+to the instrument, disclosed here.
+Rule: (a) verify ALL candidates with ≥10 responses; (b) verify a random sample of 40 from the
+3–9 band, seed=20260923; (c) candidates in ≤2 responses are excluded from every metric.
+M1/M2/M3 are computed on verified names only and are therefore LOWER bounds.
+M5 is reported separately for the ≥10 tier and the 3–9 sample.
+Perplexity v1 rows were collected WITHOUT web search (Agent API default); they are retained,
+labelled, and a search-enabled Perplexity run is added before the verdict.
+Thresholds in "Decision rule" are unchanged.
+git add realtor_v1/PREREG_realtor_test_v1.md
+git commit -m "realtor_v1: predictions recorded before run"
+git push
+

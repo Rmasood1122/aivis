@@ -32,7 +32,7 @@ DIRECTORIES = {
     "yelp": "Yelp", "google": "Google", "homelight": "HomeLight", "fastexpert": "FastExpert",
     "trulia": "Trulia", "upnest": "UpNest", "nextdoor": "Nextdoor", "angi": "Angi",
 }
-# Words that look like "First Last" but are not people.
+# Words that look like "First Last" but are not people: places, headings, firm words.
 STOP = set("""
 New York Long Island Queens Astoria Garden City Great Neck Forest Hills Jackson Heights Long Beach
 Port Washington Rockville Centre City Real Estate Realty Group Team Home Homes Best Top The Agent Agents
@@ -41,7 +41,26 @@ Market Island North South East West Street Avenue Road Manhasset Huntington Mass
 Flushing Bayside Ridgewood Sunnyside Whitestone Nassau Suffolk County Brooklyn Manhattan Bronx NYC
 Multiple Listing Service Board Association National Estate Properties Property Sotheby International
 Williams Banker Coldwell Keller Douglas Elliman Brown Harris Stevens Daniel Gale Century Compass
+Signature Premier Howard Hanna Coach Realtors Modern Spaces Nest Seekers Berkshire Hathaway Integrity Leaders
+Gold Coast Sands Point Kings Point Saddle Rock Munsey Park Flower Hill Cold Spring Harbor Oyster Bay
+Fresh Meadows Historic District School Districts Plandome Manorhaven Village Gardens Hollis Douglaston
+Little Neck Elmhurst Woodside Maspeth Glendale Middle Kew Rego Corona Jamaica Howard Beach Rockaway
+Mineola Hempstead Levittown Bellmore Merrick Wantagh Seaford Lynbrook Valley Stream Floral Franklin Square
+Roslyn Glen Cove Head Hicksville Plainview Jericho Woodbury Bethpage Farmingdale Babylon Islip Bay Shore
+Summary Table Next Steps Track Record Key Questions Additional Notable Associate Broker Licensed Salesperson
+Why Them Best For Focus Notable Strengths Client Reviews Recent Sales Price Range Sales Volume Years Experience
+Pro Tip Bottom Line Final Thoughts Quick Tips How Choose What Look Red Flags Questions Interview Selling
+Buying Buyer Seller Listing Listings Condo Condos Coop Co-op Coops Family Single Multi Two Three
+Top Rated Highly Recommended Strong Choice Good Option Consider Also Worth Noting Other Options
+Chamber Commerce Public Schools High School Middle School Elementary Central Station Railroad LIRR Penn
 """.split())
+FIRM_WORDS = {"Realty", "Real", "Estate", "Group", "Team", "Homes", "Properties", "Brokerage", "Associates",
+              "Partners", "International", "Company", "Co", "LLC", "Inc"}
+# a candidate counts only if an agent cue appears near it
+CUE_RE = re.compile(r"(agent|broker|realtor|realty|team|compass|elliman|keller|coldwell|sotheby|corcoran|"
+                    r"exp|re/max|remax|century 21|howard hanna|daniel gale|signature premier|coach realtors|"
+                    r"nest seekers|modern spaces|berkshire|brown harris|serhant|laffey|weichert|top producer|"
+                    r"sales volume|transactions|closed|listing|reviews?|rating|\(|–|-)", re.I)
 NAME_RE = re.compile(r"\b([A-Z][a-z]+(?:\s[A-Z]\.)?\s[A-Z][a-z]+(?:-[A-Z][a-z]+)?)\b")
 URL_RE = re.compile(r"https?://[^\s)\]>\"']+")
 
@@ -66,7 +85,17 @@ def load(paths, f):
                 cites = r.get(f["citations"]) or []
                 if isinstance(cites, str):
                     cites = [cites]
-                cites = [c.get("url", "") if isinstance(c, dict) else str(c) for c in cites]
+                norm = []
+                for c in cites:
+                    if isinstance(c, dict):
+                        u, t = c.get("url", ""), (c.get("title") or "").strip()
+                        # Gemini grounding returns Google redirect URLs; the real host is in the title.
+                        if "vertexaisearch" in u and t and " " not in t and "." in t:
+                            u = "https://" + t
+                        norm.append(u)
+                    else:
+                        norm.append(str(c))
+                cites = norm
                 rows.append({
                     "engine": str(r.get(f["engine"], "unknown")),
                     "prompt_id": str(r.get(f["prompt_id"], "unknown")),
@@ -79,11 +108,15 @@ def load(paths, f):
 
 def people(text):
     out = set()
-    for m in NAME_RE.findall(text):
-        parts = [w for w in re.split(r"[\s-]", m) if w and not w.endswith(".")]
-        if any(w in STOP for w in parts):
+    for m in NAME_RE.finditer(text):
+        name = m.group(1)
+        parts = [w for w in re.split(r"[\s-]", name) if w and not w.endswith(".")]
+        if any(w in STOP for w in parts) or parts[-1] in FIRM_WORDS:
             continue
-        out.add(m)
+        window = text[max(0, m.start() - 60): m.end() + 80]
+        if not CUE_RE.search(window):
+            continue
+        out.add(name)
     return out
 
 
@@ -95,7 +128,7 @@ def brokerages(text):
 def domains(text, cites):
     found = set()
     for u in list(cites) + URL_RE.findall(text):
-        host = urlparse(u).netloc.lower().removeprefix("www.")
+        host = urlparse(u).netloc.lower().removeprefix("www.").split("?")[0]
         if host:
             found.add(host)
     low = text.lower()
@@ -109,6 +142,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("files", nargs="+")
     ap.add_argument("--out", default="results_v1")
+    ap.add_argument("--min-responses", type=int, default=1, help="only list candidates seen in >= N responses")
     ap.add_argument("--verified", help="person_candidates.csv with 'verified' column filled yes/no")
     ap.add_argument("--f-engine", default="engine")
     ap.add_argument("--f-prompt", default="prompt_id")
@@ -180,6 +214,8 @@ def main():
             w = csv.writer(fh)
             w.writerow(["name", "responses", "engines", "prompts", "example_context", "verified"])
             for n, d in sorted(cand.items(), key=lambda kv: -kv[1]["responses"]):
+                if d["responses"] < a.min_responses:
+                    continue
                 w.writerow([n, d["responses"], ";".join(sorted(d["engines"])), ";".join(sorted(d["areas"])),
                             d["example"], ""])
 
