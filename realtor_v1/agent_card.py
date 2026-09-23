@@ -51,7 +51,7 @@ print(f"=== {name} ===  run files: {len(sys.argv)-2}, responses scanned: {total}
 print(f"Responses mentioning the name: {hits} of {total} ({hits/total:.0%})")
 print("\nPer engine (mentions / responses):")
 for e in sorted(n_engine): print(f"  {e:11s} {per_engine[e]:3d} / {n_engine[e]}")
-print(f"Engines naming her: {sum(1 for e in per_engine if per_engine[e])} of {len(n_engine)}")
+print(f"Engines naming this agent: {sum(1 for e in per_engine if per_engine[e])} of {len(n_engine)}")
 print("\nPer question (mentions / 5 reps, by engine):")
 for pid in sorted(per_prompt):
     area, intent, text = PROMPT_AREA.get(pid, ("?", "?", ""))

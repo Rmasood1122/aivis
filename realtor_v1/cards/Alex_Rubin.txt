@@ -1,0 +1,32 @@
+=== Alex Rubin ===  run files: 4, responses scanned: 399
+Responses mentioning the name: 11 of 399 (3%)
+
+Per engine (mentions / responses):
+  anthropic     2 / 100
+  gemini        3 / 99
+  openai        5 / 100
+  perplexity    1 / 100
+Engines naming her: 4 of 4
+
+Per question (mentions / 5 reps, by engine):
+  L06 Long Beach        buy_condo        anthropic:2/5  gemini:3/5  openai:5/5  perplexity:1/5
+      "Who should I use as a realtor to buy a condo in Long Beach, NY?"
+
+Cited source domains on responses that mention the name:
+   15  realtor.com
+   13  zillow.com
+   10  reddit.com
+    7  tripodishemtovteam.com
+    5  reviews.birdeye.com
+    3  experience.com
+    3  homes.com
+    3  effectiveagents.com
+    3  ratemyagent.com
+    2  bestrealestateagentnear.me
+    2  yelp.com
+    2  longbeachcondoforsale.com
+
+Excerpts:
+  [anthropic L06] ...unding South Shore markets with over 15 years of experience, with a 5.0-star rating reflecting client satisfaction. - **Alex Rubin Team (Douglas Elliman)** – frequently mentioned in Yelp reviews for Long Beach; listed among the best real estate agents in Long Beach, NY on Yelp. Douglas Elliman generally has heavy inventory in Lo...
+  [anthropic L06] ...s, they've consistently placed as one of the top 3 teams in the area. - **Douglas Elliman Real Estate – Long Beach**, **Alex Rubin Team**, **Joyce Coletti**, **Topper Realty Corporation**, and **Kasner Properties at Coldwell Banker** all show up as among the best real estate agents in Long Beach, NY on local review platforms. - ...
+  [gemini L06] ...cal pricing trends, and the history of individual buildings—including post-Sandy restorations and HOA governance.  3. **Alex Rubin (Douglas Elliman)**    * **Reputation:** High-volume Long Beach specialist with a strong presence in condo and waterfront properties.    * **Why them:** Known for strong responsiveness, negotiation s...

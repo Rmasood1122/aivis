@@ -1,0 +1,36 @@
+=== June Chang ===  run files: 4, responses scanned: 399
+Responses mentioning the name: 23 of 399 (6%)
+
+Per engine (mentions / responses):
+  anthropic    15 / 100
+  gemini        2 / 99
+  openai        5 / 100
+  perplexity    1 / 100
+Engines naming her: 4 of 4
+
+Per question (mentions / 5 reps, by engine):
+  L02 Great Neck        buy              anthropic:5/5
+      "Which realtors are best for buying a home in Great Neck?"
+  Q05 Flushing          buy              anthropic:5/5  gemini:2/5  openai:5/5  perplexity:1/5
+      "Who are the most recommended real estate agents in Flushing, NY?"
+  Q10 Whitestone        sell             anthropic:5/5
+      "Top rated real estate agents in Whitestone, NY for selling a home?"
+
+Cited source domains on responses that mention the name:
+   34  yelp.com
+   18  fastexpert.com
+   15  zillow.com
+   13  angi.com
+    9  realtor.com
+    8  maureenfolan.com
+    7  effectiveagents.com
+    6  ratemyagent.com
+    5  realestate.usnews.com
+    5  reviews.birdeye.com
+    4  redfin.com
+    3  homelight.com
+
+Excerpts:
+  [anthropic L02] ...finish", with one client noting there's "no one better to handle the sale or purchase of your home than Mr. Tair."  - **June Chang** – A Yelp reviewer called her "the best Real Estate agent I have ever worked with in NYC", helping them find a home.  **Notable Brokerages Active in Great Neck:** - Douglas Elliman Real Estate (Grea...
+  [anthropic Q05] ...s rankings, the Best Real Estate Agents in Flushing, Queens, NY include Tim Ho Group - Keller Williams Realty Landmark, June Chang, Maureen Folan Real Estate Group, Vivian Chen - B Square Realty, The Braswell Team at Compass, Cooper & Cooper Real Estate, Donald Lai - Corcoran, Barbie Li - B Square Realty, and Julia Shildkret Rea...
+  [anthropic Q10] ...fanov Realtor** – A seller noted Amber helped them sell their co-op and navigate a tough co-op board successfully.  - **June Chang** – Described by a client as "the best Real Estate agent I have ever worked with in NYC."  - **Barbie Li (B Square Realty)** – One reviewer, a fellow broker, called her "a masterful agent/Broker," no...

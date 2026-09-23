@@ -13,8 +13,8 @@ anthropic,redfin.com,18
 anthropic,Angi (mentioned),16
 anthropic,StreetEasy (mentioned),16
 anthropic,homelight.com,14
-anthropic,zillow.com,11
 anthropic,effectiveagents.com,11
+anthropic,zillow.com,11
 anthropic,realestate.usnews.com,11
 anthropic,iondocs.com,9
 anthropic,realestateagents.com,8
@@ -54,9 +54,9 @@ anthropic,rocketmortgage.com,1
 anthropic,nitingadura.com,1
 anthropic,qns.com,1
 anthropic,armasgroupnyc.com,1
+anthropic,corcoran.com,1
 anthropic,arcfe.com,1
 anthropic,rew-online.com,1
-anthropic,corcoran.com,1
 anthropic,movewithmomentum.com,1
 anthropic,raveis.com,1
 anthropic,nyrej.com,1
@@ -89,8 +89,8 @@ gemini,lauracarrollteam.com,5
 gemini,nealmodi.com,5
 gemini,tripodishemtovteam.com,5
 gemini,maggiekeats.com,5
-gemini,coachrealtors.com,5
 gemini,realtrends.com,5
+gemini,coachrealtors.com,5
 gemini,corcoran.com,5
 gemini,jacksonheightslistings.com,5
 gemini,experience.com,5
@@ -100,13 +100,13 @@ gemini,biancainqueens.com,5
 gemini,thefriedmanteam.com,4
 gemini,kieranrodgers.com,4
 gemini,homelight.com,4
-gemini,signaturepremier.com,4
 gemini,testimonialtree.com,4
-gemini,thesmithgroup.nyc,4
+gemini,signaturepremier.com,4
 gemini,serenepowers.com,4
+gemini,thesmithgroup.nyc,4
 gemini,Google (mentioned),4
-gemini,loopnet.com,4
 gemini,newsday.com,4
+gemini,loopnet.com,4
 gemini,anniehrealestate.com,3
 gemini,realtorson.com,3
 gemini,nystatemls.com,3
@@ -130,8 +130,8 @@ gemini,armasgroupnyc.com,2
 gemini,shopmanhasset.com,2
 gemini,coldwellbanker.com,2
 gemini,patch.com,2
-gemini,spark.re,2
 gemini,traded.co,2
+gemini,spark.re,2
 gemini,FastExpert (mentioned),2
 gemini,alanabenjamingroup.com,2
 gemini,birdeye.com,2
@@ -154,20 +154,20 @@ gemini,theempireteam.com,1
 gemini,luxurywithinreach.co,1
 gemini,cbamhomes.com,1
 gemini,bisnow.com,1
-gemini,redfin.com,1
 gemini,jlmhomes.com,1
+gemini,redfin.com,1
 gemini,calameo.com,1
 gemini,adriannerealty.com,1
-gemini,movetofl.com,1
 gemini,topproducerwebsite.com,1
+gemini,movetofl.com,1
 gemini,thepescelanzillottateam.com,1
 gemini,qgazette.com,1
-gemini,benaimxpartners.com,1
 gemini,wonder-st.com,1
+gemini,benaimxpartners.com,1
 gemini,modernspacesnyc.com,1
 gemini,activerain.com,1
-gemini,kw.com,1
 gemini,baysidetammy.com,1
+gemini,kw.com,1
 gemini,gadurarealestate.com,1
 gemini,vkokoris.com,1
 gemini,HomeLight (mentioned),1
@@ -182,10 +182,10 @@ gemini,Yelp (mentioned),1
 gemini,beaudoinrealty.com,1
 gemini,caprijetrealty.com,1
 gemini,avail.com,1
-gemini,trulia.com,1
 gemini,nwmls.com,1
-gemini,carollorealtyandmanagement.com,1
+gemini,trulia.com,1
 gemini,bbb.org,1
+gemini,carollorealtyandmanagement.com,1
 openai,effectiveagents.com,70
 openai,Zillow (mentioned),63
 openai,zillow.com,63
@@ -211,15 +211,15 @@ openai,jacksonheightslistings.com,9
 openai,bestrealestateagentnear.me,8
 openai,miltoncoste.com,7
 openai,luxenhouse.com,6
-openai,paulineconti.laffey.com,5
 openai,adelekuczmarski.cbamhomes.com,5
 openai,coldwellbankerluxury.com,5
+openai,paulineconti.laffey.com,5
 openai,expertise.com,5
 openai,realtrends.com,5
-openai,elliman.com,5
 openai,modernspaces.com,5
-openai,streeteasy.com,5
+openai,elliman.com,5
 openai,StreetEasy (mentioned),5
+openai,streeteasy.com,5
 openai,agentpronto.com,5
 openai,Angi (mentioned),5
 openai,listingswithlucy.com,4
@@ -231,8 +231,8 @@ openai,realtyhop.com,3
 openai,werbagroup.com,3
 openai,braithrealty.com,3
 openai,theweek.com,3
-openai,sherylfine.laffey.com,2
 openai,manhassetchamber.com,2
+openai,sherylfine.laffey.com,2
 openai,ransells.homes,2
 openai,nydreamhomesbymp.com,2
 openai,jacksonheightsproperties.com,2
@@ -249,12 +249,12 @@ openai,mijalkovicbennett.com,1
 openai,realtegrityny.com,1
 openai,danielgale.com,1
 openai,luxuryestate.com,1
-openai,biancainqueens.com,1
 openai,gorizont.com,1
+openai,biancainqueens.com,1
 openai,liveastoria.com,1
 openai,brickunderground.com,1
-openai,dmeres.com,1
 openai,aidahomerealty.com,1
+openai,dmeres.com,1
 openai,jhrealestatereport.com,1
 perplexity,zillow.com,94
 perplexity,homes.com,73
@@ -279,11 +279,11 @@ perplexity,Realtor.com (mentioned),7
 perplexity,loopnet.com,6
 perplexity,linkedin.com,6
 perplexity,angi.com,6
-perplexity,bluebrickrealestate.com,5
 perplexity,realestateagents.com,5
+perplexity,bluebrickrealestate.com,5
 perplexity,reviews.birdeye.com,5
-perplexity,businesswire.com,5
 perplexity,nestseekers.com,5
+perplexity,businesswire.com,5
 perplexity,werbagroup.com,5
 perplexity,HomeLight (mentioned),5
 perplexity,FastExpert (mentioned),5
@@ -306,8 +306,8 @@ perplexity,jamesedition.com,3
 perplexity,azurerealtyny.com,3
 perplexity,manhassetchamber.com,2
 perplexity,calameo.com,2
-perplexity,remax.com,2
 perplexity,onekeymls.com,2
+perplexity,remax.com,2
 perplexity,trulia.com,2
 perplexity,halvatzisrealty.com,2
 perplexity,evandanielre.com,2
@@ -316,40 +316,40 @@ perplexity,realtrends.com,2
 perplexity,StreetEasy (mentioned),2
 perplexity,bhgre.com,2
 perplexity,claudialooi.com,2
-perplexity,brickunderground.com,2
 perplexity,armasgroupnyc.com,2
+perplexity,brickunderground.com,2
 perplexity,Angi (mentioned),2
 perplexity,realestateagentssuccess.com,2
-perplexity,bijouequities.com,2
 perplexity,houzz.com,2
-perplexity,Google (mentioned),2
+perplexity,bijouequities.com,2
 perplexity,sellwithacquaviva.com,2
+perplexity,Google (mentioned),2
 perplexity,twhitestone.com,2
 perplexity,li-realestate.com,1
 perplexity,deutschrealty.com,1
 perplexity,Redfin (mentioned),1
 perplexity,powerpaul.com,1
-perplexity,northgatereg.com,1
 perplexity,duskre.com,1
-perplexity,cityhomesrealtygroup.com,1
+perplexity,northgatereg.com,1
 perplexity,traded.co,1
+perplexity,cityhomesrealtygroup.com,1
 perplexity,qns.com,1
 perplexity,bbb.org,1
 perplexity,therealdeal.com,1
-perplexity,Yelp (mentioned),1
 perplexity,forest-hills-living.com,1
+perplexity,Yelp (mentioned),1
 perplexity,lillianvucicqueensrealestate.com,1
 perplexity,reach150.com,1
 perplexity,harmsrealestate.com,1
 perplexity,theresabrownrealtor.com,1
 perplexity,cosmogrouprealty.com,1
 perplexity,propertyfocus.com,1
-perplexity,houzeo.com,1
 perplexity,kwnyc.com,1
+perplexity,houzeo.com,1
 perplexity,metropolisrealtor.com,1
 perplexity,horowitzrealestateny.com,1
-perplexity,werwaiss.com,1
 perplexity,zdjasper.com,1
+perplexity,werwaiss.com,1
 perplexity,landandfarm.com,1
 perplexity,1stamericanone.com,1
 perplexity,mapquest.com,1

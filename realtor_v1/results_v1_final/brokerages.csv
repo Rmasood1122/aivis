@@ -26,8 +26,8 @@ gemini,Signature Premier,23
 gemini,Corcoran,21
 gemini,Keller Williams,20
 gemini,Coldwell Banker,18
-gemini,Sotheby's,13
 gemini,Howard Hanna,13
+gemini,Sotheby's,13
 gemini,Laffey,10
 gemini,SERHANT,9
 gemini,Serhant,9
@@ -52,8 +52,8 @@ openai,Berkshire Hathaway,9
 openai,Howard Hanna,6
 openai,RE/MAX,6
 openai,Redfin Agent,6
-openai,SERHANT,5
 openai,Serhant,5
+openai,SERHANT,5
 openai,Brown Harris Stevens,5
 openai,Nest Seekers,4
 openai,Corcoran,3
@@ -66,8 +66,8 @@ perplexity,Douglas Elliman,24
 perplexity,Coldwell Banker,12
 perplexity,Daniel Gale,10
 perplexity,Signature Premier,10
-perplexity,SERHANT,8
 perplexity,Serhant,8
+perplexity,SERHANT,8
 perplexity,Nest Seekers,6
 perplexity,Keller Williams,5
 perplexity,Century 21,4

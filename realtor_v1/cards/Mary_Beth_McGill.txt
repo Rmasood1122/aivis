@@ -1,0 +1,32 @@
+=== Mary Beth McGill ===  run files: 4, responses scanned: 399
+Responses mentioning the name: 6 of 399 (2%)
+
+Per engine (mentions / responses):
+  anthropic     1 / 100
+  gemini        0 / 99
+  openai        5 / 100
+  perplexity    0 / 100
+Engines naming her: 2 of 4
+
+Per question (mentions / 5 reps, by engine):
+  Q03 Long Island City  buy_condo        anthropic:1/5  openai:5/5
+      "Which real estate agents are best for new development condos in Long Island City?"
+
+Cited source domains on responses that mention the name:
+    5  bestrealestateagentnear.me
+    5  elliman.com
+    5  modernspaces.com
+    5  zillow.com
+    5  reviews.birdeye.com
+    1  rew-online.com
+    1  streeteasy.com
+    1  therealdeal.com
+    1  arcfe.com
+    1  corcoran.com
+    1  serhant.com
+    1  experience.com
+
+Excerpts:
+  [anthropic Q03] ...dled marketing and sales for new development launches in Long Island City's waterfront. One of their standout agents, **Mary Beth McGill**, has been voted "Top 10 Most Trusted Broker in NYC" as seen in Time Out NY Magazine and recognized as one of Modern Spaces' Top Producing Agents, and served as Sales Director at The Craftsmen Townh...
+  [openai Q03] ...r $350 million in deals over six years.([serhant.com](https://serhant.com/teams/kayla-lee-team?utm_source=openai))  • **Mary Beth McGill (Modern Spaces)**     - A longtime LIC resident and condo owner, Mary Beth has 14 years of experience with Modern Spaces. She was part of the sales team that sold out The Craftsmen Townhouse during t...
+  [openai Q03] ...ch as QNS44 and Vernon 123.([elliman.com](https://www.elliman.com/team/the-rick-rosa-team/226189?utm_source=openai))  • Mary Beth McGill (Modern Spaces)     - A longtime LIC resident and condo owner, Mary Beth has 14 years of experience with Modern Spaces and over 17 years working in LIC. She’s known for honest, five-star service and ...

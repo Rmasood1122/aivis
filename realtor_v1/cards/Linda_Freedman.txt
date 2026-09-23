@@ -1,0 +1,32 @@
+=== Linda Freedman ===  run files: 4, responses scanned: 399
+Responses mentioning the name: 12 of 399 (3%)
+
+Per engine (mentions / responses):
+  anthropic     5 / 100
+  gemini        2 / 99
+  openai        2 / 100
+  perplexity    3 / 100
+Engines naming her: 4 of 4
+
+Per question (mentions / 5 reps, by engine):
+  L10 Syosset           buy              anthropic:5/5  gemini:2/5  openai:2/5  perplexity:3/5
+      "Who are the best real estate agents in Syosset for families relocating from the city?"
+
+Cited source domains on responses that mention the name:
+   23  zillow.com
+   11  yelp.com
+   11  realtor.com
+    8  fastexpert.com
+    6  realestateagents.com
+    5  homelight.com
+    4  local.yahoo.com
+    4  compass.com
+    4  elliman.com
+    4  experience.com
+    3  redfin.com
+    3  sothebysrealty.com
+
+Excerpts:
+  [anthropic L10] ...Michele Targovnik of Daniel Gale Sotheby's International Realty.  ## Agents Worth Noting for Relocation Specifically  **Linda Freedman (Douglas Elliman)** – Her profile specifically emphasizes relocation experience: she has over 3+ decades of experience, is a Certified Residential Specialist (CRS), a Graduate of the Real Estate Inst...
+  [anthropic L10] ...Long Island agent listed among Redfin's top local picks for Syosset.  **Douglas Elliman (relocation specialists):** - **Linda Freedman** is highlighted for her relocation expertise: she is a Licensed Broker Associate and Certified Residential Specialist (CRS), the highest credential awarded to the top 3-4% of licensed residential ag...
+  [anthropic L10] ...major luxury brokerage well-suited to city-to-suburb relocations given its strong NYC presence and referral network.  **Linda Freedman – Douglas Elliman** A veteran broker specializing in relocation. She has over 3+ decades of experience, is a Licensed Broker Associate and Certified Residential Specialist (CRS) — a credential awarde...

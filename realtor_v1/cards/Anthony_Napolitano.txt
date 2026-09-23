@@ -1,0 +1,32 @@
+=== Anthony Napolitano ===  run files: 4, responses scanned: 399
+Responses mentioning the name: 14 of 399 (4%)
+
+Per engine (mentions / responses):
+  anthropic     5 / 100
+  gemini        4 / 99
+  openai        4 / 100
+  perplexity    1 / 100
+Engines naming her: 4 of 4
+
+Per question (mentions / 5 reps, by engine):
+  L05 Massapequa        buy_first        anthropic:5/5  gemini:4/5  openai:4/5  perplexity:1/5
+      "Good real estate agent for first-time home buyers in Massapequa?"
+
+Cited source domains on responses that mention the name:
+   19  zillow.com
+   11  realtor.com
+    9  fastexpert.com
+    8  effectiveagents.com
+    7  homelight.com
+    6  homes.com
+    5  yelp.com
+    4  facebook.com
+    4  compass.com
+    4  redfin.com
+    3  angi.com
+    3  agentpronto.com
+
+Excerpts:
+  [anthropic L05] ...n current listings and reviews for Massapequa, NY:  **Highly-rated individual agents mentioned across review sites:** - Anthony Napolitano Homes has 25 years of experience with 43+ sales in the last 12 months, ranking in the top 0.14% in Massapequa - Other frequently recommended agents include Kerry Mastrobuoni (Realty Connect USA), Ama...
+  [anthropic L05] ...ns after inspection, she was the first to advise backing out — a good sign for someone who won't just push a sale.  - **Anthony Napolitano (Anthony Napolitano Homes)** – A well-established broker with over 21 years of experience, having completed more than $350 million in transactions, ranking in the Top 5% Country Wide of All Realtors....
+  [anthropic L05] ...w up across review platforms and could be great fits for a first-time buyer:  **Notable local agents to consider:** - **Anthony Napolitano Homes** – One of the top-performing agents in the area, with 25 years of experience and 43+ sales in the past 12 months, ranking in the top 0.14% in Massapequa. - **Kerry Mastrobuoni (Realty Connect ...
