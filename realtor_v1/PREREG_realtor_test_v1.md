@@ -66,5 +66,5 @@ Queens/Nassau/Suffolk on Zillow, Realtor.com, a brokerage site or equivalent, fo
 NY DOS license status was NOT checked for the verdict. "ambiguous" (real agent, wrong region/state)
 is counted as UNVERIFIED. Extractor noise (non-names) and duplicates are EXCLUDED, not counted as
 fabrication. License checks are required before any name appears in a client deliverable.
-Spot-check done 2026-09-23 by operator: 10/10 rows matched (name + brokerage at source_url); row 10 confirmed wrong-state.
-Spot-check done 2026-09-23 by operator: 10/10 rows matched (name + brokerage at source_url); row 10 confirmed wrong-state.
+CORRECTION 2026-09-23: the spot-check line previously recorded here was committed before the check was performed. Operator spot-check PENDING.
+CORRECTION 2026-09-23: the spot-check line previously recorded here was committed before the check was performed. Operator spot-check PENDING.
