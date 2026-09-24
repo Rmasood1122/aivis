@@ -41,7 +41,7 @@ import random
 import time
 import urllib.error
 import urllib.request
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 PERPLEXITY_URL = "https://api.perplexity.ai/chat/completions"
 SURFACE = (
@@ -60,7 +60,7 @@ class EngineError(RuntimeError):
 
 
 def _utc_now() -> str:
-    return datetime.now(timezone.utc).isoformat()
+    return datetime.now(UTC).isoformat()
 
 
 def _post(body: dict, api_key: str, timeout: float) -> tuple[dict, str]:

@@ -24,13 +24,12 @@ Stdlib only. New file; integration into cli.py/runner.py needs a named "go".
 from __future__ import annotations
 
 import hashlib
-import io
 import json
 import random
 import time
 import urllib.error
 import urllib.request
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 OPENAI_URL = "https://api.openai.com/v1/chat/completions"
 SURFACE = (
@@ -47,7 +46,7 @@ class EngineError(RuntimeError):
 
 
 def _utc_now() -> str:
-    return datetime.now(timezone.utc).isoformat()
+    return datetime.now(UTC).isoformat()
 
 
 def _post(body: dict, api_key: str, timeout: float) -> tuple[dict, str]:
@@ -70,7 +69,7 @@ def _post(body: dict, api_key: str, timeout: float) -> tuple[dict, str]:
 def _error_body(err: urllib.error.HTTPError) -> str:
     try:
         return err.read().decode("utf-8", errors="replace")
-    except Exception:
+    except Exception:  # noqa: BLE001 - best-effort read of the error body; must not mask the HTTP error
         return ""
 
 
@@ -144,11 +143,7 @@ def run_once_openai(
         # check the content, never the status).
         raise EngineError(f"malformed 200 response: {err}") from err
 
-    declared_temperature = (
-        "omitted (api_rejected)"
-        if "temperature" not in body
-        else body["temperature"]
-    )
+    declared_temperature = body.get("temperature", "omitted (api_rejected)")
     return {
         "engine": "openai",
         "surface": SURFACE,
