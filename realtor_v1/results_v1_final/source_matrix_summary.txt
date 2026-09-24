@@ -1,0 +1,159 @@
+responses=399  verified agents=68
+
+Domains by number of responses citing them (all responses):
+   256  zillow.com
+   166  realtor.com
+   134  compass.com
+   129  fastexpert.com
+   118  effectiveagents.com
+   110  homes.com
+    83  yelp.com
+    79  experience.com
+    72  homelight.com
+    62  reddit.com
+    45  reviews.birdeye.com
+    40  elliman.com
+    38  redfin.com
+    37  ratemyagent.com
+    35  streeteasy.com
+    32  agentpronto.com
+    32  sothebysrealty.com
+    29  realestateagents.com
+    28  angi.com
+    23  queenshometeam.com
+    22  iondocs.com
+    22  top10reagents.com
+    18  maureenfolan.com
+    17  jacksonheightslistings.com
+    17  serhant.com
+
+Direct attributions (citation URL/title contains the agent's name), summed over agents:
+    49  zillow.com
+    29  compass.com
+    24  experience.com
+    23  maureenfolan.com
+    23  realtor.com
+    16  homes.com
+    12  theericbermanteam.com
+    12  maggiekeats.com
+    10  vkokoris.com
+     8  streeteasy.com
+     7  yelp.com
+     5  fastexpert.com
+     5  reviews.birdeye.com
+     5  modernspaces.com
+     4  biancainqueens.com
+     4  luxenhouse.com
+     4  irenerallisrealtor.com
+     4  nestseekers.com
+     3  maureenfolanblog.com
+     3  trustindex.io
+
+Agents with ZERO direct attributions (named without any page of theirs being cited):
+  Jeff Stineback (26 mentions)
+  Tim Ho (24 mentions)
+  June Chang (23 mentions)
+  Heidi Karagianis (21 mentions)
+  Amy Chang (16 mentions)
+  Ivan Mijalkovic (14 mentions)
+  Kevin Leatherman (14 mentions)
+  Michael Furino (14 mentions)
+  Perry Pappas (14 mentions)
+  Mindy Miles (13 mentions)
+  Alex Baron (12 mentions)
+  David Legaz (11 mentions)
+  William Ortiz (10 mentions)
+  Christine Malloy (10 mentions)
+  Barbie Li (11 mentions)
+  Jeff Putterman (10 mentions)
+  Terri Levin (10 mentions)
+  Vincent Koo (10 mentions)
+  David Dan (10 mentions)
+  Monique J. Serena (5 mentions)
+  Lauren Bennett (4 mentions)
+  Katrina Taylor (5 mentions)
+  Margaret Loughlin (4 mentions)
+  Maureen Lane (5 mentions)
+  Sandra Glaser (8 mentions)
+  James Chung (3 mentions)
+  Lawrence Hakimi (3 mentions)
+  Bart Olszewski (9 mentions)
+  Christian Wittmann (5 mentions)
+  Vivian Chen (8 mentions)
+  Belal Mohd (3 mentions)
+  William Bodouva (5 mentions)
+  Ann Hance (3 mentions)
+  Debra Orr (4 mentions)
+  Patricia P. Canale (4 mentions)
+  Gayle Snyder (6 mentions)
+  Eirik Gislason (3 mentions)
+
+Per agent, top attributed sources:
+  Maureen Folan           47  maureenfolan.com:23, fastexpert.com:5, maureenfolanblog.com:3, realtor.com:3, yelp.com:3
+  Bianca Colasuonno       43  compass.com:15, zillow.com:9, biancainqueens.com:4
+  Vasilis Kokoris         27  compass.com:10, vkokoris.com:10, experience.com:6, luxenhouse.com:4
+  Jeff Stineback          26  
+  Tim Ho                  24  
+  June Chang              23  
+  Peter Horowitz          21  zillow.com:8, experience.com:5, realtor.com:3
+  Heidi Karagianis        21  
+  Eric Berman             19  theericbermanteam.com:12, yelp.com:1
+  Irene Rallis            16  realtor.com:5, irenerallisrealtor.com:4, homes.com:1
+  Amy Chang               16  
+  Thomas Caramanno        16  zillow.com:4
+  Kayla Lee               16  reviews.birdeye.com:5, homes.com:3, serhant.com:1
+  Edna Mashaal            15  experience.com:4, zillow.com:4, yelp.com:3, homes.com:2
+  Maggie Keats            15  maggiekeats.com:12
+  Anthony Napolitano      14  zillow.com:1, homes.com:1
+  Carmela Vlacich         14  experience.com:8, zillow.com:4, homes.com:1
+  Ivan Mijalkovic         14  
+  Kevin Leatherman        14  
+  Michael Furino          14  
+  Perry Pappas            14  
+  Mindy Miles             13  
+  Linda Freedman          12  zillow.com:2, realtor.com:1
+  Mary Beth               12  modernspaces.com:5, zillow.com:2, streeteasy.com:1
+  Jillian Grancaric       12  experience.com:1, zillow.com:1, realtor.com:1
+  Alex Baron              12  
+  Traci Conway            12  compass.com:4, zillow.com:2
+  Bryan Karp              12  homes.com:2, libn.com:1
+  Alex Rubin              11  zillow.com:1
+  Tammy Blau              11  trustindex.io:3
+  David Legaz             11  
+  Ann Acquaviva           11  streeteasy.com:5, zillow.com:1
+  Barbie Li               11  
+  William Ortiz           10  
+  Christine Malloy        10  
+  Jeff Putterman          10  
+  Terri Levin             10  
+  Nicholas Halvatzis      10  zillow.com:2
+  Vincent Koo             10  
+  David Dan               10  
+  Lisa Adragna            10  linkedin.com:1
+  Mario Ciampa            10  homes.com:4, zillow.com:4, effectiveagents.com:1
+  Valentina Forgione      10  zillow.com:4, homes.com:2
+  Bart Olszewski           9  
+  Rachel Sha               8  realtor.com:3
+  Sandra Glaser            8  
+  Vivian Chen              8  
+  Nayi Shen                7  nestseekers.com:4, streeteasy.com:2
+  Joyce Coletti            7  realtor.com:2
+  Gayle Snyder             6  
+  Monique J. Serena        5  
+  Peter Angelas            5  effectiveagents.com:1
+  Katrina Taylor           5  
+  Maureen Lane             5  
+  Christian Wittmann       5  
+  William Bodouva          5  
+  Lauren Bennett           4  
+  Margaret Loughlin        4  
+  Michael Farina           4  realtor.com:4
+  Debra Orr                4  
+  Patricia P. Canale       4  
+  James Chung              3  
+  Lawrence Hakimi          3  
+  Belal Mohd               3  
+  Helen Keit               3  realtor.com:1
+  Marek Sobolewski         3  loopnet.com:2
+  Ann Hance                3  
+  Eirik Gislason           3  
