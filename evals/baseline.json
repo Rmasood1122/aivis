@@ -1,0 +1,40 @@
+{
+  "n_runs": 3,
+  "metrics": {
+    "abstention_integrity_rate": {
+      "mean": 1.0,
+      "sigma": 0.0,
+      "band_2sigma": 0.0
+    },
+    "evidence_verify_pass_rate": {
+      "mean": 1.0,
+      "sigma": 0.0,
+      "band_2sigma": 0.0
+    },
+    "negative_exhibit_integrity": {
+      "mean": 1.0,
+      "sigma": 0.0,
+      "band_2sigma": 0.0
+    },
+    "sealed_sample_integrity": {
+      "mean": 1.0,
+      "sigma": 0.0,
+      "band_2sigma": 0.0
+    },
+    "tamper_detection_rate": {
+      "mean": 1.0,
+      "sigma": 0.0,
+      "band_2sigma": 0.0
+    },
+    "verify_latency_p95_s": {
+      "mean": 0.041690582000001086,
+      "sigma": 0.006436576876008148,
+      "band_2sigma": 0.012873153752016296
+    }
+  },
+  "manifest": {
+    "schema": "candidate/v2",
+    "registry_hash": "5ad6bfa823d35a84bf87b38d9e949591b571878328794f8b3e178662d49b2143",
+    "dataset_hash": "b08a0a2bc13f2c94ac2a06f2a18d1ec4d2b5fdb3da80082016a978ea53a253ea"
+  }
+}

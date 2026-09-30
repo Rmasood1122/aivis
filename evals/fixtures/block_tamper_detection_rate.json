@@ -1,0 +1,15 @@
+{
+  "manifest": {
+    "schema": "candidate/v2",
+    "registry_hash": "5ad6bfa823d35a84bf87b38d9e949591b571878328794f8b3e178662d49b2143",
+    "dataset_hash": "b08a0a2bc13f2c94ac2a06f2a18d1ec4d2b5fdb3da80082016a978ea53a253ea"
+  },
+  "scores": {
+    "evidence_verify_pass_rate": 1.0,
+    "negative_exhibit_integrity": 1.0,
+    "tamper_detection_rate": 0.4,
+    "sealed_sample_integrity": 1.0,
+    "abstention_integrity_rate": 1.0,
+    "verify_latency_p95_s": 0.036012455999980375
+  }
+}

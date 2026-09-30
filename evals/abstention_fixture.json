@@ -1,0 +1,23 @@
+{
+  "description": "Abstention-contract fixture for the aivis release gate. Pins defect D6: an unparseable response must ABSTAIN with the exact INSUFFICIENT_EVIDENCE token on every score, never a number; an absent brand in a PARSEABLE response must score 0.0 (a measurement), never be swallowed by the abstention path.",
+  "unparseable": [
+    "",
+    "   ",
+    "I cannot answer that request.",
+    "As an AI language model, I don't have access to current rankings.",
+    "Sorry, something went wrong. Please try again later.",
+    "{\"error\": \"rate_limited\"}",
+    "The best tools depend on your needs and budget, and there are many factors to consider before choosing one.",
+    "504 Gateway Time-out",
+    "Þÿ\u0000 binary-ish garbage \u0001\u0002",
+    "None"
+  ],
+  "parseable_brand_absent": [
+    "1. Asana - strong project views\n2. Trello - simple boards\n3. Monday.com - flexible",
+    "1. Notion - docs plus tasks\n2. Linear - fast issue tracking"
+  ],
+  "parseable_brand_present_rank1": [
+    "1. ClickUp - all in one\n2. Asana - popular choice"
+  ],
+  "brand_for_present_cases": "ClickUp"
+}

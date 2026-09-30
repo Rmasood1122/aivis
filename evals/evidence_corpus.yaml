@@ -1,0 +1,28 @@
+# Evidence corpus for the aivis release gate (evals/run_evals.py).
+#
+# pass:      committed evidence files whose verifier PASS is a shipped claim.
+#            Each entry pins the file's bundle digest AS SEALED 2026-09-29
+#            (sha256 over newline-joined stored row hashes, the verifier's own
+#            definition; pr_agency_run4's digest equals the one printed in the
+#            shipped crediblepr report). The gate runs verify_evidence.py with
+#            --expect <this digest>, so even a self-consistent edit (text and
+#            row hash rewritten together) trips the gate.
+#
+# must_fail: negative exhibits — files kept ON PURPOSE as failure receipts.
+#            The gate asserts they STILL FAIL verify_evidence.py; if one ever
+#            turns green, the incident receipt was replaced or the verifier
+#            was gutted, and the release blocks.
+pass:
+  study2/data/pr_agency_run1.jsonl: 3d8e2a6b881e85d174f16dd6870655c2da743b61a192ecab1a62201f11cfc6d1
+  study2/data/pr_agency_run2.jsonl: 99942774c3eafa75a51a74e70bba1a27f9274cd41258496201230d950758db6c
+  study2/data/pr_agency_run4.jsonl: 9eb756a2ca6ae2175bfe55a09d5b2c99b30e1451c2cd60050ddc0d1e2ee4abea
+  study2/data/multi_anthropic_run3_20260908.jsonl: 5ac8d9d86829da414c3a2baaf122bb504cda7c551a562161846e72ab92cf9bed
+  study2/data/multi_gemini_run3_20260908.jsonl: 81fc2f91615cfe583592a4871129a2f8be05596854af5b15c9d9fbf69190707f
+  study2/data/multi_openai_run3_20260908.jsonl: 82660a1f5d5e9782ac1fe0e03e6642214af2ae98d136badc8da1bd1a012be696
+  study2/data/multi_perplexity_run3_20260908.jsonl: 442259f4cf0fcdde35093602296ef3a556d0ee0943bf4f13bb57ecd263870615
+  study2/data/mattress_run1.jsonl: 365dfc0e3939e2ad8be7dc81a13ba387994b254de1b651b50d2bfda602b3bbdc
+  study2/data/mattress_run2.jsonl: 781a341e31cf1906dd6ea799400af99f7dcd4617d40967e5a2e03c5c59cc31d8
+must_fail:
+  # D0 incident: 210 rows, zero clean — the run that made zero engine calls.
+  # Documented in docs/03 Part C and 16_USECASE_BATTERY U15. Kept as the receipt.
+  - study2/data/pr_agency_run3.jsonl

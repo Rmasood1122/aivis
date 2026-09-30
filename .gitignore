@@ -12,3 +12,4 @@ parser_dump.txt
 
 *.pre_*
 realtor_v1/packages/
+evals/candidate.json

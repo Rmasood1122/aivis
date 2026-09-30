@@ -1,0 +1,73 @@
+# ============================================================
+# METRIC REGISTRY — aivis release gate (eval-conductor consumer-2).
+# Adapter: evals/run_evals.py. Every score is MEASURED offline from
+# committed artifacts + the installed aivis package; no engine API keys.
+# Rule: never edit a threshold to turn a red gate green — that decision
+# belongs in a reviewed PR with a written justification.
+# ============================================================
+
+- name: evidence_verify_pass_rate   # pass-corpus files passing verify_evidence.py
+  level: L1                         # with --expect pinned to the SEALED digest
+  pillar: quality                   # (evals/evidence_corpus.yaml)
+  method: programmatic
+  detects: [FM-EVIDENCE-DRIFT]
+  direction: higher_better
+  threshold: 1.0
+  noise_band: 0.0
+  blocking: hard
+  online: false
+
+- name: negative_exhibit_integrity  # the D0 receipt (pr_agency_run3) must STILL FAIL
+  level: L1                         # a green receipt means it was replaced or the
+  pillar: safety                    # verifier was gutted
+  method: programmatic
+  detects: [FM-RECEIPT-REPLACED]
+  direction: higher_better
+  threshold: 1.0
+  noise_band: 0.0
+  blocking: hard
+  online: false
+
+- name: tamper_detection_rate       # 5 live tamper classes on a pristine evidence
+  level: L1                         # file, --expect anchored; all must FAIL verification
+  pillar: safety                    # (binds the U14 flip-byte claim, extended)
+  method: programmatic
+  detects: [FM-TAMPER-MISSED]
+  direction: higher_better
+  threshold: 1.0
+  noise_band: 0.0
+  blocking: hard
+  online: false
+
+- name: sealed_sample_integrity     # verify_kappa_sample.py 100/100 preflight (B07)
+  level: L1
+  pillar: quality
+  method: programmatic
+  detects: [FM-SEAL-BROKEN]
+  direction: higher_better
+  threshold: 1.0
+  noise_band: 0.0
+  blocking: hard
+  online: false
+
+- name: abstention_integrity_rate   # D6 contract: unparseable -> exact
+  level: L1                         # INSUFFICIENT_EVIDENCE token on every score;
+  pillar: quality                   # parseable+absent -> 0.0, never abstained
+  method: programmatic
+  detects: [FM-D6-REGRESSION]
+  direction: higher_better
+  threshold: 1.0
+  noise_band: 0.0
+  blocking: hard
+  online: false
+
+- name: verify_latency_p95_s        # p95 wall time of one verifier invocation
+  level: L5                         # budget set from first measurement 2026-09-29
+  pillar: ops                       # (subprocess incl. interpreter start); soft
+  method: programmatic
+  detects: [FM-LATENCY]
+  direction: lower_better
+  threshold: 2.0
+  noise_band: 0.5
+  blocking: soft
+  online: false
