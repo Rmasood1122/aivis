@@ -512,12 +512,17 @@ def best_split(name, known, place_tokens, listing):
             t = atoms[a]
             for j in range(a, b):
                 t += seps[j] + atoms[j + 1]
-            t = t.strip()
+            t = tidy_name(t)                                  # "Dar Lbahja (Moroccan)" -> "Dar Lbahja", as for any head
+            if not t:
+                texts = None
+                break
             texts.append(t)
             if norm_key(t) in known:
                 n_known += 1
             else:
                 unknown.append((a, b, t))
+        if texts is None:
+            continue
         if lenient:
             valid = all((a == 0 or comma[a - 1]) and (b == n - 1 or comma[b]) and not any(comma[a:b])
                         and plausible_name(t, place_tokens, False) for a, b, t in unknown)

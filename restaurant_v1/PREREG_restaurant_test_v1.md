@@ -240,3 +240,24 @@ Evidence is now 6 smoke rows (NYC01 only; 5 clean, 1 error); no full-run row exi
    without a citation are reported as answers with no search evidenced, and that share is printed.
 4. **Count of post-hoc instrument changes before the seal: three** (v1.1 build, v1.2, v1.3), each made
    after reading smoke output. After the seal the analyzer does not change; a change is a v2.
+
+## AMENDMENT v1.4 — 2026-10-06, written BEFORE the seal and before any full-run response
+Evidence unchanged: 6 smoke rows, no full-run row. Thresholds unchanged.
+
+1. **The v1.3 extractor on the four complete smoke answers** [MEASURED: operator console, 2026-10-07
+   ~02:17Z, candidate list read in full]: 63 distinct candidates. "Sal" and "Kris & Charlie's Deli" are
+   gone and the real name is whole. Two candidates are duplicates carrying a trailing bracket —
+   "Dar Lbahja (Moroccan)" and "Sami's Kabab House (Afghan)" — beside "Dar Lbahja" and
+   "Sami's Kabab House". Cause: parts cut from a table cell by `best_split()` skipped the tidy step every
+   other name goes through. Second defect in a row created by the preceding fix.
+2. **`check_smoke_extract_v1.py` printed CHECK PASS on that list.** It tested for the defects named so
+   far and nothing else. The duplicates were found by reading the names, not by the script. The script now
+   also fails on a trailing bracket, and its header says what PASS does not mean.
+3. **Change:** cut parts are tidied like any other head. 49 tests pass, one of them this case; realtor
+   top tier unchanged (106, same names) [MEASURED: 2026-10-06]. NOT yet re-run on the complete smoke
+   answers.
+4. **Known and left as is** [MEASURED: same list]: spelling and suffix variants are separate candidates —
+   "AbuQir" / "AbuQir Seafood", "Ruta Oaxaca" / "Ruta Oaxaca Mexican Cuisine", "Vesta Trattoria & Wine Bar"
+   / "& Winebar", "7th Street Burger Astoria", "Ibn Hamido Seafood NYC". They are folded only through
+   `merges_v1.csv`. Until merged, a restaurant's count is split across its spellings and is a lower bound.
+5. **Post-hoc instrument changes before the seal: four** (v1.1 build, v1.2, v1.3, v1.4).

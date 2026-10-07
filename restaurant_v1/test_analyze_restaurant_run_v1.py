@@ -352,6 +352,20 @@ def test_table_list_never_cuts_a_name_the_market_gave_whole(tmp_path):
     assert "georges deli" in cand and "il bambino" in cand
 
 
+def test_parts_cut_from_a_table_cell_are_tidied_like_any_other_name(tmp_path):
+    """Defect seen on the operator's smoke rows, 2026-10-07: 'Dar Lbahja (Moroccan)' came out of a table cell
+    as its own candidate beside 'Dar Lbahja', because cut parts skipped the bracket-stripping step."""
+    table = "| Type | Restaurants |\n|---|---|\n| Global | Dar Lbahja (Moroccan), Sami’s Kabab House (Afghan), Ramro (Filipino) |\n"
+    rows = [_row("openai", "NYC01", 1, "Astoria", "- **Dar Lbahja** – tagines\n- **Sami’s Kabab House** – kababs\n\n" + table)]
+    p = tmp_path / "run.jsonl"
+    p.write_text(json.dumps(rows[0], ensure_ascii=False) + "\n", encoding="utf-8")
+    out = tmp_path / "res"
+    ar.main([str(p), "--out", str(out)])
+    cand = {r["key"]: r["display"] for r in _read(out / "candidates.csv")}
+    assert set(cand) == {"dar lbahja", "samis kabab house", "ramro"}
+    assert not any("(" in d for d in cand.values())
+
+
 def test_best_split_rules():
     known = {"sweet afton", "bonnie", "queens room", "sanfords"}
     assert ar.best_split("Sweet Afton & The Bonnie", known, PLACE, False) == ["Sweet Afton", "The Bonnie"]
