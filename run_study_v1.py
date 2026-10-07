@@ -27,7 +27,7 @@ Surface check first (1 prompt x 1 run per picked engine), then the measured run:
   ... --smoke --execute
   ... --execute
 
-Admitting a conditional engine (Perplexity or Claude on a B2C study):
+Admitting a conditional engine (Perplexity on a B2C study):
   --request perplexity                      the buyer asked for it by name
   --declare "perplexity=buyer's audience is equity analysts"   operator's written reason
 

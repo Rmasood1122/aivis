@@ -7,7 +7,7 @@
   "unclassified": {
     "audience": "mixed",
     "local": false,
-    "basis": "A vertical not on the map is treated as mixed, so no engine is dropped on a guess. The plan prints VERTICAL_UNCLASSIFIED. Cost of this choice: an unlisted consumer vertical calls Claude and Perplexity until a row is added or --audience is passed."
+    "basis": "A vertical not on the map is treated as mixed, so no engine is dropped on a guess. The plan prints VERTICAL_UNCLASSIFIED. Cost of this choice: an unlisted consumer vertical calls Perplexity until a row is added or --audience is passed."
   },
   "verticals": {
     "restaurants": {"audience": "b2c", "local": true, "aliases": ["restaurant", "dining", "cafes", "cafe", "coffee_shops", "bars", "bakeries", "bakery", "pizzerias", "pizza", "food_trucks", "takeout", "diners"]},

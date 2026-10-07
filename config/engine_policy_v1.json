@@ -1,7 +1,7 @@
 {
   "policy_version": "engine_policy_v1",
   "written": "2026-10-07",
-  "rule": "An engine runs for a study only when it is CORE for the study audience, or when it is CONDITIONAL and one of three conditions holds: the buyer asked for it, the study vertical is on that engine's relevant list, or the operator declares relevance with a written reason. Everything else is skipped and the skip is printed with its reason. Selection is a lookup, not a model call: same profile + same policy bytes = same plan.",
+  "rule": "ChatGPT, Gemini and Claude are core for every audience. Perplexity is core for b2b and conditional for b2c. An engine runs for a study only when it is CORE for the study audience, or when it is CONDITIONAL and one of three conditions holds: the buyer asked for it, the study vertical is on that engine's relevant list, or the operator declares relevance with a written reason. Everything else is skipped and the skip is printed with its reason. Selection is a lookup, not a model call: same profile + same policy bytes = same plan.",
   "amendment_rule": "This file is never edited after its first measured run. A change is engine_policy_v2.json with the reason stated.",
   "audiences": ["b2c", "b2b", "mixed"],
   "mixed_rule": "An engine is core for a mixed audience when it is core for either b2c or b2b.",
@@ -21,9 +21,9 @@
     },
     "anthropic": {
       "label": "Claude (Anthropic API)",
-      "tier": {"b2c": "conditional", "b2b": "core"},
+      "tier": {"b2c": "core", "b2b": "core"},
       "relevant_verticals": [],
-      "basis": "B2C: third at 10.3% in one app-share source [REPORTED: E1] and named without a figure in the local-recommendation survey [REPORTED: E3]; kept conditional so a consumer study does not pay for a minority surface by default. B2B core is an operator default [EST: no B2B usage data opened]; all four engines ran in the PR-agency study [MEASURED: study2/data]. relevant_verticals is empty because no vertical data has been opened."
+      "basis": "B2C core by operator decision 2026-10-07: third at 10.3% in one app-share source [REPORTED: E1] and named without a figure in the local-recommendation survey [REPORTED: E3]. It was conditional in the first draft of this file; changed before any measured run used the policy. Cost of the choice: a consumer study makes half again as many calls as with two engines. B2B core is an operator default [EST: no B2B usage data opened]; all four engines ran in the PR-agency study [MEASURED: study2/data]."
     },
     "perplexity": {
       "label": "Perplexity (Agent API, live retrieval)",

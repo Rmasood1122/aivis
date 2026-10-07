@@ -224,3 +224,36 @@ folded to LF, which equals `git show HEAD:<path> | sha256sum` on any machine
 Checked by simulation, not on Windows: the two config files and the four code files rewritten
 with CRLF, console encoding forced to cp1252, 129 of 129 cases pass and the printed digest is
 unchanged. The first run on the operator's Windows machine is still the real check.
+
+## AMENDED 2026-10-07 (5) — Claude is core for b2c; pytest tests the checkout it runs in
+
+Operator decision ("do all these 3", 2026-10-07 09:00 ET). Supersedes the tier table at the top
+and every "ChatGPT + Gemini" consumer example above. Test count: 132 cases in three files.
+
+| Engine | b2c | b2b | mixed |
+|---|---|---|---|
+| openai (ChatGPT) | core | core | core |
+| gemini | core | core | core |
+| anthropic (Claude) | **core** (was conditional) | core | core |
+| perplexity | conditional | core | core |
+
+- A consumer study now plans three engines; Perplexity is the only conditional one, and the
+  three ways to admit it are unchanged. `restaurants`, `retail`, `fashion` →
+  `RUN 3: openai, gemini, anthropic`, `SKIP 1: perplexity`.
+- Stated basis: third at 10.3% in one app-share source [REPORTED: E1]. Cost: a consumer study
+  makes half again as many calls as with two engines.
+- `engine_policy_v1.json` was edited in place. Its own rule allows that only before its first
+  measured run; no plan had been filed and no engine had been called from it
+  [MEASURED: no `engine_plan_*.json` in the repo at this commit]. The policy digest changes with
+  the edit, so the `9313b01515f2` printed in earlier terminal sessions is the superseded draft.
+- The per-engine property of `relevant_verticals` can no longer be shown on the shipped policy
+  (one conditional engine left). It is re-pinned on a policy copy in
+  `test_relevant_vertical_list_is_per_engine`; the assertion was kept, not dropped.
+
+`pyproject.toml` (existing file, edited on the same "go"): `pythonpath = ["src"]` under
+`[tool.pytest.ini_options]`. With two worktrees and one editable install, pytest in
+`aivis-restaurant` imported `ai-visibility-audit/src/aivis`. New
+`tests/test_checkout_imports.py` fails if the suite is running another folder's package
+[MEASURED: second worktree, 272 pass with the line, the import test fails without it].
+Consequence worth knowing: earlier plain-pytest runs inside `aivis-restaurant` exercised the
+other folder's `src/aivis`, not that branch's.

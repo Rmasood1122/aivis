@@ -44,14 +44,19 @@ def _runner_module():
 # THE RULE - Perplexity does not run on a consumer study unless a condition holds
 # ---------------------------------------------------------------------------
 
-def test_b2c_restaurants_skips_perplexity_and_runs_chatgpt_and_gemini(policy):
+def test_b2c_restaurants_skips_perplexity_and_runs_chatgpt_gemini_and_claude(policy):
     d = _by_surface(es.StudyProfile("b2c", "restaurants", local=True), policy)
     assert d["perplexity"].decision == es.SKIP
     assert d["perplexity"].reason_code == es.CONDITION_NOT_MET
     assert d["perplexity"].model is None  # a skipped engine carries nothing to call
-    assert d["openai"].decision == es.RUN and d["openai"].reason_code == es.AUDIENCE_CORE
-    assert d["gemini"].decision == es.RUN and d["gemini"].reason_code == es.AUDIENCE_CORE
-    assert d["anthropic"].decision == es.SKIP
+    for engine in ("openai", "gemini", "anthropic"):  # Claude core for b2c since 2026-10-07
+        assert d[engine].decision == es.RUN and d[engine].reason_code == es.AUDIENCE_CORE
+
+
+def test_perplexity_is_the_only_conditional_engine_for_b2c(policy):
+    tiers = {name: spec["tier"]["b2c"] for name, spec in policy["engines"].items()}
+    assert tiers == {"openai": "core", "gemini": "core", "anthropic": "core",
+                     "perplexity": "conditional"}
 
 
 def test_b2b_runs_all_four_engines(policy):
@@ -71,7 +76,17 @@ def test_b2c_relevant_vertical_admits_perplexity(policy):
     d = _by_surface(es.StudyProfile("b2c", "Personal Finance"), policy)
     assert d["perplexity"].decision == es.RUN
     assert d["perplexity"].reason_code == es.VERTICAL_RELEVANT
+
+
+def test_relevant_vertical_list_is_per_engine(policy):
+    # CONTRACT CHANGE 2026-10-07: Claude became core for b2c, so the shipped policy has one
+    # conditional engine and can no longer show this property. The property is re-pinned on a
+    # policy copy with Claude set back to conditional; the assertion itself is unchanged.
+    policy["engines"]["anthropic"]["tier"]["b2c"] = "conditional"
+    d = _by_surface(es.StudyProfile("b2c", "Personal Finance"), policy)
+    assert d["perplexity"].decision == es.RUN
     assert d["anthropic"].decision == es.SKIP  # the list is per engine
+    assert d["anthropic"].reason_code == es.CONDITION_NOT_MET
 
 
 def test_b2c_client_request_admits_perplexity(policy):
@@ -197,8 +212,8 @@ def test_plan_binds_the_policy_bytes(loaded):
     assert digest == es.content_sha256(POLICY_PATH.read_bytes())
     plan = es.build_plan(es.StudyProfile("b2c", "restaurants", local=True), policy, digest)
     assert plan["policy_sha256"] == digest
-    assert plan["run"] == ["openai", "gemini"]
-    assert plan["skipped"] == ["anthropic", "perplexity"]
+    assert plan["run"] == ["openai", "gemini", "anthropic"]
+    assert plan["skipped"] == ["perplexity"]
     assert json.loads(json.dumps(plan)) == plan  # JSON-serialisable as is
 
 
@@ -217,7 +232,7 @@ def test_no_command_is_built_for_a_skipped_engine(loaded):
     policy, digest = loaded
     cmds = _commands(policy, digest, es.StudyProfile("b2c", "restaurants", local=True))
     engines = [c[c.index("--engine") + 1] for c in cmds]
-    assert engines == ["openai", "gemini"]
+    assert engines == ["openai", "gemini", "anthropic"]
     assert not any("perplexity" in part for c in cmds for part in c)
 
 
@@ -379,12 +394,12 @@ def test_execute_calls_only_the_picked_engines_and_files_the_plan(tmp_path):
              "--outdir", "runs", "--tag", "nyc", "--execute", cwd=repo)
     assert r.returncode == 0, r.stdout + r.stderr
     called = [c[c.index("--engine") + 1] for c in _calls(repo)]
-    assert called == ["openai", "gemini"]  # Perplexity and Claude were never invoked
+    assert called == ["openai", "gemini", "anthropic"]  # Perplexity was never invoked
     plans = list((repo / "runs").glob("engine_plan_nyc_*.json"))
     assert len(plans) == 1
     plan = json.loads(plans[0].read_text(encoding="utf-8"))
-    assert plan["skipped"] == ["anthropic", "perplexity"]
-    assert plan["planned_at"] and len(plan["commands"]) == 2
+    assert plan["skipped"] == ["perplexity"]
+    assert plan["planned_at"] and len(plan["commands"]) == 3
 
 
 def test_execute_stops_on_first_failure_and_reports_it(tmp_path):
@@ -403,7 +418,8 @@ def test_execute_with_a_declared_reason_does_call_perplexity(tmp_path):
              "--outdir", "runs", "--declare", "perplexity=buyer asked for a citation ledger",
              "--execute", cwd=repo)
     assert r.returncode == 0, r.stdout + r.stderr
-    assert [c[c.index("--engine") + 1] for c in _calls(repo)] == ["openai", "gemini", "perplexity"]
+    assert [c[c.index("--engine") + 1] for c in _calls(repo)] == [
+        "openai", "gemini", "anthropic", "perplexity"]
 
 
 # ---------------------------------------------------------------------------
@@ -462,8 +478,8 @@ def test_rendered_plan_shows_every_surface_and_the_openai_search_caveat(loaded):
         assert surface in text
     assert digest[:12] in text
     assert "CAVEAT: This is the RESOLVED snapshot" in text
-    assert "RUN 2: openai, gemini" in text
-    assert "SKIP 2: anthropic, perplexity" in text
+    assert "RUN 3: openai, gemini, anthropic" in text
+    assert "SKIP 1: perplexity" in text
 
 
 # ---------------------------------------------------------------------------
@@ -532,7 +548,7 @@ def test_the_rule_holds_for_every_row_of_the_map(vmap, policy):
         if c.audience == "b2c":
             want = es.RUN if key in relevant else es.SKIP
             assert d["perplexity"].decision == want, key
-            assert d["openai"].decision == d["gemini"].decision == es.RUN
+            assert all(d[e].decision == es.RUN for e in ("openai", "gemini", "anthropic")), key
         else:
             assert all(d[e].decision == es.RUN for e in policy["engines"]), key
     assert all(seen.values())  # each audience is exercised by at least one row
@@ -594,9 +610,9 @@ def test_plan_defaults_to_operator_as_the_audience_source(loaded):
 # ---------------------------------------------------------------------------
 
 @pytest.mark.parametrize(("typed", "run_line"), [
-    ("restaurants", "RUN 2: openai, gemini"),
-    ("fashion", "RUN 2: openai, gemini"),
-    ("retail", "RUN 2: openai, gemini"),
+    ("restaurants", "RUN 3: openai, gemini, anthropic"),
+    ("fashion", "RUN 3: openai, gemini, anthropic"),
+    ("retail", "RUN 3: openai, gemini, anthropic"),
     ("law firms", "RUN 4: openai, gemini, anthropic, perplexity"),
     ("pr agencies", "RUN 4: openai, gemini, anthropic, perplexity"),
 ])
@@ -620,7 +636,7 @@ def test_cli_audience_flag_overrides_the_map_and_is_recorded(tmp_path):
     target = tmp_path / "plan.json"
     r = _cli("law firms", "--audience", "b2c", "--plan-out", str(target))
     assert r.returncode == 0, r.stderr
-    assert "RUN 2: openai, gemini" in r.stdout
+    assert "RUN 3: openai, gemini, anthropic" in r.stdout
     src = json.loads(target.read_text(encoding="utf-8"))["audience_source"]
     assert src["source"] == es.AUDIENCE_FROM_OPERATOR
     assert src["map_audience"] == "mixed"  # what the map said is kept on the record
@@ -650,7 +666,8 @@ def test_execute_from_a_vertical_name_alone_never_calls_perplexity(tmp_path):
     repo = _stub_repo(tmp_path)
     r = _cli("restaurants", "--bank", "bank.jsonl", "--outdir", "runs", "--execute", cwd=repo)
     assert r.returncode == 0, r.stdout + r.stderr
-    assert [c[c.index("--engine") + 1] for c in _calls(repo)] == ["openai", "gemini"]
+    assert [c[c.index("--engine") + 1] for c in _calls(repo)] == [
+        "openai", "gemini", "anthropic"]
 
 
 def test_rendered_plan_warns_on_an_unclassified_vertical(loaded, vmap):

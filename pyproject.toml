@@ -34,6 +34,10 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+# Test THIS checkout's src, not whichever folder `pip install -e` points at. With two
+# worktrees and one editable install, pytest in the second worktree imported the first
+# worktree's aivis (2026-10-07: tests/test_engine_select.py ImportError in aivis-restaurant).
+pythonpath = ["src"]
 norecursedirs = ["_*_backup*", "_patch_*", "caai_v1", "index_gate*"]
 
 [[tool.mypy.overrides]]

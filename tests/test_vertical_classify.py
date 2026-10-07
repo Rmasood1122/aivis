@@ -262,7 +262,7 @@ def test_cli_any_business_picks_engines_from_the_model_answer(tmp_path, capsys, 
     out = capsys.readouterr().out
     assert code == 0
     assert "audience from MODEL_CLASSIFIED" in out
-    assert "RUN 2: openai, gemini" in out and "SKIP 2: anthropic, perplexity" in out
+    assert "RUN 3: openai, gemini, anthropic" in out and "SKIP 1: perplexity" in out
     assert "WARNING" not in out
     src = json.loads(plan_path.read_text(encoding="utf-8"))["audience_source"]
     assert src["source"] == vc.AUDIENCE_FROM_CLASSIFIER
