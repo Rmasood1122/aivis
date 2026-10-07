@@ -114,11 +114,11 @@ before the seal; they confirm the four search surfaces and nothing else.
 ---
 
 ## Predictions (operator, before the NYC run)
-- NYC R3 (restaurants named by ≥3 of 4 engines, same area): ____
-- NYC R4 (top-10 share of verified mentions): ____ %
-- NYC R5 (≥10 tier, closed + not found + wrong area): ____ %
-- Engine with the most distinct restaurants named: ____
-- Market of the four with the smallest R3: ____
+- NYC R3 (restaurants named by ≥3 of 4 engines, same area): 40 (assistant-suggested, adopted by operator 2026-10-06)
+- NYC R4 (top-10 share of verified mentions): 15 % (assistant-suggested, adopted by operator 2026-10-06)
+- NYC R5 (≥10 tier, closed + not found + wrong area): 5 % (assistant-suggested, adopted by operator 2026-10-06)
+- Engine with the most distinct restaurants named: ChatGPT (assistant-suggested, adopted by operator 2026-10-06)
+- Market of the four with the smallest R3: Delaware (assistant-suggested, adopted by operator 2026-10-06)
 
 ## AMENDMENT v1.1 — 2026-10-06, written BEFORE the seal and before any full-run response
 Status of evidence at this point: 5 smoke rows exist (NYC01 only; 4 clean, 1 error), collected

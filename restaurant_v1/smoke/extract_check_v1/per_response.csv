@@ -1,0 +1,5 @@
+engine,prompt_id,rep,area,intent,chars,ends_without_terminal_punct,search_tool_in_payload,citations,counted_names,first_named,keys,source_row
+anthropic,NYC01,1,Astoria,best_overall,3301,0,1,10,3,taverna kyclades,bel aire diner;sal kris and charlies deli;taverna kyclades,smoke_anthropic_nyc_20261007T011134Z.jsonl:1
+gemini,NYC01,1,Astoria,best_overall,4211,1,1,0,3,taverna kyclades,ruta oaxaca;sal kris and charlies deli;taverna kyclades,smoke_gemini_nyc_20261007T011155Z.jsonl:1
+openai,NYC01,1,Astoria,best_overall,6998,0,1,6,4,taverna kyclades,bel aire diner;ruta oaxaca;sal kris and charlies deli;taverna kyclades,smoke_openai_nyc_20261007T011121Z.jsonl:1
+perplexity,NYC01,1,Astoria,best_overall,1022,0,1,15,3,taverna kyclades,bel aire diner;ruta oaxaca;taverna kyclades,smoke_perplexity_nyc_retry1.jsonl:1
