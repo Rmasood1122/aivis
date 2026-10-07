@@ -109,6 +109,9 @@ def main(argv=None, classifier_call=None):
     ap.add_argument("--plan-out", help="write the plan JSON here (refuses an existing path)")
     ap.add_argument("--bank", help="prompt bank .json or .jsonl; enables the runner commands")
     ap.add_argument("--runs", type=int, default=5)
+    ap.add_argument("--max-tokens", type=int, default=8192,
+                    help="answer cap passed to the runner. 8192, not the runner's 2048: "
+                         "restaurant_v1/run_market_v2.sh records answers cut short at 2048")
     ap.add_argument("--outdir", help="directory for evidence files (required with --bank)")
     ap.add_argument("--tag", help="label in evidence file names (default: bank file stem)")
     ap.add_argument("--smoke", action="store_true", help="1 prompt x 1 run per picked engine")
@@ -171,7 +174,8 @@ def main(argv=None, classifier_call=None):
         tag = a.tag or Path(a.bank).stem
         try:
             commands = runner_commands(plan, bank=a.bank, runs=a.runs, outdir=a.outdir, tag=tag,
-                                       date=date, python=sys.executable, smoke=a.smoke)
+                                       date=date, python=sys.executable, smoke=a.smoke,
+                                       max_tokens=a.max_tokens)
         except SelectionError as ex:
             sys.exit("REFUSE: %s" % ex)
         plan["commands"] = commands

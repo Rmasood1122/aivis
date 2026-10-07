@@ -192,3 +192,20 @@ Limits:
   injected-call tests only; first live use is the smoke.
 - `state/vertical_classified_v1.jsonl` is written on the operator's disk and is not in git
   until committed. A plan cites a row by `response_sha256`; commit the ledger with the study.
+
+## AMENDED 2026-10-07 (3) — answer cap, and a study that must NOT be launched from here
+
+Test count is now 126 cases.
+
+- **`--max-tokens`, default 8192.** Earlier in the day `run_study_v1.py` passed no cap, so the
+  runner's own default of 2048 applied. `restaurant_v1/run_market_v2.sh` (branch
+  `claude/restaurant-v1-prereg`) records answers cut short at 2048 [QUOTED: that script's header;
+  the evidence rows were not re-opened here]. The cap is now passed to every command.
+- **`restaurant_v1` is a sealed four-engine design.** Its PREREG fixes ChatGPT, Claude, Gemini
+  and Perplexity with search on, and metric R3 counts restaurants named by 3 or more of 4
+  engines. NYC was collected on all four on 2026-10-06. `run_study_v1.py restaurants` plans two
+  engines, so launching MA, DE or CT from it would change the design mid-study and leave R3
+  without a denominator. Those markets stay on `restaurant_v1/run_market_v2.sh`, which also
+  performs the seal check that this CLI does not. Running fewer engines there is a PREREG v2
+  with the reason stated, not a flag.
+- The selector applies to studies designed after it.

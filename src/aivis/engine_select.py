@@ -386,6 +386,7 @@ def runner_commands(
     date: str,
     python: str = "python",
     smoke: bool = False,
+    max_tokens: int | None = None,
 ) -> list[list[str]]:
     """
     One run_bank_multi_v2.py command per RUN engine and none for anything else.
@@ -395,6 +396,8 @@ def runner_commands(
     """
     if runs < 1:
         raise SelectionError(f"runs must be at least 1; got {runs}")
+    if max_tokens is not None and max_tokens < 1:
+        raise SelectionError(f"max_tokens must be at least 1; got {max_tokens}")
     commands: list[list[str]] = []
     for d in plan["decisions"]:
         if d["decision"] != RUN:
@@ -403,6 +406,8 @@ def runner_commands(
         out = f"{outdir.rstrip('/')}/{prefix}multi_{d['surface']}_{tag}_{date}.jsonl"
         cmd = [python, "run_bank_multi_v2.py", "--engine", d["surface"], "--model", d["model"],
                "--bank", bank, "--runs", str(runs), "--out", out]
+        if max_tokens is not None:
+            cmd += ["--max-tokens", str(max_tokens)]  # None = the runner's own default
         if d["web_search"] and d["surface"] != "perplexity":
             cmd.append("--search")  # the runner turns Perplexity search on by itself
         if smoke:

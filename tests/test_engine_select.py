@@ -665,3 +665,35 @@ def test_rendered_plan_warns_on_an_unclassified_vertical(loaded, vmap):
     text = es.render_plan(plan)
     assert "audience from VERTICAL_UNCLASSIFIED" in text
     assert "WARNING: unclassified vertical - every engine is planned" in text
+
+
+# ---------------------------------------------------------------------------
+# ANSWER CAP - passed through so a study is not truncated at the runner default
+# ---------------------------------------------------------------------------
+
+def test_max_tokens_is_passed_to_every_command(loaded):
+    policy, digest = loaded
+    cmds = _commands(policy, digest, es.StudyProfile("b2b", "pr_agencies"), max_tokens=8192)
+    assert len(cmds) == 4
+    for c in cmds:
+        assert c[c.index("--max-tokens") + 1] == "8192"
+
+
+def test_max_tokens_none_leaves_the_runner_default(loaded):
+    policy, digest = loaded
+    cmds = _commands(policy, digest, es.StudyProfile("b2c", "restaurants"))
+    assert not any("--max-tokens" in c for c in cmds)
+
+
+def test_max_tokens_below_one_refuses(loaded):
+    policy, digest = loaded
+    with pytest.raises(es.SelectionError, match="max_tokens must be at least 1"):
+        _commands(policy, digest, es.StudyProfile("b2c", "restaurants"), max_tokens=0)
+
+
+def test_cli_default_cap_is_8192_and_reaches_the_runner(tmp_path):
+    repo = _stub_repo(tmp_path)
+    r = _cli("restaurants", "--bank", "bank.jsonl", "--outdir", "runs", "--execute", cwd=repo)
+    assert r.returncode == 0, r.stdout + r.stderr
+    for call in _calls(repo):
+        assert call[call.index("--max-tokens") + 1] == "8192"
