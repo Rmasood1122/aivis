@@ -1,0 +1,20 @@
+{"prompt_id": "CT01", "region": "Connecticut", "area": "Hartford", "intent": "best_overall", "slot": 1, "phrasing": "A", "text": "What are the best restaurants in Hartford, Connecticut?"}
+{"prompt_id": "CT02", "region": "Connecticut", "area": "West Hartford", "intent": "date_night", "slot": 2, "phrasing": "A", "text": "Where should I go for a date night dinner in West Hartford, Connecticut?"}
+{"prompt_id": "CT03", "region": "Connecticut", "area": "Greenwich", "intent": "special_occasion", "slot": 3, "phrasing": "A", "text": "Recommend a restaurant in Greenwich, Connecticut for an anniversary dinner."}
+{"prompt_id": "CT04", "region": "Connecticut", "area": "Middletown", "intent": "family", "slot": 4, "phrasing": "A", "text": "What are good family-friendly restaurants in Middletown, Connecticut for dinner with young kids?"}
+{"prompt_id": "CT05", "region": "Connecticut", "area": "Norwalk", "intent": "group", "slot": 5, "phrasing": "A", "text": "Which restaurant in Norwalk, Connecticut works well for a group dinner of 10 people?"}
+{"prompt_id": "CT06", "region": "Connecticut", "area": "Stamford", "intent": "business", "slot": 6, "phrasing": "A", "text": "What is the best restaurant in Stamford, Connecticut for a business dinner with a client?"}
+{"prompt_id": "CT07", "region": "Connecticut", "area": "Westport", "intent": "brunch", "slot": 7, "phrasing": "A", "text": "What are the best brunch spots in Westport, Connecticut?"}
+{"prompt_id": "CT08", "region": "Connecticut", "area": "Danbury", "intent": "budget", "slot": 8, "phrasing": "A", "text": "Where can I get a great dinner for under $25 a person in Danbury, Connecticut?"}
+{"prompt_id": "CT09", "region": "Connecticut", "area": "New Haven", "intent": "signature_dish", "slot": 9, "phrasing": "A", "text": "Where is the best pizza in New Haven, Connecticut?"}
+{"prompt_id": "CT10", "region": "Connecticut", "area": "Mystic", "intent": "visitor", "slot": 10, "phrasing": "A", "text": "I'm visiting Mystic, Connecticut for one night. Where should I eat dinner?"}
+{"prompt_id": "CT11", "region": "Connecticut", "area": "Hartford", "intent": "business", "slot": 11, "phrasing": "B", "text": "Where should I take a client to lunch in Hartford, Connecticut?"}
+{"prompt_id": "CT12", "region": "Connecticut", "area": "West Hartford", "intent": "brunch", "slot": 12, "phrasing": "B", "text": "Where should I go for weekend brunch in West Hartford, Connecticut?"}
+{"prompt_id": "CT13", "region": "Connecticut", "area": "Greenwich", "intent": "budget", "slot": 13, "phrasing": "B", "text": "What are the best cheap eats in Greenwich, Connecticut?"}
+{"prompt_id": "CT14", "region": "Connecticut", "area": "Middletown", "intent": "signature_dish", "slot": 14, "phrasing": "B", "text": "Who makes the best pizza in Middletown, Connecticut?"}
+{"prompt_id": "CT15", "region": "Connecticut", "area": "Norwalk", "intent": "visitor", "slot": 15, "phrasing": "B", "text": "I have one dinner in Norwalk, Connecticut this weekend. Which restaurant should I pick?"}
+{"prompt_id": "CT16", "region": "Connecticut", "area": "Stamford", "intent": "best_overall", "slot": 16, "phrasing": "B", "text": "Which restaurants in Stamford, Connecticut are most worth going to right now?"}
+{"prompt_id": "CT17", "region": "Connecticut", "area": "Westport", "intent": "date_night", "slot": 17, "phrasing": "B", "text": "Recommend a romantic restaurant in Westport, Connecticut for a date."}
+{"prompt_id": "CT18", "region": "Connecticut", "area": "Danbury", "intent": "special_occasion", "slot": 18, "phrasing": "B", "text": "Where should I book a birthday dinner in Danbury, Connecticut that feels special?"}
+{"prompt_id": "CT19", "region": "Connecticut", "area": "New Haven", "intent": "family", "slot": 19, "phrasing": "B", "text": "Where can I take my parents and kids for a sit-down dinner in New Haven, Connecticut?"}
+{"prompt_id": "CT20", "region": "Connecticut", "area": "Mystic", "intent": "group", "slot": 20, "phrasing": "B", "text": "I need a restaurant in Mystic, Connecticut that can seat a party of 12. Where should I book?"}

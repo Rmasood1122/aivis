@@ -1,0 +1,20 @@
+{"prompt_id": "DE01", "region": "Delaware", "area": "Dover", "intent": "best_overall", "slot": 1, "phrasing": "A", "text": "What are the best restaurants in Dover, Delaware?"}
+{"prompt_id": "DE02", "region": "Delaware", "area": "Newark", "intent": "date_night", "slot": 2, "phrasing": "A", "text": "Where should I go for a date night dinner in Newark, Delaware?"}
+{"prompt_id": "DE03", "region": "Delaware", "area": "Middletown", "intent": "special_occasion", "slot": 3, "phrasing": "A", "text": "Recommend a restaurant in Middletown, Delaware for an anniversary dinner."}
+{"prompt_id": "DE04", "region": "Delaware", "area": "Lewes", "intent": "family", "slot": 4, "phrasing": "A", "text": "What are good family-friendly restaurants in Lewes, Delaware for dinner with young kids?"}
+{"prompt_id": "DE05", "region": "Delaware", "area": "Bethany Beach", "intent": "group", "slot": 5, "phrasing": "A", "text": "Which restaurant in Bethany Beach, Delaware works well for a group dinner of 10 people?"}
+{"prompt_id": "DE06", "region": "Delaware", "area": "Wilmington", "intent": "business", "slot": 6, "phrasing": "A", "text": "What is the best restaurant in Wilmington, Delaware for a business dinner with a client?"}
+{"prompt_id": "DE07", "region": "Delaware", "area": "Hockessin", "intent": "brunch", "slot": 7, "phrasing": "A", "text": "What are the best brunch spots in Hockessin, Delaware?"}
+{"prompt_id": "DE08", "region": "Delaware", "area": "Milford", "intent": "budget", "slot": 8, "phrasing": "A", "text": "Where can I get a great dinner for under $25 a person in Milford, Delaware?"}
+{"prompt_id": "DE09", "region": "Delaware", "area": "Rehoboth Beach", "intent": "signature_dish", "slot": 9, "phrasing": "A", "text": "Where is the best crab cakes in Rehoboth Beach, Delaware?"}
+{"prompt_id": "DE10", "region": "Delaware", "area": "New Castle", "intent": "visitor", "slot": 10, "phrasing": "A", "text": "I'm visiting New Castle, Delaware for one night. Where should I eat dinner?"}
+{"prompt_id": "DE11", "region": "Delaware", "area": "Dover", "intent": "business", "slot": 11, "phrasing": "B", "text": "Where should I take a client to lunch in Dover, Delaware?"}
+{"prompt_id": "DE12", "region": "Delaware", "area": "Newark", "intent": "brunch", "slot": 12, "phrasing": "B", "text": "Where should I go for weekend brunch in Newark, Delaware?"}
+{"prompt_id": "DE13", "region": "Delaware", "area": "Middletown", "intent": "budget", "slot": 13, "phrasing": "B", "text": "What are the best cheap eats in Middletown, Delaware?"}
+{"prompt_id": "DE14", "region": "Delaware", "area": "Lewes", "intent": "signature_dish", "slot": 14, "phrasing": "B", "text": "Who makes the best crab cakes in Lewes, Delaware?"}
+{"prompt_id": "DE15", "region": "Delaware", "area": "Bethany Beach", "intent": "visitor", "slot": 15, "phrasing": "B", "text": "I have one dinner in Bethany Beach, Delaware this weekend. Which restaurant should I pick?"}
+{"prompt_id": "DE16", "region": "Delaware", "area": "Wilmington", "intent": "best_overall", "slot": 16, "phrasing": "B", "text": "Which restaurants in Wilmington, Delaware are most worth going to right now?"}
+{"prompt_id": "DE17", "region": "Delaware", "area": "Hockessin", "intent": "date_night", "slot": 17, "phrasing": "B", "text": "Recommend a romantic restaurant in Hockessin, Delaware for a date."}
+{"prompt_id": "DE18", "region": "Delaware", "area": "Milford", "intent": "special_occasion", "slot": 18, "phrasing": "B", "text": "Where should I book a birthday dinner in Milford, Delaware that feels special?"}
+{"prompt_id": "DE19", "region": "Delaware", "area": "Rehoboth Beach", "intent": "family", "slot": 19, "phrasing": "B", "text": "Where can I take my parents and kids for a sit-down dinner in Rehoboth Beach, Delaware?"}
+{"prompt_id": "DE20", "region": "Delaware", "area": "New Castle", "intent": "group", "slot": 20, "phrasing": "B", "text": "I need a restaurant in New Castle, Delaware that can seat a party of 12. Where should I book?"}
