@@ -5,6 +5,7 @@ No network. The CLI tests run run_study_v1.py as a dry run only.
 import copy
 import importlib.util
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -297,8 +298,11 @@ def test_every_usage_figure_in_the_policy_carries_a_source_and_a_date(policy):
 # ---------------------------------------------------------------------------
 
 def _cli(*args, cwd=ROOT):
+    # AIVIS_NO_CLASSIFY: a subprocess reads the real .env, so the classifier is switched off
+    # here. No test may reach a live model (2026-09-05 key incident class).
+    env = {**os.environ, "AIVIS_NO_CLASSIFY": "1"}
     return subprocess.run([sys.executable, str(SCRIPT), *args], capture_output=True, text=True,
-                          cwd=cwd, check=False)
+                          cwd=cwd, check=False, env=env)
 
 
 def test_cli_plan_only_prints_every_surface():

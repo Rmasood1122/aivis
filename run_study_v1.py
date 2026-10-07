@@ -11,8 +11,13 @@ config/vertical_map_v1.json, and the engines follow from the audience:
   python run_study_v1.py "law firms"
   python run_study_v1.py fashion
 
-A vertical that is not on the map is planned as mixed (every engine) with a printed warning.
---audience overrides the map.
+Any other business works too. A name that is not on the map is classified by ONE short model
+call (b2c / b2b / mixed, local or not); the answer is appended to
+state/vertical_classified_v1.jsonl with its raw text and SHA-256, and read from there next time:
+  python run_study_v1.py "wedding photographers"
+
+No key, a failed call or an unreadable answer -> planned as mixed (every engine) with a printed
+warning; nothing is guessed. --no-classify turns the call off. --audience overrides everything.
 
 Plan + commands (dry run):
   python run_study_v1.py restaurants \
@@ -31,6 +36,7 @@ next to the record of why each engine was or was not called. Existing files are 
 """
 import argparse
 import json
+import os
 import subprocess
 import sys
 from datetime import datetime, timezone
@@ -43,15 +49,17 @@ from aivis.engine_select import (
     SelectionError,
     StudyProfile,
     build_plan,
-    classify_vertical,
     load_policy,
     load_vertical_map,
     render_plan,
     runner_commands,
 )
+from aivis.vertical_classify import default_call, resolve_vertical
 
-DEFAULT_POLICY = Path(__file__).resolve().parent / "config" / "engine_policy_v1.json"
-DEFAULT_VERTICAL_MAP = Path(__file__).resolve().parent / "config" / "vertical_map_v1.json"
+_HERE = Path(__file__).resolve().parent
+DEFAULT_POLICY = _HERE / "config" / "engine_policy_v1.json"
+DEFAULT_VERTICAL_MAP = _HERE / "config" / "vertical_map_v1.json"
+DEFAULT_LEDGER = _HERE / "state" / "vertical_classified_v1.jsonl"
 
 
 def _pairs(values, flag):
@@ -73,7 +81,8 @@ def _write_new(path, plan):
     print("PLAN WRITTEN %s" % path)
 
 
-def main(argv=None):
+def main(argv=None, classifier_call=None):
+    """classifier_call: injected by tests in place of the live model call."""
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("vertical_pos", nargs="?", metavar="VERTICAL",
                     help='e.g. restaurants, "law firms", retail, fashion')
@@ -82,6 +91,11 @@ def main(argv=None):
     ap.add_argument("--local", action="store_true",
                     help="force local intent on (the vertical map can also turn it on)")
     ap.add_argument("--vertical-map", default=str(DEFAULT_VERTICAL_MAP))
+    ap.add_argument("--ledger", default=str(DEFAULT_LEDGER),
+                    help="append-only record of model classifications")
+    ap.add_argument("--no-classify", action="store_true",
+                    help="never call a model for an unlisted vertical (AIVIS_NO_CLASSIFY=1 also)")
+    ap.add_argument("--classifier-engine", default="anthropic", choices=["anthropic", "openai"])
     g = ap.add_mutually_exclusive_group()
     g.add_argument("--search", dest="search", action="store_true", default=None)
     g.add_argument("--no-search", dest="search", action="store_false")
@@ -118,17 +132,23 @@ def main(argv=None):
     try:
         policy, digest = load_policy(a.policy)
         vmap, vmap_digest = load_vertical_map(a.vertical_map)
-        cls = classify_vertical(vertical, vmap)
+        call = None
+        # an explicit --audience needs no classification, so no call is made for it
+        if not (a.no_classify or a.audience or os.environ.get("AIVIS_NO_CLASSIFY") == "1"):
+            call = classifier_call or default_call(a.classifier_engine)
+        cls = resolve_vertical(vertical, vmap, ledger_path=a.ledger, call=call,
+                               engine=a.classifier_engine)
         source = {
             "source": AUDIENCE_FROM_OPERATOR if a.audience else cls.source,
             "given": cls.given,
             "matched_vertical": cls.vertical,
             "map_audience": cls.audience,
             "map_local": cls.local,
-            "note": ("--audience %s given; the map says %s" % (a.audience, cls.audience)
+            "note": ("--audience %s given; the lookup says %s" % (a.audience, cls.audience)
                      if a.audience else cls.note),
             "map_version": vmap["map_version"],
             "map_sha256": vmap_digest,
+            "classifier": cls.record,
         }
         profile = StudyProfile(
             audience=a.audience or cls.audience, vertical=cls.vertical,

@@ -143,3 +143,52 @@ Rows may be added in place; changing an existing row's audience or local value i
 Two pins hold the map and the policy together:
 `test_the_rule_holds_for_every_row_of_the_map` and
 `test_every_relevant_vertical_in_the_policy_is_a_key_of_the_map`.
+
+## AMENDED 2026-10-07 (2) — any business name resolves, not only the 40 on the map
+
+Supersedes the "Unlisted vertical" bullet in the amendment above, and the header line of
+`engine_select.py` that calls selection "a lookup, no model call": the ENGINE choice is still a
+pure lookup on (audience, vertical); the AUDIENCE of an unlisted name may now come from one
+model call. Test count is now 122 cases across two files.
+
+New paths: `src/aivis/vertical_classify.py`, `tests/test_vertical_classify.py`, and — created
+on first use — `state/vertical_classified_v1.jsonl`.
+
+Order for any typed name:
+
+| Step | Source printed on the plan | Model call |
+|---|---|---|
+| 1. vertical map, exact key or alias | `VERTICAL_MAP` | none |
+| 2. classification ledger, same name as before | `MODEL_CLASSIFIED` | none |
+| 3. one short call, answer appended to the ledger | `MODEL_CLASSIFIED` | one |
+| 4. no key, failed call, unreadable or "unknown" answer | `VERTICAL_UNCLASSIFIED` + WARNING | — |
+
+```bash
+python run_study_v1.py "wedding photographers"          # step 3 the first time, step 2 after
+python run_study_v1.py "wedding photographers" --no-classify   # step 4, every engine planned
+python run_study_v1.py "wedding photographers" --audience b2c  # operator decides, no call
+```
+
+- **The answer is kept like evidence.** Each ledger row stores the raw response text, its
+  SHA-256, the prompt's SHA-256, the classifier engine and model, and the time. On every read a
+  row is re-checked: the hash must match the text, and the stored audience must match what the
+  stored text says. A row edited by hand is a refused ledger.
+- **Append-only, first row wins.** To correct a model answer, add a row to
+  `vertical_map_v1.json`; the map outranks the ledger. The ledger is not edited.
+- **Step 4 never guesses.** It takes the map's declared `unclassified` row (`mixed`) and prints
+  why (key missing, HTTP error, unreadable answer).
+- **Not a measurement call.** It decides which engines a study calls and produces no visibility
+  number. Default classifier: the Anthropic adapter already in `engines.py`
+  (`--classifier-engine openai` to change). A plan for an unlisted name is therefore no longer
+  free of network calls: one call, about 100 output tokens, the first time that name is seen.
+- **Tests never reach a model.** The call is injected in-process; subprocess tests set
+  `AIVIS_NO_CLASSIFY=1` because a subprocess reads the real `.env`.
+
+Limits:
+- A `MODEL_CLASSIFIED` audience is a model's answer [UNVERIFIED], not an operator
+  classification. The plan prints "not operator-reviewed" on that line. Read it before
+  `--execute`.
+- The live call has not been exercised: the build environment had no API key. Covered by
+  injected-call tests only; first live use is the smoke.
+- `state/vertical_classified_v1.jsonl` is written on the operator's disk and is not in git
+  until committed. A plan cites a row by `response_sha256`; commit the ledger with the study.

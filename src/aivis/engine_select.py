@@ -89,8 +89,9 @@ class Classification:
     vertical: str  # the map key the policy will see (or the normalised name if unlisted)
     audience: str
     local: bool
-    source: str  # AUDIENCE_FROM_MAP or AUDIENCE_UNCLASSIFIED
+    source: str  # AUDIENCE_FROM_MAP, AUDIENCE_UNCLASSIFIED, or the classifier's own source
     note: str
+    record: dict | None = None  # the classifier's ledger reference, when one was used
 
 
 def load_vertical_map(path: str | Path) -> tuple[dict, str]:
