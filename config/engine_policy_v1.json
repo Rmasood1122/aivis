@@ -1,0 +1,139 @@
+{
+  "policy_version": "engine_policy_v1",
+  "written": "2026-10-07",
+  "rule": "An engine runs for a study only when it is CORE for the study audience, or when it is CONDITIONAL and one of three conditions holds: the buyer asked for it, the study vertical is on that engine's relevant list, or the operator declares relevance with a written reason. Everything else is skipped and the skip is printed with its reason. Selection is a lookup, not a model call: same profile + same policy bytes = same plan.",
+  "amendment_rule": "This file is never edited after its first measured run. A change is engine_policy_v2.json with the reason stated.",
+  "audiences": ["b2c", "b2b", "mixed"],
+  "mixed_rule": "An engine is core for a mixed audience when it is core for either b2c or b2b.",
+  "declared_reason_min_chars": 10,
+  "engines": {
+    "openai": {
+      "label": "ChatGPT (OpenAI API)",
+      "tier": {"b2c": "core", "b2b": "core"},
+      "relevant_verticals": [],
+      "basis": "Largest consumer assistant in every source opened [REPORTED: E1, E2, E3]. Run in every prior aivis study [MEASURED: study2/data, realtor_v1/runs]."
+    },
+    "gemini": {
+      "label": "Gemini (Google API)",
+      "tier": {"b2c": "core", "b2b": "core"},
+      "relevant_verticals": [],
+      "basis": "Second consumer assistant [REPORTED: E1, E2]; with google_search grounding it is the nearest measurable proxy for Google AI Mode and AI Overviews, which have no public API. Proxy only: never pooled with, or reported as, those surfaces."
+    },
+    "anthropic": {
+      "label": "Claude (Anthropic API)",
+      "tier": {"b2c": "conditional", "b2b": "core"},
+      "relevant_verticals": [],
+      "basis": "B2C: third at 10.3% in one app-share source [REPORTED: E1] and named without a figure in the local-recommendation survey [REPORTED: E3]; kept conditional so a consumer study does not pay for a minority surface by default. B2B core is an operator default [EST: no B2B usage data opened]; all four engines ran in the PR-agency study [MEASURED: study2/data]. relevant_verticals is empty because no vertical data has been opened."
+    },
+    "perplexity": {
+      "label": "Perplexity (Agent API, live retrieval)",
+      "tier": {"b2c": "conditional", "b2b": "core"},
+      "relevant_verticals": ["investing", "personal_finance", "consumer_tech", "academic_research"],
+      "basis": "B2C: about 45M monthly users against 900M+ monthly for Gemini and 900M weekly for ChatGPT [REPORTED: E2]; absent from the local-recommendation survey [REPORTED: E3]. B2B core follows docs/10 section 3 (\"most research-relevant engine\") [QUOTED] and is an operator default [EST: no B2B usage data opened]. relevant_verticals is a seed list [EST]; replace it in v2 when data is opened."
+    }
+  },
+  "unmeasured_surfaces": {
+    "google_ai_mode": {
+      "label": "Google AI Mode",
+      "reason_code": "NO_PUBLIC_API",
+      "reason": "No public API. About 1B monthly users [REPORTED: E2]; second for local recommendations at 23% [REPORTED: E3]. Nearest proxy is gemini with google_search; the gap is declared on the report face.",
+      "nearest_proxy": "gemini"
+    },
+    "google_ai_overviews": {
+      "label": "Google AI Overviews",
+      "reason_code": "NO_PUBLIC_API",
+      "reason": "No public API. About 2.5B monthly users [REPORTED: E2]. Nearest proxy is gemini with google_search; the gap is declared on the report face.",
+      "nearest_proxy": "gemini"
+    },
+    "meta_ai": {
+      "label": "Meta AI",
+      "reason_code": "NO_ADAPTER",
+      "reason": "No adapter in run_bank_multi_v2.py. Grouped with Grok and others under 5% [REPORTED: E1].",
+      "nearest_proxy": null
+    },
+    "grok": {
+      "label": "Grok (xAI)",
+      "reason_code": "NO_ADAPTER",
+      "reason": "docs/10 section 3 lists the xAI API as NOT BUILT [QUOTED]; no adapter in run_bank_multi_v2.py. Grouped with Meta AI and others under 5% [REPORTED: E1].",
+      "nearest_proxy": null
+    },
+    "copilot": {
+      "label": "Microsoft Copilot",
+      "reason_code": "NO_PUBLIC_API",
+      "reason": "No public API; excluded on the report face per docs/10 section 3 [QUOTED].",
+      "nearest_proxy": null
+    }
+  },
+  "web_search_default": {
+    "b2c": true,
+    "b2b": false,
+    "mixed": true,
+    "basis": "Consumer apps search the web for local and consumer questions; an API call without search answers from training data only [QUOTED: realtor_v1/PREREG_realtor_test_v1.md]. B2B default off matches the PR-agency study rows [MEASURED: study2/data]. Perplexity always retrieves live."
+  },
+  "models": {
+    "note": "Each model string is the one recorded in request_payload.model of committed evidence, not typed from memory; tests/test_engine_select.py re-reads the evidence files. Recorded is not the same as currently served: confirm every model with --smoke before a measured run.",
+    "openai": {
+      "search_off": {"model": "chat-latest", "evidence": "study2/data/multi_openai_run3_20260908.jsonl"},
+      "search_on": {
+        "model": "gpt-4o-2024-08-06",
+        "evidence": "realtor_v1/runs/multi_openai_realtor_v1_20260923.jsonl",
+        "caveat": "This is the RESOLVED snapshot the API returned; the alias that was requested is not in the evidence. It is an older snapshot than the consumer default named in study2 reports. Smoke-test whether the consumer alias accepts web search before a B2C run, and pass it with --model openai=<id> if it does."
+      }
+    },
+    "anthropic": {
+      "search_off": {"model": "claude-sonnet-5", "evidence": "study2/data/multi_anthropic_run3_20260908.jsonl"},
+      "search_on": {"model": "claude-sonnet-5", "evidence": "realtor_v1/runs/multi_anthropic_realtor_v1_20260923.jsonl"}
+    },
+    "gemini": {
+      "search_off": {"model": "gemini-3.8-flash", "evidence": "study2/data/multi_gemini_run3_20260908.jsonl"},
+      "search_on": {"model": "gemini-3.8-flash", "evidence": "realtor_v1/runs/multi_gemini_realtor_v1_20260923.jsonl"}
+    },
+    "perplexity": {
+      "search_on": {"model": "perplexity/sonar", "evidence": "realtor_v1/runs/multi_perplexity_search_realtor_v1_20260923.jsonl"}
+    }
+  },
+  "evidence": [
+    {
+      "id": "E1",
+      "tag": "REPORTED",
+      "source": "OODA Loop brief citing Sensor Tower State of AI 2026",
+      "url": "https://oodaloop.com/briefs/technology/chatgpts-market-share-slips-below-50-for-first-time/",
+      "retrieved": "2026-10-07",
+      "route": "page summary, not opened first-hand",
+      "claim": "End of May 2026 share: ChatGPT 46.4%, Gemini 27.7%, Claude 10.3%; Grok, Meta AI and others under 5%. Metric not stated beyond 'market share'."
+    },
+    {
+      "id": "E2",
+      "tag": "REPORTED",
+      "source": "Scrunch Labs AI platform adoption page (figures attributed there to Google I/O 2026, TechCrunch, Business of Apps)",
+      "url": "https://ai-cdn.scrunchai.com/labs/ai-platform-adoption",
+      "retrieved": "2026-10-07",
+      "route": "page summary, not opened first-hand",
+      "claim": "Monthly users: Google AI Overviews 2.5B, Google AI Mode 1B, Gemini 900M+, Perplexity 45M. ChatGPT 900M weekly users (Feb 2026)."
+    },
+    {
+      "id": "E3",
+      "tag": "REPORTED",
+      "source": "BrightLocal survey of consumers who used AI tools for local business recommendations",
+      "url": "https://www.brightlocal.com/?p=132601",
+      "retrieved": "2026-10-07",
+      "route": "page summary, not opened first-hand",
+      "claim": "n=455. ChatGPT 31%, Google AI Mode 23%, Gemini third (no figure). Copilot and Claude named without figures. Perplexity and Meta AI not reported."
+    },
+    {
+      "id": "E4",
+      "tag": "REPORTED",
+      "source": "QSR Magazine on a DoorDash consumer study",
+      "url": "https://qsrmagazine.com/news/ai-is-reshaping-how-diners-discover-restaurants-doordash-study-finds",
+      "retrieved": "2026-10-07",
+      "route": "page summary, not opened first-hand",
+      "claim": "22% of 3,001 US consumers surveyed in March 2026 had used an AI tool to help choose a restaurant."
+    }
+  ],
+  "limits": [
+    "Usage figures are third-party REPORTED numbers read through a page summary. Re-open each source before any figure leaves the repo.",
+    "The tiers are declared by the operator with those figures as the stated basis. No tier is computed from them.",
+    "B2B tiers and the Perplexity relevant_verticals list are EST: no B2B or per-vertical usage data has been opened.",
+    "Selection decides which API surfaces are called. It does not make an API surface equal to a consumer app."
+  ]
+}
