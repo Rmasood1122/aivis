@@ -2,7 +2,7 @@ echo "sacrificial first line - run_market_v2.sh"
 # run_market_v2.sh - one market, web-search tool offered, 5 reps. Wraps run_bank_multi_v2.py.
 # Supersedes run_market_v1.sh (left in place). Changes, all from the 2026-10-07 smoke run and the
 # realtor evidence files: Perplexity model is perplexity/sonar (the API rejects "sonar");
-# --max-tokens 4096 (4 of 100 ChatGPT realtor answers were cut at 2048); a full run requires the seal
+# --max-tokens 8192 (4 of 100 ChatGPT realtor answers were cut at 2048); a full run requires the seal
 # to CHECK, not merely exist; one engine can be run alone.
 #
 #   bash restaurant_v1/run_market_v2.sh smoke nyc                 # 1 prompt x 1 run, all four engines
@@ -36,7 +36,7 @@ ANTHROPIC_MODEL="${ANTHROPIC_MODEL:-claude-sonnet-5}"
 GEMINI_MODEL="${GEMINI_MODEL:-gemini-3.8-flash}"
 PERPLEXITY_MODEL="${PERPLEXITY_MODEL:-perplexity/sonar}"
 TAG="${RUN_TAG:+_${RUN_TAG}}"
-MAXTOK=4096
+MAXTOK=8192   # was 4096; the Gemini smoke answer of 2026-10-07 ended mid-structure under the 2048 cap (see PREREG v1.2)
 
 RAN=0; FAILED=0
 for ENGINE in openai anthropic gemini perplexity; do

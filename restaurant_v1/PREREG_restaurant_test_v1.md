@@ -179,3 +179,41 @@ Where this block and the text above disagree, this block governs.
 13. **`merges_v1.csv`** has columns `from_key,to_key`; rules that match nothing are printed.
 14. **Verification sample:** drawn by the analyzer (`random.Random(20261006).sample` over the sorted 3–9
     band); the written `verify_sheet.csv` is the record, and the Python version is printed beside it.
+
+## AMENDMENT v1.2 — 2026-10-06, written BEFORE the seal and before any full-run response
+Reason: the analyzer was run for the first time on the four complete smoke answers (operator machine,
+Python 3.13.5, 2026-10-07 ~02:00Z). Evidence is still the same 5 smoke rows; no full-run row exists.
+Thresholds in "Decision rule" are unchanged. Where this block and anything above disagree, this governs.
+
+1. **What the first full-row check found** [MEASURED: operator console, candidates.csv of
+   `smoke/extract_check_v1`, read in full]: 68 distinct candidates, of which at least 10 are not a
+   single restaurant — six award-category heads ("Best Brunch", "Best Deli", "Best Bakery",
+   "Best Burger", "Best Diner", "Best American Restaurant"), "Wanderlog's Picks", and three strings
+   holding two or more restaurants written together. One more ("The Bomb") is a sandwich, not a place.
+   Every one occurred in a single response, so none reached the ≥3 floor at n=4; in a full run the
+   award heads would have.
+2. **Extractor changed in response — a post-hoc change to the instrument, disclosed here, made
+   before the seal.** (a) A bare bold head ending in a colon, or a head ending in a list word
+   ("Picks", "Favorites", "Winners" …), hands its place to the names nested under it. (b) An unordered
+   bullet with no separator counts only under such a head, and never if it is one word. (c) A bold
+   span on a line that opens with a food label ("What to get:", "Highlights:") is a dish and is
+   skipped. (d) A table cell holding three or more comma-separated entries is read as that many names.
+   (e) Names written together ("A, B, C", "A & B") are split only when the market's own answers show
+   the parts are places: two parts need both seen alone; three or more may carry one unseen part of
+   two or more words. "Sal, Kris & Charlie's Deli" and "Tootles & French" stay whole. (f) A one-word
+   colon-terminated head seen twice in one answer is a label; a multi-word one needs three.
+   A name beginning "Best" is NOT rejected on that ground: Best Pizza is a restaurant in Williamsburg
+   and this bank asks about pizza there.
+3. **What is and is not known after the change.** 46 tests pass, including fixtures built from the
+   printed lines of that ChatGPT answer. On the realtor rows the changed extractor still finds 62 of 68
+   human-verified names under the same key (the other 6 under a longer form) and 6 of its 106 top-tier
+   candidates are not a single person, firm or site [MEASURED: 2026-10-06]. The changed extractor has
+   NOT yet been run on the complete smoke answers; that result is to be read by the operator before
+   sealing. Status stays UNVALIDATED_PARSE_PENDING_KAPPA. No accuracy figure exists.
+4. **Output cap raised again, to 8,192 tokens** (item 2 of v1.1 said 4,096). The Gemini smoke answer
+   ended mid-structure ("…\n\n---\n\n###") at 4,211 characters under the 2,048 cap, with 0 citations
+   [MEASURED: operator console]. Whether 8,192 is enough for Gemini is unverified until a Gemini smoke
+   row under the new cap ends cleanly; `per_response.csv` flags every answer that does not.
+5. **Spelling variants are not merged by the analyzer** ("AbuQir" / "AbuQir Seafood", "Ruta Oaxaca" /
+   "Ruta Oaxaca Mexican Cuisine", "Vesta Trattoria & Wine Bar" / "& Winebar" were all seen). They are
+   merged only through `merges_v1.csv`, written by hand after the run and committed with the results.

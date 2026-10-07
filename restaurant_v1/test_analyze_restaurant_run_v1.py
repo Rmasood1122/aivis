@@ -256,6 +256,11 @@ def test_colon_name_repeated_once_in_a_recap_is_kept():
     assert names(text) == ["Via Vai", "Butcher Bar"]
 
 
+def test_one_word_colon_head_twice_is_a_label():
+    text = "- **Via Vai** – pasta\n  - **Reputation:** strong\n- **Butcher Bar** – ribs\n  - **Reputation:** solid\n"
+    assert names(text) == ["Via Vai", "Butcher Bar"]
+
+
 def test_described_name_keeps_its_place_over_nested_bold_dishes():
     text = "- **Taverna Kyclades** – seafood\n  - **Grilled Octopus** – order it\n- **Via Vai** – pasta\n"
     assert names(text) == ["Taverna Kyclades", "Via Vai"]
@@ -274,6 +279,72 @@ def test_one_word_core_is_searched_with_its_article():
     assert ar.cased_needles("Lucali Pizzeria") == [" Lucali Pizzeria "]
     assert ar.cased_needles("Olmsted") == [" Olmsted "]
     assert " Smith " not in "".join(ar.cased_needles("The Smith")).replace(" The Smith ", "").replace(" the Smith ", "")
+
+
+# Modelled on the ChatGPT smoke answer of 2026-10-07. Lines marked (v) are verbatim from that row; the
+# rest is filled in to complete the structure, because only the lines behind the junk names were printed.
+AWARDS = """- **Best American Restaurant**:
+  1. Sanfords
+  2. The Bonnie
+  3. Queen’s Room, Sanfords, Sweet Afton (tie) ([boast.nyc](https://boast.nyc/boast-best-of-astoria-lic-2025-winners-full-list/?utm_source=openai))
+
+- **Best Deli**:
+  1. Sal, Kris & Charlie’s Deli
+  2. George’s Deli
+
+- **Best Brunch**:
+  1. Tootles & French
+  2. Queen’s Room
+  3. Sweet Afton & The Bonnie (tie) ([boast.nyc](https://boast.nyc/boast-best-of-astoria-lic-2025-winners-full-list/?utm_source=openai))
+
+##  Diverse & Emerging Favorites (Infatuation & Wanderlog)
+
+- **Wanderlog’s Picks**
+  - Trattoria L’incontro
+  - Christos Steak House
+
+| Category | Restaurants |
+|---|---|
+| Greek/Seafood             | Taverna Kyclades, Loukoumi Taverna, Ovelia, Kabab Cafe                              |
+| Brunch & Bakeries         | Tootles & French, Queen’s Room, Martha’s Country Bakery                             |
+"""
+
+
+def test_award_category_bullets_hand_over_to_the_numbered_names():
+    got = names(AWARDS)
+    for label in ("Best American Restaurant", "Best Deli", "Best Brunch", "Wanderlog’s Picks"):
+        assert label not in got
+    assert got[:2] == ["Sanfords", "The Bonnie"]
+    for real in ("Sal, Kris & Charlie’s Deli", "George’s Deli", "Tootles & French", "Queen’s Room",
+                 "Trattoria L’incontro", "Christos Steak House", "Taverna Kyclades", "Loukoumi Taverna", "Ovelia",
+                 "Kabab Cafe", "Martha’s Country Bakery"):
+        assert real in got, real
+
+
+def test_joined_names_split_only_when_the_market_knows_the_parts(tmp_path):
+    p = tmp_path / "run.jsonl"
+    p.write_text(json.dumps(_row("openai", "NYC01", 1, "Astoria", AWARDS), ensure_ascii=False) + "\n", encoding="utf-8")
+    out = tmp_path / "res"
+    ar.main([str(p), "--out", str(out)])
+    cand = {r["key"] for r in _read(out / "candidates.csv")}
+    assert "sweet afton" in cand and "bonnie" in cand and "queens room" in cand and "sanfords" in cand
+    assert not any("queens room sanfords" in k or "sweet afton and" in k for k in cand)
+    assert "sal kris and charlies deli" in cand and "tootles and french" in cand     # real names keep their commas and &
+
+
+def test_best_pizza_is_still_a_name_when_it_is_listed_as_one():
+    assert names("- **Best Pizza** – wood-fired slices on Havemeyer St\n- **L’industrie Pizzeria** – burrata slice\n") == [
+        "Best Pizza", "L’industrie Pizzeria"]
+
+
+def test_bold_dish_after_a_food_label_is_not_a_place():
+    text = "*   **Sal, Kris & Charlie’s Deli** *(23rd Ave)*\n    *What to get:* **The Bomb**—a monster hero piled high.\n"
+    assert names(text) == ["Sal, Kris & Charlie’s Deli"]
+    assert names("- Greek: **Taverna Kyclades**\n") == ["Taverna Kyclades"]
+
+
+def test_unordered_plain_bullets_alone_are_not_names():
+    assert names("Some thoughts:\n- Sweet Afton\n- Great Food\n") == []
 
 
 def test_citation_links_do_not_become_names():

@@ -11,7 +11,11 @@ Two passes per market:
      it, or (weakest) a bold span inside a sentence. Headings and list items with names beneath them
      are categories ("Greek Food"), not names. Labels ("Vibe:", "What to order:") are rejected by a
      stoplist, by a sentence-case test ("Go early"), and by repetition (a colon-terminated head that
-     occurs three times or more in one response is a label; twice is a name plus its recap).
+     occurs three times or more in one response is a label - twice for a one-word head; a multi-word
+     head seen twice is a name plus its recap).
+     A bare bold head ending in a colon, or a head ending in a list word ("Picks"), hands its place to
+     the names nested under it. Names written together ("A, B, C") are split when the market's own
+     answers show the parts are places.
   2. MATCHING (lexicon). A name discovered structurally somewhere in the market is then searched for
      in every response, case-sensitively and on word boundaries, so a restaurant named only in
      running prose is still counted. One-word names need structural support in three responses first.
@@ -49,7 +53,7 @@ VERDICTS = ("open", "closed", "not_found", "wrong_area", "noise")
 ENGINES_REQUIRED_FOR_R3 = 3
 REPS_REQUIRED_FOR_R2 = 3
 R5_MAX = 0.15
-LABEL_REPEATS = 3               # a colon-terminated head this many times in one answer is a label
+LABEL_REPEATS = 3               # a colon-terminated head this many times in one answer is a label (one-word heads: 2)
 STRUCTURAL = ("list_bold", "line_bold", "table", "list_plain", "heading_leaf")   # strongest first
 
 
@@ -114,6 +118,18 @@ signature dish|signature dishes|specialties|specialty|style|the food|the move|th
 try the|type|upside|verdict|vibe|wait|wait time|warning|website|what to expect|what to get|
 what to know|what to order|what to try|when to go|where|why|why go|why it works|why visit|why we love it|dont miss|menu highlights|must try dishes|popular dishes|price level|recommended dishes|standout dishes|the draw|the scene|top dishes
 """.replace("\n", "").split("|") if p.strip())
+
+# A head ending in one of these introduces a list of places; it is not a place ("Wanderlog's Picks").
+LISTWORDS = frozenset("awards choices favorites favourites mentions picks recommendations selections standouts winners".split())
+
+# A line that opens with one of these is describing food, so a bold span on it is a dish, not a place.
+DISH_LABELS = frozenset(p.strip() for p in """
+dishes|dont miss|drinks|food|highlight|highlights|known for|menu|menu highlights|must order|must try|
+must try dishes|order|popular dishes|recommended dishes|signature dish|signature dishes|specialties|
+specialty|standout dishes|top dishes|try|try the|what to get|what to order|what to try
+""".replace("\n", "").split("|") if p.strip())
+LINE_LABEL = re.compile(r"^\s*(?:[-*•–·]\s+|\d{1,2}[.)]\s+)?[*_]{0,3}([^:*_]{2,40}?):[*_]{0,3}(?=\s|$)")
+JOINED = re.compile(r",\s+|\s+&\s+|\s+and\s+")
 
 CONNECTORS = frozenset("""a al and at au aux by con da das de del des di do dos du e el et i il la las le lo los
 n of on the und van von y""".split())
@@ -217,7 +233,7 @@ def plausible_name(name: str, place_tokens: frozenset, strict_case: bool) -> boo
         if not first or (first.isascii() and first.islower()):
             return False
     toks = norm_key(name).split()
-    if not toks:
+    if not toks or toks[-1] in LISTWORDS:
         return False
     return not all(t in GENERIC or t in place_tokens for t in toks)
 
@@ -263,8 +279,11 @@ def _parse_nodes(lines):
                 col = next((j for j, c in enumerate(cells)
                             if c and not re.fullmatch(r"[#\d.\s)]*", strip_marks(c))), None)
             if col is not None and cells[col]:
-                nodes.append({"kind": "item", "indent": 0, "raw": cells[col], "colon": False, "bare": True,
-                              "klass": "table", "line": i, "bold_head": False})
+                parts = [c.strip() for c in strip_marks(cells[col]).split(",")]
+                for raw in (parts if len(parts) >= 3 else [cells[col]]):   # "A, B, C" is three places
+                    if raw:
+                        nodes.append({"kind": "item", "indent": 0, "raw": raw, "colon": False, "bare": True,
+                                      "klass": "table", "line": i, "bold_head": False, "weak": False})
             continue
         hm = HEADING_RE.match(line)
         if hm:
@@ -279,14 +298,19 @@ def _parse_nodes(lines):
                 colon = strip_marks(bm.group(1)).endswith(":") or bm.group(2).lstrip().startswith(":")
                 bare = not strip_marks(TRAIL_PAREN.sub("", bm.group(2))).strip(" :–—-")
                 nodes.append({"kind": "item", "indent": indent, "raw": bm.group(1), "colon": colon, "bare": bare,
-                              "klass": "list_bold", "line": i, "bold_head": True})
+                              "klass": "list_bold", "line": i, "bold_head": True, "weak": False})
                 continue
             plain = strip_marks(body)
             sm = SEPARATOR.search(plain)
             head = plain[: sm.start()] if sm else plain
-            if (sm or ordered) and 1 <= len(head.split()) <= 6 and not head.rstrip().endswith((".", "!", "?")):
+            weak = not (sm or ordered)
+            if (2 if weak else 1) <= len(head.split()) <= 6 and not head.rstrip().endswith((".", "!", "?")):
+                # "weak": an unordered bullet with no separator ("- Sweet Afton"). Too little structure to
+                # trust on its own; it counts only when it sits under a category head, and a one-word
+                # weak bullet ("- Reviews") is never taken.
                 nodes.append({"kind": "item", "indent": indent, "raw": head, "klass": "list_plain", "bare": not sm,
-                              "colon": bool(sm and sm.group(0).startswith(":")), "line": i, "bold_head": False})
+                              "colon": bool(sm and sm.group(0).startswith(":")), "line": i, "bold_head": False,
+                              "weak": weak})
             continue
         bm = LEAD_BOLD.match(line)
         if bm:
@@ -297,7 +321,7 @@ def _parse_nodes(lines):
                     nodes.append({"kind": "heading", "level": 7, "raw": bm.group(1), "line": i, "bold_head": True})
             else:
                 nodes.append({"kind": "item", "indent": 0, "raw": bm.group(1), "colon": colon, "bare": False,
-                              "klass": "line_bold", "line": i, "bold_head": True})
+                              "klass": "line_bold", "line": i, "bold_head": True, "weak": False})
     return nodes
 
 
@@ -310,35 +334,51 @@ def discover(text: str, place_tokens: frozenset = frozenset()):
     repeated = Counter(norm_key(tidy_name(n["raw"])) for n in items if n["colon"])
     for n in items:
         n["name"] = tidy_name(n["raw"])
-        label = is_label(n["raw"]) or repeated[norm_key(n["name"])] >= LABEL_REPEATS
+        key = norm_key(n["name"])
+        label = is_label(n["raw"]) or repeated[key] >= (2 if len(key.split()) == 1 else LABEL_REPEATS)
         strict = n["klass"] == "list_plain"
         n["ok"] = (not label) and plausible_name(n["name"], place_tokens, strict)
+        n["listword"] = (norm_key(n["name"]).split() or [""])[-1] in LISTWORDS
 
-    # Nesting. A bare or colon-terminated head with bold-headed names under it is a category ("- **Greek:**").
-    # A head that carries its own description is a name, and bold heads nested under it are details
-    # ("- **Taverna Kyclades** - seafood" / "  - **Grilled Octopus** - order it").
+    # Nesting.
+    #  - A head that is a category by its own text - a bare bold head ending in a colon ("- **Best Deli**:")
+    #    or a head ending in a list word ("Wanderlog's Picks") - hands its place to the names under it.
+    #  - A bare or colon-terminated head with bold or numbered names under it is a category ("- **Greek:**").
+    #  - A head that carries its own description is a name; heads nested under it are details
+    #    ("- **Taverna Kyclades** - seafood" / "  - **Grilled Octopus** - order it").
+    #  - A weak bullet counts only when a category head adopted it.
     for idx, n in enumerate(nodes):
-        if n["kind"] != "item" or not n["ok"] or n["klass"] not in ("list_bold", "list_plain"):
+        if n["kind"] != "item" or n["klass"] not in ("list_bold", "list_plain") or n["weak"]:
             continue
         children = []
         for later in nodes[idx + 1:]:
             if later["kind"] == "heading" or later["indent"] <= n["indent"]:
                 break
-            if later["ok"] and later["klass"] == "list_bold":
+            if later["ok"]:
                 children.append(later)
         if not children:
             continue
-        if n["colon"] or n["bare"]:
+        strong = [c for c in children if not c["weak"]]
+        category_by_text = (n["klass"] == "list_bold" and n["colon"] and n["bare"]) or n["listword"]
+        if category_by_text or (n["ok"] and (n["colon"] or n["bare"]) and strong):
             n["ok"] = False
-        else:
+            for c in children:
+                c["adopted"] = True
+        elif n["ok"]:
             for c in children:
                 c["ok"] = False
+    for n in items:
+        if n["weak"] and not n.get("adopted"):
+            n["ok"] = False
 
     # Bold spans inside sentences: weakest class. On a line whose head IS a bold span, that span is skipped.
     head_span_lines = {n["line"] for n in nodes if n.get("bold_head")}
     inline = []
     for i, line in enumerate(lines):
         spans = ANY_BOLD.findall(line)
+        lead = LINE_LABEL.match(line)
+        if spans and lead and norm_key(lead.group(1)) in DISH_LABELS:     # "*What to get:* **The Bomb**"
+            continue
         for raw in (spans[1:] if i in head_span_lines else spans):
             if strip_marks(raw).endswith(":") or is_label(raw):
                 continue
@@ -441,6 +481,45 @@ def prose_eligible(key: str, structural_support: int) -> bool:
 
 # ----------------------------------------------------------------------------- analysis
 
+def joined_parts(discovered, place_tokens):
+    """{surface name: [part names]} for names that are really several places written together.
+    "Queen's Room, Sanfords, Sweet Afton" is split when the market itself shows the parts are places:
+    two parts need BOTH named alone somewhere; three or more may carry ONE part not seen alone, if that
+    part is at least two words (it becomes known, and the pass repeats). "Sal, Kris & Charlie's Deli" and "Tootles & French" have no such parts
+    and stay whole."""
+    known = {key for disc in discovered for name, key, _ in disc if not JOINED.search(name)}
+    joined = sorted({name for disc in discovered for name, _, _ in disc if JOINED.search(name)})
+    out, changed = {}, True
+    while changed:
+        changed = False
+        for name in joined:
+            if name in out:
+                continue
+            parts = [x.strip() for x in JOINED.split(name) if x.strip()]
+            if len(parts) < 2 or not all(plausible_name(x, place_tokens, True) for x in parts):
+                continue
+            unknown = [x for x in parts if norm_key(x) not in known]
+            n_known = len(parts) - len(unknown)
+            if any(len(norm_key(x).split()) < 2 for x in unknown):    # a one-word part must be known already
+                continue
+            if (len(parts) == 2 and n_known == 2) or (len(parts) >= 3 and n_known >= len(parts) - 1):
+                out[name] = parts
+                known.update(norm_key(x) for x in parts)
+                changed = True
+    return out
+
+
+def split_joined(disc, parts_of):
+    out, seen = [], set()
+    for name, key, klass in disc:
+        for nm in parts_of.get(name, [name]):
+            k = norm_key(nm) if name in parts_of else key
+            if k not in seen:
+                seen.add(k)
+                out.append((nm, k, klass))
+    return out
+
+
 def apply_merges(disc, merges):
     """Re-key discovered names through the hand-written merge list; first occurrence wins."""
     seen, out = set(), []
@@ -461,8 +540,10 @@ def analyse(rows, verified=None, merges=None):
     merges = merges or {}
     place_tokens = place_token_set(rows)
     per_row, surface, support, merge_hits = [], defaultdict(Counter), Counter(), Counter()
-    for r in rows:
-        raw = discover(r["response_text"], place_tokens)
+    discovered = [discover(r["response_text"], place_tokens) for r in rows]
+    parts_of = joined_parts(discovered, place_tokens)
+    for raw in discovered:
+        raw = split_joined(raw, parts_of)
         for _, key, _ in raw:
             if key in merges:
                 merge_hits[key] += 1
