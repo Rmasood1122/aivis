@@ -119,3 +119,63 @@ before the seal; they confirm the four search surfaces and nothing else.
 - NYC R5 (≥10 tier, closed + not found + wrong area): ____ %
 - Engine with the most distinct restaurants named: ____
 - Market of the four with the smallest R3: ____
+
+## AMENDMENT v1.1 — 2026-10-06, written BEFORE the seal and before any full-run response
+Status of evidence at this point: 5 smoke rows exist (NYC01 only; 4 clean, 1 error), collected
+2026-10-07T01:11–01:31Z. No full-run row exists. Thresholds in "Decision rule" are unchanged.
+Where this block and the text above disagree, this block governs.
+
+1. **"Web search ON" is restated as "web-search tool OFFERED".** The engine decides whether to use it.
+   In the realtor run, Claude returned zero citations on 29 of 100 rows with the tool in the payload
+   [MEASURED: realtor_v1/runs, recount 2026-10-06]. In this test's smoke, Gemini returned 0 citations on
+   its one row. Therefore: every per-engine line prints the share of rows with ≥1 citation; no row is
+   described as "live search" unless it carries a citation; the row field `web_search` is NOT used as
+   evidence (it read true on 100 Perplexity rows that had no search tool in the payload) — the payload's
+   `tools` entry and the citation count are.
+2. **Output cap raised to 4,096 tokens** (`run_market_v2.sh`). At 2,048, 4 of 100 ChatGPT realtor
+   answers ended without terminal punctuation [MEASURED: same recount]; the ChatGPT smoke answer here ran
+   6,998 characters. `per_response.csv` flags every answer that ends without terminal punctuation.
+3. **Perplexity model string is `perplexity/sonar`.** `sonar` returns HTTP 400 "not supported"
+   [MEASURED: smoke 2026-10-07T01:12Z; retry with `perplexity/sonar` clean, 15 citations].
+4. **Runner is `run_market_v2.sh`.** `run_market_v1.sh` is superseded and left in place.
+5. **The seal hashes git blobs, not disk bytes** (`seal_v1.sh make` / `check`). The `sha256sum` command
+   in "Seal" above is superseded: on Windows git rewrites text files with CRLF at checkout, so disk
+   hashes differ between machines. The sealed set is: this file, the four banks, the generator, the
+   analyzer, its tests, `run_market_v2.sh`, `seal_v1.sh`. `make` refuses while any prediction is blank.
+   A full run refuses unless `check` passes — the gate tests that the seal is true, not that it exists.
+6. **Correction to "Unit definitions".** "the realtor run produced 872 candidates" cites an intermediate
+   count. The population that was verified against was 1,008 candidates, 367 of them in ≥3 responses
+   and 45 in ≥10 [MEASURED: realtor_v1/results_v1c/person_candidates.csv, 2026-10-06].
+7. **Extractor and metrics code: `analyze_restaurant_run_v1.py`,** committed with this amendment.
+   - Built from: the 4 clean smoke rows (console previews; three of them truncated at 1,200 characters)
+     and, for markdown structure only, the 399 realtor rows. Smoke rows are excluded from every metric.
+   - Method: structural discovery (list heads, line-leading bold, table name column, leaf headings,
+     inline bold), then a case-sensitive word-boundary pass over all responses for names discovered
+     structurally somewhere. A one-word name needs structural discovery in ≥3 responses before it is
+     counted from prose.
+   - Checked against an independent list: of 68 human-verified agent names in the realtor project, 62
+     are found under the same key and the other 6 under a longer form of the same name (the realtor
+     regex had truncated them); of 107 top-tier candidates on that data, 6 are not a person, firm or
+     site ("Office", "Track Record", "Armen", "Notable Agents", "Profile", "Marketing Plan")
+     [MEASURED: 2026-10-06, read in full]. That is a structure check on a different vertical. It is NOT
+     an accuracy figure for restaurants; none exists. Status stays UNVALIDATED_PARSE_PENDING_KAPPA.
+   - Known limits: a name no engine ever places in a list head, table, heading or bold span is missed;
+     a prose match can hit a phrase that is not the restaurant; a table with no recognisable name
+     column is read from its first text column; first-named needs a structurally placed name.
+8. **Verdict `noise` added** to open / closed / not_found / wrong_area: a candidate that is not a
+   place at all (a label or phrase the extractor let through). Noise is excluded from every metric and
+   from the R5 denominator, and its count is printed beside R5. This raises R5; it cannot lower it.
+9. **"≤2 responses are excluded from every metric" is applied literally:** R1 and first-named (R7) are
+   computed on names in ≥3 responses, like R2, R3 and R4.
+10. **R3 counts distinct names.** A multi-location brand that qualifies in several areas counts once.
+    Tiers are market-wide response counts.
+11. **R2 denominators.** "≥3 of 5 reps" is evaluated on the clean rows that exist. The summary prints how
+    many prompt+engine cells have exactly 5 clean reps. Error rows are not topped up. An engine that
+    fails outright may be re-run to a new file (`RUN_TAG`), which replaces the failed file in the
+    analysis; the analyzer refuses the same engine+prompt+rep twice.
+12. **No decision until every row of the verification sheet has a verdict** — tier A and the tier B
+    sample both. Verdicts for names not on the current sheet are refused, so a merge list written after
+    checking cannot silently change which names were verified.
+13. **`merges_v1.csv`** has columns `from_key,to_key`; rules that match nothing are printed.
+14. **Verification sample:** drawn by the analyzer (`random.Random(20261006).sample` over the sorted 3–9
+    band); the written `verify_sheet.csv` is the record, and the Python version is printed beside it.
