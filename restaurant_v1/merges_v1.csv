@@ -1,0 +1,39 @@
+from_key,to_key,from_display,from_responses,to_display,to_responses,reason
+keens,keens steakhouse,Keens,3,Keens Steakhouse,27,short form
+ruddy and dean american steakhouse,ruddy and dean,Ruddy & Dean American Steakhouse,4,Ruddy & Dean,26,long form
+asian jewels seafood,asian jewels,Asian Jewels Seafood Restaurant,20,Asian Jewels,23,long form
+red rooster harlem,red rooster,Red Rooster Harlem,18,Red Rooster,22,long form
+full moon pizza,full moon,Full Moon Pizza,11,Full Moon Pizzeria,19,pizza/pizzeria
+enzos,enzos of arthur avenue,Enzo’s,3,Enzo’s of Arthur Avenue,15,short form
+mountain house,szechuan mountain house,Mountain House,15,Szechuan Mountain House,13,fragment of the full name
+ruta oaxaca mexican cuisine,ruta oaxaca,Ruta Oaxaca Mexican Cuisine,3,Ruta Oaxaca,14,long form
+amylos taverna,amylos,Amylos Taverna,8,Amylos,12,long form
+fini,fini pizza,Fini,5,Fini Pizza,10,short form
+agnanti,agnanti meze,Agnanti,4,Agnanti Meze,9,short form
+common park slope,common,The Common Park Slope,5,The Common,11,area suffix
+haidilao,haidilao hot pot,Haidilao,5,Haidilao Hot Pot,10,short form
+haidilao hotpot,haidilao hot pot,Haidilao Hotpot,5,Haidilao Hot Pot,10,spacing
+prime met steakhouse and rooftop lounge,prime met steakhouse,Prime Mēt Steakhouse & Rooftop Lounge,10,Prime Mēt Steakhouse,11,long form
+sage thai bistro,sage thai,Sage Thai Bistro,5,Sage Thai,10,long form
+sal kris and charlies,sal kris and charlies deli,"Sal, Kris & Charlie’s",11,"Sal, Kris & Charlie’s Deli",11,short form
+sanfords astoria,sanfords,Sanfords Astoria,3,Sanford's,11,area suffix
+abuqir seafood,abuqir,AbuQir Seafood,4,AbuQir,10,long form
+la nonna ristorante and bar,la nonna,La Nonna Ristorante & Bar,3,La Nonna,10,long form
+boucherie,boucherie west village,Boucherie,3,Boucherie West Village,7,short form
+dados pizza and taproom,dados pizza,Dado’s Pizza and Taproom,5,Dado's Pizza,9,long form
+double knot nyc,double knot,Double Knot NYC,5,Double Knot,9,area suffix
+afuri ramen dumpling,afuri ramen,Afuri Ramen + Dumpling,6,Afuri Ramen,8,long form
+jacob restaurant soul food and salad bar,jacob,Jacob Restaurant Soul Food & Salad Bar,3,Jacob Restaurant,8,long form
+la vecina astoria,la vecina,La Vecina Astoria,5,La Vecina,7,area suffix
+mables smokehouse and banquet hall,mables smokehouse,Mable's Smokehouse & Banquet Hall,5,Mable’s Smokehouse,7,long form
+native restaurant and lounge,native,Native Restaurant & Lounge,5,Native Restaurant,5,long form
+ibn hamido seafood,hamido seafood,Ibn Hamido Seafood,3,Hamido Seafood,4,prefix
+via trenta osteria and wine bar,via trenta osteria,Via Trenta Osteria & Wine Bar,3,Via Trenta Osteria,4,long form
+charm bar and,charm bar,Charm Bar & Restaurant,3,Charm Bar,3,long form
+sands of persia lounge and,sands of persia,Sands of Persia Lounge & Restaurant,3,Sands of Persia,3,long form
+zio toto ristorante,zio toto,Zio Toto Ristorante,3,Zio Toto,3,long form
+sal and carmines pizza,sal and carmine pizza,Sal & Carmine’s Pizza,4,Sal & Carmine Pizza,5,spelling
+chong qing lao zao,chongqing lao zao,Chong Qing Lao Zao,4,Chongqing Lao Zao,5,spacing
+pugsleys pizza,pugsley pizza,Pugsley's Pizza,3,Pugsley Pizza,4,spelling
+ivana,ivanas,Ivana Pizzeria,4,Ivana’s Pizzeria,11,short form
+awaze ethiopian cuisine,awaze,Awaze Ethiopian Cuisine,5,Awaze,5,long form
