@@ -462,3 +462,202 @@ def test_rendered_plan_shows_every_surface_and_the_openai_search_caveat(loaded):
     assert "CAVEAT: This is the RESOLVED snapshot" in text
     assert "RUN 2: openai, gemini" in text
     assert "SKIP 2: anthropic, perplexity" in text
+
+
+# ---------------------------------------------------------------------------
+# VERTICAL MAP - the audience comes from the vertical name
+# ---------------------------------------------------------------------------
+
+VMAP_PATH = ROOT / "config" / "vertical_map_v1.json"
+
+
+@pytest.fixture(scope="module")
+def vloaded():
+    return es.load_vertical_map(VMAP_PATH)
+
+
+@pytest.fixture()
+def vmap(vloaded):
+    return copy.deepcopy(vloaded[0])
+
+
+@pytest.mark.parametrize(("typed", "key", "audience", "local"), [
+    ("restaurants", "restaurants", "b2c", True),
+    ("law firms", "law_firms", "mixed", True),
+    ("retail", "retail", "b2c", False),
+    ("fashion", "fashion", "b2c", False),
+    ("PR agencies", "pr_agencies", "b2b", False),
+    ("Law Firm", "law_firms", "mixed", True),  # case + singular
+    ("nail salon", "salons", "b2c", True),  # singular of an alias
+    ("real-estate", "real_estate", "b2c", True),  # hyphen
+    ("personal injury lawyers", "personal_injury_law", "b2c", True),
+    ("stocks", "investing", "b2c", False),  # alias onto a Perplexity-relevant key
+])
+def test_named_verticals_classify(vmap, typed, key, audience, local):
+    c = es.classify_vertical(typed, vmap)
+    assert (c.vertical, c.audience, c.local) == (key, audience, local)
+    assert c.source == es.AUDIENCE_FROM_MAP
+    assert c.given == typed
+
+
+def test_no_substring_matching_lawn_care_is_not_law(vmap):
+    assert es.classify_vertical("lawn care", vmap).vertical == "home_services"
+    assert es.classify_vertical("law", vmap).source == es.AUDIENCE_UNCLASSIFIED
+
+
+def test_unlisted_vertical_takes_the_declared_fallback_and_says_so(vmap):
+    c = es.classify_vertical("underwater basket weaving", vmap)
+    assert c.source == es.AUDIENCE_UNCLASSIFIED
+    assert c.audience == vmap["unclassified"]["audience"] == "mixed"
+    assert c.vertical == "underwater_basket_weaving"
+    assert "not in vertical_map_v1" in c.note
+
+
+def test_empty_vertical_name_refuses_in_the_classifier(vmap):
+    with pytest.raises(es.SelectionError, match="vertical is empty"):
+        es.classify_vertical("  ", vmap)
+
+
+def test_the_rule_holds_for_every_row_of_the_map(vmap, policy):
+    """Across the whole map: a b2c vertical never plans Perplexity unless it is on
+    Perplexity's relevant list, and every b2b or mixed vertical plans all engines."""
+    relevant = set(policy["engines"]["perplexity"]["relevant_verticals"])
+    seen = {"b2c": 0, "b2b": 0, "mixed": 0}
+    for key in vmap["verticals"]:
+        c = es.classify_vertical(key, vmap)
+        d = _by_surface(es.StudyProfile(c.audience, c.vertical, local=c.local), policy)
+        seen[c.audience] += 1
+        if c.audience == "b2c":
+            want = es.RUN if key in relevant else es.SKIP
+            assert d["perplexity"].decision == want, key
+            assert d["openai"].decision == d["gemini"].decision == es.RUN
+        else:
+            assert all(d[e].decision == es.RUN for e in policy["engines"]), key
+    assert all(seen.values())  # each audience is exercised by at least one row
+
+
+def test_every_relevant_vertical_in_the_policy_is_a_key_of_the_map(vmap, policy):
+    # otherwise a relevant_verticals entry could never be reached by name (B7 class)
+    for engine, spec in policy["engines"].items():
+        for vertical in spec["relevant_verticals"]:
+            assert vertical in vmap["verticals"], f"{engine}: {vertical}"
+
+
+def test_map_alias_pointing_at_two_verticals_refuses(vmap):
+    vmap["verticals"]["retail"]["aliases"].append("cafes")
+    with pytest.raises(es.SelectionError, match="points at both"):
+        es.validate_vertical_map(vmap)
+
+
+@pytest.mark.parametrize("key", ["map_version", "verticals", "unclassified"])
+def test_map_missing_a_top_level_key_refuses(vmap, key):
+    del vmap[key]
+    with pytest.raises(es.SelectionError, match=f"missing '{key}'"):
+        es.validate_vertical_map(vmap)
+
+
+def test_map_row_with_a_bad_audience_refuses(vmap):
+    vmap["verticals"]["retail"]["audience"] = "consumer"
+    with pytest.raises(es.SelectionError, match="has audience 'consumer'"):
+        es.validate_vertical_map(vmap)
+
+
+def test_map_row_without_boolean_local_refuses(vmap):
+    vmap["unclassified"]["local"] = "no"
+    with pytest.raises(es.SelectionError, match="no boolean 'local'"):
+        es.validate_vertical_map(vmap)
+
+
+def test_map_key_not_in_normalised_form_refuses(vmap):
+    vmap["verticals"]["Law Firms"] = vmap["verticals"].pop("law_firms")
+    with pytest.raises(es.SelectionError, match="not in normalised form"):
+        es.validate_vertical_map(vmap)
+
+
+def test_map_row_without_aliases_list_refuses(vmap):
+    del vmap["verticals"]["retail"]["aliases"]
+    with pytest.raises(es.SelectionError, match="no 'aliases' list"):
+        es.validate_vertical_map(vmap)
+
+
+def test_plan_defaults_to_operator_as_the_audience_source(loaded):
+    policy, digest = loaded
+    plan = es.build_plan(es.StudyProfile("b2c", "restaurants"), policy, digest)
+    assert plan["audience_source"] == {"source": es.AUDIENCE_FROM_OPERATOR}
+    assert "audience from OPERATOR" in es.render_plan(plan)
+
+
+# ---------------------------------------------------------------------------
+# CLI - one word is enough
+# ---------------------------------------------------------------------------
+
+@pytest.mark.parametrize(("typed", "run_line"), [
+    ("restaurants", "RUN 2: openai, gemini"),
+    ("fashion", "RUN 2: openai, gemini"),
+    ("retail", "RUN 2: openai, gemini"),
+    ("law firms", "RUN 4: openai, gemini, anthropic, perplexity"),
+    ("pr agencies", "RUN 4: openai, gemini, anthropic, perplexity"),
+])
+def test_cli_vertical_alone_picks_the_engines(typed, run_line):
+    r = _cli(typed)
+    assert r.returncode == 0, r.stderr
+    assert run_line in r.stdout
+    assert "audience from VERTICAL_MAP" in r.stdout
+    assert "WARNING" not in r.stdout
+
+
+def test_cli_unlisted_vertical_warns_and_plans_every_engine():
+    r = _cli("underwater basket weaving")
+    assert r.returncode == 0, r.stderr
+    assert "audience from VERTICAL_UNCLASSIFIED" in r.stdout
+    assert "WARNING: unclassified vertical" in r.stdout
+    assert "RUN 4: openai, gemini, anthropic, perplexity" in r.stdout
+
+
+def test_cli_audience_flag_overrides_the_map_and_is_recorded(tmp_path):
+    target = tmp_path / "plan.json"
+    r = _cli("law firms", "--audience", "b2c", "--plan-out", str(target))
+    assert r.returncode == 0, r.stderr
+    assert "RUN 2: openai, gemini" in r.stdout
+    src = json.loads(target.read_text(encoding="utf-8"))["audience_source"]
+    assert src["source"] == es.AUDIENCE_FROM_OPERATOR
+    assert src["map_audience"] == "mixed"  # what the map said is kept on the record
+
+
+def test_cli_plan_binds_the_vertical_map_bytes(tmp_path):
+    import hashlib
+
+    target = tmp_path / "plan.json"
+    assert _cli("restaurants", "--plan-out", str(target)).returncode == 0
+    plan = json.loads(target.read_text(encoding="utf-8"))
+    src = plan["audience_source"]
+    assert src["map_sha256"] == hashlib.sha256(VMAP_PATH.read_bytes()).hexdigest()
+    assert src["source"] == es.AUDIENCE_FROM_MAP and src["matched_vertical"] == "restaurants"
+    assert plan["profile"]["local"] is True  # taken from the map, no --local flag given
+
+
+def test_cli_without_a_vertical_refuses():
+    r = _cli()
+    assert r.returncode != 0 and "REFUSE: name the vertical" in r.stderr
+
+
+def test_cli_two_different_verticals_refuses():
+    r = _cli("restaurants", "--vertical", "retail")
+    assert r.returncode != 0 and "two different verticals" in r.stderr
+
+
+def test_execute_from_a_vertical_name_alone_never_calls_perplexity(tmp_path):
+    repo = _stub_repo(tmp_path)
+    r = _cli("restaurants", "--bank", "bank.jsonl", "--outdir", "runs", "--execute", cwd=repo)
+    assert r.returncode == 0, r.stdout + r.stderr
+    assert [c[c.index("--engine") + 1] for c in _calls(repo)] == ["openai", "gemini"]
+
+
+def test_rendered_plan_warns_on_an_unclassified_vertical(loaded, vmap):
+    policy, digest = loaded
+    c = es.classify_vertical("underwater basket weaving", vmap)
+    plan = es.build_plan(es.StudyProfile(c.audience, c.vertical, local=c.local), policy, digest,
+                         audience_source={"source": c.source, "note": c.note})
+    text = es.render_plan(plan)
+    assert "audience from VERTICAL_UNCLASSIFIED" in text
+    assert "WARNING: unclassified vertical - every engine is planned" in text

@@ -105,3 +105,41 @@ picked the engines for any past run.
 
 - One carry-forward row in `docs/02_START_HERE_aivis.md` for this build and the OpenAI
   search-model defect above.
+
+## AMENDED 2026-10-07 — the audience now comes from the vertical name
+
+Supersedes two lines above: "No default audience" under *What it will not do*, and the
+`--audience b2c --vertical restaurants --local` form under *Use* (still accepted, no longer
+needed). Test count is now 91 cases, not 55.
+
+New path: `config/vertical_map_v1.json` — 40 verticals with aliases, each row
+`{audience, local}`. `run_study_v1.py` takes the vertical as its one required argument:
+
+```bash
+python run_study_v1.py restaurants      # b2c, local  -> ChatGPT + Gemini
+python run_study_v1.py fashion          # b2c         -> ChatGPT + Gemini
+python run_study_v1.py retail           # b2c         -> ChatGPT + Gemini
+python run_study_v1.py "law firms"      # mixed, local -> all four
+python run_study_v1.py "pr agencies"    # b2b         -> all four
+python run_study_v1.py stocks           # b2c, on Perplexity's list -> ChatGPT + Gemini + Perplexity
+```
+
+- **Matching** is exact key or alias after normalisation, plus one singular/plural retry.
+  No substring or fuzzy match: "lawn care" resolves to home_services, never to law.
+- **Unlisted vertical** → the map's declared `unclassified` row: `mixed`, every engine planned,
+  `VERTICAL_UNCLASSIFIED` and a WARNING line printed. Nothing is guessed into b2c or b2b.
+  Cost of that choice: an unlisted consumer vertical calls Claude and Perplexity until a row is
+  added or `--audience` is passed.
+- **`--audience` overrides the map.** The plan then records `OPERATOR` as the source and keeps
+  what the map said (`map_audience`).
+- **The plan carries the map's version and SHA-256** next to the policy's.
+- **"law firms" is `mixed`** (consumer and corporate buyers both ask), so it plans all four.
+  "personal injury lawyers" is `b2c`; "corporate law" is `b2b`.
+
+Limit: every row of the map is an operator classification [EST]. No usage data sits behind it.
+Rows may be added in place; changing an existing row's audience or local value is
+`vertical_map_v2.json` with the reason stated.
+
+Two pins hold the map and the policy together:
+`test_the_rule_holds_for_every_row_of_the_map` and
+`test_every_relevant_vertical_in_the_policy_is_a_key_of_the_map`.

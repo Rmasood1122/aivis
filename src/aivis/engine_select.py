@@ -41,6 +41,11 @@ OPERATOR_DECLARED = "OPERATOR_DECLARED"
 VERTICAL_RELEVANT = "VERTICAL_RELEVANT"
 CONDITION_NOT_MET = "CONDITION_NOT_MET"
 
+# where a study's audience came from
+AUDIENCE_FROM_OPERATOR = "OPERATOR"
+AUDIENCE_FROM_MAP = "VERTICAL_MAP"
+AUDIENCE_UNCLASSIFIED = "VERTICAL_UNCLASSIFIED"
+
 
 class SelectionError(ValueError):
     """Raised when a profile or a policy cannot produce an honest plan."""
@@ -74,6 +79,93 @@ class Decision:
 def normalise_vertical(vertical: str) -> str:
     """'Personal Finance' and 'personal-finance' are the same vertical."""
     return "_".join(vertical.strip().lower().replace("-", " ").split())
+
+
+@dataclass(frozen=True)
+class Classification:
+    """What the vertical map says about a vertical name."""
+
+    given: str  # the name as typed
+    vertical: str  # the map key the policy will see (or the normalised name if unlisted)
+    audience: str
+    local: bool
+    source: str  # AUDIENCE_FROM_MAP or AUDIENCE_UNCLASSIFIED
+    note: str
+
+
+def load_vertical_map(path: str | Path) -> tuple[dict, str]:
+    """Return (vertical map, sha256 of the file bytes)."""
+    raw = Path(path).read_bytes()
+    vmap = json.loads(raw.decode("utf-8"))
+    validate_vertical_map(vmap)
+    return vmap, hashlib.sha256(raw).hexdigest()
+
+
+def _vertical_index(vmap: dict) -> dict[str, str]:
+    """name-or-alias -> key. A name that points at two keys is a refused map."""
+    index: dict[str, str] = {}
+    for key, row in vmap["verticals"].items():
+        for name in (key, *row["aliases"]):
+            norm = normalise_vertical(name)
+            if index.get(norm, key) != key:
+                raise SelectionError(
+                    f"vertical map: {norm!r} points at both {index[norm]!r} and {key!r}"
+                )
+            index[norm] = key
+    return index
+
+
+def validate_vertical_map(vmap: dict) -> None:
+    for key in ("map_version", "verticals", "unclassified"):
+        if key not in vmap:
+            raise SelectionError(f"vertical map is missing {key!r}")
+    rows = {"unclassified": vmap["unclassified"], **vmap["verticals"]}
+    for name, row in rows.items():
+        if row.get("audience") not in (*BASE_AUDIENCES, "mixed"):
+            raise SelectionError(f"vertical map: {name!r} has audience {row.get('audience')!r}")
+        if not isinstance(row.get("local"), bool):
+            raise SelectionError(f"vertical map: {name!r} has no boolean 'local'")
+    for name, row in vmap["verticals"].items():
+        if name != normalise_vertical(name):
+            raise SelectionError(f"vertical map: key {name!r} is not in normalised form")
+        if not isinstance(row.get("aliases"), list):
+            raise SelectionError(f"vertical map: {name!r} has no 'aliases' list")
+    _vertical_index(vmap)
+
+
+def classify_vertical(name: str, vmap: dict) -> Classification:
+    """
+    Map a typed vertical to (key, audience, local). Exact key or alias only,
+    with one singular/plural retry - never a substring or fuzzy match.
+
+    An unlisted vertical is NOT guessed into b2c or b2b. It takes the map's
+    declared `unclassified` row and says so in `source`.
+    """
+    norm = normalise_vertical(name)
+    if not norm:
+        raise SelectionError("vertical is empty. Name the vertical being studied.")
+    index = _vertical_index(vmap)
+    candidates = [norm, norm + "s"]
+    if norm.endswith("es"):
+        candidates.append(norm[:-2])
+    if norm.endswith("s"):
+        candidates.append(norm[:-1])
+    for candidate in candidates:
+        if candidate in index:
+            key = index[candidate]
+            row = vmap["verticals"][key]
+            return Classification(
+                given=name, vertical=key, audience=row["audience"], local=row["local"],
+                source=AUDIENCE_FROM_MAP,
+                note=f"{norm!r} is listed under {key!r} in {vmap['map_version']}",
+            )
+    row = vmap["unclassified"]
+    return Classification(
+        given=name, vertical=norm, audience=row["audience"], local=row["local"],
+        source=AUDIENCE_UNCLASSIFIED,
+        note=(f"{norm!r} is not in {vmap['map_version']}; treated as {row['audience']} so no "
+              "engine is dropped on a guess. Add a row or pass --audience."),
+    )
 
 
 def load_policy(path: str | Path) -> tuple[dict, str]:
@@ -149,7 +241,8 @@ def _check_profile(profile: StudyProfile, policy: dict) -> None:
             )
         if engine not in engines:
             raise SelectionError(
-                f"{engine!r} was {how} but is not in the policy. Known: {', '.join(sorted(engines))}"
+                f"{engine!r} was {how} but is not in the policy. "
+                f"Known: {', '.join(sorted(engines))}"
             )
 
     minimum = policy["declared_reason_min_chars"]
@@ -244,14 +337,27 @@ def select_engines(profile: StudyProfile, policy: dict) -> list[Decision]:
     return decisions
 
 
-def build_plan(profile: StudyProfile, policy: dict, policy_sha256: str) -> dict:
-    """The JSON-serialisable plan a study files next to its evidence."""
+def build_plan(
+    profile: StudyProfile,
+    policy: dict,
+    policy_sha256: str,
+    *,
+    audience_source: dict | None = None,
+) -> dict:
+    """
+    The JSON-serialisable plan a study files next to its evidence.
+
+    `audience_source` records where the audience came from (operator flag,
+    vertical map row, or the unclassified fallback) and, for the map, its
+    version and digest. Absent means the caller set the audience directly.
+    """
     decisions = select_engines(profile, policy)
     search, search_reason = resolve_web_search(profile, policy)
     return {
         "plan_schema": PLAN_SCHEMA,
         "policy_version": policy["policy_version"],
         "policy_sha256": policy_sha256,
+        "audience_source": audience_source or {"source": AUDIENCE_FROM_OPERATOR},
         "profile": {
             "audience": profile.audience,
             "vertical": normalise_vertical(profile.vertical),
@@ -311,8 +417,14 @@ def render_plan(plan: dict) -> str:
         f"ENGINE PLAN  policy={plan['policy_version']}  sha256={plan['policy_sha256'][:12]}",
         (f"audience={p['audience']}  vertical={p['vertical']}  local={p['local']}  "
          f"web_search={plan['web_search']} ({plan['web_search_reason']})"),
-        "",
     ]
+    src = plan["audience_source"]
+    lines.append(f"audience from {src['source']}" + (f": {src['note']}" if src.get("note") else ""))
+    if src["source"] == AUDIENCE_UNCLASSIFIED:
+        lines.append(
+            "WARNING: unclassified vertical - every engine is planned. Check before --execute."
+        )
+    lines.append("")
     for d in plan["decisions"]:
         lines.append(f"{d['decision']:<13}{d['surface']:<20}{d['reason_code']}")
         lines.append(f"{'':13}{d['reason']}")

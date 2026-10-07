@@ -5,11 +5,17 @@
 Default is a DRY RUN: the plan and the exact runner commands are printed, nothing is called.
 --execute runs the commands in order and stops on the first non-zero exit.
 
-Plan only:
-  python run_study_v1.py --audience b2c --vertical restaurants --local
+Name the vertical; the audience (b2c / b2b / mixed) and local intent are read from
+config/vertical_map_v1.json, and the engines follow from the audience:
+  python run_study_v1.py restaurants
+  python run_study_v1.py "law firms"
+  python run_study_v1.py fashion
+
+A vertical that is not on the map is planned as mixed (every engine) with a printed warning.
+--audience overrides the map.
 
 Plan + commands (dry run):
-  python run_study_v1.py --audience b2c --vertical restaurants --local \
+  python run_study_v1.py restaurants \
       --bank restaurants_v1/nyc_prompts_v1.jsonl --runs 5 --outdir restaurants_v1/runs
 
 Surface check first (1 prompt x 1 run per picked engine), then the measured run:
@@ -33,15 +39,19 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent / "src"))
 
 from aivis.engine_select import (
+    AUDIENCE_FROM_OPERATOR,
     SelectionError,
     StudyProfile,
     build_plan,
+    classify_vertical,
     load_policy,
+    load_vertical_map,
     render_plan,
     runner_commands,
 )
 
 DEFAULT_POLICY = Path(__file__).resolve().parent / "config" / "engine_policy_v1.json"
+DEFAULT_VERTICAL_MAP = Path(__file__).resolve().parent / "config" / "vertical_map_v1.json"
 
 
 def _pairs(values, flag):
@@ -65,9 +75,13 @@ def _write_new(path, plan):
 
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
-    ap.add_argument("--audience", required=True, help="b2c | b2b | mixed (no default)")
-    ap.add_argument("--vertical", required=True, help="e.g. restaurants, pr_agencies, real_estate")
-    ap.add_argument("--local", action="store_true", help="local-intent study; turns web search on")
+    ap.add_argument("vertical_pos", nargs="?", metavar="VERTICAL",
+                    help='e.g. restaurants, "law firms", retail, fashion')
+    ap.add_argument("--vertical", help="same as the positional VERTICAL")
+    ap.add_argument("--audience", help="b2c | b2b | mixed; overrides the vertical map")
+    ap.add_argument("--local", action="store_true",
+                    help="force local intent on (the vertical map can also turn it on)")
+    ap.add_argument("--vertical-map", default=str(DEFAULT_VERTICAL_MAP))
     g = ap.add_mutually_exclusive_group()
     g.add_argument("--search", dest="search", action="store_true", default=None)
     g.add_argument("--no-search", dest="search", action="store_false")
@@ -95,14 +109,34 @@ def main(argv=None):
         sys.exit("REFUSE: --execute must be started from the repo root (run_bank_multi_v2.py "
                  "and .env are read from the current directory)")
 
-    profile = StudyProfile(
-        audience=a.audience, vertical=a.vertical, local=a.local, web_search=a.search,
-        requested=tuple(a.request), declared=_pairs(a.declare, "--declare"),
-        model_overrides=_pairs(a.model, "--model"),
-    )
+    if a.vertical and a.vertical_pos and a.vertical != a.vertical_pos:
+        sys.exit("REFUSE: two different verticals given (%r and %r)" % (a.vertical_pos, a.vertical))
+    vertical = a.vertical or a.vertical_pos
+    if not vertical:
+        sys.exit("REFUSE: name the vertical, e.g. python run_study_v1.py restaurants")
+
     try:
         policy, digest = load_policy(a.policy)
-        plan = build_plan(profile, policy, digest)
+        vmap, vmap_digest = load_vertical_map(a.vertical_map)
+        cls = classify_vertical(vertical, vmap)
+        source = {
+            "source": AUDIENCE_FROM_OPERATOR if a.audience else cls.source,
+            "given": cls.given,
+            "matched_vertical": cls.vertical,
+            "map_audience": cls.audience,
+            "map_local": cls.local,
+            "note": ("--audience %s given; the map says %s" % (a.audience, cls.audience)
+                     if a.audience else cls.note),
+            "map_version": vmap["map_version"],
+            "map_sha256": vmap_digest,
+        }
+        profile = StudyProfile(
+            audience=a.audience or cls.audience, vertical=cls.vertical,
+            local=a.local or cls.local, web_search=a.search,
+            requested=tuple(a.request), declared=_pairs(a.declare, "--declare"),
+            model_overrides=_pairs(a.model, "--model"),
+        )
+        plan = build_plan(profile, policy, digest, audience_source=source)
     except SelectionError as ex:
         sys.exit("REFUSE: %s" % ex)
 
