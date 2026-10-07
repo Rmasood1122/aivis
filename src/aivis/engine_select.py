@@ -81,6 +81,18 @@ def normalise_vertical(vertical: str) -> str:
     return "_".join(vertical.strip().lower().replace("-", " ").split())
 
 
+def content_sha256(raw: bytes) -> str:
+    """
+    SHA-256 of a text file's content with CRLF folded to LF.
+
+    Git on Windows checks text files out with CRLF, so a hash of the bytes on
+    disk differs between machines for the same commit. Folding line endings
+    gives the same digest everywhere, and it equals
+    `git show HEAD:<path> | sha256sum` for a file stored with LF.
+    """
+    return hashlib.sha256(raw.replace(b"\r\n", b"\n")).hexdigest()
+
+
 @dataclass(frozen=True)
 class Classification:
     """What the vertical map says about a vertical name."""
@@ -95,11 +107,11 @@ class Classification:
 
 
 def load_vertical_map(path: str | Path) -> tuple[dict, str]:
-    """Return (vertical map, sha256 of the file bytes)."""
+    """Return (vertical map, content_sha256 of the file)."""
     raw = Path(path).read_bytes()
     vmap = json.loads(raw.decode("utf-8"))
     validate_vertical_map(vmap)
-    return vmap, hashlib.sha256(raw).hexdigest()
+    return vmap, content_sha256(raw)
 
 
 def _vertical_index(vmap: dict) -> dict[str, str]:
@@ -170,11 +182,11 @@ def classify_vertical(name: str, vmap: dict) -> Classification:
 
 
 def load_policy(path: str | Path) -> tuple[dict, str]:
-    """Return (policy, sha256 of the file bytes). The digest goes on the plan."""
+    """Return (policy, content_sha256 of the file). The digest goes on the plan."""
     raw = Path(path).read_bytes()
     policy = json.loads(raw.decode("utf-8"))
     validate_policy(policy)
-    return policy, hashlib.sha256(raw).hexdigest()
+    return policy, content_sha256(raw)
 
 
 def validate_policy(policy: dict) -> None:

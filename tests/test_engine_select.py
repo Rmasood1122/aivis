@@ -193,10 +193,8 @@ def test_same_profile_same_policy_same_plan(loaded):
 
 
 def test_plan_binds_the_policy_bytes(loaded):
-    import hashlib
-
     policy, digest = loaded
-    assert digest == hashlib.sha256(POLICY_PATH.read_bytes()).hexdigest()
+    assert digest == es.content_sha256(POLICY_PATH.read_bytes())
     plan = es.build_plan(es.StudyProfile("b2c", "restaurants", local=True), policy, digest)
     assert plan["policy_sha256"] == digest
     assert plan["run"] == ["openai", "gemini"]
@@ -629,13 +627,11 @@ def test_cli_audience_flag_overrides_the_map_and_is_recorded(tmp_path):
 
 
 def test_cli_plan_binds_the_vertical_map_bytes(tmp_path):
-    import hashlib
-
     target = tmp_path / "plan.json"
     assert _cli("restaurants", "--plan-out", str(target)).returncode == 0
     plan = json.loads(target.read_text(encoding="utf-8"))
     src = plan["audience_source"]
-    assert src["map_sha256"] == hashlib.sha256(VMAP_PATH.read_bytes()).hexdigest()
+    assert src["map_sha256"] == es.content_sha256(VMAP_PATH.read_bytes())
     assert src["source"] == es.AUDIENCE_FROM_MAP and src["matched_vertical"] == "restaurants"
     assert plan["profile"]["local"] is True  # taken from the map, no --local flag given
 
@@ -697,3 +693,29 @@ def test_cli_default_cap_is_8192_and_reaches_the_runner(tmp_path):
     assert r.returncode == 0, r.stdout + r.stderr
     for call in _calls(repo):
         assert call[call.index("--max-tokens") + 1] == "8192"
+
+
+# ---------------------------------------------------------------------------
+# DIGESTS MUST NOT DEPEND ON THE CHECKOUT'S LINE ENDINGS (CRLF class, 2026-09-09)
+# ---------------------------------------------------------------------------
+
+@pytest.mark.parametrize("name", ["engine_policy_v1.json", "vertical_map_v1.json"])
+def test_config_digest_is_the_same_for_lf_and_crlf_checkouts(tmp_path, name):
+    import hashlib
+
+    lf = (ROOT / "config" / name).read_bytes().replace(b"\r\n", b"\n")
+    crlf = lf.replace(b"\n", b"\r\n")
+    assert crlf != lf and b"\r\n" in crlf
+    (tmp_path / "lf.json").write_bytes(lf)
+    (tmp_path / "crlf.json").write_bytes(crlf)
+    load = es.load_policy if name.startswith("engine_policy") else es.load_vertical_map
+    digest_lf, digest_crlf = load(tmp_path / "lf.json")[1], load(tmp_path / "crlf.json")[1]
+    assert digest_lf == digest_crlf == hashlib.sha256(lf).hexdigest()
+
+
+def test_cli_output_is_plain_ascii_for_a_cp1252_console():
+    # a Windows console that cannot encode a character kills the run mid-print
+    for vertical in ("restaurants", "law firms", "underwater basket weaving"):
+        r = _cli(vertical, "--bank", "b.jsonl", "--outdir", "o")
+        assert r.returncode == 0, r.stderr
+        assert r.stdout.isascii()

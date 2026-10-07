@@ -209,3 +209,18 @@ Test count is now 126 cases.
   performs the seal check that this CLI does not. Running fewer engines there is a PREREG v2
   with the reason stated, not a flag.
 - The selector applies to studies designed after it.
+
+## AMENDED 2026-10-07 (4) — digests no longer depend on the checkout's line endings
+
+Corrects every "SHA-256 of the policy bytes" / "map bytes" line above. Test count: 129 cases.
+
+`policy_sha256` and `map_sha256` were hashes of the bytes on disk. Git on Windows checks the two
+JSON files out with CRLF (`.gitattributes` pins only `*.jsonl`), so the same commit gave one
+digest on the operator's machine and another in CI: the CRLF-blob defect of 2026-09-09 again,
+caught before any plan was filed. Both digests are now `content_sha256`: SHA-256 with CRLF
+folded to LF, which equals `git show HEAD:<path> | sha256sum` on any machine
+[MEASURED: both files, this commit].
+
+Checked by simulation, not on Windows: the two config files and the four code files rewritten
+with CRLF, console encoding forced to cp1252, 129 of 129 cases pass and the printed digest is
+unchanged. The first run on the operator's Windows machine is still the real check.
