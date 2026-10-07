@@ -1,0 +1,54 @@
+restaurant_v1 analysis - ALL CANDIDATES - NOT VERIFIED
+PARSE STATUS: UNVALIDATED_PARSE_PENDING_KAPPA
+BANK nyc_restaurant_prompts_v1 | CLEAN RESPONSES 400 | ERROR ROWS 0 | POPULATION: the run files given
+PYTHON 3.13.5 | prompt+engine cells with exactly 5 clean reps: 80 of 80
+MERGE RULES 0 | rules that matched a name: 0
+
+[anthropic] n=100 errors=0 | R1 names>=1: 100.0% (100 of 100) | rows with >=1 citation: 100.0% (100 of 100) | ends without terminal punctuation: 0.0% (0 of 100)
+[gemini] n=100 errors=0 | R1 names>=1: 100.0% (100 of 100) | rows with >=1 citation: 35.0% (35 of 100) | ends without terminal punctuation: 0.0% (0 of 100)
+[openai] n=100 errors=0 | R1 names>=1: 100.0% (100 of 100) | rows with >=1 citation: 69.0% (69 of 100) | ends without terminal punctuation: 0.0% (0 of 100)
+[perplexity] n=100 errors=0 | R1 names>=1: 100.0% (100 of 100) | rows with >=1 citation: 100.0% (100 of 100) | ends without terminal punctuation: 4.0% (4 of 100)
+[OVERALL] n=400 | R1 names>=1: 100.0% (400 of 400)
+
+All metrics count only names found in >=3 responses.
+Candidates before verification: tier A (>=10 responses) 96 | tier B (3-9) 327
+Verification sheet: 136 rows = all 96 of tier A + 40 sampled from tier B (seed 20261006)
+Names counted here: 423 (of 935 distinct before the >=3 floor)
+R2 names in >=3 of 5 reps, same prompt+engine: 379
+R3 names named by >=3 of 4 engines, same area: 124
+R4 top-10 share of mentions: 10.5% (324 of 3088)
+
+Most frequently named in this sample (R3 names; NOT an ordering - overlapping intervals are not ordered):
+  Le Bernardin                        40 of 400 [95% CI 7.4-13.3%] engines=4 first-named=25 prose-only=0
+  Taverna Kyclades                    40 of 400 [95% CI 7.4-13.3%] engines=4 first-named=27 prose-only=3
+  Buvette                             36 of 400 [95% CI 6.6-12.2%] engines=4 first-named=19 prose-only=0
+  Beso                                35 of 400 [95% CI 6.4-11.9%] engines=4 first-named=11 prose-only=2
+  Zero Otto Nove                      35 of 400 [95% CI 6.4-11.9%] engines=4 first-named=18 prose-only=0
+  Enoteca Maria                       31 of 400 [95% CI 5.5-10.8%] engines=4 first-named=9 prose-only=1
+  Mario’s Restaurant                  28 of 400 [95% CI 4.9-9.9%] engines=4 first-named=3 prose-only=0
+  Keens Steakhouse                    27 of 400 [95% CI 4.7-9.6%] engines=4 first-named=0 prose-only=1
+  Little Owl                          26 of 400 [95% CI 4.5-9.4%] engines=4 first-named=2 prose-only=1
+  Ruddy & Dean                        26 of 400 [95% CI 4.5-9.4%] engines=4 first-named=3 prose-only=5
+  Midtown East                        24 of 400 [95% CI 4.1-8.8%] engines=4 first-named=0 prose-only=23
+  Asian Jewels                        23 of 400 [95% CI 3.9-8.5%] engines=4 first-named=1 prose-only=13
+  Jack's Wife Freda                   23 of 400 [95% CI 3.9-8.5%] engines=3 first-named=0 prose-only=2
+  Roberta’s                           23 of 400 [95% CI 3.9-8.5%] engines=3 first-named=4 prose-only=7
+  Red Rooster                         22 of 400 [95% CI 3.7-8.2%] engines=4 first-named=0 prose-only=15
+  Gabriel Kreuther                    21 of 400 [95% CI 3.5-7.9%] engines=4 first-named=0 prose-only=1
+  L’Industrie Pizzeria                21 of 400 [95% CI 3.5-7.9%] engines=4 first-named=14 prose-only=0
+  Asian Jewels Seafood Restaurant     20 of 400 [95% CI 3.3-7.6%] engines=4 first-named=6 prose-only=3
+  Miriam                              20 of 400 [95% CI 3.3-7.6%] engines=4 first-named=12 prose-only=0
+  Pier 76                             20 of 400 [95% CI 3.3-7.6%] engines=3 first-named=0 prose-only=2
+  Emilia's Restaurant                 19 of 400 [95% CI 3.1-7.3%] engines=4 first-named=2 prose-only=0
+  Full Moon Pizzeria                  19 of 400 [95% CI 3.1-7.3%] engines=4 first-named=0 prose-only=8
+  The Modern                          19 of 400 [95% CI 3.1-7.3%] engines=4 first-named=1 prose-only=3
+  Via Carota                          19 of 400 [95% CI 3.1-7.3%] engines=4 first-named=4 prose-only=2
+  Best Pizza                          18 of 400 [95% CI 2.9-7.0%] engines=4 first-named=2 prose-only=3
+
+DECISION RULE: NOT EVALUATED - verification pending.
+Fill the verdict column of verify_sheet.csv (open | closed | not_found | wrong_area | noise), then re-run with --verified and a new --out.
+
+Limits: a name no engine ever put in a list head, table, heading or bold span is missed; prose-only
+matches are case-sensitive string matches and can still hit a phrase that is not the restaurant; a
+first-named count needs a structurally placed name, so prose-only answers have none; counts on verified
+names are lower bounds. Nothing here says anything about any restaurant's customers or revenue.
