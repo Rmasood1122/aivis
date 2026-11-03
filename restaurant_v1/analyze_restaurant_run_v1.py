@@ -14,8 +14,8 @@ Two passes per market:
      occurs three times or more in one response is a label - twice for a one-word head; a multi-word
      head seen twice is a name plus its recap).
      A bare bold head ending in a colon, or a head ending in a list word ("Picks"), hands its place to
-     the names nested under it. Names written together ("A, B, C") are split when the market's own
-     answers show the parts are places.
+     the names nested under it. Names written together ("A, B, C", a table cell listing several) are
+     cut apart using the names the market's own answers gave singly - see best_split().
   2. MATCHING (lexicon). A name discovered structurally somewhere in the market is then searched for
      in every response, case-sensitively and on word boundaries, so a restaurant named only in
      running prose is still counted. One-word names need structural support in three responses first.
@@ -129,7 +129,7 @@ must try dishes|order|popular dishes|recommended dishes|signature dish|signature
 specialty|standout dishes|top dishes|try|try the|what to get|what to order|what to try
 """.replace("\n", "").split("|") if p.strip())
 LINE_LABEL = re.compile(r"^\s*(?:[-*•–·]\s+|\d{1,2}[.)]\s+)?[*_]{0,3}([^:*_]{2,40}?):[*_]{0,3}(?=\s|$)")
-JOINED = re.compile(r",\s+|\s+&\s+|\s+and\s+")
+JOINED = re.compile(r"(,\s+|\s+&\s+|\s+and\s+)")
 
 CONNECTORS = frozenset("""a al and at au aux by con da das de del des di do dos du e el et i il la las le lo los
 n of on the und van von y""".split())
@@ -217,11 +217,12 @@ def is_label(raw_head: str) -> bool:
     return not key or key in LABELS
 
 
-def plausible_name(name: str, place_tokens: frozenset, strict_case: bool) -> bool:
-    if not (2 <= len(name) <= 60):
+def plausible_name(name: str, place_tokens: frozenset, strict_case: bool, listing: bool = False) -> bool:
+    """`listing`: the text is a table cell that may hold several names, so the length limits are looser."""
+    if not (2 <= len(name) <= (160 if listing else 60)):
         return False
     words = name.split()
-    if not (1 <= len(words) <= 7) or not any(c.isalpha() for c in name):
+    if not (1 <= len(words) <= (24 if listing else 7)) or not any(c.isalpha() for c in name):
         return False
     low = name.casefold()
     if "http" in low or name.rstrip().endswith(("?", "!")) or SENTENCE_BREAK.search(name):
@@ -279,11 +280,8 @@ def _parse_nodes(lines):
                 col = next((j for j, c in enumerate(cells)
                             if c and not re.fullmatch(r"[#\d.\s)]*", strip_marks(c))), None)
             if col is not None and cells[col]:
-                parts = [c.strip() for c in strip_marks(cells[col]).split(",")]
-                for raw in (parts if len(parts) >= 3 else [cells[col]]):   # "A, B, C" is three places
-                    if raw:
-                        nodes.append({"kind": "item", "indent": 0, "raw": raw, "colon": False, "bare": True,
-                                      "klass": "table", "line": i, "bold_head": False, "weak": False})
+                nodes.append({"kind": "item", "indent": 0, "raw": cells[col], "colon": False, "bare": True,
+                              "klass": "table", "line": i, "bold_head": False, "weak": False})
             continue
         hm = HEADING_RE.match(line)
         if hm:
@@ -337,7 +335,8 @@ def discover(text: str, place_tokens: frozenset = frozenset()):
         key = norm_key(n["name"])
         label = is_label(n["raw"]) or repeated[key] >= (2 if len(key.split()) == 1 else LABEL_REPEATS)
         strict = n["klass"] == "list_plain"
-        n["ok"] = (not label) and plausible_name(n["name"], place_tokens, strict)
+        listing = n["klass"] == "table" and n["name"].count(",") >= 2
+        n["ok"] = (not label) and plausible_name(n["name"], place_tokens, strict, listing)
         n["listword"] = (norm_key(n["name"]).split() or [""])[-1] in LISTWORDS
 
     # Nesting.
@@ -481,31 +480,93 @@ def prose_eligible(key: str, structural_support: int) -> bool:
 
 # ----------------------------------------------------------------------------- analysis
 
+def best_split(name, known, place_tokens, listing):
+    """Cut a name that may be several places written together. Returns the parts, or None to keep it whole.
+
+    Every way of cutting at the commas, "&" and "and" is tried. A cut is valid when its parts are names the
+    market's answers gave on their own:
+      - two parts: both must be known;
+      - three or more: one part may be unknown if it is at least two words;
+      - `listing` (a table cell with two or more commas): a part that is exactly one comma-separated
+        entry may be unknown, because such a cell is a list.
+    Among valid cuts the one with the most known parts wins, then the fewest parts. So
+    "Sal, Kris & Charlie's Deli, George's Deli" becomes the deli and George's, never "Sal" + "Kris & ...",
+    as long as the deli's full name was given on its own somewhere."""
+    toks = JOINED.split(name)
+    atoms, seps = toks[0::2], toks[1::2]
+    n = len(atoms)
+    if n < 2 or n > 9 or any(not a.strip() for a in atoms):
+        return None
+    comma = [x.lstrip().startswith(",") for x in seps]
+    lenient = listing and sum(comma) >= 2
+    best = None
+    for mask in range(1, 2 ** (n - 1)):                       # bit i set = cut after atom i
+        segs, start = [], 0
+        for i in range(n - 1):
+            if mask >> i & 1:
+                segs.append((start, i))
+                start = i + 1
+        segs.append((start, n - 1))
+        texts, n_known, unknown = [], 0, []
+        for a, b in segs:
+            t = atoms[a]
+            for j in range(a, b):
+                t += seps[j] + atoms[j + 1]
+            t = tidy_name(t)                                  # "Dar Lbahja (Moroccan)" -> "Dar Lbahja", as for any head
+            if not t:
+                texts = None
+                break
+            texts.append(t)
+            if norm_key(t) in known:
+                n_known += 1
+            else:
+                unknown.append((a, b, t))
+        if texts is None:
+            continue
+        if lenient:
+            valid = all((a == 0 or comma[a - 1]) and (b == n - 1 or comma[b]) and not any(comma[a:b])
+                        and plausible_name(t, place_tokens, False) for a, b, t in unknown)
+        elif len(segs) == 2:
+            valid = not unknown
+        else:
+            valid = len(unknown) <= 1 and all(len(norm_key(t).split()) >= 2 and plausible_name(t, place_tokens, True)
+                                              for _, _, t in unknown)
+        if valid:
+            score = (n_known, -len(segs), -mask)
+            if best is None or score > best[0]:
+                best = (score, texts)
+    return best[1] if best else None
+
+
 def joined_parts(discovered, place_tokens):
     """{surface name: [part names]} for names that are really several places written together.
-    "Queen's Room, Sanfords, Sweet Afton" is split when the market itself shows the parts are places:
-    two parts need BOTH named alone somewhere; three or more may carry ONE part not seen alone, if that
-    part is at least two words (it becomes known, and the pass repeats). "Sal, Kris & Charlie's Deli" and "Tootles & French" have no such parts
-    and stay whole."""
+
+    Order matters. (1) Names from ordinary lists are cut using names with no comma or "&" in them.
+    (2) Whatever was NOT cut is then itself a known name - "Sal, Kris & Charlie's Deli" was given whole,
+    so it is one place. (3) List names are tried once more, then table cells, against that fuller lexicon.
+    Each pass repeats until nothing changes, because a part that is split out becomes known."""
     known = {key for disc in discovered for name, key, _ in disc if not JOINED.search(name)}
-    joined = sorted({name for disc in discovered for name, _, _ in disc if JOINED.search(name)})
-    out, changed = {}, True
-    while changed:
-        changed = False
-        for name in joined:
-            if name in out:
-                continue
-            parts = [x.strip() for x in JOINED.split(name) if x.strip()]
-            if len(parts) < 2 or not all(plausible_name(x, place_tokens, True) for x in parts):
-                continue
-            unknown = [x for x in parts if norm_key(x) not in known]
-            n_known = len(parts) - len(unknown)
-            if any(len(norm_key(x).split()) < 2 for x in unknown):    # a one-word part must be known already
-                continue
-            if (len(parts) == 2 and n_known == 2) or (len(parts) >= 3 and n_known >= len(parts) - 1):
-                out[name] = parts
-                known.update(norm_key(x) for x in parts)
-                changed = True
+    listing = {name for disc in discovered for name, _, klass in disc if klass == "table" and JOINED.search(name)}
+    in_lists = {name for disc in discovered for name, _, klass in disc if klass != "table" and JOINED.search(name)}
+    out = {}
+
+    def settle(group):
+        changed = True
+        while changed:
+            changed = False
+            for name in group:
+                if name in out:
+                    continue
+                parts = best_split(name, known, place_tokens, name in listing and name not in in_lists)
+                if parts:
+                    out[name] = parts
+                    known.update(norm_key(x) for x in parts)
+                    changed = True
+
+    settle(sorted(in_lists))
+    known.update(norm_key(n) for n in in_lists if n not in out)
+    settle(sorted(in_lists))
+    settle(sorted(listing - in_lists))
     return out
 
 

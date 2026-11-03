@@ -1,0 +1,5 @@
+engine,prompt_id,rep,area,intent,chars,ends_without_terminal_punct,search_tool_in_payload,citations,counted_names,first_named,keys,source_row
+openai,NYC01,1,Astoria,best_overall,6998,0,1,6,4,taverna kyclades,bel aire diner;bonnie;ruta oaxaca;taverna kyclades,smoke_openai_nyc_20261007T011121Z.jsonl:1
+anthropic,NYC01,1,Astoria,best_overall,3301,0,1,10,3,taverna kyclades,bel aire diner;bonnie;taverna kyclades,smoke_anthropic_nyc_20261007T011134Z.jsonl:1
+gemini,NYC01,1,Astoria,best_overall,4954,0,1,0,3,taverna kyclades,bonnie;ruta oaxaca;taverna kyclades,smoke_gemini_nyc_20261007T021009Z.jsonl:1
+perplexity,NYC01,1,Astoria,best_overall,1022,0,1,15,3,taverna kyclades,bel aire diner;ruta oaxaca;taverna kyclades,smoke_perplexity_nyc_retry1.jsonl:1

@@ -114,11 +114,11 @@ before the seal; they confirm the four search surfaces and nothing else.
 ---
 
 ## Predictions (operator, before the NYC run)
-- NYC R3 (restaurants named by ≥3 of 4 engines, same area): ____
-- NYC R4 (top-10 share of verified mentions): ____ %
-- NYC R5 (≥10 tier, closed + not found + wrong area): ____ %
-- Engine with the most distinct restaurants named: ____
-- Market of the four with the smallest R3: ____
+- NYC R3 (restaurants named by ≥3 of 4 engines, same area): 40 (assistant-suggested, adopted by operator 2026-10-06)
+- NYC R4 (top-10 share of verified mentions): 15 % (assistant-suggested, adopted by operator 2026-10-06)
+- NYC R5 (≥10 tier, closed + not found + wrong area): 5 % (assistant-suggested, adopted by operator 2026-10-06)
+- Engine with the most distinct restaurants named: ChatGPT (assistant-suggested, adopted by operator 2026-10-06)
+- Market of the four with the smallest R3: Delaware (assistant-suggested, adopted by operator 2026-10-06)
 
 ## AMENDMENT v1.1 — 2026-10-06, written BEFORE the seal and before any full-run response
 Status of evidence at this point: 5 smoke rows exist (NYC01 only; 4 clean, 1 error), collected
@@ -217,3 +217,47 @@ Thresholds in "Decision rule" are unchanged. Where this block and anything above
 5. **Spelling variants are not merged by the analyzer** ("AbuQir" / "AbuQir Seafood", "Ruta Oaxaca" /
    "Ruta Oaxaca Mexican Cuisine", "Vesta Trattoria & Wine Bar" / "& Winebar" were all seen). They are
    merged only through `merges_v1.csv`, written by hand after the run and committed with the results.
+
+## AMENDMENT v1.3 — 2026-10-06, written BEFORE the seal and before any full-run response
+Evidence is now 6 smoke rows (NYC01 only; 5 clean, 1 error); no full-run row exists. Thresholds unchanged.
+
+1. **The v1.2 extractor on the four complete smoke answers** [MEASURED: operator console, 2026-10-07
+   ~02:10Z, candidate list read in full]: 63 distinct candidates. The ten junk names of v1.2 item 1 and
+   "The Bomb" are gone. Two candidates are not a restaurant: "Sal" and "Kris & Charlie's Deli". Both come
+   from one defect introduced by v1.2 item 2(d): a table cell was cut at every comma, which cut the real
+   name "Sal, Kris & Charlie's Deli"; the fragment was then matched inside that real name in two other
+   answers and reached 3 of 4 responses. A defect created by a fix, caught by re-running the check.
+2. **Change:** v1.2 item 2(d) is withdrawn. A table cell is kept whole at discovery and cut afterwards
+   by `best_split()`, which prefers parts the market's answers gave on their own; a name given whole in
+   any ordinary list is one place and is never cut. 48 tests pass, one of them this exact case. On the
+   realtor rows the top tier is unchanged from the v1.2 extractor (106 candidates, same names)
+   [MEASURED: 2026-10-06]. This version has NOT yet been run on the complete smoke answers;
+   `check_smoke_extract_v1.py` prints PASS or FAIL for the defects named in v1.2 and v1.3, and the
+   operator runs it before sealing. That script is a convenience, not part of the instrument.
+3. **Gemini under the 8,192 cap** [MEASURED: operator console, smoke 2026-10-07T02:10Z]: 4,954 characters,
+   ends on a full stop. The cap was the cause of the earlier cut. Citations: 0 on both Gemini smoke rows,
+   against 99 of 99 in the realtor run with the same runner and model. Per v1.1 item 1, Gemini rows
+   without a citation are reported as answers with no search evidenced, and that share is printed.
+4. **Count of post-hoc instrument changes before the seal: three** (v1.1 build, v1.2, v1.3), each made
+   after reading smoke output. After the seal the analyzer does not change; a change is a v2.
+
+## AMENDMENT v1.4 — 2026-10-06, written BEFORE the seal and before any full-run response
+Evidence unchanged: 6 smoke rows, no full-run row. Thresholds unchanged.
+
+1. **The v1.3 extractor on the four complete smoke answers** [MEASURED: operator console, 2026-10-07
+   ~02:17Z, candidate list read in full]: 63 distinct candidates. "Sal" and "Kris & Charlie's Deli" are
+   gone and the real name is whole. Two candidates are duplicates carrying a trailing bracket —
+   "Dar Lbahja (Moroccan)" and "Sami's Kabab House (Afghan)" — beside "Dar Lbahja" and
+   "Sami's Kabab House". Cause: parts cut from a table cell by `best_split()` skipped the tidy step every
+   other name goes through. Second defect in a row created by the preceding fix.
+2. **`check_smoke_extract_v1.py` printed CHECK PASS on that list.** It tested for the defects named so
+   far and nothing else. The duplicates were found by reading the names, not by the script. The script now
+   also fails on a trailing bracket, and its header says what PASS does not mean.
+3. **Change:** cut parts are tidied like any other head. 49 tests pass, one of them this case; realtor
+   top tier unchanged (106, same names) [MEASURED: 2026-10-06]. NOT yet re-run on the complete smoke
+   answers.
+4. **Known and left as is** [MEASURED: same list]: spelling and suffix variants are separate candidates —
+   "AbuQir" / "AbuQir Seafood", "Ruta Oaxaca" / "Ruta Oaxaca Mexican Cuisine", "Vesta Trattoria & Wine Bar"
+   / "& Winebar", "7th Street Burger Astoria", "Ibn Hamido Seafood NYC". They are folded only through
+   `merges_v1.csv`. Until merged, a restaurant's count is split across its spellings and is a lower bound.
+5. **Post-hoc instrument changes before the seal: four** (v1.1 build, v1.2, v1.3, v1.4).

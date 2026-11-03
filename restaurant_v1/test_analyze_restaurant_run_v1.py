@@ -316,9 +316,10 @@ def test_award_category_bullets_hand_over_to_the_numbered_names():
         assert label not in got
     assert got[:2] == ["Sanfords", "The Bonnie"]
     for real in ("Sal, Kris & Charlie’s Deli", "George’s Deli", "Tootles & French", "Queen’s Room",
-                 "Trattoria L’incontro", "Christos Steak House", "Taverna Kyclades", "Loukoumi Taverna", "Ovelia",
-                 "Kabab Cafe", "Martha’s Country Bakery"):
+                 "Trattoria L’incontro", "Christos Steak House"):
         assert real in got, real
+    # table cells listing several places are kept whole here and cut apart later, with the market's lexicon
+    assert "Taverna Kyclades, Loukoumi Taverna, Ovelia, Kabab Cafe" in got
 
 
 def test_joined_names_split_only_when_the_market_knows_the_parts(tmp_path):
@@ -330,6 +331,51 @@ def test_joined_names_split_only_when_the_market_knows_the_parts(tmp_path):
     assert "sweet afton" in cand and "bonnie" in cand and "queens room" in cand and "sanfords" in cand
     assert not any("queens room sanfords" in k or "sweet afton and" in k for k in cand)
     assert "sal kris and charlies deli" in cand and "tootles and french" in cand     # real names keep their commas and &
+    for k in ("taverna kyclades", "loukoumi taverna", "ovelia", "kabab cafe", "marthas country bakery"):
+        assert k in cand, k                                                          # table cells cut at their commas
+
+
+def test_table_list_never_cuts_a_name_the_market_gave_whole(tmp_path):
+    """The defect seen on the operator's smoke rows, 2026-10-07: a table cell split at every comma produced
+    'Sal' and 'Kris & Charlie's Deli', and the second was then matched inside the real name in other answers."""
+    table = "| Type | Restaurants |\n|---|---|\n| Delis | Sal, Kris & Charlie’s Deli, George’s Deli, Il Bambino |\n"
+    rows = [_row("openai", "NYC01", 1, "Astoria", "- **Sal, Kris & Charlie’s Deli** – heroes\n\n" + table),
+            _row("anthropic", "NYC01", 1, "Astoria", "- **Sal, Kris & Charlie's Deli** – famous for The Bomb\n"),
+            _row("gemini", "NYC01", 1, "Astoria", "*   **Sal, Kris & Charlie’s Deli** *(23rd Ave)*\n")]
+    p = tmp_path / "run.jsonl"
+    p.write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows), encoding="utf-8")
+    out = tmp_path / "res"
+    ar.main([str(p), "--out", str(out)])
+    cand = {r["key"]: r for r in _read(out / "candidates.csv")}
+    assert cand["sal kris and charlies deli"]["responses"] == "3"
+    assert "sal" not in cand and "kris and charlies deli" not in cand
+    assert "georges deli" in cand and "il bambino" in cand
+
+
+def test_parts_cut_from_a_table_cell_are_tidied_like_any_other_name(tmp_path):
+    """Defect seen on the operator's smoke rows, 2026-10-07: 'Dar Lbahja (Moroccan)' came out of a table cell
+    as its own candidate beside 'Dar Lbahja', because cut parts skipped the bracket-stripping step."""
+    table = "| Type | Restaurants |\n|---|---|\n| Global | Dar Lbahja (Moroccan), Sami’s Kabab House (Afghan), Ramro (Filipino) |\n"
+    rows = [_row("openai", "NYC01", 1, "Astoria", "- **Dar Lbahja** – tagines\n- **Sami’s Kabab House** – kababs\n\n" + table)]
+    p = tmp_path / "run.jsonl"
+    p.write_text(json.dumps(rows[0], ensure_ascii=False) + "\n", encoding="utf-8")
+    out = tmp_path / "res"
+    ar.main([str(p), "--out", str(out)])
+    cand = {r["key"]: r["display"] for r in _read(out / "candidates.csv")}
+    assert set(cand) == {"dar lbahja", "samis kabab house", "ramro"}
+    assert not any("(" in d for d in cand.values())
+
+
+def test_best_split_rules():
+    known = {"sweet afton", "bonnie", "queens room", "sanfords"}
+    assert ar.best_split("Sweet Afton & The Bonnie", known, PLACE, False) == ["Sweet Afton", "The Bonnie"]
+    assert ar.best_split("Queen’s Room, Sanfords, Martha’s Country Bakery", known, PLACE, False) == [
+        "Queen’s Room", "Sanfords", "Martha’s Country Bakery"]
+    assert ar.best_split("Sal, Kris & Charlie’s Deli", known, PLACE, False) is None
+    assert ar.best_split("Tootles & French", known, PLACE, False) is None
+    assert ar.best_split("Chela & Garnacha", known | {"chela"}, PLACE, False) is None      # one side known is not enough
+    assert ar.best_split("Ovelia, Kabab Cafe, Aliada", set(), PLACE, True) == ["Ovelia", "Kabab Cafe", "Aliada"]
+    assert ar.best_split("Ovelia, Kabab Cafe", set(), PLACE, True) is None                 # one comma: not a list
 
 
 def test_best_pizza_is_still_a_name_when_it_is_listed_as_one():
